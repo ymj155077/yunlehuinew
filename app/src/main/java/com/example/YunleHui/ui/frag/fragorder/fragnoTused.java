@@ -159,7 +159,7 @@ public class fragnoTused extends BaseFrag {
                 JSONArray voList = result.getJSONArray("voList");
 
                 ArrayList<BeanTwo_list> datas = new ArrayList<>();
-                datas.clear();
+                datas.clear();;
                 for (int i = 0; i < voList.length(); i++) {
                     String values = voList.getString(i);
                     JSONObject jsonObject = new JSONObject(values);
