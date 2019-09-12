@@ -188,7 +188,6 @@ public class fragnoTused extends BaseFrag {
                 } else if (type == 1) {
 
 
-
                     myRecycleViewAdapter.clear_data(datas);
                     myRecycleViewAdapter.notifyDataSetChanged();
 
@@ -311,6 +310,9 @@ public class fragnoTused extends BaseFrag {
                         }else if (datas.get(i).getReceiveWay()==4){
                             intent.putExtra("fang_shi","社区送货");
                         }
+
+                        //ASDKHSAKJDHASKJDH
+                        //测试/
                         intent.putExtra("ReceiveWay",datas.get(i).getReceiveWay());
                         intent.putExtra("Nature", datas.get(i).getOrderNature());
                         if (datas.get(i).getOrderNature() == 0) {
