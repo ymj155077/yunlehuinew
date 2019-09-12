@@ -186,6 +186,9 @@ public class fragnoTused extends BaseFrag {
                     myRecycleViewAdapter = new MyRecycleViewAdapter(datas, getActivity());
                     xre_toused.setAdapter(myRecycleViewAdapter);
                 } else if (type == 1) {
+
+
+
                     myRecycleViewAdapter.clear_data(datas);
                     myRecycleViewAdapter.notifyDataSetChanged();
 
