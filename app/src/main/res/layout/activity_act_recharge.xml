@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/all_background"
+    android:orientation="vertical"
+    tools:context="com.example.YunleHui.ui.act.actme.ActRecharge">
+
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
+        <LinearLayout
+            android:orientation="vertical"
+
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <include layout="@layout/toolbar_push_off" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/dp_12"
+
+                android:layout_marginStart="@dimen/dp_12"
+                android:layout_marginTop="@dimen/dp_12"
+                android:background="@drawable/backimg"
+                android:orientation="vertical">
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dp_50"
+                    android:layout_marginEnd="@dimen/dp_12"
+                    android:layout_marginStart="@dimen/dp_12"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+
+                    <TextView
+                        android:id="@+id/text_one"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="充值银行卡"
+                        android:textColor="@color/black99"
+                        android:textSize="@dimen/sp_16" />
+
+
+                    <TextView
+                        android:id="@+id/text_choice"
+                        android:clickable="true"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_marginLeft="@dimen/dp_43"
+                        android:layout_marginStart="@dimen/dp_43"
+                        android:layout_weight="1"
+                        android:gravity="center_vertical"
+                        android:text="暂无充值方式请绑定"
+                        android:textColor="@color/black33" />
+
+
+                </LinearLayout>
+
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dp_0_5"
+
+                    android:layout_marginEnd="@dimen/dp_14"
+                    android:layout_marginStart="@dimen/dp_14"
+                    android:background="@color/all_background" />
+
+
+                <TextView
+                    android:id="@+id/text_two"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/dp_12"
+                    android:layout_marginStart="@dimen/dp_12"
+                    android:layout_marginTop="@dimen/dp_30"
+                    android:text="充值金额"
+                    android:textSize="@dimen/sp_16" />
+
+
+                <LinearLayout
+
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dp_30"
+                    android:orientation="horizontal">
+
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/dp_12"
+                        android:layout_marginStart="@dimen/dp_12"
+                        android:text="￥"
+                        android:textColor="@color/black33"
+                        android:textSize="@dimen/sp_18" />
+
+
+                    <EditText
+                        android:inputType="number"
+                        android:layout_width="0dp"
+                        android:layout_height="@dimen/dp_50"
+                        android:layout_marginLeft="@dimen/dp_20"
+                        android:layout_marginStart="@dimen/dp_20"
+                        android:layout_weight="1"
+                        android:background="@null"
+                        android:hint="请输入金额"
+                        android:textSize="@dimen/sp_16" />
+
+
+                </LinearLayout>
+
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dp_0_5"
+                    android:layout_marginBottom="@dimen/dp_60"
+
+                    android:layout_marginEnd="@dimen/dp_14"
+                    android:layout_marginStart="@dimen/dp_14"
+                    android:background="@color/all_background" />
+
+
+            </LinearLayout>
+
+
+            <TextView
+                android:id="@+id/text_Recharge"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp_40"
+                android:layout_marginEnd="@dimen/dp_33"
+                android:layout_marginStart="@dimen/dp_33"
+                android:layout_marginTop="@dimen/dp_40"
+                android:background="@drawable/button_img"
+                android:clickable="true"
+                android:gravity="center"
+                android:text="充 值"
+                android:textColor="@color/Write"
+                android:textSize="@dimen/sp_16" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="@dimen/dp_7"
+                android:text="忘记密码！"
+                android:textColor="@color/corlor_lan" />
+
+
+
+        </LinearLayout>
+
+
+
+
+        <include
+
+            android:visibility="gone"
+            layout="@layout/pop_wallet"/>
+
+
+
+    </FrameLayout>
+
+
+
+
+</LinearLayout>

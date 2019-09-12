@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    android:background="@color/Write"
+    android:orientation="vertical"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.YunleHui.ui.act.actme.actbusiness.ActBusSearch">
+
+    <include layout="@layout/toolbar_push_off"/>
+
+
+    <LinearLayout
+        android:layout_marginBottom="@dimen/dp_12"
+        android:layout_marginTop="@dimen/dp_12"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_33"
+        android:layout_marginEnd="@dimen/dp_12"
+        android:layout_marginStart="@dimen/dp_12"
+        android:background="@drawable/backim_g">
+
+
+        <EditText
+            android:hint="  搜索核销商户"
+            android:id="@+id/edit_earch"
+            android:paddingEnd="@dimen/dp_30"
+            android:drawableEnd="@drawable/chacha"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@null"
+            android:drawableLeft="@drawable/sousuo"
+            android:drawableStart="@drawable/sousuo"
+            android:paddingLeft="@dimen/dp_23"
+            android:paddingStart="@dimen/dp_23"
+            android:drawableRight="@drawable/chacha"
+            android:paddingRight="@dimen/dp_30" />
+
+
+    </LinearLayout>
+
+
+<com.example.YunleHui.view.MyXrecycleview
+    android:id="@+id/xre_bus"
+    android:layout_weight="1"
+    android:layout_width="match_parent"
+    android:layout_height="0dp"/>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</LinearLayout>

@@ -1,0 +1,216 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    package="com.example.YunleHui"
+    android:versionCode="100"
+    android:versionName="1.0.0">
+
+    <uses-permission
+        android:name="android.permission.WRITE_SETTINGS"
+        tools:ignore="ProtectedPermissions" />
+    <uses-permission
+        android:name="android.permission.WRITE_SECURE_SETTINGS"
+        tools:ignore="ProtectedPermissions" />
+    <uses-permission android:name="android.permission.WRITE_PROFILE" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.ACCESS_LOCATION_EXTRA_COMMANDS" />
+    <uses-permission android:name="android.permission.BLUETOOTH" />
+    <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission
+        android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS"
+        tools:ignore="ProtectedPermissions" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.CALL_PHONE" />
+    <uses-permission android:name="android.permission.REQUEST_INSTALL_PACKAGES" />
+
+    <!-- 环信 要加的，fuck -->
+    <!-- Required -->
+    <uses-permission android:name="android.permission.VIBRATE" />
+    <uses-permission android:name="android.permission.RECORD_AUDIO" />
+    <uses-permission
+        android:name="android.permission.ACCESS_MOCK_LOCATION"
+        tools:ignore="MockLocation,ProtectedPermissions" />
+    <uses-permission android:name="android.permission.GET_TASKS" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="android.permission.MODIFY_AUDIO_SETTINGS" />
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+    <uses-permission android:name="android.permission.FLASHLIGHT" />
+
+    <uses-feature android:name="android.hardware.camera" />
+    <uses-feature android:name="android.hardware.camera.autofocus" />
+
+    <!-- <uses-permission android:name="android.permission.BLUETOOTH" /> -->
+    <!-- <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" /> -->
+    <application
+        android:name=".appManager.MyApp"
+        android:allowBackup="true"
+        android:icon="@drawable/yunxiang"
+        android:label="@string/app_name"
+        android:maxAspectRatio="2.4"
+        android:networkSecurityConfig="@xml/network_security_config"
+        android:resizeableActivity="true"
+        android:roundIcon="@drawable/yunxiang"
+        android:supportsRtl="true"
+        android:theme="@style/MyTheme"
+        android:usesCleartextTraffic="true"
+        tools:replace="android:icon,android:theme,android:allowBackup,android:label,android:supportsRtl,android:name">
+        <uses-library
+            android:name="org.apache.http.legacy"
+            android:required="false" />
+
+        <activity
+            android:name=".ui.act.actme.ActLogin"
+            android:configChanges="keyboardHidden|screenSize|orientation"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateHidden|adjustResize" />
+        <activity android:name=".MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".ui.act.acthome.ActComdetails"
+            android:configChanges="keyboardHidden|screenSize|orientation"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateHidden|adjustResize" />
+        <activity
+            android:name=".wxapi.WXPayEntryActivity"
+            android:configChanges="keyboardHidden|screenSize"
+            android:exported="true"
+            android:launchMode="singleTop"
+            android:theme="@android:style/Theme.Translucent"
+            android:windowDisablePreview="true"
+            android:windowIsTranslucent="false" />
+        <activity
+            android:name=".wxapi.WXEntryActivity"
+            android:configChanges="keyboardHidden|screenSize"
+            android:exported="true"
+            android:launchMode="singleTop"
+            android:theme="@android:style/Theme.Translucent"
+            android:windowDisablePreview="true"
+            android:windowIsTranslucent="false" />
+        <activity
+            android:name=".ui.act.acthome.ActDeterOrder"
+            android:configChanges="keyboardHidden|screenSize|orientation"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateHidden|adjustResize" />
+        <activity
+            android:name=".ui.act.acthome.ActPayOrder"
+            android:configChanges="keyboardHidden|screenSize|orientation"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateHidden|adjustResize" />
+        <activity
+            android:name=".ui.act.acthome.ActOrderSucess"
+            android:configChanges="keyboardHidden|screenSize|orientation"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateHidden|adjustResize" />
+        <activity android:name=".ui.act.actme.ActMyOrder" />
+        <activity android:name=".ui.act.actme.ActTodetails" />
+        <activity android:name=".ui.act.actme.actorder.ActWritecode" />
+        <activity android:name=".ui.act.actme.actorder.ActDetailstoused" />
+        <activity android:name=".ui.act.actme.actorder.ActApplyrefund" />
+        <activity android:name=".ui.act.actme.actorder.Actfund" />
+        <activity android:name=".ui.act.actme.actorder.Actfail" />
+
+        <provider
+            android:name="android.support.v4.content.FileProvider"
+            android:authorities="${applicationId}.provider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/file_paths" />
+        </provider>
+
+        <activity android:name=".ui.act.actme.ActPerinform" />
+        <activity android:name=".ui.act.actme.ActSetUp" />
+        <activity android:name=".ui.act.actme.ActEdition" />
+        <activity android:name=".ui.act.actme.ActSafetyCenter" />
+        <activity android:name=".ui.act.actme.ActRetrieve" />
+        <activity android:name=".ui.act.actme.ActBinding" />
+        <activity android:name=".ui.act.actme.ActWallet" />
+        <activity android:name=".ui.act.actme.ActDaren" />
+        <activity android:name=".ui.act.actme.ActRecharge" />
+        <activity android:name=".ui.act.actme.ActBusApp" />
+        <activity android:name=".ui.act.actme.ActBankCard" />
+        <activity android:name=".ui.act.actme.ActAddCard" />
+        <activity android:name=".ui.act.actme.ActVerifiPhone" />
+        <activity android:name=".ui.act.actme.ActAddSucess" />
+        <activity android:name=".ui.act.actme.Actbill" />
+        <activity android:name=".ui.act.actme.ActDisRecord" />
+        <activity android:name=".ui.act.actme.ActProfit" />
+        <activity android:name=".ui.act.actme.ActMyTeam" />
+        <activity android:name=".ui.act.actme.ActMyCustomer" />
+        <activity android:name=".ui.act.actme.ActMyShare" />
+        <activity android:name=".ui.act.actme.ActDetaCom" />
+        <activity android:name=".ui.act.actme.ActOpenSharer" />
+        <activity android:name=".ui.act.acthome.ActSearch" />
+        <activity android:name=".ui.act.acthome.ActCityList" />
+
+        <!-- 环信要加的 -->
+        <!-- 设置环信应用的AppKey -->
+        <meta-data
+            android:name="EASEMOB_APPKEY"
+            android:value="Your AppKey" />
+        <!-- 声明SDK所需的service SDK核心功能 -->
+        <service
+            android:name="com.hyphenate.chat.EMChatService"
+            android:exported="true" />
+        <service
+            android:name="com.hyphenate.chat.EMJobService"
+            android:exported="true"
+            android:permission="android.permission.BIND_JOB_SERVICE" />
+        <!-- 声明SDK所需的receiver -->
+        <receiver android:name="com.hyphenate.chat.EMMonitorReceiver">
+            <intent-filter>
+                <action android:name="android.intent.action.PACKAGE_REMOVED" />
+
+                <data android:scheme="package" />
+            </intent-filter>
+            <!-- 可选filter -->
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+                <action android:name="android.intent.action.USER_PRESENT" />
+            </intent-filter>
+        </receiver>
+
+        <activity android:name=".ui.act.actme.ActBusCenter" />
+        <activity android:name=".ui.act.actme.actbusiness.ActOrManaGe" />
+        <activity android:name=".ui.act.actme.actbusiness.ActOrderDetails" />
+        <activity android:name=".ui.act.actme.actbusiness.ActPublishGoods" />
+        <activity android:name=".ui.act.actme.actbusiness.ActWriteMerchants" />
+        <activity android:name=".ui.act.actme.actbusiness.ActBusSearch" />
+        <activity android:name=".ui.act.actme.actbusiness.ActSendVerCode" />
+        <activity android:name=".ui.act.actme.actbusiness.ActCoManMent" />
+        <activity android:name=".ui.act.actme.actbusiness.ActReCenter" />
+        <activity android:name=".ui.act.actme.actbusiness.ActWriteOffManage" />
+        <activity android:name=".ui.act.actme.actbusiness.ActWriteHistory" />
+        <activity android:name=".ui.act.actme.actbusiness.ActDetailsWriteOff" />
+        <activity android:name=".ui.act.ActComPur.ActComMall" />
+        <activity android:name=".ui.act.actme.ActCusService" />
+        <activity android:name=".ui.act.ActComPur.ActNearMer" />
+        <activity android:name=".ui.act.ActComPur.ActShopCenter" />
+        <activity android:name=".ui.act.actme.actbusiness.ActBusDetails" />
+        <activity android:name=".ui.act.actme.actbusiness.ActComSelfOrder" />
+        <activity android:name=".ui.act.actme.actbusiness.ActBusDistribution" />
+        <activity android:name=".ui.act.actme.actbusiness.ActOrderPayCom" />
+        <activity android:name=".ui.act.actme.actorder.ActComPurUsed" />
+        <activity android:name=".ui.act.acthome.ActAllCom"></activity>
+    </application>
+
+</manifest>

@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/all_background"
+    android:orientation="vertical"
+    tools:context="com.example.YunleHui.ui.act.actme.actbusiness.ActPublishGoods">
+
+
+    <include layout="@layout/toolbar_push_off" />
+
+
+    <LinearLayout
+        android:layout_marginBottom="@dimen/dp_9"
+        android:layout_marginTop="@dimen/dp_9"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/Write">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/dp_12"
+            android:layout_marginTop="@dimen/dp_12"
+            android:layout_marginEnd="@dimen/dp_12"
+            android:layout_marginBottom="@dimen/dp_12"
+            android:lineSpacingExtra="3dp"
+            android:text="添加6张店铺图或自己店的产品图可提高店铺 收入，还有机会成为平台热门推荐产品"
+            android:textColor="@color/black99"
+            android:textSize="@dimen/sp_17" />
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/recycler"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/dp_12"
+            android:layout_marginStart="@dimen/dp_12"
+            android:overScrollMode="never" />
+
+    </LinearLayout>
+
+
+
+
+<LinearLayout
+    android:background="@color/Write"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:layout_marginBottom="@dimen/dp_12"
+            android:layout_marginTop="@dimen/dp_12"
+            android:layout_marginStart="@dimen/dp_12"
+            android:textColor="@color/black33"
+            android:textSize="@dimen/sp_17"
+            android:text="套餐标题："
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+
+        <com.example.YunleHui.view.ClearEditText
+            android:lines="1"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@null"
+            android:gravity="center_vertical"
+            android:hint="请输入套餐标题"
+            android:textColor="@color/black33"
+            android:textColorHighlight="@color/black33"
+            android:textColorHint="@color/corlor_text"
+            android:textColorLink="@color/black33"
+            android:textSize="@dimen/sp_16" />
+    </LinearLayout>
+
+
+
+
+
+    <com.example.YunleHui.view.ClearEditText
+        android:layout_marginStart="@dimen/dp_12"
+        android:layout_marginTop="@dimen/dp_12"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_110"
+        android:background="@null"
+        android:gravity="top"
+        android:hint="请输入套餐标题"
+        android:textColor="@color/black33"
+        android:textColorHighlight="@color/black33"
+        android:textColorHint="@color/corlor_text"
+        android:textColorLink="@color/black33"
+        android:textSize="@dimen/sp_16" />
+
+
+
+
+
+
+
+
+
+</LinearLayout>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</LinearLayout>

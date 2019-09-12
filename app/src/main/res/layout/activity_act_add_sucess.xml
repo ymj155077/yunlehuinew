@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/all_background"
+    android:orientation="vertical"
+    tools:context="com.example.YunleHui.ui.act.actme.ActAddSucess">
+
+    <include layout="@layout/toolbar_push_off" />
+
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="@dimen/dp_90"
+        android:src="@drawable/sucess" />
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="@dimen/dp_25"
+        android:text="银行卡已添加成功"
+        android:textColor="@color/black33"
+        android:textSize="@dimen/sp_16" />
+
+
+    <TextView
+        android:id="@+id/text_click"
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/dp_40"
+        android:layout_marginEnd="@dimen/dp_98"
+        android:layout_marginStart="@dimen/dp_98"
+        android:layout_marginTop="@dimen/dp_98"
+        android:background="@drawable/button_img"
+        android:clickable="true"
+        android:gravity="center"
+        android:text="完成"
+        android:textColor="@color/Write"
+        android:textSize="@dimen/sp_18" />
+
+
+</LinearLayout>

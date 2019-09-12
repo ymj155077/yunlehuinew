@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    android:background="@color/all_background"
+    android:orientation="vertical"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.YunleHui.ui.act.actme.ActVerifiPhone">
+
+
+<include layout="@layout/toolbar_push_off"/>
+
+
+
+
+<TextView
+
+    android:layout_marginStart="@dimen/dp_12"
+    android:textSize="@dimen/sp_17"
+android:gravity="center_vertical"
+    android:textColor="@color/black33"
+    android:text="验证手机号"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/dp_58"
+    android:layout_marginLeft="@dimen/dp_12" />
+
+
+
+
+
+<LinearLayout
+    android:background="@color/Write"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+
+    <com.example.YunleHui.view.ClearEditText
+        android:layout_marginStart="@dimen/dp_12"
+        android:inputType="numberPassword"
+        android:lines="1"
+        android:id="@+id/et_account"
+        android:layout_width="0dp"
+        android:layout_weight="1"
+        android:layout_height="@dimen/dp_58"
+        android:background="@null"
+        android:gravity="center_vertical"
+        android:hint="请输入验证码"
+        android:textColor="@color/black99"
+        android:textColorHighlight="@color/black99"
+        android:textColorHint="@color/black99"
+        android:textColorLink="@color/black99"
+        android:textSize="@dimen/sp_16"
+        android:layout_marginLeft="@dimen/dp_12" />
+
+
+
+
+    <TextView
+android:layout_marginEnd="@dimen/dp_6"
+        android:id="@+id/text_send"
+        android:layout_width="@dimen/dp_60"
+        android:layout_height="match_parent"
+        android:clickable="true"
+        android:gravity="center"
+        android:text="验证码"
+        android:textColor="@color/login"
+        android:textSize="@dimen/sp_13"
+        android:layout_marginRight="@dimen/dp_6" />
+
+
+
+
+</LinearLayout>
+
+
+
+
+
+
+<TextView
+    android:id="@+id/text_next"
+    android:clickable="true"
+    android:layout_marginEnd="@dimen/dp_12"
+    android:layout_marginStart="@dimen/dp_12"
+    android:layout_marginTop="@dimen/dp_38"
+    android:textSize="@dimen/sp_18"
+    android:gravity="center"
+    android:textColor="@color/Write"
+    android:text="下一步"
+    android:background="@drawable/button_img"
+    android:layout_width="wrap_content"
+    android:layout_height="@dimen/dp_44" />
+
+
+
+
+
+
+
+</LinearLayout>

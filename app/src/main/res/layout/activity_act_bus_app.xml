@@ -1,0 +1,465 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/all_background"
+    android:orientation="vertical"
+    tools:context="com.example.YunleHui.ui.act.actme.ActBusApp">
+
+
+    <include layout="@layout/toolbar_push_off" />
+
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:scrollbars="none">
+
+
+        <LinearLayout
+
+
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            android:layout_marginEnd="@dimen/dp_12"
+
+            android:layout_marginStart="@dimen/dp_12"
+
+
+            android:layout_marginTop="@dimen/dp_12"
+            android:background="@drawable/backimg"
+            android:orientation="vertical">
+
+
+            <LinearLayout
+                android:id="@+id/lin_choice"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/Write"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+
+                <TextView
+                    android:layout_width="@dimen/dp_90"
+                    android:layout_height="@dimen/dp_60"
+                    android:layout_marginLeft="@dimen/dp_12"
+                    android:layout_marginStart="@dimen/dp_12"
+                    android:gravity="center_vertical"
+                    android:text="所属行业："
+                    android:textColor="@color/black33"
+                    android:textSize="@dimen/sp_16" />
+
+                <TextView
+                    android:id="@+id/text_industry"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center_vertical"
+                    android:text="请选择所属行业"
+                    android:textColor="@color/black33"
+                    android:textSize="@dimen/sp_16" />
+
+
+                <ImageView
+                    android:layout_width="@dimen/dp_16"
+                    android:layout_height="@dimen/dp_16"
+                    android:layout_marginEnd="@dimen/dp_5"
+                    android:layout_marginRight="@dimen/dp_5"
+                    android:src="@drawable/youxiajian" />
+
+
+            </LinearLayout>
+
+
+
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp_1"
+                android:layout_marginEnd="@dimen/dp_12"
+                android:layout_marginStart="@dimen/dp_12"
+                android:background="@color/all_background" />
+
+<!--云享优惠商户注册 需要 显示-->
+            <LinearLayout
+                android:visibility="gone"
+                android:id="@+id/lin_yun_xiang"
+                android:gravity="center_vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/Write"
+                android:orientation="horizontal">
+
+
+                <TextView
+                    android:layout_width="@dimen/dp_90"
+                    android:layout_height="@dimen/dp_60"
+                    android:layout_marginLeft="@dimen/dp_12"
+                    android:layout_marginStart="@dimen/dp_12"
+                    android:gravity="center_vertical"
+                    android:text="商户类型："
+                    android:textColor="@color/black33"
+                    android:textSize="@dimen/sp_16" />
+
+                <TextView
+android:id="@+id/text_leixing"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center_vertical"
+                    android:text="请选择商户类型"
+                    android:textColor="@color/black33"
+                    android:textSize="@dimen/sp_16" />
+
+                <ImageView
+                    android:layout_width="@dimen/dp_16"
+                    android:layout_height="@dimen/dp_16"
+                    android:layout_marginEnd="@dimen/dp_5"
+
+                    android:layout_marginRight="@dimen/dp_5"
+                    android:src="@drawable/youxiajian" />
+
+            </LinearLayout>
+
+
+
+
+
+
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp_1"
+                android:layout_marginEnd="@dimen/dp_12"
+                android:layout_marginStart="@dimen/dp_12"
+                android:background="@color/all_background" />
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/Write"
+                android:orientation="horizontal">
+
+
+                <TextView
+                    android:layout_width="@dimen/dp_90"
+                    android:layout_height="@dimen/dp_60"
+                    android:layout_marginLeft="@dimen/dp_12"
+                    android:layout_marginStart="@dimen/dp_12"
+                    android:gravity="center_vertical"
+                    android:text="姓名："
+                    android:textColor="@color/black33"
+                    android:textSize="@dimen/sp_16" />
+
+                <com.example.YunleHui.view.ClearEditText
+                    android:id="@+id/edit_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+
+                    android:background="@null"
+                    android:gravity="center_vertical"
+                    android:hint="请输入姓名"
+
+                    android:lines="1"
+                    android:textColor="@color/black33"
+                    android:textColorHighlight="@color/black33"
+                    android:textColorHint="@color/corlor_text"
+                    android:textColorLink="@color/black33"
+                    android:textSize="@dimen/sp_16" />
+
+
+            </LinearLayout>
+
+
+
+
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp_1"
+                android:layout_marginEnd="@dimen/dp_12"
+                android:layout_marginStart="@dimen/dp_12"
+                android:background="@color/all_background" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/Write"
+                android:orientation="horizontal">
+
+
+                <TextView
+                    android:layout_width="@dimen/dp_90"
+                    android:layout_height="@dimen/dp_60"
+                    android:layout_marginLeft="@dimen/dp_12"
+                    android:layout_marginStart="@dimen/dp_12"
+                    android:gravity="center_vertical"
+                    android:text="身份证号："
+                    android:textColor="@color/black33"
+                    android:textSize="@dimen/sp_16" />
+
+                <com.example.YunleHui.view.ClearEditText
+                    android:id="@+id/edit_card"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@null"
+                    android:gravity="center_vertical"
+                    android:hint="请输入身份证"
+                    android:inputType="number"
+                    android:lines="1"
+                    android:textColor="@color/black33"
+                    android:textColorHighlight="@color/black33"
+                    android:textColorHint="@color/corlor_text"
+                    android:textColorLink="@color/black33"
+                    android:textSize="@dimen/sp_16" />
+
+
+            </LinearLayout>
+
+
+
+
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp_1"
+                android:layout_marginEnd="@dimen/dp_12"
+                android:layout_marginStart="@dimen/dp_12"
+                android:background="@color/all_background" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/Write"
+                android:orientation="horizontal">
+
+
+                <TextView
+                    android:layout_width="@dimen/dp_90"
+                    android:layout_height="@dimen/dp_60"
+                    android:layout_marginLeft="@dimen/dp_12"
+                    android:layout_marginStart="@dimen/dp_12"
+                    android:gravity="center_vertical"
+                    android:text="商铺名称："
+                    android:textColor="@color/black33"
+                    android:textSize="@dimen/sp_16" />
+
+                <com.example.YunleHui.view.ClearEditText
+                    android:id="@+id/edit_shopName"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@null"
+                    android:gravity="center_vertical"
+                    android:hint="请输入商铺姓名"
+                    android:lines="1"
+                    android:textColor="@color/black33"
+                    android:textColorHighlight="@color/black33"
+                    android:textColorHint="@color/corlor_text"
+                    android:textColorLink="@color/black33"
+                    android:textSize="@dimen/sp_16" />
+
+
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp_1"
+                android:layout_marginEnd="@dimen/dp_12"
+                android:layout_marginStart="@dimen/dp_12"
+                android:background="@color/all_background" />
+
+            <LinearLayout
+                android:id="@+id/lin_choice_address"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/Write"
+                android:clickable="true"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+
+                <TextView
+                    android:layout_width="@dimen/dp_90"
+                    android:layout_height="@dimen/dp_60"
+                    android:layout_marginLeft="@dimen/dp_12"
+                    android:layout_marginStart="@dimen/dp_12"
+                    android:gravity="center_vertical"
+                    android:text="地址："
+                    android:textColor="@color/black33"
+                    android:textSize="@dimen/sp_16" />
+
+                <TextView
+                    android:id="@+id/text_address"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center_vertical"
+                    android:text="请选择地址"
+                    android:textColor="@color/black33"
+                    android:textSize="@dimen/sp_16" />
+
+
+                <ImageView
+                    android:layout_width="@dimen/dp_16"
+                    android:layout_height="@dimen/dp_16"
+                    android:layout_marginEnd="@dimen/dp_5"
+
+                    android:layout_marginRight="@dimen/dp_5"
+                    android:src="@drawable/youjian" />
+
+
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp_1"
+                android:layout_marginEnd="@dimen/dp_12"
+                android:layout_marginStart="@dimen/dp_12"
+                android:background="@color/all_background" />
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/Write"
+                android:orientation="horizontal">
+
+
+                <TextView
+                    android:layout_width="@dimen/dp_90"
+                    android:layout_height="@dimen/dp_60"
+                    android:layout_marginLeft="@dimen/dp_12"
+                    android:layout_marginStart="@dimen/dp_12"
+                    android:gravity="center_vertical"
+                    android:text="详细地址："
+                    android:textColor="@color/black33"
+                    android:textSize="@dimen/sp_16" />
+
+                <com.example.YunleHui.view.ClearEditText
+                    android:id="@+id/edit_address"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@null"
+                    android:gravity="center_vertical"
+                    android:hint="请输入详细地址"
+
+                    android:lines="1"
+                    android:textColor="@color/black33"
+                    android:textColorHighlight="@color/black33"
+                    android:textColorHint="@color/corlor_text"
+                    android:textColorLink="@color/black33"
+                    android:textSize="@dimen/sp_16" />
+
+
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp_1"
+                android:layout_marginEnd="@dimen/dp_12"
+                android:layout_marginStart="@dimen/dp_12"
+                android:background="@color/all_background" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/Write"
+                android:orientation="horizontal">
+
+
+                <TextView
+                    android:layout_width="@dimen/dp_90"
+                    android:layout_height="@dimen/dp_60"
+                    android:layout_marginLeft="@dimen/dp_12"
+                    android:layout_marginStart="@dimen/dp_12"
+                    android:gravity="center_vertical"
+                    android:text="电话号码："
+                    android:textColor="@color/black33"
+                    android:textSize="@dimen/sp_16" />
+
+                <com.example.YunleHui.view.ClearEditText
+                    android:id="@+id/edit_phone"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@null"
+                    android:gravity="center_vertical"
+                    android:hint="请输入电话号码"
+                    android:inputType="number"
+                    android:lines="1"
+                    android:textColor="@color/black33"
+                    android:textColorHighlight="@color/black33"
+                    android:textColorHint="@color/corlor_text"
+                    android:textColorLink="@color/black33"
+                    android:textSize="@dimen/sp_16" />
+
+
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp_1"
+                android:layout_marginEnd="@dimen/dp_12"
+                android:layout_marginStart="@dimen/dp_12"
+                android:background="@color/all_background" />
+            <!--社区购 需要 显示的 界面-->
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/dp_30"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/text_type"
+                    android:layout_width="@dimen/dp_90"
+                    android:layout_height="@dimen/dp_50"
+                    android:layout_marginBottom="@dimen/dp_5"
+                    android:layout_marginLeft="@dimen/dp_12"
+                    android:layout_marginStart="@dimen/dp_12"
+                    android:gravity="center_vertical"
+                    android:text="营业执照"
+                    android:textColor="@color/black33"
+                    android:textSize="@dimen/sp_16" />
+
+
+                <android.support.v7.widget.RecyclerView
+                    android:id="@+id/recycler"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dp_160"
+                    android:layout_marginEnd="@dimen/dp_12"
+                    android:layout_marginStart="@dimen/dp_12"
+                    android:overScrollMode="never" />
+
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+
+    </ScrollView>
+
+
+    <TextView
+        android:layout_marginBottom="@dimen/dp_6"
+        android:id="@+id/text_Up"
+        android:clickable="true"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_40"
+        android:layout_marginEnd="@dimen/dp_32"
+        android:layout_marginStart="@dimen/dp_32"
+        android:layout_marginTop="@dimen/dp_10"
+        android:background="@drawable/button_img"
+        android:gravity="center"
+        android:text="前往申请"
+        android:textColor="@color/Write"
+        android:textSize="@dimen/sp_16" />
+
+
+</LinearLayout>

@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/all_background"
+    android:orientation="vertical"
+    tools:context="com.example.YunleHui.ui.act.actme.ActOpenSharer">
+
+
+    <include layout="@layout/toolbar_push_off" />
+
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="@dimen/dp_9"
+        android:layout_marginStart="@dimen/dp_9"
+        android:layout_marginTop="@dimen/dp_18"
+        android:background="@drawable/backimg">
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+            <com.makeramen.roundedimageview.RoundedImageView
+                android:layout_marginTop="@dimen/dp_16"
+                xmlns:app="http://schemas.android.com/apk/res-auto"
+                android:id="@+id/img_head"
+                android:layout_width="@dimen/dp_60"
+                android:layout_height="@dimen/dp_60"
+                android:layout_marginLeft="@dimen/dp_16"
+                android:layout_marginStart="@dimen/dp_16"
+                android:layout_marginEnd="@dimen/dp_12"
+                android:scaleType="fitXY"
+                android:src="@drawable/timg"
+                app:riv_corner_radius="@dimen/dp_10"
+                app:riv_mutate_background="true"
+                android:layout_marginRight="@dimen/dp_12" />
+
+
+            <TextView
+                android:layout_marginTop="@dimen/dp_16"
+                android:textSize="@dimen/sp_18"
+                android:textColor="@color/black33"
+                android:text="皮皮秀"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+
+        </LinearLayout>
+
+
+
+
+
+        <ImageView
+            android:id="@+id/img_hei_xiao"
+            android:layout_marginBottom="@dimen/dp_60"
+            android:layout_marginTop="@dimen/dp_64"
+            android:layout_gravity="center_horizontal"
+            android:scaleType="fitXY"
+            android:src="@drawable/timg"
+            android:layout_width="@dimen/dp_229"
+            android:layout_height="@dimen/dp_229" />
+
+
+
+        <TextView
+            android:layout_marginBottom="@dimen/dp_12"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="@dimen/dp_16"
+            android:textSize="@dimen/sp_16"
+            android:textColor="@color/zhuce"
+            android:text="扫描上方达人二维码，加入云享优汇"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+
+
+    </LinearLayout>
+
+
+</LinearLayout>

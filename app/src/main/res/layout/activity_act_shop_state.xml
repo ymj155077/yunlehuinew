@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+
+    android:orientation="vertical"
+
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.YunleHui.ui.act.actme.ActShopState">
+
+
+<include layout="@layout/toolbar_push_off"/>
+
+
+  <TextView
+      android:id="@+id/text_Go"
+      android:clickable="true"
+      android:layout_marginTop="@dimen/dp_200"
+      android:layout_marginEnd="@dimen/dp_98"
+      android:layout_marginStart="@dimen/dp_98"
+      android:textSize="@dimen/sp_18"
+            android:textColor="@color/Write"
+      android:gravity="center"
+      android:text="前往申请"
+
+      android:background="@drawable/button_img"
+      android:layout_width="wrap_content"
+      android:layout_height="@dimen/dp_44" />
+
+
+
+
+
+
+
+
+
+
+</LinearLayout>

@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    android:id="@+id/lin_back"
+    android:orientation="vertical"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
+
+
+        <LinearLayout
+
+            android:id="@+id/lin_pop_type"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:alpha="0.5"
+            android:background="#000000"
+            android:orientation="vertical">
+
+
+        </LinearLayout>
+
+
+
+
+
+
+
+
+        <LinearLayout
+
+            android:background="@drawable/backimg"
+            android:layout_gravity="center"
+            android:orientation="vertical"
+            android:layout_marginEnd="@dimen/dp_40"
+            android:layout_marginStart="@dimen/dp_40"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+
+
+
+            <LinearLayout
+                android:gravity="center"
+
+                android:layout_gravity="center"
+                android:orientation="vertical"
+
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp_70">
+                <TextView
+                    android:id="@+id/text_title"
+                    android:textSize="@dimen/sp_16"
+                    android:text="..."
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+
+
+
+            <View
+                android:background="@color/all_background"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp_1"/>
+
+
+            <LinearLayout
+
+                android:orientation="horizontal"
+
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp_50">
+
+
+                <TextView
+                    android:id="@+id/text_cancel"
+                    android:clickable="true"
+                    android:gravity="center"
+                    android:textSize="@dimen/sp_14"
+                    android:text="取消"
+                    android:layout_weight="1"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent" />
+
+
+                <View
+                    android:background="@color/all_background"
+                    android:layout_width="@dimen/dp_1"
+                    android:layout_height="match_parent"/>
+
+                <TextView
+                    android:id="@+id/text_sure"
+                    android:clickable="true"
+                    android:gravity="center"
+                    android:textSize="@dimen/sp_14"
+                    android:text="确定"
+                    android:layout_weight="1"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent" />
+
+
+            </LinearLayout>
+
+
+
+
+
+        </LinearLayout>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </FrameLayout>
+
+
+
+
+
+
+</LinearLayout>

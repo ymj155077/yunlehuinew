@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/all_background"
+    android:orientation="vertical"
+    tools:context="com.example.YunleHui.ui.act.acthome.ActSearch">
+
+
+    <include layout="@layout/toolbar_push_off" />
+
+
+    <LinearLayout
+        android:gravity="bottom"
+        android:background="@color/all_background"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_40">
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/all_background"
+            android:gravity="center_vertical">
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="@dimen/dp_33"
+                android:layout_marginStart="@dimen/dp_12"
+                android:layout_marginLeft="@dimen/dp_6"
+                android:layout_weight="1"
+                android:background="@drawable/backim_g">
+
+                <EditText
+                    android:id="@+id/edit_earch"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@null"
+                    android:drawableStart="@drawable/sousuo"
+                    android:drawableLeft="@drawable/sousuo"
+                    android:drawableEnd="@drawable/chacha"
+                    android:drawableRight="@drawable/chacha"
+                    android:paddingStart="@dimen/dp_12"
+                    android:paddingEnd="@dimen/dp_30"
+                    android:paddingRight="@dimen/dp_30" />
+
+
+            </LinearLayout>
+
+
+            <TextView
+                android:id="@+id/text_search"
+                android:layout_width="@dimen/dp_66"
+                android:layout_height="match_parent"
+                android:clickable="true"
+                android:gravity="center"
+                android:text="搜索"
+                android:textColor="@color/zhuce"
+                android:textSize="@dimen/sp_16" />
+
+
+        </LinearLayout>
+    </LinearLayout>
+
+
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_48"
+        android:orientation="horizontal">
+
+
+        <TextView
+            android:id="@+id/text_area"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginStart="@dimen/dp_12"
+            android:clickable="true"
+            android:drawableRight="@drawable/xiangxiajian"
+            android:drawablePadding="@dimen/dp_6"
+            android:gravity="center_vertical"
+            android:text="全城"
+            android:textSize="@dimen/sp_17" />
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center_horizontal">
+
+
+            <TextView
+                android:id="@+id/text_sort"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginStart="@dimen/dp_20"
+                android:clickable="true"
+                android:drawableRight="@drawable/xiangxiajian"
+                android:drawablePadding="@dimen/dp_6"
+                android:gravity="center_vertical"
+                android:text="智能排序"
+                android:textSize="@dimen/sp_17" />
+        </LinearLayout>
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginEnd="@dimen/dp_12"
+            android:clickable="true"
+            android:drawableRight="@drawable/xiangxiajian"
+            android:drawablePadding="@dimen/dp_6"
+            android:gravity="center_vertical"
+            android:text="全城"
+            android:textSize="@dimen/sp_17"
+            android:visibility="invisible" />
+
+    </LinearLayout>
+
+
+    <com.example.YunleHui.view.MyXrecycleview
+        android:id="@+id/xr_search"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1" />
+
+
+</LinearLayout>

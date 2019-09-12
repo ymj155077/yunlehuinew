@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    android:orientation="vertical"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.YunleHui.ui.act.actme.ActDisRecord">
+
+
+
+
+    <include layout="@layout/toolbar_push_off" />
+
+
+    <!--app:cornerMarkBg="@mipmap/order_book_icon"-->
+
+    <com.example.YunleHui.view.timepick.WeekCalendar
+
+        android:id="@+id/week_calendar"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/Write"
+        android:paddingBottom="10dp"
+        app:daysSelectedBackground="@drawable/green_oval_bg"
+        app:isCornerMark="true"
+        app:monthBackgroundColor="@color/login"
+        app:nextArrowBg="@drawable/white_right_arrow"
+        app:preArrowBg="@drawable/white_left_arrow"
+        app:weekTextColor="@color/black33" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_1" />
+
+    <ListView
+        android:id="@+id/lis_Record"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="@dimen/dp_9"
+        android:layout_marginStart="@dimen/dp_9"
+        android:scrollbars="none" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</LinearLayout>

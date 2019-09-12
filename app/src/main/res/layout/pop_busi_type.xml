@@ -1,0 +1,202 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
+        <LinearLayout
+android:id="@+id/lin_pop_type"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:alpha="0.5"
+            android:background="#000000"
+            android:orientation="vertical">
+
+
+        </LinearLayout>
+
+
+        <LinearLayout
+
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:background="@drawable/back_tixian"
+            android:orientation="vertical">
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="@dimen/dp_100"
+                    android:layout_height="match_parent"
+                    android:layout_marginBottom="@dimen/dp_14"
+                    android:layout_marginTop="@dimen/dp_14"
+                    android:text="取消"
+                    android:visibility="invisible" />
+
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/dp_14"
+                    android:layout_marginTop="@dimen/dp_14"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="请选择所属行业"
+                    android:textColor="@color/shop_corlor"
+                    android:textSize="@dimen/sp_18" />
+
+
+                <TextView
+                    android:visibility="invisible"
+                    android:id="@+id/text_click"
+                    android:clickable="true"
+                    android:layout_width="@dimen/dp_100"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:text="确定"
+                    android:textColor="@color/shop_corlor"
+                    android:textSize="@dimen/sp_16" />
+
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp_1"
+                android:background="@color/all_background" />
+
+
+            <LinearLayout
+                android:id="@+id/lin0ne"
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:layout_marginStart="@dimen/dp_12"
+                    android:textSize="@dimen/sp_17"
+                    android:layout_marginBottom="@dimen/dp_4"
+                    android:layout_marginTop="@dimen/dp_16"
+                    android:textColor="#333333"
+                    android:text="营销达人"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+
+                <TextView
+                    android:layout_marginEnd="@dimen/dp_12"
+                    android:layout_marginStart="@dimen/dp_12"
+                    android:textSize="@dimen/sp_13"
+                    android:layout_marginBottom="@dimen/dp_23"
+                    android:textColor="@color/black99"
+                    android:text="营销达人是营销商户的分销员，可以在平台上售卖营销 商指定的产品，按销售数量赚取提成"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+            </LinearLayout>
+
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp_1"
+                android:background="@color/all_background" />
+
+            <LinearLayout
+                android:id="@+id/linTwo"
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:layout_marginStart="@dimen/dp_12"
+                    android:textSize="@dimen/sp_17"
+                    android:layout_marginBottom="@dimen/dp_4"
+                    android:layout_marginTop="@dimen/dp_16"
+                    android:textColor="#333333"
+                    android:text="核销商户"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+
+                <TextView
+                    android:layout_marginEnd="@dimen/dp_12"
+                    android:layout_marginStart="@dimen/dp_12"
+                    android:textSize="@dimen/sp_13"
+                    android:layout_marginBottom="@dimen/dp_23"
+                    android:textColor="@color/black99"
+                    android:text="核销商户是营销商户的实体分销商，营销商户为用户提 供的线上产品，用户购买后到营销商指定的核销商户门 店核销消费"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+
+
+
+
+            </LinearLayout>
+
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp_1"
+                android:background="@color/all_background" />
+
+
+
+            <LinearLayout
+                android:id="@+id/linThree"
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:layout_marginStart="@dimen/dp_12"
+                    android:textSize="@dimen/sp_17"
+                    android:layout_marginBottom="@dimen/dp_4"
+                    android:layout_marginTop="@dimen/dp_16"
+                    android:textColor="#333333"
+                    android:text="营销商户"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+
+                <TextView
+                    android:layout_marginEnd="@dimen/dp_12"
+                    android:layout_marginStart="@dimen/dp_12"
+                    android:textSize="@dimen/sp_13"
+                    android:layout_marginBottom="@dimen/dp_23"
+                    android:textColor="@color/black99"
+                    android:text="营销商户是线下实体商户，可以在线上售卖产品，线下 核销产品，可以有多个核销商户分销员"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+
+
+
+
+            </LinearLayout>
+
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp_1"
+                android:background="@color/all_background" />
+
+
+        </LinearLayout>
+
+
+    </FrameLayout>
+
+
+</LinearLayout>

@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+
+    <color name="all_background">#F7F7F7</color>
+
+    <color name="corlor_lan">#43C1E9</color>
+
+    <color name="daren">#F95D43</color>
+
+    <color name="colorPrimary">#008577</color>
+    <color name="colorPrimaryDark">#00574B</color>
+    <color name="colorAccent">#D81B60</color>
+    <color name="Write">#FFFFFF</color>
+    <color name="activity_cor">#80000000</color>
+    <color name="prog">#18AA1E</color>
+    <color name="corlor_min">#6BBC53</color>
+    <color name="item_ti">#111111</color>
+    <color name="corlor_password">#888888</color>
+    <!--订单 的 背景色-->
+    <color name="corlor_black">#2b2b2b</color>
+    <color name="back_order">#FF5B05</color>
+    <color name="corlor_order_red">#f84261</color>
+    <!--标题颜色-->
+
+    <color name="login">#FF6C4B</color>
+
+    <color name="dhsj">#FE4E4E</color>
+
+    <color name="green_11B57C">#11B57C</color>
+    <color name="black_333333">#333333</color>
+    <color name="line_DDDDDD">#DDDDDD</color>
+
+    <color name="details">#f6f6f6</color>
+    <color name="color_f6">#f6f6f6</color>
+    <color name="partTranslucent">#39000000</color>
+    <color name="blue_bg">#45a2ff</color>
+    <color name="black99">#999999</color>
+    <color name="black33">#333333</color>
+    <color name="color_title">#FFB333</color>
+    <color name="corlor_title">#606368</color>
+    <color name="hard_color">#48495f</color>
+    <color name="clickspan_color">#00ddb6</color>
+    <color name="item_bg">#FFFFFF</color>
+    <color name="order_back">#f2f2f2</color>
+    <color name="me_ba">#E9E9E9</color>
+    <color name="shop_corlor">#333333</color>
+    <color name="corlor_text">#999999</color>
+    <color name="login_back">#F8F8F8</color>
+    <color name="zhuce">#666666</color>
+    <color name="colorPrimary1">#8f0f0f0f</color>
+    <color name="colorPrimaryDark1">#ff0000</color>
+    <color name="colorAccent1">#ffab40</color>
+    <color name="colorPrimary2">#00bcd4</color>
+    <color name="colorPrimaryDark2">#d500f9</color>
+    <color name="colorAccent2">#ff7c40</color>
+    <color name="colorAccenta">#5a00789c</color>
+    <color name="colorAccentb">#d1000000</color>
+    <color name="dot_hong">#E73111</color>
+    <color name="text_bottom_comment">#9B9B9B</color>
+    <color name="back_ground">#00000000</color>
+    <!--wheel 的颜色值-->
+    <color name="whell_item_bg_select">#efefef</color>
+    <color name="scan_corner_color">#0effc2</color>
+
+    <color name="asdsas">#666666</color>
+    <color name="asdc">#cccccc</color>
+    <color name="corlor_huoqu">#5d81fa</color>
+    <color name="colorRipple">#803f51b5</color>
+
+
+    <color name="cc">#59a9ff</color>
+
+    <color name="bg_color">#EDEDED</color>
+    <color name="contents_text">#ff000000</color>
+    <color name="encode_view">#ffffffff</color>
+    <color name="help_button_view">#ffcccccc</color>
+    <color name="help_view">#ff404040</color>
+    <color name="possible_result_points">#c0ffff00</color>
+    <color name="result_image_border">#ffffffff</color>
+    <color name="result_minor_text">#ffc0c0c0</color>
+    <color name="result_points">#c000ff00</color>
+    <color name="result_text">#ffffffff</color>
+    <color name="result_view">#b0000000</color>
+    <color name="sbc_header_text">#ff808080</color>
+    <color name="sbc_header_view">#ffffffff</color>
+    <color name="sbc_list_item">#fffff0e0</color>
+    <color name="sbc_layout_view">#ffffffff</color>
+    <color name="sbc_page_number_text">#ff000000</color>
+    <color name="sbc_snippet_text">#ff4b4b4b</color>
+    <color name="share_text">#ff000000</color>
+    <color name="share_view">#ffffffff</color>
+    <color name="status_view">#50000000</color>
+    <color name="status_text">#ffffffff</color>
+    <color name="transparent">#00000000</color>
+    <color name="viewfinder_frame">#ff000000</color>
+    <color name="viewfinder_laser">#ffff0000</color>
+    <color name="viewfinder_mask">#60000000</color>
+    <color name="header">#58567D</color>
+    <color name="grgray">#686868</color>
+
+<color name="qdb">#000000</color>
+
+
+
+</resources>

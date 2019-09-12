@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+        <LinearLayout
+            android:background="@drawable/home_back"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_70">
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="@dimen/dp_12"
+                    android:layout_marginStart="@dimen/dp_12"
+                    android:layout_marginTop="@dimen/dp_30"
+                    android:gravity="center_vertical">
+
+                        <TextView
+                            android:id="@+id/text_choose"
+                            android:clickable="true"
+                            android:gravity="center"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:text="重庆市"
+                            android:textColor="@color/Write"
+                            android:textSize="@dimen/sp_16" />
+
+                        <ImageView
+                            android:layout_width="@dimen/dp_16"
+                            android:layout_height="@dimen/dp_9"
+                            android:src="@drawable/xiala" />
+
+
+                        <LinearLayout
+                            android:id="@+id/lin_search"
+                            android:layout_width="0dp"
+                            android:layout_height="@dimen/dp_34"
+                            android:layout_marginLeft="@dimen/dp_13"
+                            android:layout_marginStart="@dimen/dp_13"
+                            android:layout_weight="1"
+                            android:background="@drawable/search_crile"
+                            android:gravity="center">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="输入搜索内容"
+                                    android:textSize="@dimen/sp_16" />
+
+
+                        </LinearLayout>
+
+
+                        <ImageView
+                            android:id="@+id/img_add"
+                            android:layout_width="@dimen/dp_20"
+                            android:layout_height="@dimen/dp_20"
+                            android:layout_marginLeft="@dimen/dp_10"
+                            android:layout_marginStart="@dimen/dp_10"
+                            android:src="@drawable/add" />
+
+
+                </LinearLayout>
+
+        </LinearLayout>
+
+
+
+        <com.example.YunleHui.view.MyXrecycleview
+            android:descendantFocusability="blocksDescendants"
+            android:background="@color/all_background"
+            android:id="@+id/xr_explosive"
+            android:layout_weight="1"
+            android:layout_width="match_parent"
+            android:layout_height="0dp" />
+
+
+</LinearLayout>

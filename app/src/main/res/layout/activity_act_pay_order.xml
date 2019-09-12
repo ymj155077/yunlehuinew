@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    android:orientation="vertical"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.YunleHui.ui.act.acthome.ActPayOrder">
+
+
+
+    <include layout="@layout/toolbar_push_off"/>
+
+
+    <TextView
+        android:id="@+id/text_name"
+        android:textSize="@dimen/sp_13"
+        android:layout_marginTop="@dimen/dp_24"
+        android:gravity="center_horizontal"
+        android:text="支付给重庆齐美口腔"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+
+
+
+
+
+
+    <LinearLayout
+        android:layout_marginBottom="@dimen/dp_10"
+
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:textSize="@dimen/sp_18"
+            android:textColor="#FF6C4B"
+            android:gravity="center_horizontal"
+            android:text="￥ "
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <TextView
+            android:id="@+id/text_price"
+            android:textSize="@dimen/sp_32"
+            android:textColor="#FF6C4B"
+            android:gravity="center_horizontal"
+            android:text="0.00"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+
+
+
+
+    <RadioGroup
+        android:id="@+id/radio"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" >
+
+        <RadioButton
+            android:drawablePadding="@dimen/dp_10"
+            android:drawableLeft="@drawable/weixin"
+            android:background="@android:color/transparent"
+            android:checked="true"
+            android:paddingEnd="@dimen/dp_20"
+            android:paddingStart="@dimen/dp_20"
+            android:textSize="@dimen/sp_17"
+            android:drawableRight="@drawable/radiobutton_background"
+            android:button="@null"
+            android:clickable="true"
+            android:id="@+id/radio0"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_70"
+            android:text="微信"
+            />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="#E9E9E9"
+
+
+            />
+        <RadioButton
+            android:drawablePadding="@dimen/dp_10"
+            android:drawableLeft="@drawable/aliay"
+            android:background="@android:color/transparent"
+            android:paddingEnd="@dimen/dp_20"
+            android:paddingStart="@dimen/dp_20"
+            android:textSize="@dimen/sp_17"
+            android:drawableRight="@drawable/radiobutton_background"
+            android:button="@null"
+            android:layout_weight="1"
+            android:id="@+id/radio1"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_70"
+            android:text="支付宝"  />
+        <RadioButton
+            android:drawablePadding="@dimen/dp_10"
+            android:drawableLeft="@drawable/yue"
+            android:background="@android:color/transparent"
+            android:paddingEnd="@dimen/dp_20"
+            android:paddingStart="@dimen/dp_20"
+            android:textSize="@dimen/sp_17"
+            android:drawableRight="@drawable/radiobutton_background"
+            android:button="@null"
+            android:layout_weight="1"
+            android:id="@+id/radio2"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_70"
+            android:text="余额"  />
+    </RadioGroup>
+
+
+
+
+    <View
+        android:layout_weight="1"
+        android:layout_width="1dp"
+        android:layout_height="0dp"/>
+
+
+    <TextView
+        android:id="@+id/text_pay"
+        android:clickable="true"
+        android:layout_marginBottom="@dimen/dp_76"
+        android:layout_marginEnd="@dimen/dp_12"
+        android:layout_marginStart="@dimen/dp_12"
+        android:textSize="@dimen/sp_18"
+        android:gravity="center"
+        android:text="确认付款"
+        android:textColor="@color/Write"
+        android:background="@drawable/button_img"
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/dp_44" />
+
+
+
+
+
+
+</LinearLayout>

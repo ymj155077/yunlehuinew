@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/Write"
+    android:orientation="vertical"
+    tools:context="com.example.YunleHui.ui.act.actme.ActCusService">
+
+
+    <include layout="@layout/toolbar_push_off" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_9"
+        android:background="@color/all_background" />
+
+
+    <TextView
+
+        android:layout_marginTop="@dimen/dp_17"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="@dimen/dp_12"
+        android:layout_marginStart="@dimen/dp_12"
+        android:lineSpacingExtra="5dp"
+        android:text="在使用产品时如果有疑问或遇到问题请联系我们，将会尽快帮你解决 "
+        android:textColor="@color/zhuce"
+        android:textSize="@dimen/sp_18" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_1"
+        android:layout_marginEnd="@dimen/dp_12"
+        android:layout_marginStart="@dimen/dp_12"
+        android:layout_marginTop="@dimen/dp_9"
+        android:background="@color/all_background" />
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+
+        <com.makeramen.roundedimageview.RoundedImageView
+            android:layout_marginStart="@dimen/dp_14"
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/img_head"
+            android:layout_width="@dimen/dp_36"
+            android:layout_height="@dimen/dp_36"
+            android:scaleType="fitXY"
+            android:src="@drawable/timg"
+            app:riv_corner_radius="@dimen/dp_30"
+            app:riv_mutate_background="true" />
+
+        <LinearLayout
+            android:layout_marginStart="@dimen/dp_18"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_marginTop="@dimen/dp_38"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="售前客服"
+                android:textColor="@color/zhuce"
+                android:textSize="@dimen/sp_14" />
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="023-881-623"
+                android:textColor="@color/black_333333"
+                android:textSize="@dimen/sp_24" />
+
+
+            <TextView
+                android:layout_marginBottom="@dimen/dp_38"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="工作日：09-18：00"
+                android:textColor="@color/black99"
+                android:textSize="@dimen/sp_14" />
+
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_1"
+        android:layout_marginEnd="@dimen/dp_12"
+        android:layout_marginStart="@dimen/dp_12"
+        android:layout_marginTop="@dimen/dp_9"
+        android:background="@color/all_background" />
+
+</LinearLayout>

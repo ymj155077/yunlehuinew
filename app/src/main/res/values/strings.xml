@@ -1,0 +1,79 @@
+<resources>
+    <string name="app_name">云享优汇</string>
+
+
+    <string name="today">今天</string>
+    <string name="Monday">一</string>
+    <string name="Tuesday">二</string>
+    <string name="Wednesday">三</string>
+    <string name="Thursday">四</string>
+    <string name="Friday">五</string>
+    <string name="Saturday">六</string>
+    <string name="Sunday">日</string>
+
+
+    <string name="ok">确 认</string>
+    <string name="cancel">取 消</string>
+
+
+    <!--日期选择轮子的title-->
+    <string name="query_time_select_title">请选择日期</string>
+
+    <string name="begin_at">开始于\n</string>
+    <string name="end_at">结束于\n</string>
+
+    <string name="time_start_larger_end_not_allowed">开始时间不能大于结束时间</string>
+
+    <string name="time_left">还有%ss</string>
+
+
+    <style name="PopBottomDialogStyle" parent="@android:style/Theme.Dialog">
+        <!-- 背景透明 -->
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:windowContentOverlay">@null</item>
+        <!-- 浮于Activity之上 -->
+        <item name="android:windowIsFloating">true</item>
+        <!-- 边框 -->
+        <item name="android:windowFrame">@null</item>
+        <!-- Dialog以外的区域模糊效果 -->
+        <item name="android:backgroundDimEnabled">true</item>
+        <!-- 无标题 -->
+        <item name="android:windowNoTitle">true</item>
+        <!-- 半透明 -->
+        <item name="android:windowIsTranslucent">true</item>
+        <!-- Dialog进入及退出动画 -->
+        <item name="android:windowAnimationStyle">@style/ActionSheetDialogAnimation</item>
+    </style>
+
+    <!-- ActionSheet进出动画 -->
+    <style name="ActionSheetDialogAnimation" parent="@android:style/Animation.Dialog">
+        <item name="android:windowEnterAnimation">@anim/popwindow_enter</item>
+        <item name="android:windowExitAnimation">@anim/popwindow_exit</item>
+    </style>
+
+    <style name="DialogTheme" parent="@android:style/Theme.Dialog">
+        <item name="android:windowFrame">@null</item>
+        <!-- 边框 -->
+        <item name="android:windowIsFloating">true</item>
+        <!-- 是否浮现在activity之上 -->
+        <item name="android:windowIsTranslucent">true</item>
+        <!-- 半透明 -->
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:background">@android:color/transparent</item>
+        <item name="android:backgroundDimEnabled">true</item>
+        <!-- 模糊 -->
+    </style>
+
+    <!-- MyCsdnTabLayout背景 -->
+    <style name="customTabLayout" parent="Widget.Design.TabLayout">
+        <!--tab的背景色-->
+        <item name="tabBackground">@color/blue_bg</item>
+        <!--tab标题的文本风格-->
+        <item name="tabTextAppearance">@style/TextAppearance.Design.Tab</item>
+        <!--被选中tab的文本颜色-->
+        <item name="tabSelectedTextColor">@android:color/white</item>
+    </style>
+
+
+</resources>

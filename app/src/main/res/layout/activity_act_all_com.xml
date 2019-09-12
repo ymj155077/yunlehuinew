@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/all_background"
+    android:orientation="vertical"
+    tools:context=".ui.act.acthome.ActAllCom">
+
+    <include layout="@layout/toolbar_push_off" />
+
+    <LinearLayout
+        android:layout_marginBottom="@dimen/dp_12"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/dp_12"
+        android:layout_marginTop="@dimen/dp_12"
+        android:orientation="horizontal">
+
+
+        <RadioButton
+            android:id="@+id/radio00"
+            android:layout_width="@dimen/dp_63"
+            android:layout_height="@dimen/dp_28"
+            android:background="@drawable/pinlunyes"
+            android:button="@null"
+            android:checked="true"
+            android:gravity="center"
+            android:text="全部"
+            android:textColor="@color/back_order"
+            android:textSize="@dimen/sp_16" />
+
+        <RadioButton
+            android:id="@+id/radio01"
+            android:layout_width="@dimen/dp_63"
+            android:layout_height="@dimen/dp_28"
+            android:layout_marginStart="@dimen/dp_16"
+            android:layout_marginEnd="@dimen/dp_16"
+            android:background="@drawable/pinlunno"
+            android:button="@null"
+            android:clickable="true"
+            android:gravity="center"
+            android:text="有图"
+            android:textColor="@color/black33"
+            android:textSize="@dimen/sp_16" />
+
+
+        <RadioButton
+            android:id="@+id/radio02"
+            android:layout_width="@dimen/dp_63"
+            android:layout_height="@dimen/dp_28"
+            android:background="@drawable/pinlunno"
+            android:button="@null"
+            android:gravity="center"
+            android:text="差评"
+            android:textColor="@color/black33"
+            android:textSize="@dimen/sp_16" />
+
+
+    </LinearLayout>
+
+    <com.example.YunleHui.view.MyXrecycleview
+        android:descendantFocusability="blocksDescendants"
+        android:id="@+id/recycleview"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scrollbars="none" />
+
+</LinearLayout>

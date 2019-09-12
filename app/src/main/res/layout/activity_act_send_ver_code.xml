@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/Write"
+    android:orientation="vertical"
+    tools:context="com.example.YunleHui.ui.act.actme.actbusiness.ActSendVerCode">
+
+    <include layout="@layout/toolbar_push_off" />
+
+
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/all_background">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/dp_5"
+            android:layout_marginStart="@dimen/dp_12"
+            android:layout_marginTop="@dimen/dp_8"
+            android:text="验证信息"
+            android:textSize="@dimen/sp_17" />
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="@dimen/dp_12"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+
+        <com.example.YunleHui.view.ClearEditText
+            android:id="@+id/edit_phone"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/dp_70"
+            android:layout_marginLeft="@dimen/dp_20"
+            android:layout_marginStart="@dimen/dp_12"
+            android:layout_weight="1"
+            android:background="@null"
+            android:gravity="center_vertical"
+            android:hint="我是....."
+            android:inputType="number"
+            android:lines="1"
+            android:textColor="@color/black33"
+            android:textColorHighlight="@color/black33"
+            android:textColorHint="@color/black33"
+            android:textColorLink="@color/black33"
+            android:textSize="@dimen/sp_16" />
+
+        <View
+            android:layout_width="@dimen/dp_1"
+            android:layout_height="@dimen/dp_25"
+            android:background="#707070" />
+
+
+        <TextView
+            android:id="@+id/text_fase"
+            android:clickable="true"
+            android:layout_width="@dimen/dp_60"
+            android:layout_height="match_parent"
+            android:layout_marginStart="@dimen/dp_12"
+            android:gravity="center"
+            android:text="发送"
+            android:textColor="@color/login"
+            android:textSize="@dimen/sp_16" />
+
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:background="@color/all_background">
+
+
+    </LinearLayout>
+
+
+</LinearLayout>

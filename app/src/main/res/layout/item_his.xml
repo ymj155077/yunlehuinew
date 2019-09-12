@@ -1,0 +1,206 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/all_background"
+    android:orientation="vertical">
+
+
+
+
+<LinearLayout
+android:layout_marginTop="@dimen/dp_1"
+android:background="@color/Write"
+android:layout_width="match_parent"
+android:layout_height="wrap_content"
+android:orientation="horizontal">
+<TextView
+    android:layout_marginTop="@dimen/dp_8"
+    android:layout_marginBottom="@dimen/dp_5"
+    android:layout_marginEnd="@dimen/dp_12"
+    android:layout_marginStart="@dimen/dp_12"
+
+    android:layout_width="@dimen/dp_86"
+    android:layout_height="wrap_content"
+    android:text="套餐名称："
+    android:textColor="@color/corlor_text"
+    android:textSize="@dimen/sp_16" />
+
+<TextView
+
+    android:layout_marginEnd="@dimen/dp_12"
+
+    android:layout_marginTop="@dimen/dp_8"
+    android:layout_marginBottom="@dimen/dp_5"
+    android:textSize="@dimen/sp_16"
+    android:textColor="@color/black_333333"
+    android:text="1"
+    android:layout_width="wrap_content"
+    android:layout_height="match_parent" />
+
+
+</LinearLayout>
+
+<LinearLayout
+android:layout_marginTop="@dimen/dp_1"
+android:background="@color/Write"
+android:layout_width="match_parent"
+android:layout_height="wrap_content"
+android:orientation="horizontal">
+
+
+<TextView
+
+    android:layout_marginBottom="@dimen/dp_5"
+    android:layout_marginEnd="@dimen/dp_12"
+    android:layout_marginStart="@dimen/dp_12"
+    android:layout_width="@dimen/dp_86"
+    android:layout_height="wrap_content"
+    android:text="订单编号: "
+    android:textColor="@color/corlor_text"
+    android:textSize="@dimen/sp_16" />
+
+<TextView
+    android:layout_marginBottom="@dimen/dp_5"
+    android:layout_marginEnd="@dimen/dp_12"
+
+    android:textSize="@dimen/sp_16"
+    android:textColor="@color/black_333333"
+    android:text="...."
+    android:layout_width="wrap_content"
+    android:layout_height="match_parent" />
+
+
+</LinearLayout>
+
+<LinearLayout
+android:layout_marginTop="@dimen/dp_1"
+android:background="@color/Write"
+android:layout_width="match_parent"
+android:layout_height="wrap_content"
+android:orientation="horizontal">
+
+
+<TextView
+
+    android:layout_marginBottom="@dimen/dp_5"
+    android:layout_marginEnd="@dimen/dp_12"
+    android:layout_marginStart="@dimen/dp_12"
+    android:layout_width="@dimen/dp_86"
+    android:layout_height="wrap_content"
+    android:text="订单金额："
+    android:textColor="@color/corlor_text"
+    android:textSize="@dimen/sp_16" />
+
+<TextView
+    android:layout_marginBottom="@dimen/dp_5"
+    android:layout_marginEnd="@dimen/dp_12"
+    android:textSize="@dimen/sp_16"
+    android:textColor="@color/black_333333"
+    android:text="￥0.00"
+    android:layout_width="wrap_content"
+    android:layout_height="match_parent" />
+
+
+</LinearLayout>
+
+<LinearLayout
+android:layout_marginTop="@dimen/dp_1"
+android:background="@color/Write"
+android:layout_width="match_parent"
+android:layout_height="wrap_content"
+android:orientation="horizontal">
+
+
+<TextView
+
+    android:layout_marginBottom="@dimen/dp_6"
+    android:layout_marginEnd="@dimen/dp_12"
+    android:layout_marginStart="@dimen/dp_12"
+    android:layout_width="@dimen/dp_86"
+    android:layout_height="wrap_content"
+    android:text="核销次数："
+    android:textColor="@color/corlor_text"
+    android:textSize="@dimen/sp_16" />
+
+<TextView
+    android:layout_marginBottom="@dimen/dp_6"
+    android:layout_marginEnd="@dimen/dp_12"
+    android:textSize="@dimen/sp_16"
+    android:textColor="@color/black_333333"
+    android:text="0次"
+    android:layout_width="wrap_content"
+    android:layout_height="match_parent" />
+
+
+</LinearLayout>
+    <LinearLayout
+        android:layout_marginTop="@dimen/dp_1"
+        android:background="@color/Write"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+
+        <TextView
+
+            android:layout_marginBottom="@dimen/dp_6"
+            android:layout_marginEnd="@dimen/dp_12"
+            android:layout_marginStart="@dimen/dp_12"
+            android:layout_width="@dimen/dp_86"
+            android:layout_height="wrap_content"
+            android:text="使用日期："
+            android:textColor="@color/corlor_text"
+            android:textSize="@dimen/sp_16" />
+
+        <TextView
+            android:layout_marginBottom="@dimen/dp_6"
+            android:layout_marginEnd="@dimen/dp_12"
+
+            android:textSize="@dimen/sp_16"
+            android:textColor="@color/black_333333"
+            android:text="00.00.00"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent" />
+
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_marginTop="@dimen/dp_1"
+        android:background="@color/Write"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+
+        <TextView
+
+            android:layout_marginBottom="@dimen/dp_6"
+            android:layout_marginEnd="@dimen/dp_12"
+            android:layout_marginStart="@dimen/dp_12"
+            android:layout_width="@dimen/dp_86"
+            android:layout_height="wrap_content"
+            android:text="订单状态"
+            android:textColor="@color/corlor_text"
+            android:textSize="@dimen/sp_16" />
+
+        <TextView
+            android:gravity="end"
+            android:layout_marginBottom="@dimen/dp_6"
+            android:layout_marginEnd="@dimen/dp_12"
+            android:textSize="@dimen/sp_16"
+            android:textColor="@color/login"
+            android:text="买家已支付"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="match_parent" />
+    </LinearLayout>
+    
+    
+    <View
+        android:background="@color/all_background"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_9"/>
+    
+
+</LinearLayout>
