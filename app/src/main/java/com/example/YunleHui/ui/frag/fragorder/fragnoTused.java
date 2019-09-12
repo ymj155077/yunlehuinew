@@ -164,7 +164,7 @@ public class fragnoTused extends BaseFrag {
                     String values = voList.getString(i);
                     JSONObject jsonObject = new JSONObject(values);
                     int orderNature = jsonObject.getInt("orderNature");
-                    String shopName = jsonObject.getString("shopName");
+                    String   shopName = jsonObject.getString("shopName");
                     int receiveWay = jsonObject.getInt("receiveWay");
                     JSONArray   orderDetailList = jsonObject.getJSONArray("orderDetailList");
 
