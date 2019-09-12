@@ -319,6 +319,9 @@ public class fragnoTused extends BaseFrag {
                             bean_shop = MyApp.gson.fromJson(datas.get(i).getOrderDetail(), Bean_shop.class);
                             intent.putExtra("order_number", datas.get(position).getOrderNum());
                         } else {
+
+                            //asasdakjasdkaskjdjkasdkashdkjashdk
+
                             beanShequ = MyApp.gson.fromJson(datas.get(i).getOrderDetail(), BeanShequ.class);
 //                            intent.putExtra("order_number", beanShequ.getOrderDetailList().get(0).getOrderNum());
                         }
