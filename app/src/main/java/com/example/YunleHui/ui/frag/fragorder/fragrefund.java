@@ -34,6 +34,7 @@ import com.example.YunleHui.ui.act.actme.actorder.ActApplyrefund;
 import com.example.YunleHui.ui.act.actme.actorder.ActComPurUsed;
 import com.example.YunleHui.ui.act.actme.actorder.ActDetailstoused;
 import com.example.YunleHui.ui.act.actme.actorder.Actfail;
+import com.example.YunleHui.ui.act.refund.ActRefund;
 import com.example.YunleHui.utils.HttpUtil;
 import com.example.YunleHui.utils.Tools;
 import com.example.YunleHui.view.MyXrecycleview;
@@ -57,6 +58,8 @@ import butterknife.BindView;
 public class fragrefund extends BaseFrag {
 
 
+
+
     private int offset = 1;
     private int max = 10;
     private int type = 0;
@@ -65,12 +68,8 @@ public class fragrefund extends BaseFrag {
     private int code;
     private String msg;
     private Bean_no_use.DataBean data;
-
-
     private List<Bean_no_use.DataBean.VoListBean> voList;
-
     private ArrayList<Bean_no_use.DataBean.VoListBean> voList_ = new ArrayList<>();
-
 
     @BindView(R.id.Xrecyc_fund)
     MyXrecycleview Xrecyc_fund;
@@ -93,15 +92,15 @@ public class fragrefund extends BaseFrag {
             Xrecyc_fund.setLoadingListener(new XRecyclerView.LoadingListener() {
                 @Override
                 public void onRefresh() {
+
                     offset = 1;
-                    type = 0;
+
                     HttpUtil.addMapparams();
-                    HttpUtil.params.put("userId", MyApp.user);
-                    HttpUtil.params.put("state", 4);
+                    HttpUtil.params.put("state", 7);
                     HttpUtil.params.put("sort", 0);
                     HttpUtil.params.put("offset", offset);
                     HttpUtil.params.put("max", max);
-                    HttpUtil.postRaw("orderFull/list", HttpUtil.params);
+                    HttpUtil.Post_request("orderFull/list", HttpUtil.params);
                     getdata("5_list");
                     new Handler().postDelayed(new Runnable() {
                         @Override
@@ -116,13 +115,13 @@ public class fragrefund extends BaseFrag {
                     ++offset;
                     type = 2;
                     HttpUtil.addMapparams();
-                    HttpUtil.params.put("userId", MyApp.user);
-                    HttpUtil.params.put("state", 4);
+
+                    HttpUtil.params.put("state", 7);
                     HttpUtil.params.put("sort", 0);
                     HttpUtil.params.put("offset", offset);
                     HttpUtil.params.put("max", max);
 
-                    HttpUtil.postRaw("orderFull/list", HttpUtil.params);
+                    HttpUtil.Post_request("orderFull/list", HttpUtil.params);
                     getdata("5_list");
                     new Handler().postDelayed(new Runnable() {
                         @Override
@@ -181,9 +180,14 @@ public class fragrefund extends BaseFrag {
                     int totalNum = jsonObject.getInt("totalNum");
 
                     JSONArray orderDetailList = jsonObject.getJSONArray("orderDetailList");
+
+                    //                    是否评价过的
+
+                    int isComment = jsonObject.getInt("isComment");
+
                     Tools.i("orderNature_notused", orderNature + "---" + orderDetailList.toString() + "---");
 //                    订单Id
-                    datas.add(new BeanTwo_list(orderNature, values, shopName, receiveWay, orderNum, totalMoney,totalNum));
+                    datas.add(new BeanTwo_list(orderNature, values, shopName, receiveWay, orderNum, totalMoney,totalNum,value,isComment));
                 }
 
                 if (type == 0) {
@@ -227,11 +231,9 @@ public class fragrefund extends BaseFrag {
 
 
         public void clear_data(ArrayList<BeanTwo_list> datas) {
-
             this.datas.clear();
             this.datas.addAll(datas);
             notifyDataSetChanged();
-
         }
 
 
@@ -248,31 +250,19 @@ public class fragrefund extends BaseFrag {
 
         @Override
         public void onBindViewHolder(final ViewHolder holder, final int position) {
-
-
             Log.i("asssas", datas.get(position).getOrderDetail() + "----");
-
             holder.text_state.setText("查看详情");
-
-
             holder.text_size.setText(datas.get(position).getTotalNum()+"");
-
-
             holder.text_price_all.setText(datas.get(position).getTotalMoney() * 0.01 + "");
-
-
+//            查看退款的状态
+            holder.text_state_title.setText("");
             if (datas.get(position).getOrderNature() == 0) {
 //                爆款
-                bean_shop = MyApp.gson.fromJson(datas.get(position).getOrderDetail(), Bean_shop.class);
-
-                Bean_detailas bean_detailas;
-                bean_detailas = MyApp.gson.fromJson(bean_shop.getOrderDetailList().get(0).getShopDetail(), Bean_detailas.class);
-
-
-                List<BeanShequ.OrderDetailListBean> orderDetailList = new ArrayList<>();
-
-                orderDetailList.clear();
-
+//                bean_shop = MyApp.gson.fromJson(datas.get(position).getOrderDetail(), Bean_shop.class);
+//                Bean_detailas bean_detailas;
+//                bean_detailas = MyApp.gson.fromJson(bean_shop.getOrderDetailList().get(0).getShopDetail(), Bean_detailas.class);
+//                List<BeanShequ.OrderDetailListBean> orderDetailList = new ArrayList<>();
+//                orderDetailList.clear();
 //                orderDetailList.add(new BeanShequ.OrderDetailListBean(
 //                        bean_shop.getShopName(), "",
 //                        bean_detailas.getLogoUrl(),
@@ -280,48 +270,69 @@ public class fragrefund extends BaseFrag {
 //                        bean_shop.getShopId(),
 //                        bean_shop.getTotalMoney(),
 //                        bean_shop.getOrderDetailList().get(0).getCount()));
+
+
+                List<Bean_detailas.DataBean.VoListBean.OrderDetailListBean> order = new ArrayList<>();
+                order.clear();
+
+
+                Bean_detailas bean_detailas = MyApp.gson.fromJson(datas.get(position).getValue(), Bean_detailas.class);
+                List<BeanShequ.OrderDetailListBean> orderDetailList = new ArrayList<>();
+                orderDetailList.clear();
+//              爆款的详情界面
+                order = bean_detailas.getData().getVoList().get(position).getOrderDetailList();
+                holder.text_title.setText(order.get(0).getShopName());
+                orderDetailList.add(new BeanShequ.OrderDetailListBean(
+                        order.get(0).getId(),
+//              datas.get(position).getOrderNum(),
+                        0,
+                        order.get(0).getGoodsId(),
+                        order.get(0).getGoodsSetName(),
+                        datas.get(position).getTotalMoney()/order.get(0).getCount(),
+                        datas.get(position).getTotalNum(),
+                        "",
+                        datas.get(position).getTotalMoney(),
+                        "",
+                        order.get(0).getLogoUrl()
+                ));
                 myNoAdapter = new MyNoAdapter(orderDetailList, context);
                 holder.list_bao.setAdapter(myNoAdapter);
-
-
             } else {
-
 //                社区购
-
-                List<BeanShequ.OrderDetailListBean> orderDetailList;
+                List<BeanShequ.OrderDetailListBean> orderDetailList = new ArrayList<>();
+                orderDetailList.clear();
                 beanShequ = MyApp.gson.fromJson(datas.get(position).getOrderDetail(), BeanShequ.class);
                 orderDetailList = beanShequ.getOrderDetailList();
-
                 myNoAdapter = new MyNoAdapter(orderDetailList, context);
                 holder.list_bao.setAdapter(myNoAdapter);
-
             }
 
+            holder.list_bao.setFocusable(false);
 
             holder.list_bao.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                 @Override
                 public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
 //爆款
                     if (datas.get(position).getOrderNature() == 0) {
-                        Intent intent = new Intent(context, ActDetailstoused.class);
-                        if (datas.get(position).getReceiveWay() == 1) {
-                            intent.putExtra("fang_shi", "到商家取");
-                        } else if (datas.get(position).getReceiveWay() == 2) {
-                            intent.putExtra("fang_shi", "到社区取");
-                        } else if (datas.get(position).getReceiveWay() == 3) {
-                            intent.putExtra("fang_shi", "商家送货");
-                        } else if (datas.get(position).getReceiveWay() == 4) {
-                            intent.putExtra("fang_shi", "社区送货");
-                        }
-                        intent.putExtra("ReceiveWay", datas.get(position).getReceiveWay());
-                        intent.putExtra("Nature", datas.get(position).getOrderNature());
-                        if (datas.get(position).getOrderNature() == 0) {
+                        Intent intent = new Intent(context, ActRefund.class);
+//                        if (datas.get(position).getReceiveWay() == 1) {
+//                            intent.putExtra("fang_shi", "到商家取");
+//                        } else if (datas.get(position).getReceiveWay() == 2) {
+//                            intent.putExtra("fang_shi", "到社区取");
+//                        } else if (datas.get(position).getReceiveWay() == 3) {
+//                            intent.putExtra("fang_shi", "商家送货");
+//                        } else if (datas.get(position).getReceiveWay() == 4) {
+//                            intent.putExtra("fang_shi", "社区送货");
+//                        }
+//                        intent.putExtra("ReceiveWay", datas.get(position).getReceiveWay());
+//                        是否是订单查看的
+                        intent.putExtra("orderWay",1);
+
+                        intent.putExtra("orderNature", datas.get(position).getOrderNature());
+
                             bean_shop = MyApp.gson.fromJson(datas.get(position).getOrderDetail(), Bean_shop.class);
                             intent.putExtra("order_number", datas.get(position).getOrderNum());
-                        } else {
-                            beanShequ = MyApp.gson.fromJson(datas.get(position).getOrderDetail(), BeanShequ.class);
-//                            intent.putExtra("order_number", beanShequ.getOrderDetailList().get(0).getOrderNum());
-                        }
+
                         context.startActivity(intent);
 
 
@@ -331,25 +342,29 @@ public class fragrefund extends BaseFrag {
 //                        社区购
 
 
-                        Intent intent = new Intent(context, ActComPurUsed.class);
-                        if (datas.get(position).getReceiveWay() == 1) {
-                            intent.putExtra("fang_shi", "到商家取");
-                        } else if (datas.get(position).getReceiveWay() == 2) {
-                            intent.putExtra("fang_shi", "到社区取");
-                        } else if (datas.get(position).getReceiveWay() == 3) {
-                            intent.putExtra("fang_shi", "商家送货");
-                        } else if (datas.get(position).getReceiveWay() == 4) {
-                            intent.putExtra("fang_shi", "社区送货");
-                        }
-                        intent.putExtra("ReceiveWay", datas.get(position).getReceiveWay());
-                        intent.putExtra("Nature", datas.get(position).getOrderNature());
-                        if (datas.get(position).getOrderNature() == 0) {
-                            bean_shop = MyApp.gson.fromJson(datas.get(position).getOrderDetail(), Bean_shop.class);
-                            intent.putExtra("order_number", datas.get(position).getOrderNum());
-                        } else {
+                        Intent intent = new Intent(context, ActRefund.class);
+//                        if (datas.get(position).getReceiveWay() == 1) {
+//                            intent.putExtra("fang_shi", "到商家取");
+//                        } else if (datas.get(position).getReceiveWay() == 2) {
+//                            intent.putExtra("fang_shi", "到社区取");
+//                        } else if (datas.get(position).getReceiveWay() == 3) {
+//                            intent.putExtra("fang_shi", "商家送货");
+//                        } else if (datas.get(position).getReceiveWay() == 4) {
+//                            intent.putExtra("fang_shi", "社区送货");
+//                        }
+//                        intent.putExtra("ReceiveWay", datas.get(position).getReceiveWay());
+
+                        //                        是否是订单查看的
+                        intent.putExtra("orderWay",1);
+
+                        intent.putExtra("orderNature", datas.get(position).getOrderNature());
+//                        if (datas.get(position).getOrderNature() == 0) {
+//                            bean_shop = MyApp.gson.fromJson(datas.get(position).getOrderDetail(), Bean_shop.class);
+//                            intent.putExtra("order_number", datas.get(position).getOrderNum());
+//                        } else {
                             beanShequ = MyApp.gson.fromJson(datas.get(position).getOrderDetail(), BeanShequ.class);
-//                            intent.putExtra("order_number", beanShequ.getOrderDetailList().get(0).getOrderNum());
-                        }
+                            intent.putExtra("order_number", datas.get(position).getOrderNum());
+//                        }
                         context.startActivity(intent);
                     }
                 }
@@ -368,47 +383,55 @@ public class fragrefund extends BaseFrag {
                 @Override
                 public void onClick(View view) {
                     if (datas.get(position).getOrderNature() == 0) {
-                        Intent intent = new Intent(context, ActDetailstoused.class);
-                        if (datas.get(position).getReceiveWay() == 1) {
-                            intent.putExtra("fang_shi", "到商家取");
-                        } else if (datas.get(position).getReceiveWay() == 2) {
-                            intent.putExtra("fang_shi", "到社区取");
-                        } else if (datas.get(position).getReceiveWay() == 3) {
-                            intent.putExtra("fang_shi", "商家送货");
-                        } else if (datas.get(position).getReceiveWay() == 4) {
-                            intent.putExtra("fang_shi", "社区送货");
-                        }
-                        intent.putExtra("ReceiveWay", datas.get(position).getReceiveWay());
-                        intent.putExtra("Nature", datas.get(position).getOrderNature());
-                        if (datas.get(position).getOrderNature() == 0) {
+                        Intent intent = new Intent(context, ActRefund.class);
+//                        if (datas.get(position).getReceiveWay() == 1) {
+//                            intent.putExtra("fang_shi", "到商家取");
+//                        } else if (datas.get(position).getReceiveWay() == 2) {
+//                            intent.putExtra("fang_shi", "到社区取");
+//                        } else if (datas.get(position).getReceiveWay() == 3) {
+//                            intent.putExtra("fang_shi", "商家送货");
+//                        } else if (datas.get(position).getReceiveWay() == 4) {
+//                            intent.putExtra("fang_shi", "社区送货");
+//                        }
+//                        intent.putExtra("ReceiveWay", datas.get(position).getReceiveWay());
+                        intent.putExtra("orderNature", datas.get(position).getOrderNature());
+//                        if (datas.get(position).getOrderNature() == 0) {
                             bean_shop = MyApp.gson.fromJson(datas.get(position).getOrderDetail(), Bean_shop.class);
                             intent.putExtra("order_number", datas.get(position).getOrderNum());
-                        } else {
-                            beanShequ = MyApp.gson.fromJson(datas.get(position).getOrderDetail(), BeanShequ.class);
-//                            intent.putExtra("order_number", beanShequ.getOrderDetailList().get(0).getOrderNum());
-                        }
+
+                        //                        是否是订单查看的
+                        intent.putExtra("orderWay",1);
+
+//                        } else {
+//                            beanShequ = MyApp.gson.fromJson(datas.get(position).getOrderDetail(), BeanShequ.class);
+////                            intent.putExtra("order_number", beanShequ.getOrderDetailList().get(0).getOrderNum());
+//                        }
                         context.startActivity(intent);
                     } else {
 //                        社区购
-                        Intent intent = new Intent(context, ActComPurUsed.class);
-                        if (datas.get(position).getReceiveWay() == 1) {
-                            intent.putExtra("fang_shi", "到商家取");
-                        } else if (datas.get(position).getReceiveWay() == 2) {
-                            intent.putExtra("fang_shi", "到社区取");
-                        } else if (datas.get(position).getReceiveWay() == 3) {
-                            intent.putExtra("fang_shi", "商家送货");
-                        } else if (datas.get(position).getReceiveWay() == 4) {
-                            intent.putExtra("fang_shi", "社区送货");
-                        }
-                        intent.putExtra("ReceiveWay", datas.get(position).getReceiveWay());
-                        intent.putExtra("Nature", datas.get(position).getOrderNature());
-                        if (datas.get(position).getOrderNature() == 0) {
-                            bean_shop = MyApp.gson.fromJson(datas.get(position).getOrderDetail(), Bean_shop.class);
-                            intent.putExtra("order_number", datas.get(position).getOrderNum());
-                        } else {
+                        Intent intent = new Intent(context, ActRefund.class);
+//                        if (datas.get(position).getReceiveWay() == 1) {
+//                            intent.putExtra("fang_shi", "到商家取");
+//                        } else if (datas.get(position).getReceiveWay() == 2) {
+//                            intent.putExtra("fang_shi", "到社区取");
+//                        } else if (datas.get(position).getReceiveWay() == 3) {
+//                            intent.putExtra("fang_shi", "商家送货");
+//                        } else if (datas.get(position).getReceiveWay() == 4) {
+//                            intent.putExtra("fang_shi", "社区送货");
+//                        }
+//                        intent.putExtra("ReceiveWay", datas.get(position).getReceiveWay());
+                        intent.putExtra("orderNature", datas.get(position).getOrderNature());
+
+                        //                        是否是订单查看的
+                        intent.putExtra("orderWay",1);
+
+//                        if (datas.get(position).getOrderNature() == 0) {
+//                            bean_shop = MyApp.gson.fromJson(datas.get(position).getOrderDetail(), Bean_shop.class);
+//                            intent.putExtra("order_number", datas.get(position).getOrderNum());
+//                        } else {
                             beanShequ = MyApp.gson.fromJson(datas.get(position).getOrderDetail(), BeanShequ.class);
-//                            intent.putExtra("order_number", beanShequ.getOrderDetailList().get(0).getOrderNum());
-                        }
+                            intent.putExtra("order_number", datas.get(position).getOrderNum());
+//                        }
                         context.startActivity(intent);
 
 
@@ -433,9 +456,11 @@ public class fragrefund extends BaseFrag {
 
             private TextView text_size;
 
-
             private TextView text_price_all;
 
+            private TextView text_title;
+
+            private TextView text_state_title;
 
             public ViewHolder(View itemView) {
                 super(itemView);
@@ -450,6 +475,9 @@ public class fragrefund extends BaseFrag {
 
                 text_size = (TextView) itemView.findViewById(R.id.text_size);
 
+                text_title = (TextView) itemView.findViewById(R.id.text_title);
+
+                text_state_title = (TextView) itemView.findViewById(R.id.text_state_title);
             }
         }
     }

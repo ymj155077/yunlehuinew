@@ -86,17 +86,11 @@ public class ActWriteOffManage extends BaseAct {
             case R.id.text_ma_search:
                 startActivity(ActDetailsWriteOff.class);
                 break;
-
             case R.id.lin_saomiao:
-
-
-
                 RxPermissions.getInstance(ActWriteOffManage.this)
-
                         .requestEach( Manifest.permission.WRITE_EXTERNAL_STORAGE,
                                 Manifest.permission.READ_EXTERNAL_STORAGE,
-                                Manifest.permission.CAMERA
-                        )
+                                Manifest.permission.CAMERA)
                         .subscribe(new Action1<Permission>() {
                             @Override
                             public void call(Permission permission) {
@@ -110,9 +104,6 @@ public class ActWriteOffManage extends BaseAct {
                                 }
                             }
                         });
-
-
-
                 break;
         }
     }

@@ -52,14 +52,8 @@ public class ActOpenSharer extends BaseAct {
 
     @Override
     public void initData() {
-
         Glide.with(this).load(MyApp.url_gif).into(img_head);
-
         Glide.with(this).load(MyApp.PUBLIC_URL + "order/generateQrCode?secret=" + MyApp.user).into(img_hei_xiao);
-
-
-
-
     }
 
 }

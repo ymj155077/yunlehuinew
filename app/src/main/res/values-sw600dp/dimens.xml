@@ -12,7 +12,7 @@
 	<dimen name="text_12">20.0000sp</dimen>
 	<dimen name="text_13">21.6667sp</dimen>
 	<dimen name="text_14">23.3333sp</dimen>
-	<dimen name="text_15">25.0000sp</dimen>
+	<dimen name="text_15">25.0000sp</dimen>    <dimen name="dp_447">447dp</dimen>
 	<dimen name="text_16">26.6667sp</dimen>
 	<dimen name="text_28">46.6667sp</dimen>
 	<dimen name="common_margin">@dimen/dp_15</dimen>

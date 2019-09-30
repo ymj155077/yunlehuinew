@@ -13,11 +13,8 @@ public class Bean_detail {
      * success : true
      * code : 200
      * msg : 成功
-     * data : {"id":121,"logoUrl":"http://img.daimg.com/uploads/allimg/181010/1-1Q010161035.jpg","name":"火锅12-1","intro":"重庆火锅，又称为毛肚火锅或麻辣火锅，是中国传统饮食方式，起源于明末清初的重庆嘉陵江畔、朝天门等码头船工纤夫的粗放餐饮方式，原料主要是牛毛肚、猪黄喉、鸭肠、牛血旺等。","price":11,"originalPrice":19900,"commission":1,"verificationPrice":1900,"inventory":200,"salesVolume":100,"description":"{\"details\":[{\"placeName\":\"火锅\",\"number\":[\"http://pv38yh1qq.bkt.clouddn.com/1157262125236883456\"]}]}","posterUrl":"http://img.daimg.com/uploads/allimg/181010/1-1Q010161035.jpg","specification":"份","buyLimited":0,"goodsSetMealList":[{"id":73,"name":"打算打算","logoUrl":"http://thirdwx.qlogo.cn/mmopen/vi_32/UniaxFelbP12vx30vuwgGicYRp9pCdliaPYVT6Kgb21MNk9pH7MXnbicsOjMJ3rgbP9zRjaEqk9cD8BWTsswNC7meg/132","price":596415,"originalPrice":0,"commission":98,"verificationPrice":695},{"id":74,"name":"大事发生","logoUrl":"http://thirdwx.qlogo.cn/mmopen/vi_32/UniaxFelbP12vx30vuwgGicYRp9pCdliaPYVT6Kgb21MNk9pH7MXnbicsOjMJ3rgbP9zRjaEqk9cD8BWTsswNC7meg/132","price":984,"originalPrice":0,"commission":51,"verificationPrice":521},{"id":75,"name":"打算","logoUrl":"http://thirdwx.qlogo.cn/mmopen/vi_32/UniaxFelbP12vx30vuwgGicYRp9pCdliaPYVT6Kgb21MNk9pH7MXnbicsOjMJ3rgbP9zRjaEqk9cD8BWTsswNC7meg/132","price":9541,"originalPrice":0,"commission":9,"verificationPrice":85},{"id":76,"name":"大声道","logoUrl":"http://thirdwx.qlogo.cn/mmopen/vi_32/UniaxFelbP12vx30vuwgGicYRp9pCdliaPYVT6Kgb21MNk9pH7MXnbicsOjMJ3rgbP9zRjaEqk9cD8BWTsswNC7meg/132","price":5156,"originalPrice":0,"commission":5691,"verificationPrice":96411}],"bannerUrlList":["http://pv38yh1qq.bkt.clouddn.com/1157466450781409280,http://pv38yh1qq.bkt.clouddn.com/1157466450647191552,http://pv38yh1qq.bkt.clouddn.com/1157466450533945344,http://pv38yh1qq.bkt.clouddn.com/1157466451049844736,http://pv38yh1qq.bkt.clouddn.com/1157466450483613696"],"shopList":[{"id":16,"logoUrl":"https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1563536200243&di=e02853590a5836a27ac7df4f95521913&imgtype=0&src=http%3A%2F%2Fimgup04.iefans.net%2Fiefans%2F2019-02%2F11%2F11%2F15498570716693_1.jpg","name":"工贸核销店","intro":"店铺介绍","phone":"18122222222","address":"工贸核销店","salesVolume":100,"distance":"9576550","price":0,"commission":0,"useTimeSlot":"0:00:00-24:00:00"},{"id":13,"logoUrl":"https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1563536200243&di=e02853590a5836a27ac7df4f95521913&imgtype=0&src=http%3A%2F%2Fimgup04.iefans.net%2Fiefans%2F2019-02%2F11%2F11%2F15498570716693_1.jpg","name":"红旗河沟核销店","intro":"店铺介绍","phone":"18133333333","address":"红旗河沟转盘左边","salesVolume":100,"distance":"11765525","price":0,"commission":0,"useTimeSlot":"0:00:00-24:00:00"},{"id":11,"logoUrl":"https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1563536200243&di=e02853590a5836a27ac7df4f95521913&imgtype=0&src=http%3A%2F%2Fimgup04.iefans.net%2Fiefans%2F2019-02%2F11%2F11%2F15498570716693_1.jpg","name":"观音桥核销店","intro":"店铺介绍","phone":"17684071289","address":"观音桥南路","salesVolume":100,"distance":"11766320","price":0,"commission":0,"useTimeSlot":"0:00:00-24:00:00"},{"id":15,"logoUrl":"https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1563536200243&di=e02853590a5836a27ac7df4f95521913&imgtype=0&src=http%3A%2F%2Fimgup04.iefans.net%2Fiefans%2F2019-02%2F11%2F11%2F15498570716693_1.jpg","name":"两路口核销店","intro":"店铺介绍","phone":"18122222222","address":"两路口地铁站附近","salesVolume":100,"distance":"11768172","price":0,"commission":0,"useTimeSlot":"0:00:00-24:00:00"},{"id":17,"logoUrl":"https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1563536200243&di=e02853590a5836a27ac7df4f95521913&imgtype=0&src=http%3A%2F%2Fimgup04.iefans.net%2Fiefans%2F2019-02%2F11%2F11%2F15498570716693_1.jpg","name":"六公里营销核销","intro":"店铺介绍","phone":"14614641","address":"两路口地铁站附近","salesVolume":100,"distance":"11771390","price":0,"commission":0,"useTimeSlot":"0:00:00-24:00:00"}],"shop":{"id":12,"logoUrl":"https://timgsa.baidu.com/timg?image&qu 08-15 14:34:59.059 12771-13482/com.example.YunleHui I/frontShop/goodsDetail: ality=80&size=b9999_10000&sec=1563536200243&di=e02853590a5836a27ac7df4f95521913&imgtype=0&src=http%3A%2F%2Fimgup04.iefans.net%2Fiefans%2F2019-02%2F11%2F11%2F15498570716693_1.jpg","name":"商户一","intro":"店铺介绍","phone":"15123458765","address":"花卉园北路","salesVolume":100,"distance":null,"price":0,"commission":0,"useTimeSlot":null},"preTime":0,"goodsEffectiveTime":"2019-08-05T16:00:00.000+0000","orderEffectiveTime":"2019-06-28T09:57:42.000+0000","distance":null}
+     * data : {"id":121,"logoUrl":"https://ss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=1108351223,4103199035&fm=26&gp=0.jpg","name":"火锅12-1","intro":"重庆火锅，又称为毛肚火锅或麻辣火锅，是中国传统饮食方式，起源于明末清初的重庆嘉陵江畔、朝天门等码头船工纤夫的粗放餐饮方式，原料主要是牛毛肚、猪黄喉、鸭肠、牛血旺等。","price":11,"originalPrice":19900,"commission":1,"verificationPrice":1900,"inventory":199,"salesVolume":100,"description":"{\"details\":[{\"placeName\":\"火锅\",\"number\":[\"http://pv38yh1qq.bkt.clouddn.com/1157262125236883456\"]}]}","posterUrl":"http://img.daimg.com/uploads/allimg/181010/1-1Q010161035.jpg","specification":"份","buyLimited":0,"goodsSetMealList":[{"id":73,"name":"121套餐一","logoUrl":"http://n.sinaimg.cn/sinacn/w640h640/20180304/6b58-fxipenm7791113.jpg","price":596415,"originalPrice":0,"commission":98,"verificationPrice":695,"stock":2},{"id":74,"name":"121套餐二","logoUrl":"http://n.sinaimg.cn/sinacn/w640h640/20180304/6b58-fxipenm7791113.jpg","price":984,"originalPrice":0,"commission":51,"verificationPrice":521,"stock":8},{"id":75,"name":"121套餐三","logoUrl":"http://n.sinaimg.cn/sinacn/w640h640/20180304/6b58-fxipenm7791113.jpg","price":9541,"originalPrice":0,"commission":9,"verificationPrice":85,"stock":10},{"id":76,"name":"121套餐四","logoUrl":"http://n.sinaimg.cn/sinacn/w640h640/20180304/6b58-fxipenm7791113.jpg","price":5156,"originalPrice":0,"commission":5691,"verificationPrice":96411,"stock":777}],"bannerUrlList":["https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1567227465219&di=5e4e852800ed51c3648570fd6ea534a2&imgtype=0&src=http%3A%2F%2Fimg.zcool.cn%2Fcommunity%2F013ed659f2f10ea801216a4bae1c29.jpg%401280w_1l_2o_100sh.jpg"],"shopList":[{"id":10,"logoUrl":"https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1563536200243&di=e02853590a5836a27ac7df4f95521913&imgtype=0&src=http%3A%2F%2Fimgup04.iefans.net%2Fiefans%2F2019-02%2F11%2F11%2F15498570716693_1.jpg","name":"石桥铺核销店","intro":"店铺介绍","phone":"159028308898","address":"石桥铺西路","salesVolume":100,"distance":"11762371","price":0,"commission":0,"useTimeSlot":"0:00:00-24:00:00"},{"id":13,"logoUrl":"https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1563536200243&di=e02853590a5836a27ac7df4f95521913&imgtype=0&src=http%3A%2F%2Fimgup04.iefans.net%2Fiefans%2F2019-02%2F11%2F11%2F15498570716693_1.jpg","name":"红旗河沟核销店","intro":"店铺介绍","phone":"18133333333","address":"红旗河沟转盘左边","salesVolume":100,"distance":"11765525","price":0,"commission":0,"useTimeSlot":"0:00:00-24:00:00"}],"shop":{"id":12,"logoUrl":"https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1563536200243&di=e02853590a5836a27ac7df4f95521913&imgtype=0&src=http%3A%2F%2Fimgup04.iefans.net%2Fiefans%2F2019-02%2F11%2F11%2F15498570716693_1.jpg","name":"商户一","intro":"店铺介绍","phone":"15123458765","address":"花卉园北路","salesVolume":100,"distance":null,"price":0,"commission":0,"useTimeSlot":null},"preTime":0,"goodsEffectiveTime":"2019-07-31T16:00:00.000+0000","orderEffectiveTime":"2019-06-28T09:57:42.000+0000","distance":null}
      */
-
-
-
 
     private boolean success;
     private int code;
@@ -59,25 +56,25 @@ public class Bean_detail {
     public static class DataBean {
         /**
          * id : 121
-         * logoUrl : http://img.daimg.com/uploads/allimg/181010/1-1Q010161035.jpg
+         * logoUrl : https://ss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=1108351223,4103199035&fm=26&gp=0.jpg
          * name : 火锅12-1
          * intro : 重庆火锅，又称为毛肚火锅或麻辣火锅，是中国传统饮食方式，起源于明末清初的重庆嘉陵江畔、朝天门等码头船工纤夫的粗放餐饮方式，原料主要是牛毛肚、猪黄喉、鸭肠、牛血旺等。
          * price : 11
          * originalPrice : 19900
          * commission : 1
          * verificationPrice : 1900
-         * inventory : 200
+         * inventory : 199
          * salesVolume : 100
          * description : {"details":[{"placeName":"火锅","number":["http://pv38yh1qq.bkt.clouddn.com/1157262125236883456"]}]}
          * posterUrl : http://img.daimg.com/uploads/allimg/181010/1-1Q010161035.jpg
          * specification : 份
          * buyLimited : 0
-         * goodsSetMealList : [{"id":73,"name":"打算打算","logoUrl":"http://thirdwx.qlogo.cn/mmopen/vi_32/UniaxFelbP12vx30vuwgGicYRp9pCdliaPYVT6Kgb21MNk9pH7MXnbicsOjMJ3rgbP9zRjaEqk9cD8BWTsswNC7meg/132","price":596415,"originalPrice":0,"commission":98,"verificationPrice":695},{"id":74,"name":"大事发生","logoUrl":"http://thirdwx.qlogo.cn/mmopen/vi_32/UniaxFelbP12vx30vuwgGicYRp9pCdliaPYVT6Kgb21MNk9pH7MXnbicsOjMJ3rgbP9zRjaEqk9cD8BWTsswNC7meg/132","price":984,"originalPrice":0,"commission":51,"verificationPrice":521},{"id":75,"name":"打算","logoUrl":"http://thirdwx.qlogo.cn/mmopen/vi_32/UniaxFelbP12vx30vuwgGicYRp9pCdliaPYVT6Kgb21MNk9pH7MXnbicsOjMJ3rgbP9zRjaEqk9cD8BWTsswNC7meg/132","price":9541,"originalPrice":0,"commission":9,"verificationPrice":85},{"id":76,"name":"大声道","logoUrl":"http://thirdwx.qlogo.cn/mmopen/vi_32/UniaxFelbP12vx30vuwgGicYRp9pCdliaPYVT6Kgb21MNk9pH7MXnbicsOjMJ3rgbP9zRjaEqk9cD8BWTsswNC7meg/132","price":5156,"originalPrice":0,"commission":5691,"verificationPrice":96411}]
-         * bannerUrlList : ["http://pv38yh1qq.bkt.clouddn.com/1157466450781409280,http://pv38yh1qq.bkt.clouddn.com/1157466450647191552,http://pv38yh1qq.bkt.clouddn.com/1157466450533945344,http://pv38yh1qq.bkt.clouddn.com/1157466451049844736,http://pv38yh1qq.bkt.clouddn.com/1157466450483613696"]
-         * shopList : [{"id":16,"logoUrl":"https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1563536200243&di=e02853590a5836a27ac7df4f95521913&imgtype=0&src=http%3A%2F%2Fimgup04.iefans.net%2Fiefans%2F2019-02%2F11%2F11%2F15498570716693_1.jpg","name":"工贸核销店","intro":"店铺介绍","phone":"18122222222","address":"工贸核销店","salesVolume":100,"distance":"9576550","price":0,"commission":0,"useTimeSlot":"0:00:00-24:00:00"},{"id":13,"logoUrl":"https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1563536200243&di=e02853590a5836a27ac7df4f95521913&imgtype=0&src=http%3A%2F%2Fimgup04.iefans.net%2Fiefans%2F2019-02%2F11%2F11%2F15498570716693_1.jpg","name":"红旗河沟核销店","intro":"店铺介绍","phone":"18133333333","address":"红旗河沟转盘左边","salesVolume":100,"distance":"11765525","price":0,"commission":0,"useTimeSlot":"0:00:00-24:00:00"},{"id":11,"logoUrl":"https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1563536200243&di=e02853590a5836a27ac7df4f95521913&imgtype=0&src=http%3A%2F%2Fimgup04.iefans.net%2Fiefans%2F2019-02%2F11%2F11%2F15498570716693_1.jpg","name":"观音桥核销店","intro":"店铺介绍","phone":"17684071289","address":"观音桥南路","salesVolume":100,"distance":"11766320","price":0,"commission":0,"useTimeSlot":"0:00:00-24:00:00"},{"id":15,"logoUrl":"https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1563536200243&di=e02853590a5836a27ac7df4f95521913&imgtype=0&src=http%3A%2F%2Fimgup04.iefans.net%2Fiefans%2F2019-02%2F11%2F11%2F15498570716693_1.jpg","name":"两路口核销店","intro":"店铺介绍","phone":"18122222222","address":"两路口地铁站附近","salesVolume":100,"distance":"11768172","price":0,"commission":0,"useTimeSlot":"0:00:00-24:00:00"},{"id":17,"logoUrl":"https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1563536200243&di=e02853590a5836a27ac7df4f95521913&imgtype=0&src=http%3A%2F%2Fimgup04.iefans.net%2Fiefans%2F2019-02%2F11%2F11%2F15498570716693_1.jpg","name":"六公里营销核销","intro":"店铺介绍","phone":"14614641","address":"两路口地铁站附近","salesVolume":100,"distance":"11771390","price":0,"commission":0,"useTimeSlot":"0:00:00-24:00:00"}]
-         * shop : {"id":12,"logoUrl":"https://timgsa.baidu.com/timg?image&qu 08-15 14:34:59.059 12771-13482/com.example.YunleHui I/frontShop/goodsDetail: ality=80&size=b9999_10000&sec=1563536200243&di=e02853590a5836a27ac7df4f95521913&imgtype=0&src=http%3A%2F%2Fimgup04.iefans.net%2Fiefans%2F2019-02%2F11%2F11%2F15498570716693_1.jpg","name":"商户一","intro":"店铺介绍","phone":"15123458765","address":"花卉园北路","salesVolume":100,"distance":null,"price":0,"commission":0,"useTimeSlot":null}
+         * goodsSetMealList : [{"id":73,"name":"121套餐一","logoUrl":"http://n.sinaimg.cn/sinacn/w640h640/20180304/6b58-fxipenm7791113.jpg","price":596415,"originalPrice":0,"commission":98,"verificationPrice":695,"stock":2},{"id":74,"name":"121套餐二","logoUrl":"http://n.sinaimg.cn/sinacn/w640h640/20180304/6b58-fxipenm7791113.jpg","price":984,"originalPrice":0,"commission":51,"verificationPrice":521,"stock":8},{"id":75,"name":"121套餐三","logoUrl":"http://n.sinaimg.cn/sinacn/w640h640/20180304/6b58-fxipenm7791113.jpg","price":9541,"originalPrice":0,"commission":9,"verificationPrice":85,"stock":10},{"id":76,"name":"121套餐四","logoUrl":"http://n.sinaimg.cn/sinacn/w640h640/20180304/6b58-fxipenm7791113.jpg","price":5156,"originalPrice":0,"commission":5691,"verificationPrice":96411,"stock":777}]
+         * bannerUrlList : ["https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1567227465219&di=5e4e852800ed51c3648570fd6ea534a2&imgtype=0&src=http%3A%2F%2Fimg.zcool.cn%2Fcommunity%2F013ed659f2f10ea801216a4bae1c29.jpg%401280w_1l_2o_100sh.jpg"]
+         * shopList : [{"id":10,"logoUrl":"https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1563536200243&di=e02853590a5836a27ac7df4f95521913&imgtype=0&src=http%3A%2F%2Fimgup04.iefans.net%2Fiefans%2F2019-02%2F11%2F11%2F15498570716693_1.jpg","name":"石桥铺核销店","intro":"店铺介绍","phone":"159028308898","address":"石桥铺西路","salesVolume":100,"distance":"11762371","price":0,"commission":0,"useTimeSlot":"0:00:00-24:00:00"},{"id":13,"logoUrl":"https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1563536200243&di=e02853590a5836a27ac7df4f95521913&imgtype=0&src=http%3A%2F%2Fimgup04.iefans.net%2Fiefans%2F2019-02%2F11%2F11%2F15498570716693_1.jpg","name":"红旗河沟核销店","intro":"店铺介绍","phone":"18133333333","address":"红旗河沟转盘左边","salesVolume":100,"distance":"11765525","price":0,"commission":0,"useTimeSlot":"0:00:00-24:00:00"}]
+         * shop : {"id":12,"logoUrl":"https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1563536200243&di=e02853590a5836a27ac7df4f95521913&imgtype=0&src=http%3A%2F%2Fimgup04.iefans.net%2Fiefans%2F2019-02%2F11%2F11%2F15498570716693_1.jpg","name":"商户一","intro":"店铺介绍","phone":"15123458765","address":"花卉园北路","salesVolume":100,"distance":null,"price":0,"commission":0,"useTimeSlot":null}
          * preTime : 0
-         * goodsEffectiveTime : 2019-08-05T16:00:00.000+0000
+         * goodsEffectiveTime : 2019-07-31T16:00:00.000+0000
          * orderEffectiveTime : 2019-06-28T09:57:42.000+0000
          * distance : null
          */
@@ -284,7 +281,7 @@ public class Bean_detail {
         public static class ShopBean {
             /**
              * id : 12
-             * logoUrl : https://timgsa.baidu.com/timg?image&qu 08-15 14:34:59.059 12771-13482/com.example.YunleHui I/frontShop/goodsDetail: ality=80&size=b9999_10000&sec=1563536200243&di=e02853590a5836a27ac7df4f95521913&imgtype=0&src=http%3A%2F%2Fimgup04.iefans.net%2Fiefans%2F2019-02%2F11%2F11%2F15498570716693_1.jpg
+             * logoUrl : https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1563536200243&di=e02853590a5836a27ac7df4f95521913&imgtype=0&src=http%3A%2F%2Fimgup04.iefans.net%2Fiefans%2F2019-02%2F11%2F11%2F15498570716693_1.jpg
              * name : 商户一
              * intro : 店铺介绍
              * phone : 15123458765
@@ -400,12 +397,13 @@ public class Bean_detail {
         public static class GoodsSetMealListBean {
             /**
              * id : 73
-             * name : 打算打算
-             * logoUrl : http://thirdwx.qlogo.cn/mmopen/vi_32/UniaxFelbP12vx30vuwgGicYRp9pCdliaPYVT6Kgb21MNk9pH7MXnbicsOjMJ3rgbP9zRjaEqk9cD8BWTsswNC7meg/132
+             * name : 121套餐一
+             * logoUrl : http://n.sinaimg.cn/sinacn/w640h640/20180304/6b58-fxipenm7791113.jpg
              * price : 596415
              * originalPrice : 0
              * commission : 98
              * verificationPrice : 695
+             * stock : 2
              */
 
             private int id;
@@ -415,6 +413,7 @@ public class Bean_detail {
             private int originalPrice;
             private int commission;
             private int verificationPrice;
+            private int stock;
 
             public int getId() {
                 return id;
@@ -471,18 +470,26 @@ public class Bean_detail {
             public void setVerificationPrice(int verificationPrice) {
                 this.verificationPrice = verificationPrice;
             }
+
+            public int getStock() {
+                return stock;
+            }
+
+            public void setStock(int stock) {
+                this.stock = stock;
+            }
         }
 
         public static class ShopListBean {
             /**
-             * id : 16
+             * id : 10
              * logoUrl : https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1563536200243&di=e02853590a5836a27ac7df4f95521913&imgtype=0&src=http%3A%2F%2Fimgup04.iefans.net%2Fiefans%2F2019-02%2F11%2F11%2F15498570716693_1.jpg
-             * name : 工贸核销店
+             * name : 石桥铺核销店
              * intro : 店铺介绍
-             * phone : 18122222222
-             * address : 工贸核销店
+             * phone : 159028308898
+             * address : 石桥铺西路
              * salesVolume : 100
-             * distance : 9576550
+             * distance : 11762371
              * price : 0
              * commission : 0
              * useTimeSlot : 0:00:00-24:00:00

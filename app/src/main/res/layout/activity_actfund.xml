@@ -1,36 +1,35 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
 
-    android:background="@color/all_background"
-
-    android:orientation="vertical"
     xmlns:android="http://schemas.android.com/apk/res/android"
+
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/all_background"
+    android:orientation="vertical"
     tools:context="com.example.YunleHui.ui.act.actme.actorder.Actfund">
 
 
+    <include layout="@layout/toolbar_push_off" />
 
-<include layout="@layout/toolbar_push_off"/>
-
-
+    <!--爆款的-->
     <LinearLayout
-        android:layout_marginTop="@dimen/dp_16"
         android:id="@+id/lin_tuikuan"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="@dimen/dp_12"
         android:layout_marginStart="@dimen/dp_12"
+        android:layout_marginTop="@dimen/dp_16"
+        android:layout_marginEnd="@dimen/dp_12"
         android:background="@drawable/backdetails"
         android:orientation="vertical">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="@dimen/dp_12"
             android:layout_marginStart="@dimen/dp_12"
+            android:layout_marginLeft="@dimen/dp_12"
             android:layout_marginTop="@dimen/dp_11"
             android:orientation="horizontal">
 
@@ -51,14 +50,15 @@
 
 
         <LinearLayout
+            android:id="@+id/lin_shop"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
 
-            android:layout_marginBottom="@dimen/dp_12"
-
-            android:layout_marginEnd="@dimen/dp_12"
             android:layout_marginStart="@dimen/dp_12"
+
             android:layout_marginTop="@dimen/dp_13"
+            android:layout_marginEnd="@dimen/dp_12"
+            android:layout_marginBottom="@dimen/dp_12"
             android:orientation="horizontal">
 
             <ImageView
@@ -78,8 +78,8 @@
                     android:id="@+id/text_context"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="@dimen/dp_12"
                     android:layout_marginStart="@dimen/dp_12"
+                    android:layout_marginLeft="@dimen/dp_12"
                     android:layout_weight="1"
                     android:ellipsize="end"
                     android:lines="2"
@@ -90,8 +90,8 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
-                    android:layout_marginLeft="@dimen/dp_12"
                     android:layout_marginStart="@dimen/dp_12"
+                    android:layout_marginLeft="@dimen/dp_12"
                     android:layout_weight="1"
                     android:orientation="horizontal">
 
@@ -119,10 +119,10 @@
 
 
                     <TextView
-                        android:gravity="end"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
+                        android:gravity="end"
                         android:text="￥"
                         android:textColor="@color/black99"
                         android:textSize="@dimen/sp_13" />
@@ -157,10 +157,10 @@
                     android:orientation="horizontal">
 
                     <TextView
-                        android:gravity="end"
-                        android:layout_weight="1"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="end"
                         android:text="￥"
                         android:textColor="@color/black33"
                         android:textSize="@dimen/sp_12" />
@@ -176,8 +176,8 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="@dimen/dp_9"
                         android:layout_marginStart="@dimen/dp_9"
+                        android:layout_marginLeft="@dimen/dp_9"
                         android:text="X"
                         android:textColor="@color/corlor_text"
                         android:textSize="@dimen/sp_12" />
@@ -193,142 +193,170 @@
                 </LinearLayout>
 
 
-
-
-
             </LinearLayout>
 
 
         </LinearLayout>
 
+
+
+
+
     </LinearLayout>
+
+
+    <!--社区购的列表-->
+
+    <LinearLayout
+        android:id="@+id/lin_shequgou"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/dp_12"
+        android:layout_marginTop="@dimen/dp_16"
+        android:layout_marginEnd="@dimen/dp_12"
+        android:background="@drawable/backdetails"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/dp_12"
+            android:layout_marginLeft="@dimen/dp_12"
+            android:layout_marginTop="@dimen/dp_11"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/shangpu" />
+
+            <TextView
+                android:id="@+id/shop_name_she"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="重庆齐美口腔"
+                android:textColor="@color/black33"
+                android:textSize="@dimen/sp_17" />
+
+        </LinearLayout>
+
+
+        <com.example.YunleHui.view.NoScrollListView
+            android:id="@+id/npoksd"
+            android:divider="@null"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+
+    </LinearLayout>
+
 
     <LinearLayout
 
-        android:layout_marginTop="@dimen/dp_12"
-        android:layout_marginEnd="@dimen/dp_12"
-        android:layout_marginStart="@dimen/dp_12"
-        android:background="@drawable/backdetails"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/dp_12"
+        android:layout_marginTop="@dimen/dp_12"
+        android:layout_marginEnd="@dimen/dp_12"
+        android:background="@drawable/backdetails"
         android:orientation="horizontal">
 
 
         <TextView
-            android:layout_marginBottom="@dimen/dp_9"
-            android:textSize="@dimen/sp_18"
-            android:layout_marginStart="@dimen/dp_12"
-            android:layout_marginTop="@dimen/dp_9"
-            android:textColor="@color/black33"
-            android:text="退款总金额"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="@dimen/dp_12" />
+            android:layout_marginStart="@dimen/dp_12"
+            android:layout_marginLeft="@dimen/dp_12"
+            android:layout_marginTop="@dimen/dp_9"
+            android:layout_marginBottom="@dimen/dp_9"
+            android:text="退款总金额"
+            android:textColor="@color/black33"
+            android:textSize="@dimen/sp_18" />
 
 
         <TextView
-            android:layout_marginEnd="@dimen/dp_16"
             android:id="@+id/text_jddj"
-            android:gravity="end"
-            android:layout_marginBottom="@dimen/dp_9"
-            android:textSize="@dimen/sp_16"
-            android:layout_marginStart="@dimen/dp_12"
-            android:layout_marginTop="@dimen/dp_9"
-            android:textColor="@color/black33"
-            android:text="0.00"
-            android:layout_weight="1"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/dp_12"
             android:layout_marginLeft="@dimen/dp_12"
-            android:layout_marginRight="@dimen/dp_16" />
-
-
+            android:layout_marginTop="@dimen/dp_9"
+            android:layout_marginEnd="@dimen/dp_16"
+            android:layout_marginRight="@dimen/dp_16"
+            android:layout_marginBottom="@dimen/dp_9"
+            android:layout_weight="1"
+            android:gravity="end"
+            android:text="0.00"
+            android:textColor="@color/black33"
+            android:textSize="@dimen/sp_16" />
 
 
     </LinearLayout>
 
 
-
-
-
-
     <LinearLayout
-        android:layout_marginTop="@dimen/dp_12"
-        android:layout_marginEnd="@dimen/dp_12"
-        android:layout_marginStart="@dimen/dp_12"
-        android:background="@drawable/backdetails"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/dp_12"
+        android:layout_marginTop="@dimen/dp_12"
+        android:layout_marginEnd="@dimen/dp_12"
+        android:background="@drawable/backdetails"
         android:orientation="vertical">
 
 
         <TextView
-            android:layout_marginBottom="@dimen/dp_9"
-            android:textSize="@dimen/sp_18"
-            android:layout_marginStart="@dimen/dp_12"
-            android:layout_marginTop="@dimen/dp_9"
-            android:textColor="@color/black33"
-            android:text="退款原因"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="@dimen/dp_12" />
+            android:layout_marginStart="@dimen/dp_12"
+            android:layout_marginLeft="@dimen/dp_12"
+            android:layout_marginTop="@dimen/dp_9"
+            android:layout_marginBottom="@dimen/dp_9"
+            android:text="退款原因"
+            android:textColor="@color/black33"
+            android:textSize="@dimen/sp_18" />
 
 
         <View
-            android:layout_marginBottom="@dimen/dp_9"
-            android:background="@color/all_background"
             android:layout_width="match_parent"
-            android:layout_height="@dimen/dp_0_5"/>
-
-
+            android:layout_height="@dimen/dp_0_5"
+            android:layout_marginBottom="@dimen/dp_9"
+            android:background="@color/all_background" />
 
 
         <EditText
 
             android:id="@+id/edit_context"
-            android:gravity="top"
-android:layout_marginEnd="@dimen/dp_12"
-            android:layout_marginStart="@dimen/dp_12"
-            android:hint="输入退款原因"
-            android:background="@null"
             android:layout_width="match_parent"
-            android:layout_height="@dimen/dp_96" />
-
-
-
-
-
-
-
-
-
+            android:layout_height="@dimen/dp_96"
+            android:layout_marginStart="@dimen/dp_12"
+            android:layout_marginEnd="@dimen/dp_12"
+            android:background="@null"
+            android:gravity="top"
+            android:hint="输入退款原因" />
 
 
     </LinearLayout>
 
 
-
     <View
-        android:layout_weight="1"
         android:layout_width="1dp"
-        android:layout_height="0dp"/>
-
+        android:layout_height="0dp"
+        android:layout_weight="1" />
 
 
     <TextView
         android:id="@+id/text_Submission"
-        android:clickable="true"
-        android:layout_marginBottom="@dimen/dp_46"
-        android:layout_marginEnd="@dimen/dp_12"
-      android:layout_marginStart="@dimen/dp_12"
-        android:textSize="@dimen/sp_18"
-        android:textColor="@color/Write"
-        android:background="@drawable/button_img"
-android:gravity="center"
-android:text="提交退款"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/dp_44" />
-
+        android:layout_height="@dimen/dp_44"
+        android:layout_marginStart="@dimen/dp_12"
+        android:layout_marginEnd="@dimen/dp_12"
+        android:layout_marginBottom="@dimen/dp_46"
+        android:background="@drawable/button_img"
+        android:clickable="true"
+        android:gravity="center"
+        android:text="提交退款"
+        android:textColor="@color/Write"
+        android:textSize="@dimen/sp_18" />
 
 
 </LinearLayout>

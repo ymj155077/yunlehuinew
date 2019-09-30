@@ -79,6 +79,15 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <!-- 高德地图 -->
+        <meta-data
+            android:name="com.amap.api.v2.apikey"
+            android:value="00c480db2ecfc6a02a2ac27ad8b005d8" />
+
+        <service
+            android:name="com.amap.api.location.APSService"
+            tools:ignore="WrongManifestParent" />
+
         <activity
             android:name=".ui.act.acthome.ActComdetails"
             android:configChanges="keyboardHidden|screenSize|orientation"
@@ -119,17 +128,53 @@
             android:launchMode="singleTask"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateHidden|adjustResize" />
-        <activity android:name=".ui.act.actme.ActMyOrder" />
-        <activity android:name=".ui.act.actme.ActTodetails" />
-        <activity android:name=".ui.act.actme.actorder.ActWritecode" />
-        <activity android:name=".ui.act.actme.actorder.ActDetailstoused" />
-        <activity android:name=".ui.act.actme.actorder.ActApplyrefund" />
-        <activity android:name=".ui.act.actme.actorder.Actfund" />
-        <activity android:name=".ui.act.actme.actorder.Actfail" />
+        <activity android:name=".ui.act.actme.ClipImageActivity" />
+        <activity
+            android:name=".ui.act.actme.ActMyOrder"
+            android:configChanges="keyboardHidden|screenSize|orientation"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateHidden|adjustResize" />
+        <activity
+            android:name=".ui.act.actme.ActTodetails"
+            android:configChanges="keyboardHidden|screenSize|orientation"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateHidden|adjustResize" />
+        <activity
+            android:name=".ui.act.actme.actorder.ActWritecode"
+            android:configChanges="keyboardHidden|screenSize|orientation"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateHidden|adjustResize" />
+        <activity
+            android:name=".ui.act.actme.actorder.ActDetailstoused"
+            android:configChanges="keyboardHidden|screenSize|orientation"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateHidden|adjustResize" />
+        <activity
+            android:name=".ui.act.actme.actorder.ActApplyrefund"
+            android:configChanges="keyboardHidden|screenSize|orientation"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateHidden|adjustResize" />
+        <activity
+            android:name=".ui.act.actme.actorder.Actfund"
+            android:configChanges="keyboardHidden|screenSize|orientation"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateHidden|adjustResize" />
+        <activity
+            android:name=".ui.act.actme.actorder.Actfail"
+            android:configChanges="keyboardHidden|screenSize|orientation"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateHidden|adjustResize" />
 
         <provider
             android:name="android.support.v4.content.FileProvider"
-            android:authorities="${applicationId}.provider"
+            android:authorities="${applicationId}.fileProvider"
             android:exported="false"
             android:grantUriPermissions="true">
             <meta-data
@@ -137,30 +182,150 @@
                 android:resource="@xml/file_paths" />
         </provider>
 
-        <activity android:name=".ui.act.actme.ActPerinform" />
-        <activity android:name=".ui.act.actme.ActSetUp" />
-        <activity android:name=".ui.act.actme.ActEdition" />
-        <activity android:name=".ui.act.actme.ActSafetyCenter" />
-        <activity android:name=".ui.act.actme.ActRetrieve" />
-        <activity android:name=".ui.act.actme.ActBinding" />
-        <activity android:name=".ui.act.actme.ActWallet" />
-        <activity android:name=".ui.act.actme.ActDaren" />
-        <activity android:name=".ui.act.actme.ActRecharge" />
-        <activity android:name=".ui.act.actme.ActBusApp" />
-        <activity android:name=".ui.act.actme.ActBankCard" />
-        <activity android:name=".ui.act.actme.ActAddCard" />
-        <activity android:name=".ui.act.actme.ActVerifiPhone" />
-        <activity android:name=".ui.act.actme.ActAddSucess" />
-        <activity android:name=".ui.act.actme.Actbill" />
-        <activity android:name=".ui.act.actme.ActDisRecord" />
-        <activity android:name=".ui.act.actme.ActProfit" />
-        <activity android:name=".ui.act.actme.ActMyTeam" />
-        <activity android:name=".ui.act.actme.ActMyCustomer" />
-        <activity android:name=".ui.act.actme.ActMyShare" />
-        <activity android:name=".ui.act.actme.ActDetaCom" />
-        <activity android:name=".ui.act.actme.ActOpenSharer" />
-        <activity android:name=".ui.act.acthome.ActSearch" />
-        <activity android:name=".ui.act.acthome.ActCityList" />
+        <activity
+            android:name=".ui.act.actme.ActPerinform"
+            android:configChanges="keyboardHidden|screenSize|orientation"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateHidden|adjustResize" />
+        <activity
+            android:name=".ui.act.actme.ActSetUp"
+            android:configChanges="keyboardHidden|screenSize|orientation"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateHidden|adjustResize" />
+        <activity
+            android:name=".ui.act.actme.ActEdition"
+            android:configChanges="keyboardHidden|screenSize|orientation"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateHidden|adjustResize" />
+        <activity
+            android:name=".ui.act.actme.ActSafetyCenter"
+            android:configChanges="keyboardHidden|screenSize|orientation"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateHidden|adjustResize" />
+        <activity
+            android:name=".ui.act.actme.ActRetrieve"
+            android:configChanges="keyboardHidden|screenSize|orientation"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateHidden|adjustResize" />
+        <activity
+            android:name=".ui.act.actme.ActBinding"
+            android:configChanges="keyboardHidden|screenSize|orientation"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateHidden|adjustResize" />
+        <activity
+            android:name=".ui.act.actme.ActWallet"
+            android:configChanges="keyboardHidden|screenSize|orientation"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateHidden|adjustResize" />
+        <activity
+            android:name=".ui.act.actme.ActDaren"
+            android:configChanges="keyboardHidden|screenSize|orientation"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateHidden|adjustResize" />
+        <activity
+            android:name=".ui.act.actme.ActRecharge"
+            android:configChanges="keyboardHidden|screenSize|orientation"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateHidden|adjustResize" />
+        <activity
+            android:name=".ui.act.actme.ActBusApp"
+            android:configChanges="keyboardHidden|screenSize|orientation"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateHidden|adjustResize" />
+        <activity
+            android:name=".ui.act.actme.ActBankCard"
+            android:configChanges="keyboardHidden|screenSize|orientation"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateHidden|adjustResize" />
+        <activity
+            android:name=".ui.act.actme.ActAddCard"
+            android:configChanges="keyboardHidden|screenSize|orientation"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateHidden|adjustResize" />
+        <activity
+            android:name=".ui.act.actme.ActVerifiPhone"
+            android:configChanges="keyboardHidden|screenSize|orientation"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateHidden|adjustResize" />
+        <activity
+            android:name=".ui.act.actme.ActAddSucess"
+            android:configChanges="keyboardHidden|screenSize|orientation"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateHidden|adjustResize" />
+        <activity
+            android:name=".ui.act.actme.Actbill"
+            android:configChanges="keyboardHidden|screenSize|orientation"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateHidden|adjustResize" />
+        <activity
+            android:name=".ui.act.actme.ActDisRecord"
+            android:configChanges="keyboardHidden|screenSize|orientation"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateHidden|adjustResize" />
+        <activity
+            android:name=".ui.act.actme.ActProfit"
+            android:configChanges="keyboardHidden|screenSize|orientation"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateHidden|adjustResize" />
+        <activity
+            android:name=".ui.act.actme.ActMyTeam"
+            android:configChanges="keyboardHidden|screenSize|orientation"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateHidden|adjustResize" />
+        <activity
+            android:name=".ui.act.actme.ActMyCustomer"
+            android:configChanges="keyboardHidden|screenSize|orientation"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateHidden|adjustResize" />
+        <activity
+            android:name=".ui.act.actme.ActMyShare"
+            android:configChanges="keyboardHidden|screenSize|orientation"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateHidden|adjustResize" />
+        <activity
+            android:name=".ui.act.actme.ActDetaCom"
+            android:configChanges="keyboardHidden|screenSize|orientation"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateHidden|adjustResize" />
+        <activity
+            android:name=".ui.act.actme.ActOpenSharer"
+            android:configChanges="keyboardHidden|screenSize|orientation"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateHidden|adjustResize" />
+        <activity
+            android:name=".ui.act.acthome.ActSearch"
+            android:configChanges="keyboardHidden|screenSize|orientation"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateHidden|adjustResize" />
+        <activity
+            android:name=".ui.act.acthome.ActCityList"
+            android:configChanges="keyboardHidden|screenSize|orientation"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateHidden|adjustResize" />
 
         <!-- 环信要加的 -->
         <!-- 设置环信应用的AppKey -->
@@ -189,28 +354,177 @@
             </intent-filter>
         </receiver>
 
-        <activity android:name=".ui.act.actme.ActBusCenter" />
-        <activity android:name=".ui.act.actme.actbusiness.ActOrManaGe" />
-        <activity android:name=".ui.act.actme.actbusiness.ActOrderDetails" />
-        <activity android:name=".ui.act.actme.actbusiness.ActPublishGoods" />
-        <activity android:name=".ui.act.actme.actbusiness.ActWriteMerchants" />
-        <activity android:name=".ui.act.actme.actbusiness.ActBusSearch" />
-        <activity android:name=".ui.act.actme.actbusiness.ActSendVerCode" />
-        <activity android:name=".ui.act.actme.actbusiness.ActCoManMent" />
-        <activity android:name=".ui.act.actme.actbusiness.ActReCenter" />
-        <activity android:name=".ui.act.actme.actbusiness.ActWriteOffManage" />
-        <activity android:name=".ui.act.actme.actbusiness.ActWriteHistory" />
-        <activity android:name=".ui.act.actme.actbusiness.ActDetailsWriteOff" />
-        <activity android:name=".ui.act.ActComPur.ActComMall" />
-        <activity android:name=".ui.act.actme.ActCusService" />
-        <activity android:name=".ui.act.ActComPur.ActNearMer" />
-        <activity android:name=".ui.act.ActComPur.ActShopCenter" />
-        <activity android:name=".ui.act.actme.actbusiness.ActBusDetails" />
-        <activity android:name=".ui.act.actme.actbusiness.ActComSelfOrder" />
-        <activity android:name=".ui.act.actme.actbusiness.ActBusDistribution" />
-        <activity android:name=".ui.act.actme.actbusiness.ActOrderPayCom" />
-        <activity android:name=".ui.act.actme.actorder.ActComPurUsed" />
-        <activity android:name=".ui.act.acthome.ActAllCom"></activity>
+        <activity
+            android:name=".ui.act.actme.ActBusCenter"
+            android:configChanges="keyboardHidden|screenSize|orientation"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateHidden|adjustResize" />
+        <activity
+            android:name=".ui.act.actme.actbusiness.ActOrManaGe"
+            android:configChanges="keyboardHidden|screenSize|orientation"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateHidden|adjustResize" />
+        <activity
+            android:name=".ui.act.actme.actbusiness.ActOrderDetails"
+            android:configChanges="keyboardHidden|screenSize|orientation"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateHidden|adjustResize" />
+        <activity
+            android:name=".ui.act.actme.actbusiness.ActPublishGoods"
+            android:configChanges="keyboardHidden|screenSize|orientation"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateHidden|adjustResize" />
+        <activity
+            android:name=".ui.act.actme.actbusiness.ActWriteMerchants"
+            android:configChanges="keyboardHidden|screenSize|orientation"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateHidden|adjustResize" />
+        <activity
+            android:name=".ui.act.actme.actbusiness.ActBusSearch"
+            android:configChanges="keyboardHidden|screenSize|orientation"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateHidden|adjustResize" />
+        <activity
+            android:name=".ui.act.actme.actbusiness.ActSendVerCode"
+            android:configChanges="keyboardHidden|screenSize|orientation"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateHidden|adjustResize" />
+        <activity
+            android:name=".ui.act.actme.actbusiness.ActCoManMent"
+            android:configChanges="keyboardHidden|screenSize|orientation"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateHidden|adjustResize" />
+        <activity
+            android:name=".ui.act.actme.actbusiness.ActReCenter"
+            android:configChanges="keyboardHidden|screenSize|orientation"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateHidden|adjustResize" />
+        <activity
+            android:name=".ui.act.actme.actbusiness.ActWriteOffManage"
+            android:configChanges="keyboardHidden|screenSize|orientation"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateHidden|adjustResize" />
+        <activity
+            android:name=".ui.act.actme.actbusiness.ActWriteHistory"
+            android:configChanges="keyboardHidden|screenSize|orientation"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateHidden|adjustResize" />
+        <activity
+            android:name=".ui.act.actme.actbusiness.ActDetailsWriteOff"
+            android:configChanges="keyboardHidden|screenSize|orientation"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateHidden|adjustResize" />
+        <activity
+            android:name=".ui.act.ActComPur.ActComMall"
+            android:configChanges="keyboardHidden|screenSize|orientation"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateHidden|adjustResize" />
+        <activity
+            android:name=".ui.act.actme.ActCusService"
+            android:configChanges="keyboardHidden|screenSize|orientation"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateHidden|adjustResize" />
+        <activity
+            android:name=".ui.act.ActComPur.ActNearMer"
+            android:configChanges="keyboardHidden|screenSize|orientation"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateHidden|adjustResize" />
+        <activity
+            android:name=".ui.act.ActComPur.ActShopCenter"
+            android:configChanges="keyboardHidden|screenSize|orientation"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateHidden|adjustResize" />
+        <activity
+            android:name=".ui.act.actme.actbusiness.ActBusDetails"
+            android:configChanges="keyboardHidden|screenSize|orientation"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateHidden|adjustResize" />
+        <activity
+            android:name=".ui.act.actme.actbusiness.ActComSelfOrder"
+            android:configChanges="keyboardHidden|screenSize|orientation"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateHidden|adjustResize" />
+        <activity
+            android:name=".ui.act.actme.actbusiness.ActBusDistribution"
+            android:configChanges="keyboardHidden|screenSize|orientation"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateHidden|adjustResize" />
+        <activity
+            android:name=".ui.act.actme.actbusiness.ActOrderPayCom"
+            android:configChanges="keyboardHidden|screenSize|orientation"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateHidden|adjustResize" />
+        <activity
+            android:name=".ui.act.actme.actorder.ActComPurUsed"
+            android:configChanges="keyboardHidden|screenSize|orientation"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateHidden|adjustResize" />
+        <activity
+            android:name=".ui.act.acthome.ActAllCom"
+            android:configChanges="keyboardHidden|screenSize|orientation"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateHidden|adjustResize" />
+        <activity
+            android:name=".ui.act.refund.ActRefund"
+            android:configChanges="keyboardHidden|screenSize|orientation"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateHidden|adjustResize" />
+        <activity
+            android:name=".ui.act.actReper.ActRepers"
+            android:configChanges="keyboardHidden|screenSize|orientation"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateHidden|adjustResize" />
+        <activity
+            android:name=".ui.act.ActComPur.ActColresi"
+            android:configChanges="keyboardHidden|screenSize|orientation"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateHidden|adjustResize" />
+        <activity
+            android:name=".ui.act.ActComPur.ActHregistra"
+            android:configChanges="keyboardHidden|screenSize|orientation"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateHidden|adjustResize" />
+        <activity
+            android:name=".ui.act.ActComPur.ActShopCenterNew"
+            android:configChanges="keyboardHidden|screenSize|orientation"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateHidden|adjustResize" />
+        <activity
+            android:name=".ui.act.actme.actorder.ActEvaluate"
+            android:configChanges="keyboardHidden|screenSize|orientation"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateHidden|adjustResize" />
+        <activity android:name=".ui.act.actme.ActMoinfor" />
+        <activity android:name=".ui.act.actme.ActReplace" />
+        <activity android:name=".ui.act.actme.actbusiness.ActRefunds"></activity>
     </application>
 
 </manifest>

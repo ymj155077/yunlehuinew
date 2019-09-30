@@ -91,14 +91,14 @@ public class fragToused extends BaseFrag {
                     offset = 1;
                     type = 0;
                     HttpUtil.addMapparams();
-                    HttpUtil.params.put("userId", MyApp.user);
+
                     HttpUtil.params.put("state", 0);
                     HttpUtil.params.put("sort", 0);
                     HttpUtil.params.put("offset", offset);
                     HttpUtil.params.put("shopClassId", 0);
                     HttpUtil.params.put("max", max);
 
-                    HttpUtil.postRaw("orderFull/list", HttpUtil.params);
+                    HttpUtil.Post_request("orderFull/list", HttpUtil.params);
                     getdata("0_list");
 
                     new Handler().postDelayed(new Runnable() {
@@ -114,12 +114,12 @@ public class fragToused extends BaseFrag {
                     ++offset;
                     type = 2;
                     HttpUtil.addMapparams();
-                    HttpUtil.params.put("userId", MyApp.user);
+
                     HttpUtil.params.put("state", 0);
                     HttpUtil.params.put("sort", 0);
                     HttpUtil.params.put("offset", offset);
                     HttpUtil.params.put("max", max);
-                    HttpUtil.postRaw("orderFull/list", HttpUtil.params);
+                    HttpUtil.Post_request("orderFull/list", HttpUtil.params);
                     getdata("0_list");
 
                     new Handler().postDelayed(new Runnable() {
@@ -163,7 +163,6 @@ public class fragToused extends BaseFrag {
                 JSONObject json = new JSONObject(value);
                 JSONObject result = json.getJSONObject("data");
                 JSONArray voList = result.getJSONArray("voList");
-
                 ArrayList<BeanTwo_list> datas = new ArrayList<>();
                 datas.clear();
                 for (int i = 0; i < voList.length(); i++) {
@@ -173,18 +172,20 @@ public class fragToused extends BaseFrag {
                     String shopName = jsonObject.getString("shopName");
                     int receiveWay = jsonObject.getInt("receiveWay");
 //                  总数量
-
                     int totalNum = jsonObject.getInt("totalNum");
-
 //                  订单号
                     String orderNum = jsonObject.getString("orderNum");
 //                    总金额
                     int totalMoney = jsonObject.getInt("totalMoney");
-
                     JSONArray orderDetailList = jsonObject.getJSONArray("orderDetailList");
+
+                    //                    是否评价过的
+
+                    int isComment = jsonObject.getInt("isComment");
+
                     Tools.i("fragTouesd", totalNum+"++++++"+orderNature + "---" + values + "---" + shopName + "---" + receiveWay);
 //                    订单Id
-                    datas.add(new BeanTwo_list(orderNature, values, shopName, receiveWay, orderNum, totalMoney,totalNum));
+                    datas.add(new BeanTwo_list(orderNature, values, shopName, receiveWay, orderNum, totalMoney,totalNum,value,isComment));
                 }
 
                 if (type == 0) {
@@ -227,28 +228,17 @@ public class fragToused extends BaseFrag {
         private Context context;
 
         public MyRecycleViewAdapter(ArrayList<BeanTwo_list> datas, Context context) {
-
             this.datas.clear();
-
             this.datas.addAll(datas);
-
             this.context = context;
-
             this.inflater = LayoutInflater.from(context);
-
         }
-
 
         public void clear_data(ArrayList<BeanTwo_list> datas) {
-
             this.datas.clear();
             this.datas.addAll(datas);
-
             notifyDataSetChanged();
-
         }
-
-
         public void add_data(ArrayList<BeanTwo_list> datas) {
 
             this.datas.addAll(datas);
@@ -275,15 +265,39 @@ public class fragToused extends BaseFrag {
             holder.text_boom_size.setText(datas.get(position).getTotalNum() + "");
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
             if (datas.get(position).getOrderNature() == 0) {
+
+
+
+                Bean_detailas bean_detailas = MyApp.gson.fromJson(datas.get(position).getValue(), Bean_detailas.class);
+                List<BeanShequ.OrderDetailListBean> orderDetailList = new ArrayList<>();
+
+                orderDetailList.clear();
+//爆款的详情界面
+                List<Bean_detailas.DataBean.VoListBean.OrderDetailListBean> order =   bean_detailas.getData().getVoList().get(position).getOrderDetailList();
+
                 Tools.i("bean_nature_0", datas.get(position).getOrderDetail() + "----");
                 bean_shop = MyApp.gson.fromJson(datas.get(position).getOrderDetail(), Bean_shop.class);
                 holder.text_title.setText(bean_shop.getShopName());
-                Bean_detailas bean_detailas;
-                bean_detailas = MyApp.gson.fromJson(bean_shop.getOrderDetailList().get(0).getShopDetail(), Bean_detailas.class);
-                Glide.with(context).load(bean_detailas.getLogoUrl()).into(holder.img_shop);
 
-                holder.text_details.setText(bean_detailas.getIntro());
+                Glide.with(context).load(order.get(0).getLogoUrl()).into(holder.img_shop);
+
+                holder.text_details.setText(order.get(0).getGoodsSetName());
                 float num = (float) (bean_shop.getTotalMoney() / bean_shop.getOrderDetailList().get(0).getCount() * 0.01);
                 DecimalFormat df = new DecimalFormat("0.00");//格式化小数
                 String s = df.format(num);//返回的是String类型
@@ -317,6 +331,13 @@ public class fragToused extends BaseFrag {
                 holder.no_list.setVisibility(View.VISIBLE);
 //                myNoAdapter.notifyDataSetChanged();
             }
+
+
+
+            holder.no_list.setFocusable(false);
+
+
+
 //           订单 id
 //           订单详情的界面
 //           社区购详情

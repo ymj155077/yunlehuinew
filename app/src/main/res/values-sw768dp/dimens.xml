@@ -8,7 +8,7 @@
 	<dimen name="dp_0_6">1.2800dp</dimen>
 	<dimen name="ts_13">27.7333sp</dimen>
 	<dimen name="text_10">21.3333sp</dimen>
-	<dimen name="text_11">23.4667sp</dimen>
+	<dimen name="text_11">23.4667sp</dimen>    <dimen name="dp_447">447dp</dimen>
 	<dimen name="text_12">25.6000sp</dimen>
 	<dimen name="text_13">27.7333sp</dimen>
 	<dimen name="text_14">29.8667sp</dimen>

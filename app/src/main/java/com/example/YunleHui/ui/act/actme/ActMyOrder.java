@@ -83,17 +83,9 @@ public class ActMyOrder extends BaseAct {
 
     }
 
-
-
-
     private ArrayList<Fragment> mFragments = new ArrayList<>();
 
-
-
-
     private final String[] mTitles = {"代付款", "未使用", "已使用", "待评价", "退款"};
-
-
 
     @RequiresApi(api = Build.VERSION_CODES.M)
     @Override
@@ -107,7 +99,7 @@ public class ActMyOrder extends BaseAct {
         mFragments.add(new fragrefund());
         mAdapter = new MyPagerAdapter(getSupportFragmentManager(),mFragments,mTitles);
         vp.setAdapter(mAdapter);
-        vp.setOffscreenPageLimit(5);
+        vp.setOffscreenPageLimit(4);
         tabLayout.setViewPager(vp, mTitles);
         tabLayout.setCurrentTab(type);
         vp.setCurrentItem(type);

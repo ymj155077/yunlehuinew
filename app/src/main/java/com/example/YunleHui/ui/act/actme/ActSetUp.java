@@ -11,6 +11,7 @@ import android.widget.TextView;
 import com.example.YunleHui.R;
 import com.example.YunleHui.appManager.MyApp;
 import com.example.YunleHui.base.BaseAct;
+import com.example.YunleHui.utils.DataCleanManagerUtils;
 
 import butterknife.BindView;
 import butterknife.OnClick;
@@ -43,6 +44,13 @@ public class ActSetUp extends BaseAct {
 
 
 
+    @BindView(R.id.text_Size)
+TextView text_Size;
+
+
+    @BindView(R.id.lin_clear)
+LinearLayout lin_clear;
+
     @Override
     public void startActivity(Class<?> clz) {
         startActivity(new Intent(this, clz));
@@ -53,62 +61,48 @@ public class ActSetUp extends BaseAct {
         return R.layout.activity_act_set_up2;
     }
 
+    private TextView textView;
+
     @Override
     protected void findViews() {
-
         if (toolbar_all!=null){
-            TextView textView = toolbar_all.findViewById(R.id.toolbar_center);
+            textView = toolbar_all.findViewById(R.id.toolbar_center);
             textView.setText("设置");
         }
-
     }
 
     @Override
     public void initData() {
-
+        text_Size.setText(DataCleanManagerUtils.getTotalCacheSize(this));
     }
 
-    @OnClick({
-            R.id.lin_about, R.id.lin_Safety_Center,
-            R.id.lin_out,R.id.lin_call
-    })
+    @OnClick({R.id.lin_about, R.id.lin_Safety_Center,
+            R.id.lin_out,R.id.lin_call,R.id.lin_clear})
     public void OnClick(View view) {
         switch (view.getId()) {
 //          关于云享优汇
             case R.id.lin_about:
-
                 startActivity(ActEdition.class);
-
                 break;
-
 //                安全中心
             case R.id.lin_Safety_Center:
-
                 startActivity(ActSafetyCenter.class);
-
                 break;
-
             case R.id.lin_call:
-
                 startActivity(ActCusService.class);
-
                 break;
-
             case R.id.lin_out:
-
                 MyApp.user = 0;
-
                 MyApp.putSharedPreference(this, "user", 0);
                 MyApp.putSharedPreference(this, "access_token", "");
                 MyApp.putSharedPreference(this, "nickName", "");
                 MyApp.putSharedPreference(this, "userType", 0);
-
                 startActivity(ActLogin.class);
                 finish();
                 break;
-
+            case R.id.lin_clear:
+                text_Size.setText("0");DataCleanManagerUtils.clearAllCache(this);
+                break;
         }
     }
-
-
 }

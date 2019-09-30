@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:ratingbar="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/all_background"
+    android:orientation="vertical">
+
+
+    <include layout="@layout/toolbar_push_off" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/dp_12"
+                android:layout_marginTop="@dimen/dp_12"
+                android:layout_marginEnd="@dimen/dp_12"
+                android:background="@drawable/backdetails"
+                android:orientation="vertical">
+
+                <TextView
+
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/dp_12"
+                    android:layout_marginTop="@dimen/dp_12"
+                    android:layout_marginEnd="@dimen/dp_12"
+                    android:layout_marginBottom="@dimen/dp_20"
+                    android:text="此次消费对商户还满意吗？"
+                    android:textColor="@color/black33"
+                    android:textSize="@dimen/sp_17" />
+
+
+                <com.example.xlhratingbar_lib.XLHRatingBar
+                    xmlns:xlhRatingBar="http://schemas.android.com/apk/res-auto"
+                    android:id="@+id/ratingBar"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    xlhRatingBar:canEdit="true"
+                    xlhRatingBar:countSelected="5"
+                    xlhRatingBar:differentSize="false"
+                    xlhRatingBar:dividerWidth="@dimen/dp_5"
+                    xlhRatingBar:starCount="5"
+                    xlhRatingBar:stateResId="@drawable/wujiaossd"
+                    xlhRatingBar:widthAndHeight="@dimen/dp_24" />
+
+
+                <TextView
+                    android:id="@+id/text_pin"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="@dimen/dp_11"
+                    android:layout_marginBottom="@dimen/dp_30"
+                    android:text="毫无挑剔"
+                    android:textColor="@color/corlor_text"
+                    android:textSize="@dimen/sp_17" />
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/dp_12"
+                android:layout_marginTop="@dimen/dp_12"
+                android:layout_marginEnd="@dimen/dp_12"
+                android:layout_marginBottom="@dimen/dp_40"
+                android:background="@drawable/backdetails"
+                android:orientation="vertical">
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dp_120"
+                    android:layout_marginStart="@dimen/dp_12"
+                    android:layout_marginTop="@dimen/dp_12"
+                    android:layout_marginEnd="@dimen/dp_12"
+                    android:layout_marginBottom="@dimen/dp_12">
+
+
+                    <com.example.YunleHui.view.ClearEditText
+                        android:id="@+id/edit_Remarks"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginStart="@dimen/dp_6"
+                        android:layout_marginTop="@dimen/dp_4"
+                        android:layout_marginEnd="@dimen/dp_6"
+                        android:layout_weight="1"
+                        android:background="@null"
+                        android:gravity="top"
+                        android:hint="请添加备注"
+                        android:lines="3"
+                        android:textColor="@color/black33"
+                        android:textColorHighlight="@color/black33"
+                        android:textColorHint="@color/corlor_text"
+                        android:textColorLink="@color/black33"
+                        android:textSize="@dimen/sp_16" />
+                </LinearLayout>
+
+
+                <android.support.v7.widget.RecyclerView
+                    android:id="@+id/recycler"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/dp_12"
+                    android:layout_marginEnd="@dimen/dp_12"
+                    android:layout_marginBottom="@dimen/dp_16"
+                    android:overScrollMode="never" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dp_1"
+                    android:background="@color/all_background" />
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dp_12"
+                    android:layout_marginBottom="@dimen/dp_12"
+                    android:orientation="horizontal">
+
+
+                    <View
+                        android:layout_width="@dimen/dp_12"
+                        android:layout_height="@dimen/dp_1" />
+
+
+                    <CheckBox
+
+                        android:id="@+id/select_all"
+                        style="@style/CustomCheckboxTheme"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+
+                    <View
+                        android:layout_width="@dimen/dp_12"
+                        android:layout_height="@dimen/dp_1" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="匿名评价"
+                        android:textColor="@color/black_333333"
+                        android:textSize="@dimen/sp_17" />
+
+                </LinearLayout>
+            </LinearLayout>
+
+
+            <TextView
+                android:id="@+id/text_Submission"
+                android:clickable="true"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp_44"
+                android:layout_marginStart="@dimen/dp_12"
+                android:layout_marginEnd="@dimen/dp_12"
+                android:layout_marginBottom="@dimen/dp_18"
+                android:background="@drawable/button_img"
+                android:gravity="center"
+                android:text="提交评价"
+                android:textColor="@color/Write"
+                android:textSize="@dimen/sp_17" />
+
+
+        </LinearLayout>
+
+
+    </ScrollView>
+
+
+</LinearLayout>

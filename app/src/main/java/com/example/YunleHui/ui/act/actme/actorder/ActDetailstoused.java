@@ -4,7 +4,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.Toolbar;
@@ -18,28 +17,20 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import com.bumptech.glide.Glide;
-import com.example.YunleHui.Bean.Bean_de;
 import com.example.YunleHui.Bean.Bean_no_use;
 import com.example.YunleHui.Bean.Bean_order_deatil;
-import com.example.YunleHui.Bean.Bean_sjs;
 import com.example.YunleHui.Bean.Bean_usedetail;
 import com.example.YunleHui.R;
 import com.example.YunleHui.appManager.MyApp;
 import com.example.YunleHui.base.BaseAct;
-import com.example.YunleHui.ui.act.acthome.ActComdetails;
-import com.example.YunleHui.ui.act.actme.ActTodetails;
 import com.example.YunleHui.utils.HttpUtil;
 import com.example.YunleHui.utils.Tools;
 import com.example.YunleHui.view.NoScrollListView;
-
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-
 import butterknife.BindView;
-import butterknife.ButterKnife;
 import butterknife.OnClick;
 import okhttp3.Call;
 import okhttp3.Callback;
@@ -61,8 +52,7 @@ public class ActDetailstoused extends BaseAct {
 
 
     @BindView(R.id.lin_kfkjg)
-LinearLayout lin_kfkjg;
-
+    LinearLayout lin_kfkjg;
 
 
     @BindView(R.id.text_order_state)
@@ -81,7 +71,7 @@ LinearLayout lin_kfkjg;
     private String msg;
     private Bean_order_deatil.DataBean data;
 
-    private Bean_de bean_de;
+
     @BindView(R.id.toolbar_all)
     Toolbar toolbar_all;
 
@@ -157,6 +147,9 @@ LinearLayout lin_kfkjg;
     private int state_order = 0;
 
 
+    public static ActDetailstoused actDetailstoused;
+
+
     @Override
     public void startActivity(Class<?> clz) {
         startActivity(new Intent(this, clz));
@@ -182,6 +175,15 @@ LinearLayout lin_kfkjg;
 
     @Override
     public void initData() {
+
+
+
+
+        actDetailstoused = this;
+
+
+
+
         Intent intent = getIntent();
 //        datas = (ArrayList<Bean_no_use.DataBean.VoListBean>) intent.getSerializableExtra("serinfo");
         order_id = intent.getStringExtra("order_id");
@@ -191,10 +193,6 @@ LinearLayout lin_kfkjg;
         yishiyong = intent.getIntExtra("yishiyong", 0);
         Nature = intent.getIntExtra("Nature", 0);
         order_number = intent.getStringExtra("order_number");
-
-
-
-
 
 
 //      订单已使用 的 状态
@@ -224,15 +222,12 @@ LinearLayout lin_kfkjg;
         }
 
 
-
         lin_Another_order.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(ActDetailstoused.this,"再来一单吧",Toast.LENGTH_SHORT).show();
+                Toast.makeText(ActDetailstoused.this, "再来一单吧", Toast.LENGTH_SHORT).show();
             }
         });
-
-
     }
 
 
@@ -243,21 +238,21 @@ LinearLayout lin_kfkjg;
                 if (state_order == 0) {
                     Intent intent = new Intent(this, Actfund.class);
 //              intent.putExtra("text_name", text_Name.getText().toString());
-                    intent.putExtra("log_img", bean_de.getLogoUrl());
+                    intent.putExtra("log_img", bean_order_deatil.getData().getLogoUrl());
                     intent.putExtra("text_context", textContext.getText().toString());
                     intent.putExtra("text_price", textPrice.getText().toString());
                     intent.putExtra("size", textSize.getText().toString());
                     intent.putExtra("text_price_all", textPriceAll.getText().toString());
-                    intent.putExtra("order_id", order_id);
+                    intent.putExtra("text_name",text_name_.getText().toString());
+                    intent.putExtra("orderNature",0);
+                    intent.putExtra("order_id",order_number);
                     startActivity(intent);
                 } else {
 //                    Intent intent = new Intent(this, ActComdetails.class);
 //                    MyApp.order_ty = 0;
 //                    intent.putExtra("shop_id", datas.get(position).getId());
 //                    startActivity(intent);
-
                     Toast.makeText(this, "暂未使用！！！", Toast.LENGTH_SHORT).show();
-
                 }
                 break;
         }
@@ -279,8 +274,10 @@ LinearLayout lin_kfkjg;
                 textPrice.setText(Tools.chenfa(data.getPayMoney()) + "元");
                 textOrderId.setText(data.getOrderVerificationCode());
 
-                bean_de = MyApp.gson.fromJson(data.getShopDetail(), Bean_de.class);
-                Glide.with(this).load(bean_de.getLogoUrl()).into(imgShopImg);
+//                bean_de = MyApp.gson.fromJson(data.getShopDetail(), Bean_de.class);
+
+                Glide.with(this).load(bean_order_deatil.getData().getLogoUrl()).into(imgShopImg);
+
                 Glide.with(this).load(MyApp.PUBLIC_URL + "order/generateQrCode?secret=" + data.getOrderVerificationCode()).into(imgErweima);
 
                 text_name_.setText(data.getShopName());
@@ -419,7 +416,7 @@ LinearLayout lin_kfkjg;
 
             MyViewHolder myViewHolder = new MyAdapter.MyViewHolder();
 
-            convertView = inflater.inflate(R.layout.item_shop, parent, false);
+            convertView = inflater.inflate(R.layout.item_shopp, parent, false);
 
             myViewHolder.text_address = (TextView) convertView.findViewById(R.id.text_address);
 

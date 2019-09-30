@@ -120,7 +120,7 @@ public class BeanShequ implements Serializable {
         this.orderDetailList = orderDetailList;
     }
 
-    public static class OrderDetailListBean implements Serializable{
+    public static class OrderDetailListBean implements Serializable {
         /**
          * id : 7
          * orderId : 4
@@ -142,8 +142,34 @@ public class BeanShequ implements Serializable {
         private int num;
         private String specifications;
         private int totalMoney;
-        private Object goodsDetail;
+        private String goodsDetail;
         private String logoUrl;
+
+
+        public OrderDetailListBean(
+                int id,
+                int orderId,
+                int goodsId,
+                String goodsName,
+                int price,
+                int num,
+                String specifications,
+                int totalMoney,
+                String goodsDetail,
+                String logoUrl
+        ) {
+            this.id = id;
+            this.orderId = orderId;
+            this.goodsId = goodsId;
+            this.goodsName = goodsName;
+            this.price = price;
+            this.num = num;
+            this.specifications = specifications;
+            this.totalMoney = totalMoney;
+            this.goodsDetail = goodsDetail;
+            this.logoUrl = logoUrl;
+        }
+
 
         public int getId() {
             return id;
@@ -209,11 +235,11 @@ public class BeanShequ implements Serializable {
             this.totalMoney = totalMoney;
         }
 
-        public Object getGoodsDetail() {
+        public String getGoodsDetail() {
             return goodsDetail;
         }
 
-        public void setGoodsDetail(Object goodsDetail) {
+        public void setGoodsDetail(String goodsDetail) {
             this.goodsDetail = goodsDetail;
         }
 

@@ -18,6 +18,7 @@ import com.example.YunleHui.Bean.Bean_day;
 import com.example.YunleHui.R;
 import com.example.YunleHui.appManager.MyApp;
 import com.example.YunleHui.base.BaseAct;
+import com.example.YunleHui.ui.act.acthome.ActPayOrder;
 import com.example.YunleHui.utils.HttpUtil;
 import com.example.YunleHui.utils.Tools;
 import com.example.YunleHui.view.NoScrollListView;
@@ -27,6 +28,7 @@ import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 
 
 /**
@@ -64,7 +66,7 @@ public class ActBusDistribution extends BaseAct {
 
 
     @BindView(R.id.text_priceAll)
-TextView text_priceAll;
+    TextView text_priceAll;
 
     private List<BeanShequ.OrderDetailListBean> orderDetailList = new ArrayList<>();
 
@@ -90,6 +92,15 @@ TextView text_priceAll;
     @BindView(R.id.toolbar_all)
     Toolbar toolbar_all;
 
+
+    private String shopName = "";
+
+
+
+    public static ActBusDistribution actBusDistribution;
+
+
+
     @Override
     public void startActivity(Class<?> clz) {
         startActivity(new Intent(this, clz));
@@ -103,7 +114,7 @@ TextView text_priceAll;
     @Override
     protected void findViews() {
 
-        if (toolbar_all!=null){
+        if (toolbar_all != null) {
             TextView text_center = toolbar_all.findViewById(R.id.toolbar_center);
             text_center.setText("未支付订单");
         }
@@ -112,13 +123,14 @@ TextView text_priceAll;
 
     @Override
     public void initData() {
+
+
+        actBusDistribution = this;
+
+
         orderDetailList.clear();
         Intent intent = getIntent();
-
-
         text_price_all = intent.getStringExtra("text_price_all");
-
-
         ReceiveWay = intent.getStringExtra("ReceiveWay");
 //获得Serializable方式传过来的值
         orderDetailList = (List<BeanShequ.OrderDetailListBean>) intent.getSerializableExtra("orderDetailList");
@@ -209,6 +221,11 @@ TextView text_priceAll;
             textAddress.setText(data.getReceiveAddress());
             textSoutime.setText(data.getDeliveryTime());
             textTiTime.setText(ReceiveWay);
+
+
+            shopName = data.getShopName();
+
+
             try {
                 textBeizhu.setText(data.getRemark());
             } catch (Exception e) {
@@ -229,4 +246,47 @@ TextView text_priceAll;
 
         }
     }
+
+
+
+
+    @OnClick({R.id.lin_place})
+    public void OnClick(View view){
+        switch (view.getId()){
+            case R.id.lin_place:
+
+
+                Intent intent = new Intent(this, ActPayOrder.class);
+                intent.putExtra("OrderNumber", order_number);
+                intent.putExtra("price", text_priceAll.getText().toString());
+
+                intent.putExtra("orderNature",1);
+
+                intent.putExtra("shop_name",shopName);
+
+                intent.putExtra("typeNo",1);
+
+                startActivity(intent);
+
+                break;
+        }
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 }

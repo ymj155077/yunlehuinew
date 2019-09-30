@@ -4,10 +4,12 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.example.YunleHui.Bean.Bean_shopDetails;
 import com.example.YunleHui.Bean.Bean_shop_center;
 import com.example.YunleHui.R;
@@ -17,6 +19,7 @@ import com.example.YunleHui.ui.act.actme.actbusiness.ActCoManMent;
 import com.example.YunleHui.ui.act.actme.actbusiness.ActOrManaGe;
 import com.example.YunleHui.ui.act.actme.actbusiness.ActPublishGoods;
 import com.example.YunleHui.ui.act.actme.actbusiness.ActReCenter;
+import com.example.YunleHui.ui.act.actme.actbusiness.ActRefunds;
 import com.example.YunleHui.ui.act.actme.actbusiness.ActWriteMerchants;
 import com.example.YunleHui.ui.act.actme.actbusiness.ActWriteOffManage;
 import com.example.YunleHui.utils.HttpUtil;
@@ -33,19 +36,12 @@ import butterknife.OnClick;
 public class ActBusCenter extends BaseAct {
 
 
-    private Bean_shopDetails bean_shopDetails;
-    private boolean success;
-    private int code;
-    private String msg;
-    private Bean_shopDetails.DataBean data;
-
-
     @BindView(R.id.toolbar_all)
     Toolbar toolbar_all;
 
 
-    @BindView(R.id.img_head)
-    RoundedImageView img_head;
+    @BindView(R.id.img_shop)
+    RoundedImageView img_shop;
 
     @BindView(R.id.text_shopName)
     TextView text_shopName;
@@ -72,7 +68,6 @@ public class ActBusCenter extends BaseAct {
     LinearLayout lin_OrderMent;
 
 
-
     //订单管理
     @BindView(R.id.lin_OrderManagement)
     LinearLayout lin_OrderManagement;
@@ -81,14 +76,36 @@ public class ActBusCenter extends BaseAct {
     @BindView(R.id.lin_ComAn)
     LinearLayout lin_ComAn;
 
-    //    用户退款
-    @BindView(R.id.Lin_UseRefund)
-    LinearLayout Lin_UseRefund;
 
 
 
     @BindView(R.id.lin_management)
     LinearLayout lin_management;
+
+    private int TypeId = 0;
+    private String shopName = "";
+    private String shopLogoUrl = "";
+    private String shopTel = "";
+    private int ShopNature = 0;
+    private String money;
+
+
+
+
+
+//社区购+营销+核销
+    @BindView(R.id.lin_Marketing)
+    LinearLayout lin_Marketing;
+
+
+//核销商户管理
+    @BindView(R.id.lin_Writeoff)
+    LinearLayout lin_Writeoff;
+    //所有的
+    @BindView(R.id.lin_all)
+    LinearLayout lin_all;
+
+
 
 
     @Override
@@ -119,9 +136,63 @@ public class ActBusCenter extends BaseAct {
 
     @Override
     public void initData() {
-        HttpUtil.addMapparams();
-        HttpUtil.Post_request("frontShop/info", HttpUtil.params);
-        getdata("frontShop/info");
+
+        Intent intent = getIntent();
+
+        TypeId = intent.getIntExtra("TypeId", 0);
+
+
+
+        shopName = intent.getStringExtra("shopName");
+        shopLogoUrl = intent.getStringExtra("shopLogoUrl");
+        shopTel = intent.getStringExtra("shopTel");
+        ShopNature = intent.getIntExtra("ShopNature",0);
+        money = intent.getStringExtra("money");
+
+
+        Glide.with(this).load(shopLogoUrl).into(img_shop);
+
+        text_shopName.setText(shopName);
+
+        text_jine.setText(money);
+
+
+
+
+
+//营销
+        if (TypeId==1){
+
+
+            lin_Marketing.setVisibility(View.VISIBLE);
+
+
+//            核销
+        }else if (TypeId==2){
+
+
+            lin_Writeoff.setVisibility(View.VISIBLE);
+
+//            核销加营销
+        }else if (TypeId == 3                                                               ){
+
+
+
+            lin_all.setVisibility(View.VISIBLE);
+
+
+        }
+
+
+        Log.i("ShopNature",ShopNature+"----");
+
+
+
+
+
+
+
+
     }
 
 
@@ -134,8 +205,6 @@ public class ActBusCenter extends BaseAct {
             R.id.lin_ComAn,
 
             R.id.lin_OrderMent,
-
-            R.id.Lin_UseRefund,
 
             R.id.lin_management
 
@@ -151,9 +220,14 @@ public class ActBusCenter extends BaseAct {
 //                发布商品
 
             case R.id.lin_release:
+                if (ShopNature == 0){
+//爆款发布
+                    startActivity(ActRefunds.class);
+                }else if (ShopNature == 1){
+//社区购
+                    startActivity(ActPublishGoods.class);
 
-                startActivity(ActPublishGoods.class);
-
+                }
                 break;
 //                核销商户
             case R.id.lin_Merchants:
@@ -174,14 +248,6 @@ public class ActBusCenter extends BaseAct {
 
                 break;
 
-//                用户退款
-
-            case R.id.Lin_UseRefund:
-
-                startActivity(ActReCenter.class);
-
-                break;
-
 //                核销管理
 
             case R.id.lin_management:
@@ -195,18 +261,8 @@ public class ActBusCenter extends BaseAct {
     }
 
 
+    @Override
     public void StringResulit(String key, String value) {
-
-        try {
-            if (key.equals("frontShop/info")) {
-                bean_shop_center = MyApp.gson.fromJson(value, Bean_shop_center.class);
-                code_center = bean_shop_center.getCode();
-                data_center = bean_shop_center.getData();
-            }
-        }catch (Exception e){
-
-        }
-
 
     }
 }

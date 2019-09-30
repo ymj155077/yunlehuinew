@@ -24,34 +24,22 @@ import butterknife.OnClick;
 
 public class ActLogin extends BaseAct {
 
-
     private BeanLogin beanLogin;
-
     private boolean success;
     private int code;
     private String msg;
     private BeanLogin.DataBean data;
-
     private BeanLogin.DataBean.UserInfoBean userInfo;
-
-
     Toolbar toolbar_all;
     private TimeCount time;
-
     @BindView(R.id.text_send)
     TextView text_send;
-
-
     @BindView(R.id.edit_phone)
     ClearEditText edit_phone;
-
     @BindView(R.id.et_account)
     ClearEditText et_account;
-
-
     @BindView(R.id.text_login)
     TextView text_login;
-
 
     @Override
     public void startActivity(Class<?> clz) {
@@ -80,6 +68,7 @@ public class ActLogin extends BaseAct {
     public void initData() {
         time = new TimeCount(60000, 1000);
     }
+
     @OnClick({R.id.text_send, R.id.et_account, R.id.text_login})
     public void onClick(View view) {
         switch (view.getId()) {
@@ -140,34 +129,38 @@ public class ActLogin extends BaseAct {
     public void StringResulit(String key, String value) {
 
         try {
-            if (key.equals("user/login/smsCode")) {
+            if (key.equals("user/login/smsCode")){
                 Toast.makeText(this, "发送成功", Toast.LENGTH_SHORT).show();
             }
-
-        }catch (Exception e){
+        } catch (Exception e) {
 
         }
-
-
         if (key.equals("user/login")) {
-            try {
+
                 beanLogin = MyApp.gson.fromJson(value, BeanLogin.class);
                 data = beanLogin.getData();
                 userInfo = data.getUserInfo();
                 MyApp.user = userInfo.getId();
                 MyApp.access_token = data.getToken();
-
                 MyApp.userType = data.getUserType();
-
+                MyApp.putSharedPreference(this, "phone", edit_phone.getText().toString().trim());
                 MyApp.putSharedPreference(this, "user", userInfo.getId());
                 MyApp.putSharedPreference(this, "access_token", data.getToken() + "");
-                MyApp.putSharedPreference(this, "nickName", edit_phone.getText().toString().trim() + "");
+                MyApp.putSharedPreference(this, "nickName", userInfo.getNickName() + "");
                 MyApp.putSharedPreference(this, "userType", data.getUserType());
+
+                if (userInfo.getAvatarUrl()==null){
+                    String getAvatarUrl = "";
+                }
+
+                MyApp.putSharedPreference(this, "avatarUrl", "");
+                if (userInfo.getGender()==-1) {
+                    MyApp.putSharedPreference(this, "gender", "男");
+                }else {
+                    MyApp.putSharedPreference(this, "gender", "女");
+                }
                 finish();
 
-            } catch (Exception e) {
-
-            }
         }
     }
 }

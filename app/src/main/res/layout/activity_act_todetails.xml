@@ -256,7 +256,7 @@
              </LinearLayout>
 
 
- 0
+
 
 
                 <com.example.YunleHui.view.NoScrollListView
@@ -383,7 +383,7 @@
                         android:layout_marginLeft="@dimen/dp_12"
                         android:layout_marginStart="@dimen/dp_12"
                         android:layout_weight="1"
-                        android:text="指定门店"
+                        android:text="订单信息"
                         android:textColor="@color/black33"
                         android:textSize="@dimen/sp_17" />
 
@@ -582,6 +582,19 @@
                 android:layout_width="1dp"
                 android:layout_height="30dp"/>
 
+            <TextView
+                android:id="@+id/text_pay"
+                android:clickable="true"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp_44"
+                android:layout_marginBottom="@dimen/dp_20"
+                android:layout_marginEnd="@dimen/dp_12"
+                android:layout_marginStart="@dimen/dp_12"
+                android:background="@drawable/button_img"
+                android:gravity="center"
+                android:text="付款"
+                android:textColor="@color/Write"
+                android:textSize="@dimen/sp_18" />
 
         </LinearLayout>
 
@@ -589,20 +602,7 @@
     </ScrollView>
 
 
-    <TextView
-        android:id="@+id/text_pay"
-        android:clickable="true"
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/dp_44"
-        android:layout_marginBottom="@dimen/dp_14"
-        android:layout_marginEnd="@dimen/dp_12"
-        android:layout_marginStart="@dimen/dp_12"
-        android:layout_marginTop="@dimen/dp_30"
-        android:background="@drawable/button_img"
-        android:gravity="center"
-        android:text="付款"
-        android:textColor="@color/Write"
-        android:textSize="@dimen/sp_18" />
+
 
 
 </LinearLayout>

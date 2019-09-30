@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/Write"
+    android:orientation="vertical"
+    tools:context=".ui.act.actme.ActMoinfor">
+
+
+    <include layout="@layout/toolbar_push_off" />
+
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_12"
+        android:background="@color/all_background" />
+
+    <!--<姓名-->
+
+    <com.example.YunleHui.view.ClearEditText
+        android:id="@+id/edit_name"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_50"
+        android:layout_marginStart="@dimen/dp_10"
+        android:layout_marginEnd="@dimen/dp_12"
+        android:background="@null"
+        android:gravity="center_vertical"
+        android:hint=""
+        android:lines="1"
+        android:textColor="@color/black33"
+        android:textColorHighlight="@color/black33"
+        android:textColorHint="@color/black33"
+        android:textColorLink="@color/black33"
+        android:textSize="@dimen/sp_16" />
+
+
+    <!--男女-->
+
+    <RadioGroup
+        android:id="@+id/radio"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <RadioButton
+            android:id="@+id/radnan"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_46"
+            android:background="@android:color/transparent"
+            android:button="@null"
+            android:checked="true"
+            android:clickable="true"
+            android:drawableRight="@drawable/radiobutton_background"
+            android:paddingStart="@dimen/dp_20"
+            android:paddingEnd="@dimen/dp_20"
+            android:text="男"
+            android:textSize="@dimen/sp_17" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/all_background" />
+
+        <RadioButton
+            android:id="@+id/radnv"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_46"
+            android:layout_weight="1"
+            android:background="@android:color/transparent"
+            android:button="@null"
+            android:drawableRight="@drawable/radiobutton_background"
+            android:paddingStart="@dimen/dp_20"
+            android:paddingEnd="@dimen/dp_20"
+            android:text="女"
+            android:textSize="@dimen/sp_17" />
+    </RadioGroup>
+
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_1"
+        android:background="@color/all_background" />
+
+
+    <TextView
+        android:id="@+id/textSure"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_44"
+        android:layout_marginStart="@dimen/dp_12"
+        android:layout_marginTop="@dimen/dp_40"
+        android:layout_marginEnd="@dimen/dp_12"
+        android:background="@drawable/button_img"
+        android:gravity="center"
+        android:text="确认"
+        android:textColor="@color/Write"
+        android:textSize="@dimen/sp_16" />
+
+
+</LinearLayout>

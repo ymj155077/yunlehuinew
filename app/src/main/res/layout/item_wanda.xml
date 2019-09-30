@@ -58,11 +58,12 @@
                         android:layout_marginLeft="@dimen/dp_12"
                         android:layout_marginStart="@dimen/dp_12"
                         android:lines="1"
-                        android:text="热菜过江椒香鱼"
+                        android:text=""
                         android:textColor="@color/black33"
                         android:textSize="@dimen/sp_16" />
 
                     <TextView
+                        android:id="@+id/text_address"
                         android:gravity="center_vertical"
                         android:layout_weight="1"
                         android:layout_width="match_parent"
@@ -70,7 +71,7 @@
                         android:layout_marginLeft="@dimen/dp_12"
                         android:layout_marginStart="@dimen/dp_12"
                         android:lines="2"
-                        android:text="万达路万达广场123号"
+                        android:text=""
                         android:textColor="@color/zhuce"
                         android:textSize="@dimen/sp_14" />
 
@@ -83,6 +84,7 @@
 
 
                         <TextView
+                            android:visibility="gone"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="社区代理："
@@ -90,11 +92,11 @@
                             android:textSize="@dimen/sp_13" />
 
                         <TextView
-                            android:gravity="end"
+                            android:id="@+id/text_name"
                             android:layout_weight="1"
                             android:layout_width="0dp"
                             android:layout_height="match_parent"
-                            android:text="崔国玲"
+                            android:text=""
                             android:textColor="@color/zhuce"
                             android:textSize="@dimen/sp_14" />
                     </LinearLayout>
@@ -102,51 +104,18 @@
 
                 </LinearLayout>
 
-
                 <TextView
+                    android:id="@+id/text_disJu"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="￥"
-                    android:textColor="@color/black33"
-                    android:textSize="@dimen/sp_12" />
-
-                <TextView
-                    android:id="@+id/text_price"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="0.00"
-                    android:textColor="@color/black33"
-                    android:textSize="@dimen/sp_16" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="@dimen/dp_9"
-                    android:layout_marginStart="@dimen/dp_9"
-                    android:text="X"
+                    android:text="距离"
                     android:textColor="@color/corlor_text"
-                    android:textSize="@dimen/sp_12" />
-
-                <TextView
-                    android:id="@+id/text_size"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="1"
-                    android:textColor="@color/corlor_text"
-                    android:textSize="@dimen/sp_16" />
+                    android:textSize="@dimen/sp_13" />
 
             </LinearLayout>
 
-
-
-
         </LinearLayout>
 
-
-
     </LinearLayout>
-
-
-
 
 </LinearLayout>

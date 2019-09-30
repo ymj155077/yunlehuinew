@@ -6,7 +6,7 @@
 	<dimen name="fab_margin">32.0000dp</dimen>
 	<dimen name="status_bar_height">0.0000dp</dimen>
 	<dimen name="dp_0_6">1.2000dp</dimen>
-	<dimen name="ts_13">26.0000sp</dimen>
+	<dimen name="ts_13">26.0000sp</dimen>    <dimen name="dp_447">447dp</dimen>
 	<dimen name="text_10">20.0000sp</dimen>
 	<dimen name="text_11">22.0000sp</dimen>
 	<dimen name="text_12">24.0000sp</dimen>

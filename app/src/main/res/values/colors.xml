@@ -21,6 +21,19 @@
     <color name="corlor_black">#2b2b2b</color>
     <color name="back_order">#FF5B05</color>
     <color name="corlor_order_red">#f84261</color>
+
+    <color name="gou_cs">#B8B7B7</color>
+    <color name="pickerview_timebtn_nor">#057dff</color>
+    <color name="pickerview_timebtn_pre">#c2daf5</color>
+    <color name="pickerview_bg_topbar">#f5f5f5</color>
+
+    <color name="pickerview_topbar_title">#000000</color>
+    <color name="pickerview_wheelview_textcolor_out">#a8a8a8</color>
+    <color name="pickerview_wheelview_textcolor_center">#2a2a2a</color>
+    <color name="pickerview_wheelview_textcolor_divider">#d5d5d5</color>
+    <color name="pickerview_bgColor_overlay">#60000000</color>
+    <color name="pickerview_bgColor_default">#FFFFFFFF</color>
+
     <!--标题颜色-->
 
     <color name="login">#FF6C4B</color>
@@ -30,7 +43,7 @@
     <color name="green_11B57C">#11B57C</color>
     <color name="black_333333">#333333</color>
     <color name="line_DDDDDD">#DDDDDD</color>
-
+    <color name="see">#3DB2CC</color>
     <color name="details">#f6f6f6</color>
     <color name="color_f6">#f6f6f6</color>
     <color name="partTranslucent">#39000000</color>
@@ -99,8 +112,7 @@
     <color name="header">#58567D</color>
     <color name="grgray">#686868</color>
 
-<color name="qdb">#000000</color>
-
+    <color name="qdb">#000000</color>
 
 
 </resources>

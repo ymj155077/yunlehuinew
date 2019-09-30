@@ -18,6 +18,7 @@ import com.example.YunleHui.ui.act.actme.ActMyOrder;
 import com.example.YunleHui.ui.frag.fragExplosive;
 import com.example.YunleHui.utils.CommonUtils;
 import com.example.YunleHui.utils.FragmentFactory;
+import com.example.YunleHui.utils.HttpUtil;
 import com.example.YunleHui.view.tabpagerindictor.TabPageIndicator;
 import com.zhouwei.mzbanner.MZBannerView;
 import com.zhouwei.mzbanner.holder.MZHolderCreator;
@@ -28,11 +29,8 @@ import butterknife.BindView;
 
 
 /**
- *
- *
  * 商铺中心
- *
- * */
+ */
 public class ActShopCenter extends BaseAct {
 
 
@@ -43,18 +41,17 @@ public class ActShopCenter extends BaseAct {
     MZBannerView banner;
 
 
+    @BindView(R.id.indicator)
+    TabPageIndicator indicator;
 
-@BindView(R.id.indicator)
-     TabPageIndicator indicator;
 
-
-     @BindView(R.id.viewPager)
-     ViewPager viewPager;
+    @BindView(R.id.viewPager)
+    ViewPager viewPager;
 
 
     @Override
     public void startActivity(Class<?> clz) {
-        startActivity(new Intent(this,clz));
+        startActivity(new Intent(this, clz));
     }
 
     @Override
@@ -65,15 +62,23 @@ public class ActShopCenter extends BaseAct {
     @Override
     protected void findViews() {
 
-        if (toolbar_all!=null){
+        if (toolbar_all != null) {
             TextView textView = toolbar_all.findViewById(R.id.toolbar_center);
             textView.setText("商家详情");
         }
 
     }
 
+
     @Override
     public void initData() {
+        Intent intent = getIntent();
+
+
+        String shopId = intent.getStringExtra("shopId");
+
+        HttpUtil.getAsynHttp("shopping/toShop?shopId=" + shopId);
+        getdata("shopping/toShop");
 
 
         ArrayList<String> dada = new ArrayList<>();
@@ -81,7 +86,7 @@ public class ActShopCenter extends BaseAct {
         for (int i = 0; i < 2; i++) {
             dada.add("https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1567438039958&di=cefcb9c8acd4e1a1269b53dd6a4ba467&imgtype=0&src=http%3A%2F%2Finews.gtimg.com%2Fnewsapp_bt%2F0%2F9640793844%2F1000.jpg");
 
-        dada.add("https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1567438039957&di=13f9f755c0794d4526ea08b6fb10a1e0&imgtype=0&src=http%3A%2F%2Fb-ssl.duitang.com%2Fuploads%2Fitem%2F201609%2F16%2F20160916083009_tky83.thumb.700_0.jpeg");
+            dada.add("https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1567438039957&di=13f9f755c0794d4526ea08b6fb10a1e0&imgtype=0&src=http%3A%2F%2Fb-ssl.duitang.com%2Fuploads%2Fitem%2F201609%2F16%2F20160916083009_tky83.thumb.700_0.jpeg");
         }
 
 
@@ -96,11 +101,6 @@ public class ActShopCenter extends BaseAct {
         banner.start();//开始轮播
 
 
-
-
-
-
-
         BasePagerAdapter adapter = new BasePagerAdapter(getSupportFragmentManager());
         viewPager.setAdapter(adapter);
         viewPager.setOffscreenPageLimit(4);
@@ -110,9 +110,7 @@ public class ActShopCenter extends BaseAct {
         setTabPagerIndicator();
 
 
-
     }
-
 
 
     static class BasePagerAdapter extends FragmentPagerAdapter {
@@ -140,7 +138,6 @@ public class ActShopCenter extends BaseAct {
     }
 
 
-
     private void setTabPagerIndicator() {
         // 设置模式，一定要先设置模式
 //        indicator.setIndicatorMode(TabPageIndicator.IndicatorMode.MODE_NOWEIGHT_EXPAND_SAME);
@@ -160,18 +157,19 @@ public class ActShopCenter extends BaseAct {
         indicator.setUnderlineColor(Color.parseColor("#f2f2f2"));
 
 
-
     }
 
 
+    @Override
+    public void StringResulit(String key, String value) {
 
 
+        if (key.equals("shopping/toShop")) {
+
+        }
 
 
-
-
-
-
+    }
 
 
 }

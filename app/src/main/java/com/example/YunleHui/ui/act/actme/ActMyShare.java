@@ -164,6 +164,7 @@ public class ActMyShare extends BaseAct {
                 getdata("sell/searchSellGoods");
 
                 new Handler().postDelayed(new Runnable() {
+                    @Override
                     public void run() {
                         xrec_share.loadMoreComplete();
                     }

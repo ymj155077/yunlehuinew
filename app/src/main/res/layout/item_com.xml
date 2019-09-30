@@ -22,9 +22,10 @@ android:background="@color/Write"
         android:layout_height="wrap_content">
 
         <TextView
+            android:id="@+id/text_name"
             android:textSize="@dimen/sp_17"
             android:textColor="@color/black33"
-            android:text="养元6个核桃"
+            android:text=".."
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
 
@@ -44,6 +45,7 @@ android:background="@color/Write"
                 android:layout_height="wrap_content" />
 
             <TextView
+                android:id="@+id/text_price"
                 android:textColor="@color/login"
                 android:textSize="@dimen/sp_24"
                 android:text="0.00"
@@ -67,11 +69,13 @@ android:background="@color/Write"
 
 
         <ImageView
+            android:id="@+id/img_jian"
             android:src="@drawable/jian"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
 
         <TextView
+            android:id="@+id/text_size"
             android:layout_marginEnd="@dimen/dp_16"
             android:layout_marginStart="@dimen/dp_16"
             android:textSize="@dimen/sp_24"
@@ -81,6 +85,7 @@ android:background="@color/Write"
             android:layout_height="wrap_content" />
 
         <ImageView
+            android:id="@+id/img_jia"
             android:src="@drawable/jia"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />

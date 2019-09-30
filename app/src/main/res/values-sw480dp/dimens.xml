@@ -5,7 +5,7 @@
 	<dimen name="tcl_website_large_size">30.6667sp</dimen>
 	<dimen name="fab_margin">21.3333dp</dimen>
 	<dimen name="status_bar_height">0.0000dp</dimen>
-	<dimen name="dp_0_6">0.8000dp</dimen>
+	<dimen name="dp_0_6">0.8000dp</dimen>    <dimen name="dp_447">447dp</dimen>
 	<dimen name="ts_13">17.3333sp</dimen>
 	<dimen name="text_10">13.3333sp</dimen>
 	<dimen name="text_11">14.6667sp</dimen>

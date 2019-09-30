@@ -15,7 +15,6 @@ import com.example.YunleHui.Bean.BeanHomeList;
 import com.example.YunleHui.R;
 import com.example.YunleHui.appManager.MyApp;
 import com.example.YunleHui.ui.act.acthome.ActComdetails;
-
 import java.util.ArrayList;
 
 public class MyRecycleViewAdapter extends RecyclerView.Adapter<MyRecycleViewAdapter.ViewHolder> {
@@ -89,18 +88,6 @@ public class MyRecycleViewAdapter extends RecyclerView.Adapter<MyRecycleViewAdap
         }catch (Exception e){
 
         }
-        
-//        private ImageView img_home;
-//
-//        private TextView price_down;
-//
-//        private TextView text_peice;
-//
-//        private TextView text_size;
-//
-//        private TextView text_Commission;
-
-
         Glide.with(context).load(datas.get(position).getLogoUrl()).into(holder.img_home);
 
         holder.price_down.setText(datas.get(position).getPrice() * 0.01 + "");

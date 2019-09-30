@@ -66,7 +66,6 @@ dependencies {
     implementation 'com.android.support.constraint:constraint-layout:1.1.3'
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
-
     implementation 'com.squareup.okhttp3:okhttp:3.4.1'
     implementation 'com.squareup.okhttp3:logging-interceptor:3.4.1'
     implementation 'com.squareup.okio:okio:1.7.0'
@@ -75,7 +74,6 @@ dependencies {
     implementation 'com.google.code.gson:gson:2.8.5'
     implementation 'com.google.code.gson:gson-parent:2.8.5'
     implementation 'com.android.support:appcompat-v7:28.0.0'
-
     implementation 'com.github.bumptech.glide:glide:3.7.0'
     implementation 'com.tbruyelle.rxpermissions:rxpermissions:0.7.0@aar'
     implementation 'io.reactivex:rxjava:1.1.3'
@@ -84,37 +82,32 @@ dependencies {
     implementation 'com.jcodecraeer:xrecyclerview:1.5.9'
     implementation 'com.github.pinguo-zhouwei:MZBannerView:v2.0.0'
     implementation 'com.makeramen:roundedimageview:2.3.0'
-
     implementation 'com.aliyun.dpa:oss-android-sdk:+'
-
     implementation 'com.tencent.mm.opensdk:wechat-sdk-android-without-mta:+'
-
     implementation files('libs/tbs_sdk_thirdapp_v4.3.0.1072_43646_sharewithdownloadwithfile_withoutGame_obfs_20190429_175122.jar')
-
-
     implementation 'com.github.promeg:tinypinyin:1.0.0' // ~80KB
-
-
     api 'com.android.support:appcompat-v7:28.0.0-alpha1'
     // Google firebase cloud messaging
     implementation 'com.google.android.gms:play-services-base:11.4.0'
     implementation 'com.google.firebase:firebase-messaging:11.4.0'
     api 'com.hyphenate:hyphenate-sdk:3.6.1'
-
-
     implementation 'com.github.LuckSiege.PictureSelector:picture_library:v2.2.4'
-
-
-
     implementation 'cn.yipianfengye.android:zxing-library:2.2'
     implementation project(path: ':easeui')
+    //3D地图so及jar
+    implementation 'com.amap.api:3dmap:latest.integration'
+    //定位功能
+    implementation 'com.amap.api:location:latest.integration'
+    //搜索功能
+    implementation 'com.amap.api:search:latest.integration'
+    //时间选择器
+    implementation 'org.jaaksi:pickerview:1.0.1'
 
-
+    implementation 'com.xingliuhua:xlhratingbar_lib:1.0.1'
 
     MobSDK {
-        appKey "1e1048427a480"
-        appSecret "2f801b0e537b71f474f27db94860dade"
-
+        appKey "wxe9265d93cda255a9"
+        appSecret "615710fb5eb45ca42079a7cd28fb1765"
         ShareSDK {
             //平台配置信息
             devInfo {
@@ -124,7 +117,6 @@ dependencies {
 //                callbackUri "http://www.sharesdk.cn"
 //                shareByAppClient false
 //            }
-
 //                appId "wx3a24619463b4acce"
 //                appSecret "701c9cc93325e07c468d82b88d09785b"
 
@@ -140,13 +132,11 @@ dependencies {
 //                    MiniprogramType = "0"
 //                    Enable = "true"
 //                }
-
-
                 Wechat {
                     id 4
                     sortId 4
-                    appId "wx02a134a6981a0b07"
-                    appSecret "c1dd818cfc7f64deaae6133f39d20a89"
+                    appId "wxe9265d93cda255a9"
+                    appSecret "615710fb5eb45ca42079a7cd28fb1765"
 //                    userName "gh_52568203455c"
                     path "pages/index/index"
                     bypassApproval false
@@ -154,7 +144,6 @@ dependencies {
 //                    miniprogramType 0
                     enable true
                 }
-
 //                WechatMoments {
 //                    ShareByAppClient = "true"
 //                    ShareByWebApi = "false"
@@ -165,14 +154,12 @@ dependencies {
 //                    BypassApproval = "false"
 //                    Enable = "true"
 //                }
-
-
                 WechatMoments {
                     id 5
                     sortId 5
-                    appId "wx02a134a6981a0b07"
-                    appSecret "c1dd818cfc7f64deaae6133f39d20a89"
-//                    userName "gh_52568203455c"
+                    appId "wxe9265d93cda255a9"
+                    appSecret "615710fb5eb45ca42079a7cd28fb1765"
+//                  userName "gh_52568203455c"
                     path "pages/index/index"
                     bypassApproval false
 //                    withShareTicket true
@@ -185,11 +172,10 @@ dependencies {
                     Id = "6"
                     SortId = "6"
                     BypassApproval = "false"
-                    appId "wx02a134a6981a0b07"
-                    appSecret "c1dd818cfc7f64deaae6133f39d20a89"
+                    appId "wxe9265d93cda255a9"
+                    appSecret "615710fb5eb45ca42079a7cd28fb1765"
                     Enable = "true"
                 }
-
 //                QQ {
 //                    Id = "7"
 //                    SortId = "7"
@@ -198,12 +184,8 @@ dependencies {
 //                    ShareByAppClient = "true"
 //                    BypassApproval = "false"
 //                    Enable = "true"
-//
-//
 //                }
-
 //                QZone {
-//
 //                    appId "1107028990"
 //                    appKey "tzRHTdNbNXVqS4Lr"
 //                    ShareByAppClient = "true"
@@ -214,7 +196,6 @@ dependencies {
 //                    Enable = "true"
 //
 //                }
-
 //                Facebook {
 //                    appKey "1412473428822331"
 //                    appSecret "a42f4f3f867dc947b9ed6020c2e93558"

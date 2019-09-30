@@ -15,7 +15,15 @@ public class BeanTwo_list {
         this.shopName = shopName;
     }
 
-    public BeanTwo_list(int orderNature, String orderDetail, String shopName, int receiveWay,String orderNum,int totalMoney,int totalNum) {
+    public String getValue() {
+        return value;
+    }
+
+    public void setValue(String value) {
+        this.value = value;
+    }
+
+    public BeanTwo_list(int orderNature, String orderDetail, String shopName, int receiveWay, String orderNum, int totalMoney, int totalNum, String value,int isComment) {
 
         this.orderDetail = orderDetail;
         this.orderNature = orderNature;
@@ -24,6 +32,9 @@ public class BeanTwo_list {
         this.orderNum = orderNum;
         this.totalMoney = totalMoney;
 this.totalNum = totalNum;
+this.value = value;
+this.isComment = isComment;
+
     }
 
     public int getTotalNum() {
@@ -43,6 +54,18 @@ this.totalNum = totalNum;
     private int orderNature;
 
     private int totalNum;
+
+    private String value;
+
+    public int getIsComment() {
+        return isComment;
+    }
+
+    public void setIsComment(int isComment) {
+        this.isComment = isComment;
+    }
+
+    private int isComment;
 
     public String getOrderNum() {
         return orderNum;

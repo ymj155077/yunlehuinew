@@ -3,6 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:background="@color/all_background"
+
     android:orientation="vertical">
 
 
@@ -17,12 +18,12 @@
         android:orientation="vertical">
 
         <LinearLayout
-android:layout_marginBottom="@dimen/dp_12"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/dp_12"
             android:layout_marginTop="@dimen/dp_12"
             android:layout_marginEnd="@dimen/dp_12"
+            android:layout_marginBottom="@dimen/dp_12"
             android:gravity="center_vertical"
             android:orientation="horizontal">
 
@@ -44,12 +45,12 @@ android:layout_marginBottom="@dimen/dp_12"
                 android:textSize="@dimen/sp_17" />
 
             <TextView
-
+android:id="@+id/text_state_title"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:gravity="end"
-                android:text="未使用"
+                android:text="已使用"
                 android:textColor="@color/login"
                 android:textSize="@dimen/sp_17" />
 
@@ -57,20 +58,17 @@ android:layout_marginBottom="@dimen/dp_12"
 
 
         <com.example.YunleHui.view.NoScrollListView
-            android:divider="@null"
             android:id="@+id/list_bao"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:divider="@null"
             android:scrollbars="none" />
-
-
-
 
 
         <View
             android:layout_width="match_parent"
             android:layout_height="@dimen/dp_0_5"
-            android:layout_marginTop="@dimen/dp_12"
+            android:layout_marginTop="@dimen/dp_6"
             android:background="@color/all_background" />
 
 
@@ -132,7 +130,8 @@ android:layout_marginBottom="@dimen/dp_12"
                 android:layout_height="wrap_content"
                 android:layout_gravity="end"
                 android:background="@drawable/order"
-                android:gravity="center">
+                android:gravity="center"
+                android:visibility="invisible">
 
                 <TextView
                     android:id="@+id/text_state"

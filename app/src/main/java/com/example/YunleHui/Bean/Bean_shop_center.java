@@ -1,10 +1,12 @@
 package com.example.YunleHui.Bean;
 
+import java.io.Serializable;
+
 /**
  * Created by admin on 2019/8/28 0028.
  */
 
-public class Bean_shop_center {
+public class Bean_shop_center implements Serializable {
 
 
     /**
@@ -51,7 +53,7 @@ public class Bean_shop_center {
         this.data = data;
     }
 
-    public static class DataBean {
+    public static class DataBean implements Serializable{
         /**
          * id : 371
          * shopName : 六公里营销核销

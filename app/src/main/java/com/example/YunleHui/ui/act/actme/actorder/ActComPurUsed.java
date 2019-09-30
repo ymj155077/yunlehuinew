@@ -16,7 +16,6 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import com.bumptech.glide.Glide;
 import com.example.YunleHui.Bean.Bean_pur;
 import com.example.YunleHui.R;
@@ -25,12 +24,11 @@ import com.example.YunleHui.base.BaseAct;
 import com.example.YunleHui.utils.HttpUtil;
 import com.example.YunleHui.utils.Tools;
 import com.example.YunleHui.view.NoScrollListView;
-
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
-
 import butterknife.BindView;
-import butterknife.ButterKnife;
+
 
 
 /**
@@ -38,7 +36,6 @@ import butterknife.ButterKnife;
  */
 
 public class ActComPurUsed extends BaseAct {
-
 
     @BindView(R.id.text_fangshi)
     TextView text_fangshi;
@@ -168,10 +165,12 @@ public class ActComPurUsed extends BaseAct {
     @BindView(R.id.lin_kfkjg)
     LinearLayout lin_kfkjg;
 
-
-
     @BindView(R.id.lin_Another_order)
-LinearLayout lin_Another_order;
+    LinearLayout lin_Another_order;
+
+public static ActComPurUsed actComPurUsed;
+
+    private String remake = "";
 
 
     @Override
@@ -190,14 +189,12 @@ LinearLayout lin_Another_order;
             TextView text_center = toolbar_all.findViewById(R.id.toolbar_center);
             text_center.setText("订单详情");
         }
-
-
     }
 
 
     @Override
     public void initData() {
-
+        actComPurUsed = this;
         Intent intent = getIntent();
         ReceiveWay = intent.getIntExtra("ReceiveWay", 0);
         order_number = intent.getStringExtra("order_number");
@@ -261,29 +258,42 @@ LinearLayout lin_Another_order;
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 Intent intent = new Intent(ActComPurUsed.this, Actfund.class);
-//              intent.putExtra("text_name", text_Name.getText().toString());
-//                intent.putExtra("log_img", bean_de.getLogoUrl());
-//                intent.putExtra("text_context", textContext.getText().toString());
-//                intent.putExtra("text_price", textPrice.getText().toString());
-//                intent.putExtra("size", textSize.getText().toString());
-//                intent.putExtra("text_price_all", textPriceAll.getText().toString());
-//                intent.putExtra("order_id", order_number);
+                Bundle bundle = new Bundle();
+                bundle.putSerializable("DetailList", (Serializable) orderDetailList);
+                if (null!=remake){
+                    bundle.putString("remake",remake);
+                }
+                intent.putExtras(bundle);
+
+                intent.putExtra("text_price_all",textprice.getText().toString());
+
+                intent.putExtra("order_id",order_number);
+
+                intent.putExtra("orderNature",1);
                 startActivity(intent);
             }
         });
 
 
+        list_detail.setFocusable(false);
+
         linTuikuan.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(ActComPurUsed.this, Actfund.class);
-//              intent.putExtra("text_name", text_Name.getText().toString());
-//                intent.putExtra("log_img", bean_de.getLogoUrl());
-//                intent.putExtra("text_context", textContext.getText().toString());
-//                intent.putExtra("text_price", textPrice.getText().toString());
-//                intent.putExtra("size", textSize.getText().toString());
-//                intent.putExtra("text_price_all", textPriceAll.getText().toString());
-//                intent.putExtra("order_id", order_number);
+                Bundle bundle = new Bundle();
+                bundle.putSerializable("DetailList", (Serializable) orderDetailList);
+                if (null!=remake){
+                    bundle.putString("remake",remake);
+                }
+                intent.putExtras(bundle);
+
+                intent.putExtra("text_price_all",textprice.getText().toString());
+
+                intent.putExtra("order_id",order_number);
+
+                intent.putExtra("orderNature",1);
+
                 startActivity(intent);
             }
         });
@@ -328,6 +338,10 @@ LinearLayout lin_Another_order;
             text_order_id.setText(data.getOrderNum() + "");
 
             orderDetailList = data.getOrderDetailList();
+
+            remake = data.getRemark();
+
+//          商品列表
 
             myBaseApter = new MyBaseApter(orderDetailList, ActComPurUsed.this);
 
@@ -375,6 +389,9 @@ LinearLayout lin_Another_order;
             creat_pei.setText(Tools.stampToDate(data.getCreateTime() + ""));
 
             pay_time.setText(data.getPayTime() + "");
+
+
+             data.getOrderDetailList().get(0).getNum();
 
 
             if (data.getPayWay() == 0) {

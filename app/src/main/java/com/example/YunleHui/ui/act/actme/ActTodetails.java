@@ -30,6 +30,7 @@ import com.example.YunleHui.appManager.MyApp;
 import com.example.YunleHui.base.BaseAct;
 import com.example.YunleHui.ui.act.acthome.ActComdetails;
 import com.example.YunleHui.ui.act.acthome.ActDeterOrder;
+import com.example.YunleHui.ui.act.acthome.ActPayOrder;
 import com.example.YunleHui.utils.HttpUtil;
 import com.example.YunleHui.utils.Tools;
 import com.example.YunleHui.view.NoScrollListView;
@@ -155,6 +156,12 @@ public class ActTodetails extends BaseAct {
     private List<Bean_sjs.DataBean.VerificationShopListBean> verificationShopList;
 
 
+
+    public static ActTodetails actTodetails;
+
+
+
+
     @Override
     public void startActivity(Class<?> clz) {
         startActivity(new Intent(this, clz));
@@ -183,6 +190,11 @@ public class ActTodetails extends BaseAct {
 
     @Override
     public void initData() {
+
+
+        actTodetails = this;
+
+
         Intent intent = getIntent();
 
         orderId = intent.getIntExtra("orderId", 0);
@@ -210,51 +222,25 @@ public class ActTodetails extends BaseAct {
         try {
             if (key.equals("orderFull/details")) {
 
-//            private Bean_sjs bean_sjs;
-//            private boolean success_sjs;
-//            private int code_sjs;
-//            private String msg_sjs;
-//            private Bean_sjs.DataBean data_sjs;
-
                 bean_sjs = MyApp.gson.fromJson(value, Bean_sjs.class);
-
                 data_sjs = bean_sjs.getData();
-
                 text_title.setText(data_sjs.getShopName());
-
                 log_url = data_sjs.getLogoUrl();
-
                 Glide.with(ActTodetails.this).load(data_sjs.getLogoUrl()).into(img_shop);
-
                 text_context.setText(data_sjs.getGoodsName());
-
                 text_price.setText(data_sjs.getTotalMoney() / data_sjs.getCount() * 0.01 + "");
-
                 text_size.setText(data_sjs.getCount() + "");
-
                 text_boom_price.setText(Tools.chenfa(data_sjs.getTotalMoney()) + "");
-
                 text_order_size.setText(data_sjs.getCount() + "");
-
                 text_order_all.setText(Tools.chenfa(data_sjs.getTotalMoney()) + "");
-
                 text_pay_shi.setText(Tools.chenfa(data_sjs.getTotalMoney()) + "");
-
                 text_order_number.setText(data_sjs.getOrderNumber());
-
                 text_order_time.setText(data_sjs.getPayTime());
-
                 bean_uesrDetail = MyApp.gson.fromJson(data_sjs.getUserDetail(), Bean_uesrDetail.class);
-
                 text_name.setText(bean_uesrDetail.getNickName());
-
                 text_phone.setText(bean_uesrDetail.getPhone());
-
-
                 verificationShopList = data_sjs.getVerificationShopList();
-
                 myAdapter = new MyAdapter(verificationShopList, ActTodetails.this);
-
                 nolist.setAdapter(myAdapter);
             }
         } catch (Exception e) {
@@ -267,54 +253,26 @@ public class ActTodetails extends BaseAct {
     public void OnClick(View view) {
         switch (view.getId()) {
             case R.id.text_pay:
-
-                Intent intent = new Intent(this, ActDeterOrder.class);
-
-                intent.putExtra("type", 1);
-
-                intent.putExtra("text_title", text_title.getText().toString());
-
-                intent.putExtra("log_url", log_url);
-
-                intent.putExtra("text_context", text_context.getText().toString());
-
-                intent.putExtra("text_price", text_price.getText().toString());
-
-                intent.putExtra("text_size", text_size.getText().toString());
-
-                intent.putExtra("text_boom_price", text_boom_price.getText().toString());
-
-                intent.putExtra("text_phone", text_phone.getText().toString());
-
-                intent.putExtra("order_number", order_number);
-
-                intent.putExtra("order_id", orderId);
-
+                Intent intent = new Intent(this, ActPayOrder.class);
+                intent.putExtra("OrderNumber", order_number);
+                intent.putExtra("price", text_boom_price.getText().toString());
+                intent.putExtra("typeNo",2);
+                intent.putExtra("orderNature",0);
+                intent.putExtra("shop_name",text_title.getText().toString());
                 startActivity(intent);
-
                 break;
         }
     }
-
-
-//    listadpter
-
 
     public class MyAdapter extends BaseAdapter {
 
         ArrayList<Bean_sjs.DataBean.VerificationShopListBean> datas = new ArrayList<>();
         private LayoutInflater inflater;
-
         public MyAdapter(List<Bean_sjs.DataBean.VerificationShopListBean> datas, Context context) {
-
             this.inflater = LayoutInflater.from(context);
-
             this.datas.clear();
-
             this.datas.addAll(datas);
-
         }
-
 
         @Override
         public int getCount() {
@@ -333,24 +291,13 @@ public class ActTodetails extends BaseAct {
 
         @Override
         public View getView(final int position, @Nullable View convertView, @NonNull ViewGroup parent) {
-
             MyViewHolder myViewHolder = new MyViewHolder();
-
-            convertView = inflater.inflate(R.layout.item_shop, parent, false);
-
+            convertView = inflater.inflate(R.layout.item_shopp, parent, false);
             myViewHolder.text_address = (TextView) convertView.findViewById(R.id.text_address);
-
             myViewHolder.img_phone = (ImageView) convertView.findViewById(R.id.img_phone);
-
             myViewHolder.text_address.setText(datas.get(position).getShopName());
-
-
             myViewHolder.lin_call = (LinearLayout) convertView.findViewById(R.id.lin_call);
-
-
             myViewHolder.img_phone.setVisibility(View.GONE);
-
-
             myViewHolder.lin_call.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
@@ -360,28 +307,14 @@ public class ActTodetails extends BaseAct {
 //                    startActivity(intent);
                 }
             });
-
-
             return convertView;
         }
 
-
         public class MyViewHolder {
-
-
             private TextView text_address;
-
             private LinearLayout lin_call;
-
             private ImageView img_phone;
-
             private ImageView img_dingwei;
-
-
         }
-
-
     }
-
-
 }

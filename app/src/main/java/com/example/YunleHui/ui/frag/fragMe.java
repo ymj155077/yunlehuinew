@@ -2,6 +2,7 @@ package com.example.YunleHui.ui.frag;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -26,6 +27,7 @@ import com.example.YunleHui.ui.act.actme.ActMyOrder;
 import com.example.YunleHui.ui.act.actme.ActSetUp;
 import com.example.YunleHui.utils.HttpUtil;
 import com.example.YunleHui.utils.Tools;
+import com.example.YunleHui.view.CircleImageView;
 
 import butterknife.BindView;
 import butterknife.OnClick;
@@ -33,22 +35,19 @@ import butterknife.OnClick;
 public class fragMe extends BaseFrag {
 
 
+    @BindView(R.id.text_name)
+    TextView text_name;
     private Bean_shop_center bean_shop_center;
     private boolean success_center;
     private int code_center;
     private String msg_center;
     private Bean_shop_center.DataBean data_center;
-
-
     @BindView(R.id.lin_behalf)
     LinearLayout lin_behalf;
-
     @BindView(R.id.lin_not_used)
     LinearLayout lin_not_used;
-
     @BindView(R.id.lin_Used)
     LinearLayout lin_Used;
-
     @BindView(R.id.lin_refund)
     LinearLayout lin_refund;
 
@@ -84,7 +83,6 @@ public class fragMe extends BaseFrag {
     TextView text_money;
 
 
-
     @BindView(R.id.lin_pingjia)
     LinearLayout lin_pingjia;
 
@@ -101,6 +99,9 @@ public class fragMe extends BaseFrag {
     private Bean_acc.DataBean data;
 
 
+    @BindView(R.id.lin_shar)
+    LinearLayout lin_shar;
+
     @Override
     protected int getLayoutId() {
         return R.layout.frag_me;
@@ -115,9 +116,7 @@ public class fragMe extends BaseFrag {
     protected void initData() {
 
 //      Glide.with(this).load(MyApp.url_gif).into(img_head);
-
-        Glide.with(getActivity()).asGif().load(MyApp.url_gif).into(img_head);
-
+//      Glide.with(getActivity()).asGif().load(MyApp.url_gif).into(img_head);
         HttpUtil.addMapparams();
         HttpUtil.params.put("userId", MyApp.user);
         HttpUtil.Post_request("account/getByUser", HttpUtil.params);
@@ -143,9 +142,6 @@ public class fragMe extends BaseFrag {
 //    LinearLayout lin_refund;
 
 
-
-
-
     @OnClick({
             R.id.lin_behalf,
             R.id.lin_not_used,
@@ -159,7 +155,9 @@ public class fragMe extends BaseFrag {
             R.id.lin_Daren,
             R.id.lin_Profit,
             R.id.text_money,
-            R.id.lin_pingjia
+            R.id.lin_pingjia,
+            R.id.img_head,
+            R.id.lin_shar
     })
     public void OnClick(View view) {
 
@@ -201,7 +199,6 @@ public class fragMe extends BaseFrag {
                 break;
 //                钱包
             case R.id.lin_wallet:
-
                 Intent intent1 = new Intent(getActivity(), ActWallet.class);
 
                 intent1.putExtra("text_money", text_money.getText().toString());
@@ -227,52 +224,65 @@ public class fragMe extends BaseFrag {
             case R.id.lin_Profit:
                 startActivity(ActProfit.class);
                 break;
-
             case R.id.lin_pingjia:
-
                 intent = new Intent(getActivity(), ActMyOrder.class);
                 intent.putExtra("type", 3);
                 startActivity(intent);
-
+                break;
+            case R.id.img_head:
+                startActivity(ActPerinform.class);
+                break;
+            case R.id.lin_shar:
+                startActivity(ActPerinform.class);
                 break;
         }
     }
+
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        String name = (String) MyApp.getSharedPreference(getActivity(), "nickName", "");
+        String xinBie = (String) MyApp.getSharedPreference(getActivity(), "gender", "");
+        String avatarUrl = (String) MyApp.getSharedPreference(getActivity(), "avatarUrl", "");
+        Glide.with(this).load(avatarUrl).into(img_head);
+        text_name.setText(name);
+        Log.i("nickName", name + "----" + xinBie+"---"+avatarUrl);
+    }
+
+
+    private Bean_shop_center.DataBean databus;
+
 
     @Override
     public void StringResulit(String key, String value) {
         try {
             if (key.equals("account/getByUser")) {
-//            private Bean_acc bean_acc;
-//            private boolean success;
-//            private int code;
-//            private String msg;
-//            private Bean_acc.DataBean data;
                 bean_acc = MyApp.gson.fromJson(value, Bean_acc.class);
                 data = bean_acc.getData();
-
-                String money = Tools.chenfa(data.getUserBalance())+"";
-
+                String money = Tools.chenfa(data.getUserBalance()) + "";
                 text_money.setText(money);
-
             }
-        } catch (Exception e) {
+        } catch (Exception e){
 
         }
-
-
         if (key.equals("frontShop/info")) {
-
-//            private Bean_shop_center bean_shop_center;
-//            private boolean success_center;
-//            private int code_center;
-//            private String msg_center;
-//            private Bean_shop_center.DataBean data_center;
             try {
                 bean_shop_center = MyApp.gson.fromJson(value, Bean_shop_center.class);
                 code_center = bean_shop_center.getCode();
+
+                databus = bean_shop_center.getData();
+
                 if (code_center == 200) {
                     //   商家已有 店铺
-                    startActivity(ActBusCenter.class);
+                    Intent intent = new Intent(getActivity(), ActBusCenter.class);
+                    intent.putExtra("shopName",databus.getShopName());
+                    intent.putExtra("shopLogoUrl",databus.getShopLogoUrl());
+                    intent.putExtra("shopTel",databus.getShopTel());
+                    intent.putExtra("ShopNature",databus.getShopNature());
+                    intent.putExtra("TypeId", databus.getTypeId());
+                    intent.putExtra("money",text_money.getText().toString());
+                    startActivity(intent);
                 }
                 //            去申请
                 else if (code_center == 10001) {
@@ -286,45 +296,11 @@ public class fragMe extends BaseFrag {
                     Toast.makeText(getActivity(), "商户申请失败，请重新申请！", Toast.LENGTH_SHORT).show();
                     startActivity(ActBusApp.class);
                 }
-
-
             } catch (Exception e) {
 
-
             }
-
-
-//到商家
-//            startActivity(ActBusCenter.class);
+//                  到商家
+//                  startActivity(ActBusCenter.class);
         }
     }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

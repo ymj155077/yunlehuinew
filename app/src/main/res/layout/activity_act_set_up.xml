@@ -1,341 +1,300 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
 
-    android:background="@color/all_background"
-    android:orientation="vertical"
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/all_background"
+    android:orientation="vertical"
     tools:context="com.example.YunleHui.ui.act.actme.ActPerinform">
 
 
-    <include layout="@layout/toolbar_push_off"/>
-
-
-<LinearLayout
-    android:layout_marginTop="@dimen/dp_10"
-    android:background="@color/Write"
-    android:orientation="vertical"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content">
-
-    <LinearLayout
-        android:gravity="center_vertical"
-
-        android:orientation="horizontal"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
-
-        <TextView
-
-            android:layout_marginStart="@dimen/dp_12"
-            android:layout_marginBottom="@dimen/dp_20"
-            android:layout_marginTop="@dimen/dp_20"
-            android:textColor="@color/black33"
-            android:textSize="@dimen/sp_17"
-            android:text="头像"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="@dimen/dp_12" />
-
-
-
-        <View
-            android:layout_weight="1"
-            android:layout_width="0dp"
-            android:layout_height="1dp"/>
-
-
-
-        <ImageView
-            android:layout_marginEnd="@dimen/dp_9"
-            android:scaleType="fitXY"
-            android:src="@drawable/timg"
-            android:layout_width="@dimen/dp_36"
-            android:layout_height="@dimen/dp_36"
-            android:layout_marginRight="@dimen/dp_9" />
-
-        <ImageView
-            android:layout_width="@dimen/dp_8"
-            android:layout_height="@dimen/dp_16"
-            android:layout_marginEnd="@dimen/dp_12"
-            android:layout_marginRight="@dimen/dp_12"
-            android:src="@drawable/youjian" />
-
-
-    </LinearLayout>
-
-    <View
-        android:layout_marginEnd="@dimen/dp_12"
-        android:layout_marginStart="@dimen/dp_12"
-        android:background="@color/back_ground"
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/dp_0_5"/>
-
+    <include layout="@layout/toolbar_push_off" />
 
 
     <LinearLayout
-        android:gravity="center_vertical"
-
-        android:orientation="horizontal"
+        android:id="@+id/mFrameLayout"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dp_10"
+        android:background="@color/Write"
+        android:orientation="vertical">
 
-
-        <TextView
-
-            android:layout_marginStart="@dimen/dp_12"
-            android:layout_marginBottom="@dimen/dp_20"
-            android:layout_marginTop="@dimen/dp_20"
-            android:textColor="@color/black33"
-            android:textSize="@dimen/sp_17"
-            android:text="昵称"
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:id="@+id/lin_head"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="@dimen/dp_12" />
-
-
-
-        <View
-            android:layout_weight="1"
-            android:layout_width="0dp"
-            android:layout_height="1dp"/>
-
-
-
-        <TextView
-android:gravity="center_vertical"
-            android:textColor="@color/black33"
-            android:textSize="@dimen/sp_17"
-
-            android:text="皮皮虾"
-            android:layout_marginEnd="@dimen/dp_9"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_marginRight="@dimen/dp_9" />
-
-        <ImageView
-            android:layout_width="@dimen/dp_8"
-            android:layout_height="@dimen/dp_16"
-            android:layout_marginEnd="@dimen/dp_12"
-            android:layout_marginRight="@dimen/dp_12"
-            android:src="@drawable/youjian" />
-
-
-    </LinearLayout>
-
-    <View
-        android:layout_marginEnd="@dimen/dp_12"
-        android:layout_marginStart="@dimen/dp_12"
-        android:background="@color/back_ground"
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/dp_0_5"/>
-
-
-
-    <LinearLayout
-        android:gravity="center_vertical"
-
-        android:orientation="horizontal"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
-
-        <TextView
-
-            android:layout_marginStart="@dimen/dp_12"
-            android:layout_marginBottom="@dimen/dp_20"
-            android:layout_marginTop="@dimen/dp_20"
-            android:textColor="@color/black33"
-            android:textSize="@dimen/sp_17"
-            android:text="性别"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="@dimen/dp_12" />
-
-
-
-        <View
-            android:layout_weight="1"
-            android:layout_width="0dp"
-            android:layout_height="1dp"/>
-
-
-
-        <TextView
             android:gravity="center_vertical"
-            android:textColor="@color/black33"
-            android:textSize="@dimen/sp_17"
-            android:text="女"
-            android:layout_marginEnd="@dimen/dp_9"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_marginRight="@dimen/dp_9" />
-
-        <ImageView
-            android:layout_width="@dimen/dp_8"
-            android:layout_height="@dimen/dp_16"
-            android:layout_marginEnd="@dimen/dp_12"
-            android:layout_marginRight="@dimen/dp_12"
-            android:src="@drawable/youjian" />
+            android:orientation="horizontal">
 
 
-    </LinearLayout>
+            <TextView
 
-    <View
-        android:layout_marginEnd="@dimen/dp_12"
-        android:layout_marginStart="@dimen/dp_12"
-        android:background="@color/back_ground"
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/dp_0_5"/>
-
-
-    <LinearLayout
-        android:gravity="center_vertical"
-
-        android:orientation="horizontal"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/dp_12"
+                android:layout_marginLeft="@dimen/dp_12"
+                android:layout_marginTop="@dimen/dp_20"
+                android:layout_marginBottom="@dimen/dp_20"
+                android:text="头像"
+                android:textColor="@color/black33"
+                android:textSize="@dimen/sp_17" />
 
 
-        <TextView
-
-            android:layout_marginStart="@dimen/dp_12"
-            android:layout_marginBottom="@dimen/dp_20"
-            android:layout_marginTop="@dimen/dp_20"
-            android:textColor="@color/black33"
-            android:textSize="@dimen/sp_17"
-            android:text="生日"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="@dimen/dp_12" />
+            <View
+                android:layout_width="0dp"
+                android:layout_height="1dp"
+                android:layout_weight="1" />
 
 
+            <ImageView
+                android:id="@+id/img_head"
+                android:layout_width="@dimen/dp_36"
+                android:layout_height="@dimen/dp_36"
+                android:layout_marginEnd="@dimen/dp_9"
+                android:layout_marginRight="@dimen/dp_9"
+                android:scaleType="fitXY"
+                android:src="@drawable/timg" />
+
+            <ImageView
+                android:layout_width="@dimen/dp_8"
+                android:layout_height="@dimen/dp_16"
+                android:layout_marginEnd="@dimen/dp_12"
+                android:layout_marginRight="@dimen/dp_12"
+                android:src="@drawable/youjian" />
+
+
+        </LinearLayout>
 
         <View
-            android:layout_weight="1"
-            android:layout_width="0dp"
-            android:layout_height="1dp"/>
-
-
-
-        <TextView
-            android:gravity="center_vertical"
-            android:textColor="@color/black33"
-            android:textSize="@dimen/sp_17"
-
-            android:text="-------------"
-            android:layout_marginEnd="@dimen/dp_9"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_marginRight="@dimen/dp_9" />
-
-        <ImageView
-            android:layout_width="@dimen/dp_8"
-            android:layout_height="@dimen/dp_16"
-            android:layout_marginEnd="@dimen/dp_12"
-            android:layout_marginRight="@dimen/dp_12"
-            android:src="@drawable/youjian" />
-
-
-    </LinearLayout>
-
-    <View
-        android:layout_marginEnd="@dimen/dp_12"
-        android:layout_marginStart="@dimen/dp_12"
-        android:background="@color/back_ground"
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/dp_0_5"/>
-
-
-
-    <LinearLayout
-        android:gravity="center_vertical"
-
-        android:orientation="horizontal"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
-
-        <TextView
-
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_0_5"
             android:layout_marginStart="@dimen/dp_12"
-            android:layout_marginBottom="@dimen/dp_20"
-            android:layout_marginTop="@dimen/dp_20"
-            android:textColor="@color/black33"
-            android:textSize="@dimen/sp_17"
-            android:text="电话"
-            android:layout_width="wrap_content"
+            android:layout_marginEnd="@dimen/dp_12"
+            android:background="@color/back_ground" />
+
+
+        <LinearLayout
+            android:id="@+id/lin_ni"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="@dimen/dp_12" />
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
 
 
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/dp_12"
+                android:layout_marginLeft="@dimen/dp_12"
+                android:layout_marginTop="@dimen/dp_20"
+                android:layout_marginBottom="@dimen/dp_20"
+                android:text="昵称"
+                android:textColor="@color/black33"
+                android:textSize="@dimen/sp_17" />
+
+
+            <View
+                android:layout_width="0dp"
+                android:layout_height="1dp"
+                android:layout_weight="1" />
+
+
+            <TextView
+                android:id="@+id/text_name"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginEnd="@dimen/dp_9"
+                android:layout_marginRight="@dimen/dp_9"
+                android:gravity="center_vertical"
+                android:text="..."
+                android:textColor="@color/black33"
+                android:textSize="@dimen/sp_17" />
+
+            <ImageView
+                android:layout_width="@dimen/dp_8"
+                android:layout_height="@dimen/dp_16"
+                android:layout_marginEnd="@dimen/dp_12"
+                android:layout_marginRight="@dimen/dp_12"
+                android:src="@drawable/youjian" />
+
+
+        </LinearLayout>
 
         <View
-            android:layout_weight="1"
-            android:layout_width="0dp"
-            android:layout_height="1dp"/>
-
-
-
-        <TextView
-            android:gravity="center_vertical"
-            android:textColor="@color/black33"
-            android:textSize="@dimen/sp_17"
-            android:text="*********"
-            android:layout_marginEnd="@dimen/dp_9"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_marginRight="@dimen/dp_9" />
-
-        <ImageView
-            android:layout_width="@dimen/dp_8"
-            android:layout_height="@dimen/dp_16"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_0_5"
+            android:layout_marginStart="@dimen/dp_12"
             android:layout_marginEnd="@dimen/dp_12"
-            android:layout_marginRight="@dimen/dp_12"
-            android:src="@drawable/youjian" />
+            android:background="@color/back_ground" />
+
+
+        <LinearLayout
+            android:id="@+id/lin_Gender"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/dp_12"
+                android:layout_marginLeft="@dimen/dp_12"
+                android:layout_marginTop="@dimen/dp_20"
+                android:layout_marginBottom="@dimen/dp_20"
+                android:text="性别"
+                android:textColor="@color/black33"
+                android:textSize="@dimen/sp_17" />
+
+
+            <View
+                android:layout_width="0dp"
+                android:layout_height="1dp"
+                android:layout_weight="1" />
+
+
+            <TextView
+                android:id="@+id/text_sex"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginEnd="@dimen/dp_9"
+                android:layout_marginRight="@dimen/dp_9"
+                android:gravity="center_vertical"
+                android:text="男"
+                android:textColor="@color/black33"
+                android:textSize="@dimen/sp_17" />
+
+            <ImageView
+                android:layout_width="@dimen/dp_8"
+                android:layout_height="@dimen/dp_16"
+                android:layout_marginEnd="@dimen/dp_12"
+                android:layout_marginRight="@dimen/dp_12"
+                android:src="@drawable/youjian" />
+
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_0_5"
+            android:layout_marginStart="@dimen/dp_12"
+            android:layout_marginEnd="@dimen/dp_12"
+            android:background="@color/back_ground" />
+
+        <LinearLayout
+            android:visibility="gone"
+            android:id="@+id/lin_Birthday"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+
+            <TextView
+
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/dp_12"
+                android:layout_marginLeft="@dimen/dp_12"
+                android:layout_marginTop="@dimen/dp_20"
+                android:layout_marginBottom="@dimen/dp_20"
+                android:text="生日"
+                android:textColor="@color/black33"
+                android:textSize="@dimen/sp_17" />
+
+
+            <View
+                android:layout_width="0dp"
+                android:layout_height="1dp"
+                android:layout_weight="1" />
+
+
+            <TextView
+                android:id="@+id/text_Birthday"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginEnd="@dimen/dp_9"
+                android:layout_marginRight="@dimen/dp_9"
+                android:gravity="center_vertical"
+                android:text="00.00.00"
+                android:textColor="@color/black33"
+                android:textSize="@dimen/sp_17" />
+
+            <ImageView
+                android:layout_width="@dimen/dp_8"
+                android:layout_height="@dimen/dp_16"
+                android:layout_marginEnd="@dimen/dp_12"
+                android:layout_marginRight="@dimen/dp_12"
+                android:src="@drawable/youjian" />
+
+
+        </LinearLayout>
+
+        <View
+            android:visibility="gone"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_0_5"
+            android:layout_marginStart="@dimen/dp_12"
+            android:layout_marginEnd="@dimen/dp_12"
+            android:background="@color/back_ground" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/dp_12"
+                android:layout_marginLeft="@dimen/dp_12"
+                android:layout_marginTop="@dimen/dp_20"
+                android:layout_marginBottom="@dimen/dp_20"
+                android:text="电话"
+                android:textColor="@color/black33"
+                android:textSize="@dimen/sp_17" />
+
+
+            <View
+                android:layout_width="0dp"
+                android:layout_height="1dp"
+                android:layout_weight="1" />
+
+
+            <TextView
+                android:id="@+id/text_phone"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginEnd="@dimen/dp_9"
+                android:layout_marginRight="@dimen/dp_9"
+                android:gravity="center_vertical"
+                android:text="*********"
+                android:textColor="@color/black33"
+                android:textSize="@dimen/sp_17" />
+
+            <ImageView
+                android:layout_width="@dimen/dp_8"
+                android:layout_height="@dimen/dp_16"
+                android:layout_marginEnd="@dimen/dp_12"
+                android:layout_marginRight="@dimen/dp_12"
+                android:src="@drawable/youjian" />
+
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_0_5"
+            android:layout_marginStart="@dimen/dp_12"
+            android:layout_marginEnd="@dimen/dp_12"
+            android:background="@color/back_ground" />
 
 
     </LinearLayout>
-
-    <View
-        android:layout_marginEnd="@dimen/dp_12"
-        android:layout_marginStart="@dimen/dp_12"
-        android:background="@color/back_ground"
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/dp_0_5"/>
-
-
-
-
-
-
-
-
-
-
-
-
-
-</LinearLayout>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 </LinearLayout>

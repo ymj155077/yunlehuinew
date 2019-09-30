@@ -4,12 +4,15 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.Paint;
+import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -27,6 +30,7 @@ import com.example.YunleHui.R;
 import com.example.YunleHui.adpter.MyRecycleViewAdapter;
 import com.example.YunleHui.appManager.MyApp;
 import com.example.YunleHui.base.BaseAct;
+import com.example.YunleHui.ui.act.actme.ActLogin;
 import com.example.YunleHui.utils.HttpUtil;
 import com.example.YunleHui.utils.Tools;
 import com.example.YunleHui.view.ListViewForScrollView;
@@ -46,12 +50,14 @@ import java.util.Map;
 import butterknife.BindView;
 import butterknife.OnClick;
 
+import static com.example.YunleHui.R.drawable.baqsneh;
 import static com.example.YunleHui.utils.Tools.mBottomSheetPop;
 
 
 public class ActComdetails extends BaseAct {
 
-
+//    套餐数量
+    private int NumPs;
 //    @BindView(R.id.img_share)
 //    ImageView img_share;
 
@@ -82,6 +88,12 @@ public class ActComdetails extends BaseAct {
 
     @BindView(R.id.lin_shopping)
     LinearLayout lin_shopping;
+
+
+
+    @BindView(R.id.text_buy)
+    TextView text_buy;
+
 
     private int shop_id = 0;
 
@@ -160,7 +172,7 @@ public class ActComdetails extends BaseAct {
 
 
     @BindView(R.id.toolbar_all)
-Toolbar toolbar_all;
+    Toolbar toolbar_all;
 
     @Override
     public void startActivity(Class<?> clz) {
@@ -199,7 +211,7 @@ Toolbar toolbar_all;
                 myListAdpter.notifyDataSetChanged();
                 goodsSetId = goodsSetMealList.get(i).getId() + "";
                 text_Current_price.setText(Tools.chenfa(goodsSetMealList.get(i).getPrice()) + "元");
-//原价
+//              原价
                 text_peice.setText("原价：" + Tools.chenfa(goodsSetMealList.get(i).getOriginalPrice()) + "元");
                 text_Commiss.setText("佣金" + Tools.chenfa(goodsSetMealList.get(i).getCommission()) + "元");
                 text_introduce.setText(goodsSetMealList.get(i).getName());
@@ -207,6 +219,23 @@ Toolbar toolbar_all;
                 url = goodsSetMealList.get(i).getLogoUrl();
                 content = goodsSetMealList.get(i).getName();
                 price_tao = goodsSetMealList.get(i).getPrice();
+
+
+                if (goodsSetMealList.get(i).getStock()==0){
+                    Drawable drawable = ContextCompat.getDrawable(ActComdetails.this, R.drawable.baqsneh);
+                    lin_shopping.setBackground(drawable);//使用固定大小的drawable
+                    lin_shopping.setClickable(false);
+                    text_buy.setText("暂无库存");
+                }else {
+                    lin_shopping.setClickable(true);
+                    Drawable drawable = ContextCompat.getDrawable(ActComdetails.this, R.drawable.baqsne);
+                    lin_shopping.setBackground(drawable);//使用固定大小的drawable
+                    text_buy.setText("立即购买");
+                }
+
+
+
+
             }
         });
 //        获取评论的列表
@@ -241,7 +270,6 @@ Toolbar toolbar_all;
         list_evaluate.setLayoutManager(layoutManager);
         MyRecycleViewAdapter myRecycleViewAdapter = new MyRecycleViewAdapter(datas, this);
         list_evaluate.setAdapter(myRecycleViewAdapter);
-
         list_evaluate.setNestedScrollingEnabled(false);
 
     }
@@ -264,14 +292,19 @@ Toolbar toolbar_all;
     public void OnClick(View view) {
         switch (view.getId()) {
             case R.id.lin_shopping:
-                Intent intent = new Intent(this, ActDeterOrder.class);
-                intent.putExtra("goodsSetId", goodsSetId);
-                intent.putExtra("goodsId", goodsId);
-                intent.putExtra("name", name);
-                intent.putExtra("url", url);
-                intent.putExtra("content", content);
-                intent.putExtra("price_tao", price_tao);
-                startActivity(intent);
+
+                if (Tools.IsLogin(this) == 0) {
+                    startActivity(new Intent(this, ActLogin.class));
+                } else {
+                    Intent intent = new Intent(this, ActDeterOrder.class);
+                    intent.putExtra("goodsSetId", goodsSetId);
+                    intent.putExtra("goodsId", goodsId);
+                    intent.putExtra("name", name);
+                    intent.putExtra("url", url);
+                    intent.putExtra("content", content);
+                    intent.putExtra("price_tao", price_tao);
+                    startActivity(intent);
+                }
                 break;
             case R.id.lin_Set_meal:
                 if (no_list_tao.getVisibility() == View.VISIBLE) {
@@ -300,16 +333,8 @@ Toolbar toolbar_all;
 
     //    分享图片
     private void shareImage() {
-        View view = Tools.setRebuildPop(this, R.layout.layout_pop_vegetables, R.layout.activity_act_comdetails);
-        LinearLayout lin_pop_type = (LinearLayout) view.findViewById(R.id.lin_pop_type);
-        lin_pop_type.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                mBottomSheetPop.dismiss();
-            }
-        });
-
-
+        HttpUtil.getAsynHttp("sell/getSellGoods?sellGoodsId=" + shop_id);
+        getdata("sell/getSellGoods");
     }
 
     private MyListAdpteraa myListAdpteraa;
@@ -346,6 +371,13 @@ Toolbar toolbar_all;
                     myListAdpter.setCurrentItem(0);
                     myListAdpter.setClick(true);
                     myListAdpter.notifyDataSetChanged();
+//库存
+                    if (goodsSetMealList.get(0).getStock()==0){
+                        Drawable drawable = ContextCompat.getDrawable(this, R.drawable.baqsneh);
+                        lin_shopping.setBackground(drawable);//使用固定大小的drawable
+                        lin_shopping.setClickable(false);
+                        text_buy.setText("暂无库存");
+                    }
                 }
                 goodsId = data_detail.getId() + "";
                 name = data_detail.getName();
@@ -353,7 +385,6 @@ Toolbar toolbar_all;
                 if (shopList.size() > 0) {
                     myListAdpteraa = new MyListAdpteraa(shopList, this);
                     no_list_shop.setAdapter(myListAdpteraa);
-
                 }
                 text_Current_price.setText(Tools.chenfa(goodsSetMealList.get(0).getPrice()) + "元");
                 text_peice.setText("原价：" + Tools.chenfa(goodsSetMealList.get(0).getOriginalPrice()) + "元");
@@ -373,6 +404,19 @@ Toolbar toolbar_all;
 
         }
 
+
+        if (key.equals("sell/getSellGoods")) {
+
+            View view = Tools.setRebuildPop(this, R.layout.layout_pop_vegetables, R.layout.activity_act_comdetails);
+            LinearLayout lin_pop_type = (LinearLayout) view.findViewById(R.id.lin_pop_type);
+            lin_pop_type.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    mBottomSheetPop.dismiss();
+                }
+            });
+
+        }
 
     }
 
@@ -421,21 +465,15 @@ Toolbar toolbar_all;
 
         @Override
         public View getView(final int position, @Nullable View convertView, @NonNull ViewGroup parent) {
-
             final MyViewHolder myViewHolder = new MyViewHolder();
-
             convertView = inflater.inflate(R.layout.item_detail, parent, false);
-
             myViewHolder.lin_tao = (LinearLayout) convertView.findViewById(R.id.lin_tao);
             myViewHolder.img_head = (ImageView) convertView.findViewById(R.id.img_head);
             myViewHolder.text_address = (TextView) convertView.findViewById(R.id.text_address);
-
-
             Glide.with(ActComdetails.this).load(datas.get(position).getLogoUrl()).into(myViewHolder.img_head);
-
             myViewHolder.text_address.setText(datas.get(position).getName());
-
-
+//套餐量
+            NumPs =  datas.get(position).getStock();
             if (mCurrentItem == position & isClick) {
                 myViewHolder.lin_tao.setBackgroundColor(Color.parseColor("#E5E5E5"));
             } else {
@@ -443,18 +481,14 @@ Toolbar toolbar_all;
             }
             return convertView;
         }
-
-
         public class MyViewHolder {
             private LinearLayout lin_tao;
             private ImageView img_head;
             private TextView text_address;
         }
-
         public void setCurrentItem(int currentItem) {
             this.mCurrentItem = currentItem;
         }
-
         public void setClick(boolean click) {
             this.isClick = click;
         }
@@ -474,9 +508,7 @@ Toolbar toolbar_all;
             this.datas.clear();
             this.datas.addAll(datas);
             this.inflater = LayoutInflater.from(context);
-
             this.context = context;
-
         }
 
         @Override
@@ -501,16 +533,15 @@ Toolbar toolbar_all;
 
             convertView = inflater.inflate(R.layout.item_shop, parent, false);
 
-
             myViewHolder.text_address = (TextView) convertView.findViewById(R.id.text_address);
 
             myViewHolder.img_head = (RoundedImageView) convertView.findViewById(R.id.img_head);
 
             myViewHolder.lin_call = (LinearLayout) convertView.findViewById(R.id.lin_call);
 
+            myViewHolder.lin_call.setVisibility(View.VISIBLE);
 
             Glide.with(context).load(datas.get(position).getLogoUrl()).into(myViewHolder.img_head);
-
 
             myViewHolder.text_address.setText(datas.get(position).getName() + "  " + datas.get(position).getAddress());
 

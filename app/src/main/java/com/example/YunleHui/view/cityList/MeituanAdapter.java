@@ -26,6 +26,6 @@ public class MeituanAdapter extends CommonAdapter<Bean_cityList.DataBean> {
 
     @Override
     public void convert(ViewHolder holder, String name, int Id) {
-        holder.setText(R.id.tvCity, name);
+        holder.setText(R.id.tvCity, name.replace("c",""));
     }
 }

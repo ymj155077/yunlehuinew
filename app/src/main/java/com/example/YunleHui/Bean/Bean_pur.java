@@ -1,8 +1,9 @@
 package com.example.YunleHui.Bean;
 
+import java.io.Serializable;
 import java.util.List;
 
-public class Bean_pur {
+public class Bean_pur implements Serializable {
 
 
     /**
@@ -49,7 +50,7 @@ public class Bean_pur {
         this.data = data;
     }
 
-    public static class DataBean {
+    public static class DataBean implements Serializable{
         /**
          * id : 5
          * orderNum : 904310114180005
@@ -550,7 +551,7 @@ public class Bean_pur {
             }
         }
 
-        public static class OrderDetailListBean {
+        public static class OrderDetailListBean implements Serializable{
             /**
              * id : 9
              * orderId : 5

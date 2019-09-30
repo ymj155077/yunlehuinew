@@ -296,23 +296,23 @@ public class BeanLogin {
 
                 private int id;
                 private int userId;
-                private Object openId;
-                private Object unionId;
+                private String openId;
+                private String unionId;
                 private String phone;
                 private int userChannel;
-                private Object nickName;
-                private Object realName;
+                private String nickName;
+                private String realName;
                 private int gender;
-                private Object language;
+                private String language;
                 private double longitude;
                 private double latitude;
-                private Object address;
-                private Object city;
-                private Object province;
-                private Object country;
-                private Object avatarUrl;
+                private String address;
+                private String city;
+                private String province;
+                private String country;
+                private String avatarUrl;
                 private String createTime;
-                private Object remark;
+                private String remark;
 
                 public int getId() {
                     return id;
@@ -330,19 +330,19 @@ public class BeanLogin {
                     this.userId = userId;
                 }
 
-                public Object getOpenId() {
+                public String getOpenId() {
                     return openId;
                 }
 
-                public void setOpenId(Object openId) {
+                public void setOpenId(String openId) {
                     this.openId = openId;
                 }
 
-                public Object getUnionId() {
+                public String getUnionId() {
                     return unionId;
                 }
 
-                public void setUnionId(Object unionId) {
+                public void setUnionId(String unionId) {
                     this.unionId = unionId;
                 }
 
@@ -362,19 +362,19 @@ public class BeanLogin {
                     this.userChannel = userChannel;
                 }
 
-                public Object getNickName() {
+                public String getNickName() {
                     return nickName;
                 }
 
-                public void setNickName(Object nickName) {
+                public void setNickName(String nickName) {
                     this.nickName = nickName;
                 }
 
-                public Object getRealName() {
+                public String getRealName() {
                     return realName;
                 }
 
-                public void setRealName(Object realName) {
+                public void setRealName(String realName) {
                     this.realName = realName;
                 }
 
@@ -386,11 +386,11 @@ public class BeanLogin {
                     this.gender = gender;
                 }
 
-                public Object getLanguage() {
+                public String getLanguage() {
                     return language;
                 }
 
-                public void setLanguage(Object language) {
+                public void setLanguage(String language) {
                     this.language = language;
                 }
 
@@ -410,43 +410,43 @@ public class BeanLogin {
                     this.latitude = latitude;
                 }
 
-                public Object getAddress() {
+                public String getAddress() {
                     return address;
                 }
 
-                public void setAddress(Object address) {
+                public void setAddress(String address) {
                     this.address = address;
                 }
 
-                public Object getCity() {
+                public String getCity() {
                     return city;
                 }
 
-                public void setCity(Object city) {
+                public void setCity(String city) {
                     this.city = city;
                 }
 
-                public Object getProvince() {
+                public String getProvince() {
                     return province;
                 }
 
-                public void setProvince(Object province) {
+                public void setProvince(String province) {
                     this.province = province;
                 }
 
-                public Object getCountry() {
+                public String getCountry() {
                     return country;
                 }
 
-                public void setCountry(Object country) {
+                public void setCountry(String country) {
                     this.country = country;
                 }
 
-                public Object getAvatarUrl() {
+                public String getAvatarUrl() {
                     return avatarUrl;
                 }
 
-                public void setAvatarUrl(Object avatarUrl) {
+                public void setAvatarUrl(String avatarUrl) {
                     this.avatarUrl = avatarUrl;
                 }
 
@@ -458,11 +458,11 @@ public class BeanLogin {
                     this.createTime = createTime;
                 }
 
-                public Object getRemark() {
+                public String getRemark() {
                     return remark;
                 }
 
-                public void setRemark(Object remark) {
+                public void setRemark(String remark) {
                     this.remark = remark;
                 }
             }

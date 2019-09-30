@@ -36,7 +36,7 @@ public class MyApp extends Application {
 
 
     public static int city_Id = 0;
-    public static String cityName;
+
 
 
 
@@ -97,6 +97,31 @@ public class MyApp extends Application {
 
     public static Gson gson;
 
+
+
+
+
+//    首页经纬度城市
+
+    public static String CityName ="";
+    //获取纬度
+    public static String Latitude ="";
+    //获取经度
+    public static String Longitude ="";
+
+
+
+//    从哪儿支付过的
+    public static int typeNoAll = 0;
+
+//    社区状态
+    public static int orderNatureAll = 0;
+
+
+
+
+
+
     @Override
     public void onCreate() {
         super.onCreate();
@@ -138,6 +163,29 @@ public class MyApp extends Application {
         phone = (String) MyApp.getSharedPreference(context, "phone", "");
 
         headImg = (String) MyApp.getSharedPreference(context, "headImg", "");
+
+
+
+
+
+
+
+        CityName = (String) MyApp.getSharedPreference(context, "CityName", "重庆市");
+        //获取纬度
+        Latitude = (String) MyApp.getSharedPreference(context, "Latitude", "");
+        //获取经度
+        Longitude = (String) MyApp.getSharedPreference(context, "Longitude", "");
+//城市id
+        city_Id = (int) MyApp.getSharedPreference(context, "city_Id", 500000);
+
+
+
+
+
+
+
+
+
 
 
 //        ZXingLibrary.initDisplayOpinion(this);
@@ -280,7 +328,7 @@ public class MyApp extends Application {
         if (object instanceof String) {
             editor.putString(key, (String) object);
         } else if (object instanceof Integer) {
-            editor.putInt(key, (Integer) object);
+            editor.putInt(key, (int) object);
         } else if (object instanceof Boolean) {
             editor.putBoolean(key, (Boolean) object);
         } else if (object instanceof Float) {
@@ -298,7 +346,7 @@ public class MyApp extends Application {
         if (defaultObject instanceof String) {
             return sp.getString(key, (String) defaultObject);
         } else if (defaultObject instanceof Integer) {
-            return sp.getInt(key, (Integer) defaultObject);
+            return sp.getInt(key, (int) defaultObject);
         } else if (defaultObject instanceof Boolean) {
             return sp.getBoolean(key, (Boolean) defaultObject);
         } else if (defaultObject instanceof Float) {

@@ -11,7 +11,7 @@
 	<dimen name="text_11">24.4444sp</dimen>
 	<dimen name="text_12">26.6667sp</dimen>
 	<dimen name="text_13">28.8889sp</dimen>
-	<dimen name="text_14">31.1111sp</dimen>
+	<dimen name="text_14">31.1111sp</dimen>    <dimen name="dp_447">447dp</dimen>
 	<dimen name="text_15">33.3333sp</dimen>
 	<dimen name="text_16">35.5556sp</dimen>
 	<dimen name="text_28">62.2222sp</dimen>

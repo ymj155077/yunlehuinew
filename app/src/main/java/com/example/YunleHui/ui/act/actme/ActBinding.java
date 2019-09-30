@@ -8,7 +8,9 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.example.YunleHui.R;
+import com.example.YunleHui.appManager.MyApp;
 import com.example.YunleHui.base.BaseAct;
+import com.example.YunleHui.utils.Tools;
 
 import butterknife.BindView;
 import butterknife.OnClick;
@@ -43,13 +45,18 @@ public class ActBinding extends BaseAct {
             TextView text_center = (TextView) toolbar_all.findViewById(R.id.toolbar_center);
             text_center.setText("绑定手机");
         }
-
     }
+
+    @BindView(R.id.text_phone)
+    TextView text_phone;
 
     @Override
     public void initData() {
 
         actBinding = this;
+
+        String phone = (String) MyApp.getSharedPreference(this, "phone", "");
+        text_phone.setText(Tools.getStarPhone(phone));
 
     }
 

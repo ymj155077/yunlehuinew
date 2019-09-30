@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
 
-    android:id="@+id/lin_safety"
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/lin_safety"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/Write"
@@ -31,10 +31,10 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="@dimen/dp_20"
-            android:layout_marginLeft="@dimen/dp_12"
             android:layout_marginStart="@dimen/dp_12"
+            android:layout_marginLeft="@dimen/dp_12"
             android:layout_marginTop="@dimen/dp_20"
+            android:layout_marginBottom="@dimen/dp_20"
             android:text="已绑定手机"
             android:textColor="@color/black33"
             android:textSize="@dimen/sp_17" />
@@ -46,6 +46,7 @@
 
 
         <TextView
+            android:id="@+id/text_phone"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="@dimen/dp_7"
@@ -68,8 +69,8 @@
     <View
         android:layout_width="match_parent"
         android:layout_height="@dimen/dp_0_5"
-        android:layout_marginEnd="@dimen/dp_12"
         android:layout_marginStart="@dimen/dp_12"
+        android:layout_marginEnd="@dimen/dp_12"
         android:background="@color/back_ground" />
 
 
@@ -85,10 +86,10 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="@dimen/dp_20"
-            android:layout_marginLeft="@dimen/dp_12"
             android:layout_marginStart="@dimen/dp_12"
+            android:layout_marginLeft="@dimen/dp_12"
             android:layout_marginTop="@dimen/dp_20"
+            android:layout_marginBottom="@dimen/dp_20"
             android:text="设置支付密码"
             android:textColor="@color/black33"
             android:textSize="@dimen/sp_17" />
@@ -112,14 +113,14 @@
     <View
         android:layout_width="match_parent"
         android:layout_height="@dimen/dp_0_5"
-        android:layout_marginEnd="@dimen/dp_12"
         android:layout_marginStart="@dimen/dp_12"
+        android:layout_marginEnd="@dimen/dp_12"
         android:background="@color/back_ground" />
 
 
     <LinearLayout
 
-android:id="@+id/lin_ret"
+        android:id="@+id/lin_ret"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center_vertical"
@@ -129,10 +130,10 @@ android:id="@+id/lin_ret"
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="@dimen/dp_20"
-            android:layout_marginLeft="@dimen/dp_12"
             android:layout_marginStart="@dimen/dp_12"
+            android:layout_marginLeft="@dimen/dp_12"
             android:layout_marginTop="@dimen/dp_20"
+            android:layout_marginBottom="@dimen/dp_20"
             android:text="支付密码找回"
             android:textColor="@color/black33"
             android:textSize="@dimen/sp_17" />
@@ -156,8 +157,8 @@ android:id="@+id/lin_ret"
     <View
         android:layout_width="match_parent"
         android:layout_height="@dimen/dp_0_5"
-        android:layout_marginEnd="@dimen/dp_12"
         android:layout_marginStart="@dimen/dp_12"
+        android:layout_marginEnd="@dimen/dp_12"
         android:background="@color/back_ground" />
 
 

@@ -10,6 +10,10 @@ import android.view.KeyEvent;
 import android.view.View;
 import android.widget.Toast;
 
+import com.amap.api.location.AMapLocation;
+import com.amap.api.location.AMapLocationClient;
+import com.amap.api.location.AMapLocationClientOption;
+import com.amap.api.location.AMapLocationListener;
 import com.example.YunleHui.base.BaseAct;
 import com.example.YunleHui.ui.frag.fragComPur;
 import com.example.YunleHui.ui.frag.fragExplosive;
@@ -20,9 +24,38 @@ import com.example.YunleHui.view.BottomBar;
 import com.tbruyelle.rxpermissions.Permission;
 import com.tbruyelle.rxpermissions.RxPermissions;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 import rx.functions.Action1;
 
 public class MainActivity extends BaseAct {
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     @Override
     public void startActivity(Class<?> clz) {
@@ -39,7 +72,6 @@ public class MainActivity extends BaseAct {
     @Override
     public void initData() {
         RxPermissions.getInstance(MainActivity.this)
-
                 .requestEach(Manifest.permission.ACCESS_COARSE_LOCATION,
                         Manifest.permission.ACCESS_FINE_LOCATION,
                         Manifest.permission.WRITE_EXTERNAL_STORAGE,
@@ -73,15 +105,11 @@ public class MainActivity extends BaseAct {
                             "社区购",
                             R.drawable.shequ,
                             R.drawable.avm
-                            )
-
-
+                    )
                     .addItem(fragMessage.class,
                             "消息",
                             R.drawable.item3_before,
                             R.drawable.item3_after)
-
-
                     .addItem(fragMe.class,
                             "我的",
                             R.drawable.item4_after,
@@ -89,22 +117,7 @@ public class MainActivity extends BaseAct {
                     .build();
         }
     }
-
-
-
-    String[] permissions = new String[]{Manifest.permission.ACCESS_COARSE_LOCATION,
-            Manifest.permission.ACCESS_FINE_LOCATION,
-            Manifest.permission.WRITE_EXTERNAL_STORAGE,
-            Manifest.permission.READ_EXTERNAL_STORAGE,
-            Manifest.permission.READ_PHONE_STATE,
-            Manifest.permission.WRITE_SETTINGS,};
-
     public static BottomBar bottomBar;
-
-
-
-
-
     @Override
     protected void findViews() {
 

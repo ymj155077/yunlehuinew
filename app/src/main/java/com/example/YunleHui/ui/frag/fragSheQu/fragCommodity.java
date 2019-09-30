@@ -42,7 +42,7 @@ public class fragCommodity extends BaseFrag {
 
 
     @BindView(R.id.lin_ok)
-LinearLayout lin_ok;
+    LinearLayout lin_ok;
 
     @BindView(R.id.lin_mall)
     LinearLayout lin_mall;
@@ -57,8 +57,6 @@ LinearLayout lin_ok;
 
     @BindView(R.id.text_Num)
     TextView text_Num;
-
-
 
 
     @Override
@@ -110,7 +108,7 @@ LinearLayout lin_ok;
     }
 
 
-    @OnClick({R.id.lin_boom_gou,R.id.lin_ok})
+    @OnClick({R.id.lin_boom_gou, R.id.lin_ok})
     public void OnClick(View view) {
         switch (view.getId()) {
             case R.id.lin_boom_gou:

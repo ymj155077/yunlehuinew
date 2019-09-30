@@ -7,7 +7,7 @@
 	<dimen name="status_bar_height">0.0000dp</dimen>
 	<dimen name="dp_0_6">2.1333dp</dimen>
 	<dimen name="ts_13">46.2222sp</dimen>
-	<dimen name="text_10">35.5556sp</dimen>
+	<dimen name="text_10">35.5556sp</dimen>    <dimen name="dp_447">447dp</dimen>
 	<dimen name="text_11">39.1111sp</dimen>
 	<dimen name="text_12">42.6667sp</dimen>
 	<dimen name="text_13">46.2222sp</dimen>

@@ -3,6 +3,7 @@
     android:clickable="false"
     android:background="@color/Write"
     android:orientation="vertical"
+    android:descendantFocusability="blocksDescendants"
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
@@ -14,6 +15,7 @@
 
 
     <LinearLayout
+        android:descendantFocusability="blocksDescendants"
         android:clickable="false"
         android:layout_marginBottom="@dimen/dp_10"
         android:layout_marginEnd="@dimen/dp_12"

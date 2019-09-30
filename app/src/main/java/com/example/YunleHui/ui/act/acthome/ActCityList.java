@@ -2,6 +2,7 @@ package com.example.YunleHui.ui.act.acthome;
 
 import android.content.Context;
 import android.content.Intent;
+import android.os.Bundle;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -36,18 +37,13 @@ import java.util.List;
 
 import butterknife.BindView;
 
-import static com.example.YunleHui.appManager.MyApp.cityName;
+import static com.example.YunleHui.appManager.MyApp.CityName;
 import static com.example.YunleHui.appManager.MyApp.city_Id;
 
 /**
- *
- *
  * 城市列表
- *
- * */
+ */
 public class ActCityList extends BaseAct {
-
-
 
 
     private Bean_cityList bean_cityList;
@@ -57,7 +53,6 @@ public class ActCityList extends BaseAct {
     private List<Bean_cityList.DataBean> data_cityList;
 
     private ArrayList<Bean_cityList.DataBean> data_cityALL = new ArrayList<>();
-
 
 
     @BindView(R.id.toolbar_all)
@@ -91,12 +86,9 @@ public class ActCityList extends BaseAct {
     private TextView mTvSideBarHint;
 
 
-
-
-
     @Override
     public void startActivity(Class<?> clz) {
-        startActivity(new Intent(this,clz));
+        startActivity(new Intent(this, clz));
     }
 
     @Override
@@ -111,7 +103,7 @@ public class ActCityList extends BaseAct {
         mRv = (RecyclerView) findViewById(R.id.rv);
 
 
-        if (toolbar_all!=null){
+        if (toolbar_all != null) {
             TextView text_center = toolbar_all.findViewById(R.id.toolbar_center);
             text_center.setText("城市列表");
         }
@@ -122,14 +114,24 @@ public class ActCityList extends BaseAct {
     public void initData() {
 
 
+//        获取城市列表
+//        HttpUtil.getAsynHttp("frontShop/allCity");
+//        getdata("frontShop/allCity");
 
 
 
-        //获取城市列表
-        HttpUtil.getAsynHttp("frontShop/allCity");
-        getdata("frontShop/allCity");
 
 
+
+
+        String Value =  this.getString(R.string.cityList);
+
+        bean_cityList = MyApp.gson.fromJson(Value, Bean_cityList.class);
+        data_cityList = bean_cityList.getData();
+        data_cityALL.clear();
+        data_cityALL.addAll(data_cityList);
+
+        initDatas(data_cityALL);
 
 
 
@@ -138,14 +140,9 @@ public class ActCityList extends BaseAct {
         mSourceDatas = new ArrayList<>();
         mHeaderDatas = new ArrayList<>();
         ArrayList<Bean_cityList.DataBean> locationCity = new ArrayList<>();
-        locationCity.add(new Bean_cityList.DataBean(0,"定位中",""));
+        locationCity.add(new Bean_cityList.DataBean(0, "定位中", ""));
         mHeaderDatas.add(new MeituanHeaderBean(locationCity, "定位城市", "定"));
 
-
-
-
-//        List<String> recentCitys = new ArrayList<>();
-//        mHeaderDatas.add(new MeituanHeaderBean(recentCitys, "最近访问城市", "近"));
 
 
 
@@ -174,9 +171,14 @@ public class ActCityList extends BaseAct {
                                             @Override
                                             public void onClick(View v) {
 //                                                Toast.makeText(mContext, "cityName:" + name+"----"+Id, Toast.LENGTH_SHORT).show();
-                                                cityName = name;
+                                                CityName = name;
                                                 city_Id = Id;
-                                                Toast.makeText(ActCityList.this,name,Toast.LENGTH_SHORT).show();
+                                                Toast.makeText(ActCityList.this, name, Toast.LENGTH_SHORT).show();
+                                                Toast.makeText(ActCityList.this, name, Toast.LENGTH_SHORT).show();
+                                                Bundle bundle = new Bundle();
+                                                bundle.putString("CityName", name.replace("c"," "));
+                                                bundle.putInt("city_Id", Id);
+                                                setResult(RESULT_CANCELED, getIntent().putExtras(bundle));
                                                 finish();
                                             }
                                         });
@@ -195,17 +197,10 @@ public class ActCityList extends BaseAct {
         };
 
 
-
-
         mHeaderAdapter.setHeaderView(0, R.layout.meituan_item_header_top, new MeituanTopHeaderBean("当前：重庆市"));
 //        mHeaderAdapter.setHeaderView(1, R.layout.meituan_item_header, mHeaderDatas.get(0));
         mHeaderAdapter.setHeaderView(2, R.layout.meituan_item_header, mHeaderDatas.get(0));
         mHeaderAdapter.setHeaderView(3, R.layout.meituan_item_header, mHeaderDatas.get(1));
-
-
-
-
-
 
 
 //        mHeaderAdapter.setHeaderView(0, R.layout.meituan_item_header_top, new MeituanTopHeaderBean("当前：上海徐汇"));
@@ -233,27 +228,19 @@ public class ActCityList extends BaseAct {
                 .setHeaderViewCount(mHeaderAdapter.getHeaderViewCount() - mHeaderDatas.size());
 
 
-
-
-
-
-
-
-
         mAdapter.setOnItemClickListener(new OnItemClickListener() {
             @Override
             public void onItemClick(ViewGroup parent, View view, Object o, int position) {
-
-                Log.i("asdas",position+"--"+mBodyDatas.get(position).getCityName()+"---"+
+                Log.i("asdas", position + "--" + mBodyDatas.get(position).getCityName() + "---" +
                         mBodyDatas.get(position).getId());
-
-                cityName = mBodyDatas.get(position).getCityName();
+                CityName = mBodyDatas.get(position).getCityName();
                 city_Id = mBodyDatas.get(position).getId();
-
-                Toast.makeText(ActCityList.this,mBodyDatas.get(position).getCityName(),Toast.LENGTH_SHORT).show();
-
+                Toast.makeText(ActCityList.this, mBodyDatas.get(position).getCityName(), Toast.LENGTH_SHORT).show();
+                Bundle bundle = new Bundle();
+                bundle.putString("CityName", mBodyDatas.get(position).getCityName().replace("c",""));
+                bundle.putInt("city_Id", mBodyDatas.get(position).getId());
+                setResult(RESULT_CANCELED, getIntent().putExtras(bundle));
                 finish();
-
             }
 
             @Override
@@ -263,45 +250,29 @@ public class ActCityList extends BaseAct {
         });
 
 
-
-
-
-
-
-
-
     }
 
     @Override
     public void StringResulit(String key, String value) {
-        if (key.equals("frontShop/allCity")) {
-//            private Bean_cityList bean_cityList;
-//            private boolean success_cityList;
-//            private int code_cityList;
-//            private String msg_cityList;
-//            private List<Bean_cityList.DataBean> data_cityList;
-//            private ArrayList<Bean_cityList.DataBean> data_cityALL = new ArrayList<>();
-            bean_cityList = MyApp.gson.fromJson(value,Bean_cityList.class);
-            data_cityList = bean_cityList.getData();
-            data_cityALL.clear();
-            data_cityALL.addAll(data_cityList);
-//            initDatas(getResources().getStringArray(R.array.provinces));
-            initDatas(data_cityALL);
+
+        try {
+            if (key.equals("frontShop/allCity")) {
+
+            }
+        }catch (Exception e){
+
         }
     }
 
     /**
      * 组织数据源
      * data
+     *
      * @param
      * @return
      */
 //    private void initDatas(final String[] data) {
-
-
-
-    private void initDatas(final ArrayList<Bean_cityList.DataBean> data_cityALL){
-
+    private void initDatas(final ArrayList<Bean_cityList.DataBean> data_cityALL) {
 
 
 //        //延迟两秒 模拟加载数据中....
@@ -328,7 +299,7 @@ public class ActCityList extends BaseAct {
 //        }, 1000);
 
 
-                //延迟两秒 模拟加载数据中....
+        //延迟两秒 模拟加载数据中....
         getWindow().getDecorView().postDelayed(new Runnable() {
             @Override
             public void run() {
@@ -355,15 +326,13 @@ public class ActCityList extends BaseAct {
         }, 1000);
 
 
-
-
         //延迟两秒加载头部
         getWindow().getDecorView().postDelayed(new Runnable() {
             @Override
             public void run() {
                 MeituanHeaderBean header1 = mHeaderDatas.get(0);
                 header1.getCityList().clear();
-                header1.getCityList().add(new Bean_cityList.DataBean(310100,"上海",""));
+                header1.getCityList().add(new Bean_cityList.DataBean(310100, "上海", ""));
 
 //                MeituanHeaderBean header2 = mHeaderDatas.get(1);
 //                List<String> recentCitys = new ArrayList<>();
@@ -373,10 +342,10 @@ public class ActCityList extends BaseAct {
 
                 MeituanHeaderBean header3 = mHeaderDatas.get(1);
                 ArrayList<Bean_cityList.DataBean> hotCitys = new ArrayList<>();
-                hotCitys.add(new Bean_cityList.DataBean(310100,"上海",""));
-                hotCitys.add(new Bean_cityList.DataBean(110100,"北京",""));
-                hotCitys.add(new Bean_cityList.DataBean(330100,"杭州",""));
-                hotCitys.add(new Bean_cityList.DataBean(440100,"广州",""));
+                hotCitys.add(new Bean_cityList.DataBean(310100, "上海", ""));
+                hotCitys.add(new Bean_cityList.DataBean(110100, "北京", ""));
+                hotCitys.add(new Bean_cityList.DataBean(330100, "杭州", ""));
+                hotCitys.add(new Bean_cityList.DataBean(440100, "广州", ""));
                 header3.setCityList(hotCitys);
 
                 mHeaderAdapter.notifyItemRangeChanged(1, 3);
@@ -393,8 +362,8 @@ public class ActCityList extends BaseAct {
      */
     public void updateDatas(View view) {
         for (int i = 0; i < 5; i++) {
-            mBodyDatas.add(new Bean_cityList.DataBean(0,"东京",""));
-            mBodyDatas.add(new Bean_cityList.DataBean(0,"大阪",""));
+            mBodyDatas.add(new Bean_cityList.DataBean(0, "东京", ""));
+            mBodyDatas.add(new Bean_cityList.DataBean(0, "大阪", ""));
         }
         //先排序
         mIndexBar.getDataHelper().sortSourceDatas(mBodyDatas);

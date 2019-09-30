@@ -25,6 +25,7 @@ import com.example.YunleHui.Bean.BeanTwo_list;
 import com.example.YunleHui.Bean.Bean_de;
 import com.example.YunleHui.Bean.Bean_detailas;
 import com.example.YunleHui.Bean.Bean_no_use;
+import com.example.YunleHui.Bean.Bean_otherOrder;
 import com.example.YunleHui.Bean.Bean_shop;
 import com.example.YunleHui.R;
 import com.example.YunleHui.appManager.MyApp;
@@ -57,7 +58,6 @@ public class fragUsed extends BaseFrag {
 
 
     private int state_order = 0;
-
 
     @BindView(R.id.xrecyc_used)
     MyXrecycleview xrecyc_used;
@@ -105,18 +105,15 @@ public class fragUsed extends BaseFrag {
             xrecyc_used.setLoadingListener(new XRecyclerView.LoadingListener() {
                 @Override
                 public void onRefresh() {
-
                     offset = 1;
                     type = 0;
                     HttpUtil.addMapparams();
-                    HttpUtil.params.put("userId", MyApp.user);
                     HttpUtil.params.put("state", 6);
                     HttpUtil.params.put("sort", 0);
                     HttpUtil.params.put("offset", offset);
                     HttpUtil.params.put("max", max);
-                    HttpUtil.postRaw("orderFull/list", HttpUtil.params);
+                    HttpUtil.Post_request("orderFull/list", HttpUtil.params);
                     getdata("3_list");
-
                     new Handler().postDelayed(new Runnable() {
                         @Override
                         public void run() {
@@ -128,17 +125,15 @@ public class fragUsed extends BaseFrag {
                 @Override
                 public void onLoadMore() {
 
-                    offset = 1;
-                    type = 0;
+                    ++offset;
+                    type = 2;
                     HttpUtil.addMapparams();
-                    HttpUtil.params.put("userId", MyApp.user);
                     HttpUtil.params.put("state", 6);
                     HttpUtil.params.put("sort", 0);
                     HttpUtil.params.put("offset", offset);
                     HttpUtil.params.put("max", max);
-                    HttpUtil.postRaw("orderFull/list", HttpUtil.params);
+                    HttpUtil.Post_request("orderFull/list", HttpUtil.params);
                     getdata("3_list");
-
                     new Handler().postDelayed(new Runnable() {
                         @Override
                         public void run() {
@@ -180,9 +175,13 @@ public class fragUsed extends BaseFrag {
                     int totalMoney =  jsonObject.getInt("totalMoney");
                     int totalNum = jsonObject.getInt("totalNum");
 
+                    //                    是否评价过的
+
+                    int isComment = jsonObject.getInt("isComment");
+
                     Tools.i("orderNature_notused", orderNature + "---" + orderDetailList.toString() + "---");
 //                    订单Id
-                    datas.add(new BeanTwo_list(orderNature, values, shopName, receiveWay,orderNum,totalMoney,totalNum));
+                    datas.add(new BeanTwo_list(orderNature, values, shopName, receiveWay,orderNum,totalMoney,totalNum,value,isComment));
                 }
 
                 if (type == 0) {
@@ -207,7 +206,7 @@ public class fragUsed extends BaseFrag {
     MyRecycleViewAdapter myRecycleViewAdapter;
 
 
-    private Bean_shop bean_shop;
+    private Bean_otherOrder bean_shop;
 
     private BeanShequ beanShequ;
 
@@ -262,26 +261,84 @@ public class fragUsed extends BaseFrag {
 
 
             if (datas.get(position).getOrderNature() == 0) {
-//                爆款
-                bean_shop = MyApp.gson.fromJson(datas.get(position).getOrderDetail(), Bean_shop.class);
 
-                Bean_detailas bean_detailas;
-                bean_detailas = MyApp.gson.fromJson(bean_shop.getOrderDetailList().get(0).getShopDetail(), Bean_detailas.class);
-
-
-                List<BeanShequ.OrderDetailListBean> orderDetailList = new ArrayList<>();
-
-                orderDetailList.clear();
-
+//                List<Bean_otherOrder.DataBean.VoListBean> voList;
+//
+////                爆款
+//                bean_shop = MyApp.gson.fromJson(datas.get(position).getOrderDetail(), Bean_otherOrder.class);
+//
+//                voList = bean_shop.getData().getVoList();
+////                List<BeanShequ.OrderDetailListBean> orderDetailList = new ArrayList<>();
+////
+////                orderDetailList.clear();
+////
+////                orderDetailList.add(new BeanShequ.OrderDetailListBean(
+////                        voList.get(0).getShopName(), "",
+////                        voList.get(0).,
+////                        bean_shop.getOrderNum(),
+////                        bean_shop.getShopId(),
+////                        bean_shop.getTotalMoney(),
+////                        bean_shop.getOrderDetailList().get(0).getCount()));
+////                myNoAdapter = new MyNoAdapter(orderDetailList, context);
+////                holder.list_bao.setAdapter(myNoAdapter);
+//
+//                List<BeanShequ.OrderDetailListBean> orderDetailList = new ArrayList<>();
+//                orderDetailList.clear();
+////爆款的详情界面
+//                List<Bean_otherOrder.DataBean.VoListBean.OrderDetailListBean> order = voList.get(0).getOrderDetailList();
+//
+//
+//                holder.text_title.setText(order.get(0).getShopName());
+//
+//
 //                orderDetailList.add(new BeanShequ.OrderDetailListBean(
-//                        bean_shop.getShopName(), "",
-//                        bean_detailas.getLogoUrl(),
-//                        bean_shop.getOrderNum(),
-//                        bean_shop.getShopId(),
-//                        bean_shop.getTotalMoney(),
-//                        bean_shop.getOrderDetailList().get(0).getCount()));
+//                        order.get(0).getId(),
+////                        datas.get(position).getOrderNum(),
+//                        0,
+//                        order.get(0).getGoodsId(),
+//                        order.get(0).getGoodsSetName(),
+//                        datas.get(position).getTotalMoney()/order.get(0).getCount(),
+//                        datas.get(position).getTotalNum(),
+//                        "",
+//                        datas.get(position).getTotalMoney(),
+//                        "",
+//                        order.get(0).getLogoUrl()
+//                ));
+
+
+
+
+
+
+
+
+                Bean_detailas bean_detailas = MyApp.gson.fromJson(datas.get(position).getValue(), Bean_detailas.class);
+                List<BeanShequ.OrderDetailListBean> orderDetailList = new ArrayList<>();
+                orderDetailList.clear();
+//爆款的详情界面
+                List<Bean_detailas.DataBean.VoListBean.OrderDetailListBean> order = bean_detailas.getData().getVoList().get(position).getOrderDetailList();
+
+
+                holder.text_title.setText(order.get(0).getShopName());
+
+
+                orderDetailList.add(new BeanShequ.OrderDetailListBean(
+                        order.get(0).getId(),
+//                        datas.get(position).getOrderNum(),
+                        0,
+                        order.get(0).getGoodsId(),
+                        order.get(0).getGoodsSetName(),
+                        datas.get(position).getTotalMoney()/order.get(0).getCount(),
+                        datas.get(position).getTotalNum(),
+                        "",
+                        datas.get(position).getTotalMoney(),
+                        "",
+                        order.get(0).getLogoUrl()
+                ));
+
                 myNoAdapter = new MyNoAdapter(orderDetailList, context);
                 holder.list_bao.setAdapter(myNoAdapter);
+
 
 
             } else {
@@ -296,6 +353,11 @@ public class fragUsed extends BaseFrag {
                 holder.list_bao.setAdapter(myNoAdapter);
 
             }
+
+
+            holder.list_bao.setFocusable(false);
+
+
             holder.list_bao.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                 @Override
                 public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
@@ -314,7 +376,7 @@ public class fragUsed extends BaseFrag {
                         intent.putExtra("ReceiveWay", datas.get(position).getReceiveWay());
                         intent.putExtra("Nature", datas.get(position).getOrderNature());
 
-                        bean_shop = MyApp.gson.fromJson(datas.get(position).getOrderDetail(), Bean_shop.class);
+                        bean_shop = MyApp.gson.fromJson(datas.get(position).getOrderDetail(), Bean_otherOrder.class);
                         intent.putExtra("order_number", datas.get(position).getOrderNum());
 
 
@@ -345,17 +407,46 @@ public class fragUsed extends BaseFrag {
             holder.lin_details.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    Intent intent = new Intent(context, ActDetailstoused.class);
-                    intent.putExtra("Nature", datas.get(position).getOrderNature());
+                    //爆款
                     if (datas.get(position).getOrderNature() == 0) {
-                        bean_shop = MyApp.gson.fromJson(datas.get(position).getOrderDetail(), Bean_shop.class);
+                        Intent intent = new Intent(context, ActDetailstoused.class);
+                        if (datas.get(position).getReceiveWay() == 1) {
+                            intent.putExtra("fang_shi", "到商家取");
+                        } else if (datas.get(position).getReceiveWay() == 2) {
+                            intent.putExtra("fang_shi", "到社区取");
+                        } else if (datas.get(position).getReceiveWay() == 3) {
+                            intent.putExtra("fang_shi", "商家送货");
+                        } else if (datas.get(position).getReceiveWay() == 4) {
+                            intent.putExtra("fang_shi", "社区送货");
+                        }
+                        intent.putExtra("ReceiveWay", datas.get(position).getReceiveWay());
+                        intent.putExtra("Nature", datas.get(position).getOrderNature());
+
+                        bean_shop = MyApp.gson.fromJson(datas.get(position).getOrderDetail(), Bean_otherOrder.class);
                         intent.putExtra("order_number", datas.get(position).getOrderNum());
+
+
+                        intent.putExtra("state_order", 1);
+                        context.startActivity(intent);
                     } else {
+//                        社区购
+                        Intent intent = new Intent(context, ActComPurUsed.class);
+                        if (datas.get(position).getReceiveWay() == 1) {
+                            intent.putExtra("fang_shi", "到商家取");
+                        } else if (datas.get(position).getReceiveWay() == 2) {
+                            intent.putExtra("fang_shi", "到社区取");
+                        } else if (datas.get(position).getReceiveWay() == 3) {
+                            intent.putExtra("fang_shi", "商家送货");
+                        } else if (datas.get(position).getReceiveWay() == 4) {
+                            intent.putExtra("fang_shi", "社区送货");
+                        }
+                        intent.putExtra("ReceiveWay", datas.get(position).getReceiveWay());
+                        intent.putExtra("Nature", datas.get(position).getOrderNature());
                         beanShequ = MyApp.gson.fromJson(datas.get(position).getOrderDetail(), BeanShequ.class);
                         intent.putExtra("order_number", datas.get(position).getOrderNum());
+                        intent.putExtra("state_order", 1);
+                        context.startActivity(intent);
                     }
-                    intent.putExtra("state_order", 1);
-                    context.startActivity(intent);
                 }
             });
         }
@@ -373,6 +464,8 @@ public class fragUsed extends BaseFrag {
             private TextView text_price_all;
             private TextView text_size;
 
+            private TextView text_title;
+
             public ViewHolder(View itemView) {
                 super(itemView);
 
@@ -385,6 +478,8 @@ public class fragUsed extends BaseFrag {
                 text_price_all = (TextView) itemView.findViewById(R.id.text_price_all);
 
                 text_size = (TextView) itemView.findViewById(R.id.text_size);
+
+                text_title = (TextView) itemView.findViewById(R.id.text_title);
 
             }
         }

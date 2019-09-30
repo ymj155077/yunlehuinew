@@ -54,10 +54,7 @@ public abstract class BaseAct extends AppCompatActivity {
         getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN);
         setContentView(getContentViewId());
         StatusBarCompat.translucentStatusBar(this, true);
-
-
         StatusBarCompat.changeToLightStatusBar(this);
-
         Log.d("BaseActivity", getClass().getSimpleName());
 //        Knife
         ActivityCollector.addActivity(this);
@@ -66,7 +63,6 @@ public abstract class BaseAct extends AppCompatActivity {
 //            Log.d("ScreenAdapterUtil", "你是刘海屏");
             if (toolbar_all != null) {
 //                setToolbarHeight(85, toolbar_all);
-
                 setToolbarHeight(73, toolbar_all);
 
             }

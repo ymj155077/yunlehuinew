@@ -34,10 +34,9 @@
 
         <android.support.v7.widget.RecyclerView
             android:id="@+id/recycler"
+            android:layout_marginLeft="5dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="@dimen/dp_12"
-            android:layout_marginStart="@dimen/dp_12"
             android:overScrollMode="never" />
 
     </LinearLayout>

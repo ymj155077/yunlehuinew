@@ -200,8 +200,6 @@ public class ActRecharge extends BaseAct implements View.OnClickListener, Passwo
             case R.id.text_choice:
                 View view_list = Tools.setRebuildPop(this, R.layout.pop_wall_list, R.layout.activity_act_recharge);
                 list_Pay_method = view_list.findViewById(R.id.list_Pay_method);
-
-
                 LinearLayout lin_add_Card = (LinearLayout) view_list.findViewById(R.id.lin_add_Card);
 
                 lin_add_Card.setOnClickListener(new View.OnClickListener() {
@@ -483,10 +481,10 @@ public class ActRecharge extends BaseAct implements View.OnClickListener, Passwo
 
 
     private Bean_password bean_password;
-    private boolean success_;
-    private int code_;
-    private String msg_;
-    private Object data_;
+    private boolean success_password;
+    private int code_password;
+    private String msg_password;
+    private Object data_password;
 
     private LinearLayout mKeyBoardView;
     private PasswordEditText mPasswordEditText;
@@ -527,7 +525,7 @@ public class ActRecharge extends BaseAct implements View.OnClickListener, Passwo
 
             if (key.equals("account/checkPasswordSetting")) {
                 bean_password = MyApp.gson.fromJson(value, Bean_password.class);
-                code_ = bean_password.getCode();
+                code= bean_password.getCode();
 
                 Log.i("checkPasswordSetting", "-------");
 
@@ -608,6 +606,7 @@ public class ActRecharge extends BaseAct implements View.OnClickListener, Passwo
 
 
 
+    @Override
     protected void onDestroy() {
         super.onDestroy();
         if (Tools.mBottomSheetPop!=null){

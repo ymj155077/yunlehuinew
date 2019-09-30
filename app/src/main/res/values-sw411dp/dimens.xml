@@ -9,7 +9,7 @@
 	<dimen name="ts_13">14.8417sp</dimen>
 	<dimen name="text_10">11.4167sp</dimen>
 	<dimen name="text_11">12.5583sp</dimen>
-	<dimen name="text_12">13.7000sp</dimen>
+	<dimen name="text_12">13.7000sp</dimen>    <dimen name="dp_447">447dp</dimen>
 	<dimen name="text_13">14.8417sp</dimen>
 	<dimen name="text_14">15.9833sp</dimen>
 	<dimen name="text_15">17.1250sp</dimen>

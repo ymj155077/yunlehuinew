@@ -13,11 +13,13 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.YunleHui.Bean.Bean_re;
 import com.example.YunleHui.R;
 import com.example.YunleHui.appManager.MyApp;
 import com.example.YunleHui.base.BaseAct;
 import com.example.YunleHui.utils.HttpUtil;
 import com.example.YunleHui.utils.Tools;
+import com.example.YunleHui.view.ClearEditText;
 import com.example.YunleHui.view.widget.PasswordEditText;
 
 import butterknife.BindView;
@@ -37,7 +39,7 @@ public class ActRetrieve extends BaseAct implements View.OnClickListener, Passwo
     EditText edit_phone;
 
     @BindView(R.id.edit_code)
-    EditText edit_code;
+    ClearEditText edit_code;
 
 
     @BindView(R.id.text_yan)
@@ -57,6 +59,10 @@ public class ActRetrieve extends BaseAct implements View.OnClickListener, Passwo
 
     private TimeCount time;
 
+
+    public static ActRetrieve actRetrieve;
+
+
     @Override
     public void startActivity(Class<?> clz) {
         startActivity(new Intent(this, clz));
@@ -69,40 +75,29 @@ public class ActRetrieve extends BaseAct implements View.OnClickListener, Passwo
 
     @Override
     protected void findViews() {
-
         if (toolbar_all!=null){
             text_center = (TextView) toolbar_all.findViewById(R.id.toolbar_center);
         }
-
     }
+
+    private String phone = "";
 
     @Override
     public void initData() {
-
+        actRetrieve = this;
         time = new TimeCount(60000, 1000);
-
-
-
         Intent intent = getIntent();
-
         type_name = intent.getIntExtra("type",0);
-
         if (type_name==1){
-
             text_center.setText("支付密码找回");
-
-
             text_binding.setText("下一步");
-
-
         }else {
             text_center.setText("绑定手机");
+            phone = (String) MyApp.getSharedPreference(this, "phone", "");
+            edit_phone.setText(Tools.getStarPhone(phone));
+            edit_phone.setClickable(false);
+            edit_phone.setEnabled(false);
         }
-
-
-
-
-
     }
 
 
@@ -114,23 +109,31 @@ public class ActRetrieve extends BaseAct implements View.OnClickListener, Passwo
                 text_yan.setClickable(false);
                 time.start();
 
+                HttpUtil.addMapparams();
+                HttpUtil.params.put("phone", phone);
+                HttpUtil.Post_request("user/login/smsCode", HttpUtil.params);
+                getdata("user/login/smsCode");
+
+
                 break;
 
             case R.id.text_binding:
-
                 if (type_name==1){
                     type = 0;
                     openPayPasswordDialog();
-
                 }else {
 
-                    actBinding.finish();
+//检验验证码是否正确
+                    HttpUtil.addMapparams();
+                    HttpUtil.params.put("phone", phone);
+                    HttpUtil.params.put("SmsCode", edit_code.getText().toString().trim());
+                    HttpUtil.Post_request("user/checkSmsCode", HttpUtil.params);
+                    getdata("user/checkSmsCode");
 
-                    finish();
 
+//                    actBinding.finish();
+//                    finish();
                 }
-
-
                 break;
         }
     }
@@ -228,7 +231,7 @@ public class ActRetrieve extends BaseAct implements View.OnClickListener, Passwo
 //        bottomSheetDialog.setContentView(payPasswordView);
 //        bottomSheetDialog.setCanceledOnTouchOutside(false);
 //        bottomSheetDialog.show();
-        View view = Tools.setRebuildPop(this, R.layout.pay_password_layout_set, R.layout.activity_act_safety_center);
+        View view = Tools.setRebuildPop(this, R.layout.pay_password_layout_set, R.layout.activity_act_retrieve);
 //        PayPasswordView.
 //       Tools.mBottomSheetPop.setContentView(payPasswordView);
         mKeyBoardView = (LinearLayout) view.findViewById(R.id.keyboard);
@@ -267,6 +270,41 @@ public class ActRetrieve extends BaseAct implements View.OnClickListener, Passwo
     }
 
 
+    @Override
+    public void StringResulit(String key, String value) {
+
+        try {
+            if (key.equals("user/login/smsCode")) {
+                Toast.makeText(this, "发送成功", Toast.LENGTH_SHORT).show();
+            }
+
+        } catch (Exception e) {
+
+        }
+//        检测验证码是否正确
+        if (key.equals("user/checkSmsCode")){
+
+            bean_re = MyApp.gson.fromJson(value,Bean_re.class);
+            code = bean_re.getCode();
+            if (code == 200){
+//          下一个界面，下一步
+                startActivity(ActReplace.class);
+            }
+        }
+        if (key.equals("user/updatePhoneNumber")){
+            Toast.makeText(this,"！！！",Toast.LENGTH_SHORT).show();
+        }
+    }
+
+
+
+
+
+    private Bean_re bean_re;
+    private boolean success;
+    private int code;
+    private String msg;
+    private Object data;
 
 
 

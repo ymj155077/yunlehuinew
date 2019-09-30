@@ -128,7 +128,7 @@ public class ActBusApp extends BaseAct {
     private MyListAdpter myListAdpter;
 
     private int themeId;
-    private int chooseMode = PictureMimeType.ofAll();
+    private int chooseMode = PictureMimeType.ofImage();
 
     private int maxSelectNum = 1;
 
@@ -425,7 +425,7 @@ public class ActBusApp extends BaseAct {
                 break;
             case R.id.text_Up:
                 try {
-                    uploadImage("http://192.168.5.103:8087/media/uploadMedia", path_img);
+                    uploadImage("http://192.168.110.187:8082/media/uploadMedia", path_img);
                 } catch (IOException e) {
                     e.printStackTrace();
                 } catch (JSONException e) {

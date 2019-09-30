@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
+        <LinearLayout
+            android:id="@+id/lin_pop_type"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:alpha="0.5"
+            android:background="#000000"
+            android:orientation="vertical">
+
+
+        </LinearLayout>
+
+<!--<LinearLayout-->
+    <!--android:background="@drawable/backimg"-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="wrap_content">-->
+<!--</LinearLayout>-->
+
+
+<FrameLayout
+    android:layout_gravity="center"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
+
+
+
+    <ImageView
+        android:scaleType="fitXY"
+        android:layout_gravity="center"
+        android:src="@drawable/ashj"
+        android:layout_width="@dimen/dp_270"
+        android:layout_height="@dimen/dp_300" />
+
+
+    <TextView
+        android:id="@+id/text_as"
+        android:clickable="true"
+        android:textSize="@dimen/sp_18"
+        android:textColor="@color/Write"
+        android:gravity="center"
+        android:text="知道了"
+        android:layout_marginBottom="@dimen/dp_20"
+        android:layout_gravity="bottom|center_horizontal"
+        android:background="@drawable/button_img"
+        android:layout_width="@dimen/dp_130"
+        android:layout_height="@dimen/dp_40" />
+
+
+
+
+</FrameLayout>
+
+
+
+
+
+
+
+    </FrameLayout>
+
+
+</LinearLayout>

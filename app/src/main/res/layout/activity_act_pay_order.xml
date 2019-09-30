@@ -18,7 +18,7 @@
         android:textSize="@dimen/sp_13"
         android:layout_marginTop="@dimen/dp_24"
         android:gravity="center_horizontal"
-        android:text="支付给重庆齐美口腔"
+        android:text=".."
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 
@@ -87,6 +87,7 @@
 
             />
         <RadioButton
+            android:visibility="gone"
             android:drawablePadding="@dimen/dp_10"
             android:drawableLeft="@drawable/aliay"
             android:background="@android:color/transparent"

@@ -42,28 +42,30 @@ public class ActBusDetails extends BaseAct {
     LinearLayout lin_boom_gou;
 
     @BindView(R.id.lin_ok)
-LinearLayout lin_ok;
+    LinearLayout lin_ok;
 
     @Override
     public void startActivity(Class<?> clz) {
-        startActivity(new Intent(this,clz));
+        startActivity(new Intent(this, clz));
     }
 
     @Override
     public int getContentViewId() {
         return R.layout.activity_act_bus_details;
     }
+
     private MZBannerView mMZBanner;
+
     @Override
     protected void findViews() {
 
-        if (toolbar_all!=null){
+        if (toolbar_all != null) {
             TextView text_center = toolbar_all.findViewById(R.id.toolbar_center);
             text_center.setText("商品详情");
         }
 
 
-        mMZBanner = (MZBannerView)findViewById(R.id.banner);
+        mMZBanner = (MZBannerView) findViewById(R.id.banner);
 
     }
 
@@ -74,12 +76,6 @@ LinearLayout lin_ok;
     @Override
     public void initData() {
         text_yuan.getPaint().setFlags(Paint.STRIKE_THRU_TEXT_FLAG | Paint.ANTI_ALIAS_FLAG); // 设置中划线并加清晰
-
-
-
-
-
-
 
 
         ArrayList<String> imgs
@@ -99,14 +95,6 @@ LinearLayout lin_ok;
         mMZBanner.start();//开始轮播
 
 
-
-
-
-
-
-
-
-
         //        购物车 弹窗
         ArrayList<String> datass = new ArrayList<>();
 
@@ -118,15 +106,11 @@ LinearLayout lin_ok;
         list_gou.setAdapter(myGouAdapter);
 
 
-
     }
-
 
 
     @BindView(R.id.lin_mall)
     LinearLayout lin_mall;
-
-
 
 
 //    弹窗的list
@@ -135,13 +119,13 @@ LinearLayout lin_ok;
     ListView list_gou;
 
 
-    @OnClick({R.id.lin_boom_gou,R.id.lin_ok})
-    public void OnClick(View view){
-        switch (view.getId()){
+    @OnClick({R.id.lin_boom_gou, R.id.lin_ok})
+    public void OnClick(View view) {
+        switch (view.getId()) {
             case R.id.lin_boom_gou:
-                if (lin_mall.getVisibility()==View.GONE){
+                if (lin_mall.getVisibility() == View.GONE) {
                     lin_mall.setVisibility(View.VISIBLE);
-                }else {
+                } else {
                     lin_mall.setVisibility(View.GONE);
                 }
                 break;
@@ -152,16 +136,6 @@ LinearLayout lin_ok;
                 break;
         }
     }
-
-
-
-
-
-
-
-
-
-
 
 
     //    购物车的adpter
@@ -217,16 +191,6 @@ LinearLayout lin_ok;
 
 
     }
-
-
-
-
-
-
-
-
-
-
 
 
 }

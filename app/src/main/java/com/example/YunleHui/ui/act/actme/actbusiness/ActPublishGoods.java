@@ -13,6 +13,7 @@ import android.widget.Toast;
 import com.example.YunleHui.MainActivity;
 import com.example.YunleHui.R;
 import com.example.YunleHui.adpter.FullyGridLayoutManager;
+import com.example.YunleHui.adpter.FullyGridLayoutManagerll;
 import com.example.YunleHui.adpter.GridImageAdapter;
 import com.example.YunleHui.adpter.GridPublishGoods;
 import com.example.YunleHui.base.BaseAct;
@@ -35,22 +36,17 @@ import io.reactivex.disposables.Disposable;
 
 public class ActPublishGoods extends BaseAct {
 
-
-
-
-
-
     @BindView(R.id.recycler)
     RecyclerView recyclerView;
 
     private int themeId;
-    private int chooseMode = PictureMimeType.ofAll();
+    private int chooseMode = PictureMimeType.ofImage();
 
-    private int maxSelectNum = 6;
+    private int maxSelectNum = 9;
 
     private List<LocalMedia> selectList = new ArrayList<>();
 
-    private GridPublishGoods adapter;
+    private GridImageAdapter adapter;
 
     @Override
     public void startActivity(Class<?> clz) {
@@ -70,16 +66,15 @@ public class ActPublishGoods extends BaseAct {
     @Override
     public void initData() {
 
-
         themeId = R.style.picture_default_style;
 
-        FullyGridLayoutManager manager = new FullyGridLayoutManager(ActPublishGoods.this, 3, GridLayoutManager.VERTICAL, false);
+        FullyGridLayoutManagerll manager = new FullyGridLayoutManagerll(ActPublishGoods.this, 4, GridLayoutManager.VERTICAL, false);
         recyclerView.setLayoutManager(manager);
-        adapter = new GridPublishGoods(ActPublishGoods.this, onAddPicClickListener);
+        adapter = new GridImageAdapter(ActPublishGoods.this, onAddPicClickListener);
         adapter.setList(selectList);
         adapter.setSelectMax(maxSelectNum);
         recyclerView.setAdapter(adapter);
-        adapter.setOnItemClickListener(new GridPublishGoods.OnItemClickListener() {
+        adapter.setOnItemClickListener(new GridImageAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(int position, View v) {
 
@@ -147,7 +142,7 @@ public class ActPublishGoods extends BaseAct {
 
 
 
-    private GridPublishGoods.onAddPicClickListener onAddPicClickListener = new GridPublishGoods.onAddPicClickListener() {
+    private GridImageAdapter.onAddPicClickListener onAddPicClickListener = new GridImageAdapter.onAddPicClickListener() {
         @Override
         public void onAddPicClick() {
 
@@ -268,42 +263,6 @@ public class ActPublishGoods extends BaseAct {
         }
     }
 
-
     private final static String TAG = MainActivity.class.getSimpleName();
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 }

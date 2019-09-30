@@ -64,7 +64,7 @@ public class WXEntryActivity extends WechatHandlerActivity implements IWXAPIEven
 
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
-        iwxapi = WXAPIFactory.createWXAPI(this, "wx02a134a6981a0b07", false);
+        iwxapi = WXAPIFactory.createWXAPI(this, "wxe9265d93cda255a9", false);
 
         iwxapi.handleIntent(getIntent(), this);
     }

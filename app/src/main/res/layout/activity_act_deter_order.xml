@@ -84,7 +84,7 @@
                     android:layout_marginStart="@dimen/dp_12"
                     android:ellipsize="end"
                     android:lines="2"
-                    android:text="就弄原始股嗲是更好地驾驶的"
+                    android:text=".."
                     android:textColor="@color/black33"
                     android:textSize="@dimen/sp_16" />
 

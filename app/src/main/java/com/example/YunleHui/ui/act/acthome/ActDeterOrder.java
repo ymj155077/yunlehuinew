@@ -45,12 +45,9 @@ public class ActDeterOrder extends BaseAct {
     private String msg_sucess;
     private Bean_sucess.DataBean data_sucess;
 
-
     private Bean_cread bean_cread;
 
-
     private String order_number;
-
 
     @BindView(R.id.toolbar_all)
     Toolbar toolbar_all;
@@ -141,12 +138,10 @@ public class ActDeterOrder extends BaseAct {
 
     @Override
     protected void findViews() {
-
         if (toolbar_all != null) {
             TextView textView = (TextView) toolbar_all.findViewById(R.id.toolbar_center);
             textView.setText("确认订单");
         }
-
     }
 
     @Override
@@ -177,33 +172,23 @@ public class ActDeterOrder extends BaseAct {
             String text_size = intent.getStringExtra("text_size");
             BigDecimal a = BigDecimal.valueOf(Double.valueOf(text_pri));
             BigDecimal b = BigDecimal.valueOf(Double.valueOf(text_size));
-
             BigDecimal c = a.multiply(b);
-
             text_price.setText(c + "");
-
             order_id = intent.getIntExtra("order_id",0);
-
             String text_phone = intent.getStringExtra("text_phone");
-
             edit_phone.setText(text_phone);
-
             edit_Remarks.setVisibility(View.GONE);
-
             lin_size.setVisibility(View.GONE);
-
             text_price_boom.setText(c + "");
-
             order_number = intent.getStringExtra("order_number");
             edit_phone.setEnabled(false);
-
         }
     }
 
 
     @OnClick({R.id.lin_place, R.id.img_jian, R.id.img_add})
     public void OnClick(View view) {
-        switch (view.getId()) {
+        switch (view.getId()){
             case R.id.lin_place:
                 if (type == 0){
                     if (edit_phone.getText().toString().length() == 11) {
@@ -231,21 +216,12 @@ public class ActDeterOrder extends BaseAct {
                         Toast.makeText(this, "请检查手机号码！", Toast.LENGTH_SHORT).show();
                     }
                 }else if (type == 1){
-
                     Intent intent = new Intent(this, ActPayOrder.class);
-
                     intent.putExtra("order", order_number);
-
                     intent.putExtra("order_id",order_id);
-
-
                     intent.putExtra("price", text_price_boom.getText().toString());
-
                     intent.putExtra("shop_name",shop_name.getText().toString());
-
-
                     startActivity(intent);
-
                 }
 
                 break;
@@ -256,33 +232,20 @@ public class ActDeterOrder extends BaseAct {
                     Toast.makeText(this, "没有了哟！", Toast.LENGTH_SHORT).show();
                 } else {
                     text_size.setText(Integer.valueOf(text_size.getText().toString()) - 1 + "");
-
-
-                    BigDecimal a = BigDecimal.valueOf(price_tao);
-                    BigDecimal b = BigDecimal.valueOf(Integer.valueOf(text_size.getText().toString()));
-                    BigDecimal c = a.multiply(b);
-
-
-                    text_price_boom.setText(c + "");
-
-
+//                    BigDecimal a = BigDecimal.valueOf(price_tao);
+//                    BigDecimal b = BigDecimal.valueOf(Integer.valueOf(text_size.getText().toString()));
+//                    BigDecimal c = a.multiply(b);
+                    text_price_boom.setText(Tools.chenfa(price_tao*Integer.valueOf(text_size.getText().toString())));
                 }
 
                 break;
 
             case R.id.img_add:
-
                 text_size.setText(Integer.valueOf(text_size.getText().toString()) + 1 + "");
-
-
-                BigDecimal a = BigDecimal.valueOf(price_tao);
-                BigDecimal b = BigDecimal.valueOf(Integer.valueOf(text_size.getText().toString()));
-                BigDecimal c = a.multiply(b);
-
-
-                text_price_boom.setText(c + "");
-
-
+//                BigDecimal a = BigDecimal.valueOf(price_tao);
+//                BigDecimal b = BigDecimal.valueOf(Integer.valueOf(text_size.getText().toString()));
+//                BigDecimal c = a.multiply(b);
+                text_price_boom.setText(Tools.chenfa(price_tao*Integer.valueOf(text_size.getText().toString())));
                 break;
         }
     }
@@ -294,12 +257,6 @@ public class ActDeterOrder extends BaseAct {
         try {
             if (key.equals("order/create")) {
 
-//            private Bean_sucess bean_sucess;
-//            private boolean success_sucess;
-//            private int code_sucess;
-//            private String msg_sucess;
-//            private Bean_sucess.DataBean data_sucess;
-
                 bean_sucess = MyApp.gson.fromJson(value, Bean_sucess.class);
                 code_sucess = bean_sucess.getCode();
 
@@ -308,13 +265,16 @@ public class ActDeterOrder extends BaseAct {
 
                     String order = bean_sucess.getData().getOrderNumber();
 
-                    int order_id = bean_sucess.getData().getId();
+                    String OrderNumber = bean_sucess.getData().getOrderNumber();
 
-                    intent.putExtra("order_id", order_id);
+
+                    intent.putExtra("OrderNumber", OrderNumber);
 
                     intent.putExtra("order", order);
 
                     intent.putExtra("shop_name",shop_name.getText().toString());
+
+                    intent.putExtra("Content",text_content.getText().toString());
 
                     intent.putExtra("price", text_price_boom.getText().toString());
 

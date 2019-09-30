@@ -190,7 +190,7 @@ public abstract class BaseFrag extends Fragment {
 //                            }
 //                        });
 //                    } else
-                        if (code == 105103) {
+                        if (code == 105100) {
                         getActivity().runOnUiThread(new Runnable() {
                             @Override
                             public void run() {

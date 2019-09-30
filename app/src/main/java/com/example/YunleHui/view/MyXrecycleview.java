@@ -141,8 +141,9 @@ public class MyXrecycleview extends RecyclerView {
     }
 
     public void addHeaderView(View view) {
-        if(mHeaderViews == null || sHeaderTypes == null)
+        if(mHeaderViews == null || sHeaderTypes == null) {
             return;
+        }
         sHeaderTypes.add(HEADER_INIT_INDEX + mHeaderViews.size());
         mHeaderViews.add(view);
         if (mWrapAdapter != null) {
@@ -155,15 +156,17 @@ public class MyXrecycleview extends RecyclerView {
         if(!isHeaderType(itemType)) {
             return null;
         }
-        if(mHeaderViews == null)
+        if(mHeaderViews == null) {
             return null;
+        }
         return mHeaderViews.get(itemType - HEADER_INIT_INDEX);
     }
 
     //判断一个type是否为HeaderType
     private boolean isHeaderType(int itemViewType) {
-        if(mHeaderViews == null || sHeaderTypes == null)
+        if(mHeaderViews == null || sHeaderTypes == null) {
             return false;
+        }
         return mHeaderViews.size() > 0 &&  sHeaderTypes.contains(itemViewType);
     }
 
@@ -220,8 +223,9 @@ public class MyXrecycleview extends RecyclerView {
     }
 
     public void refreshComplete() {
-        if(mRefreshHeader != null)
+        if(mRefreshHeader != null) {
             mRefreshHeader.refreshComplete();
+        }
         setNoMore(false);
     }
 
@@ -285,10 +289,11 @@ public class MyXrecycleview extends RecyclerView {
     //避免用户自己调用getAdapter() 引起的ClassCastException
     @Override
     public Adapter getAdapter() {
-        if(mWrapAdapter != null)
+        if(mWrapAdapter != null) {
             return mWrapAdapter.getOriginalAdapter();
-        else
+        } else {
             return null;
+        }
     }
 
     @Override
@@ -376,8 +381,9 @@ public class MyXrecycleview extends RecyclerView {
 
             int status = STATE_DONE;
 
-            if(mRefreshHeader != null)
+            if(mRefreshHeader != null) {
                 status = mRefreshHeader.getState();
+            }
             if (
                     layoutManager.getChildCount() > 0
                             && lastVisibleItemPosition >= adjAdapterItemCount - limitNumberToCallLoadMore
@@ -412,8 +418,9 @@ public class MyXrecycleview extends RecyclerView {
                 final float deltaY = ev.getRawY() - mLastY;
                 mLastY = ev.getRawY();
                 if (isOnTop() && pullRefreshEnabled && appbarState == AppBarStateChangeListener.State.EXPANDED) {
-                    if(mRefreshHeader == null)
+                    if(mRefreshHeader == null) {
                         break;
+                    }
                     mRefreshHeader.onMove(deltaY / DRAG_RATE);
                     if (mRefreshHeader.getVisibleHeight() > 0 && mRefreshHeader.getState() < ArrowRefreshHeader.STATE_REFRESHING) {
                         return false;
@@ -445,8 +452,9 @@ public class MyXrecycleview extends RecyclerView {
     }
 
     private boolean isOnTop() {
-        if(mRefreshHeader == null)
+        if(mRefreshHeader == null) {
             return false;
+        }
         if (mRefreshHeader.getParent() != null) {
             return true;
         } else {
@@ -514,8 +522,9 @@ public class MyXrecycleview extends RecyclerView {
         }
 
         public boolean isHeader(int position) {
-            if(mHeaderViews == null)
+            if(mHeaderViews == null) {
                 return false;
+            }
             return position >= 1 && position < mHeaderViews.size() + 1;
         }
 
@@ -532,8 +541,9 @@ public class MyXrecycleview extends RecyclerView {
         }
 
         public int getHeadersCount() {
-            if(mHeaderViews == null)
+            if(mHeaderViews == null) {
                 return 0;
+            }
             return mHeaderViews.size();
         }
 
