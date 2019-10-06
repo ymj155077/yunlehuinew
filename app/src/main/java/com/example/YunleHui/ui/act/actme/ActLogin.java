@@ -148,17 +148,19 @@ public class ActLogin extends BaseAct {
                 MyApp.putSharedPreference(this, "access_token", data.getToken() + "");
                 MyApp.putSharedPreference(this, "nickName", userInfo.getNickName() + "");
                 MyApp.putSharedPreference(this, "userType", data.getUserType());
-
                 if (userInfo.getAvatarUrl()==null){
-                    String getAvatarUrl = "";
+
+                    MyApp.putSharedPreference(this, "avatarUrl", "");
+                }else {
+                    MyApp.putSharedPreference(this, "avatarUrl", userInfo.getAvatarUrl());
                 }
 
-                MyApp.putSharedPreference(this, "avatarUrl", "");
                 if (userInfo.getGender()==-1) {
                     MyApp.putSharedPreference(this, "gender", "男");
                 }else {
                     MyApp.putSharedPreference(this, "gender", "女");
                 }
+
                 finish();
 
         }

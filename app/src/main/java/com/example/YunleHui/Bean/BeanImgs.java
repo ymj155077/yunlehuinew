@@ -1,17 +1,20 @@
 package com.example.YunleHui.Bean;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import com.luck.picture.lib.entity.LocalMedia;
 
+import java.io.Serializable;
 import java.io.StringReader;
 import java.util.ArrayList;
 import java.util.List;
 
-public class BeanImgs {
+public class BeanImgs implements Parcelable {
 
     private String details;
 
     private List<LocalMedia> imgs;
-
 
     private String Originalprice ;
 
@@ -32,6 +35,10 @@ public class BeanImgs {
         this.Settlementprice = settlementprice;
         this.Stock = stock;
     }
+
+
+
+
 
     public String getDetails() {
         return details;
@@ -94,5 +101,43 @@ public class BeanImgs {
     }
 
 
+    protected BeanImgs(Parcel in) {
+        details = in.readString();
+        imgs = in.createTypedArrayList(LocalMedia.CREATOR);
+        Originalprice = in.readString();
+        Presentprice = in.readString();
+        Commission = in.readString();
+        Settlementprice = in.readString();
+        Stock = in.readString();
+    }
 
+
+    public static final Creator<BeanImgs> CREATOR = new Creator<BeanImgs>() {
+        @Override
+        public BeanImgs createFromParcel(Parcel in) {
+            return new BeanImgs(in);
+        }
+
+        @Override
+        public BeanImgs[] newArray(int size) {
+            return new BeanImgs[size];
+        }
+    };
+
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel parcel, int i) {
+        parcel.writeString(details);
+        parcel.writeTypedList(imgs);
+        parcel.writeString(Originalprice);
+        parcel.writeString(Presentprice);
+        parcel.writeString(Commission);
+        parcel.writeString(Settlementprice);
+        parcel.writeString(Stock);
+    }
 }

@@ -48,17 +48,20 @@ public class GridPublishGoodsTao extends
 
     private int positionss;
 
+    private String contexts;
+
 
     public interface onAddPicClickListener {
-        void onAddPicClick(int position);
+        void onAddPicClick(int position,String contexts);
     }
 
-    public GridPublishGoodsTao(Context context, onAddPicClickListener mOnAddPicClickListener,int positionss) {
+    public GridPublishGoodsTao(Context context, onAddPicClickListener mOnAddPicClickListener,int positionss,String contexts) {
         this.context = context;
         mInflater = LayoutInflater.from(context);
         this.mOnAddPicClickListener = mOnAddPicClickListener;
 
         this.positionss = positionss;
+        this.contexts = contexts;
 
     }
 
@@ -139,7 +142,7 @@ public class GridPublishGoodsTao extends
             viewHolder.mImg.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    mOnAddPicClickListener.onAddPicClick(positionss);
+                    mOnAddPicClickListener.onAddPicClick(positionss,contexts);
                 }
             });
             viewHolder.ll_del.setVisibility(View.INVISIBLE);

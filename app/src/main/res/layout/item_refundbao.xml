@@ -1,137 +1,84 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    android:background="@color/Write"
-    android:orientation="vertical"
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    android:background="@color/Write"
+    android:orientation="vertical">
 
 
-    <EditText
+
+    <TextView
+        android:gravity="top"
+android:minHeight="@dimen/dp_100"
+        android:id="@+id/text_kkk"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/dp_12"
         android:layout_marginTop="@dimen/dp_12"
         android:layout_marginEnd="@dimen/dp_12"
         android:layout_marginBottom="@dimen/dp_12"
-        android:background="@null"
-        android:hint="请编辑新的套餐"
+        android:text="请输入套餐内容"
         android:lineSpacingExtra="4dp"
         android:lineSpacingMultiplier="1"
         android:textSize="@dimen/sp_17" />
 
 
     <android.support.v7.widget.RecyclerView
-        android:descendantFocusability="blocksDescendants"
-        android:background="@color/all_background"
         android:id="@+id/xr_refund"
+        android:layout_marginStart="@dimen/dp_12"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:background="@color/Write"
+        android:descendantFocusability="blocksDescendants" />
 
     <LinearLayout
 
         android:id="@+id/lin_Price"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:gravity="center"
         android:minHeight="@dimen/dp_50"
-        android:orientation="horizontal"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:orientation="horizontal">
 
 
         <TextView
-            android:layout_marginStart="@dimen/dp_12"
-            android:textSize="@dimen/sp_17"
-            android:textColor="@color/black33"
-            android:text="价格"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
-
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/dp_12"
+            android:text="价格"
+            android:textColor="@color/black33"
+            android:textSize="@dimen/sp_17" />
 
 
         <LinearLayout
-          android:layout_marginStart="@dimen/dp_10"
-            android:orientation="vertical"
-            android:layout_weight="1"
             android:layout_width="0dp"
-            android:layout_height="wrap_content">
-
-<LinearLayout
-    android:layout_marginBottom="@dimen/dp_6"
-    android:layout_marginTop="@dimen/dp_6"
-    android:orientation="horizontal"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content">
-
-
-    <TextView
-        android:textColor="@color/black99"
-        android:textSize="@dimen/sp_14"
-        android:text="原价￥0.00"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
-    <View
-        android:layout_width="@dimen/dp_8"
-        android:layout_height="match_parent"/>
-
-    <TextView
-        android:textColor="@color/black99"
-        android:textSize="@dimen/sp_14"
-        android:text="现价￥0.00"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
-    <View
-        android:layout_width="@dimen/dp_8"
-        android:layout_height="match_parent"/>
-
-    <TextView
-        android:textColor="@color/black99"
-        android:textSize="@dimen/sp_14"
-        android:text="佣金￥0.00"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
-
-</LinearLayout>
-
-
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/dp_10"
+            android:layout_weight="1"
+            android:orientation="vertical">
 
             <LinearLayout
-                android:gravity="start"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dp_6"
                 android:layout_marginBottom="@dimen/dp_6"
-                android:orientation="horizontal"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:orientation="horizontal">
 
 
                 <TextView
-                    android:textColor="@color/black99"
-                    android:textSize="@dimen/sp_14"
-                    android:text="结算价￥0.00"
+                    android:id="@+id/text_yuan"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" />
-                <View
-                    android:layout_width="@dimen/dp_8"
-                    android:layout_height="match_parent"/>
-                <TextView
+                    android:layout_height="wrap_content"
+                    android:text="原价￥0.00"
                     android:textColor="@color/black99"
-                    android:textSize="@dimen/sp_14"
-                    android:text="库存￥0.00"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" />
+                    android:textSize="@dimen/sp_14" />
+
 
 
             </LinearLayout>
 
 
-
-
-
-
-
         </LinearLayout>
-
-
-
-
 
         <ImageView
             android:layout_width="@dimen/dp_16"
@@ -140,99 +87,74 @@
             android:layout_marginRight="@dimen/dp_14"
             android:src="@drawable/youjian" />
 
-
     </LinearLayout>
 
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_1"
+        android:background="@color/all_background" />
+
+    <LinearLayout
+        android:layout_marginTop="@dimen/dp_12"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="@dimen/dp_6"
+        android:gravity="end"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:gravity="center"
+            android:id="@+id/lin_RemoveItem"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/dp_28"
+            android:layout_gravity="end"
+            android:layout_marginEnd="@dimen/dp_6"
+            android:layout_marginBottom="@dimen/dp_12"
+            android:background="@drawable/wallerxia">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/dp_12"
+                android:layout_marginEnd="@dimen/dp_12"
+                android:text="删除套餐"
+                android:textColor="@color/black33"
+                android:textSize="@dimen/sp_14" />
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:gravity="center"
+            android:id="@+id/lin_addItem"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/dp_28"
+            android:layout_gravity="end"
+            android:layout_marginStart="@dimen/dp_6"
+            android:layout_marginEnd="@dimen/dp_6"
+            android:layout_marginBottom="@dimen/dp_12"
+            android:background="@drawable/wallerxia">
+
+
+            <TextView
+
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/dp_12"
+                android:layout_marginEnd="@dimen/dp_12"
+                android:text="添加套餐"
+                android:textColor="@color/black33"
+                android:textSize="@dimen/sp_14" />
+
+
+        </LinearLayout>
+
+
+    </LinearLayout>
 
     <View
         android:background="@color/all_background"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/dp_1"/>
-
-
-    <LinearLayout
-        android:layout_marginEnd="@dimen/dp_6"
-        android:gravity="end"
-        android:orientation="horizontal"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
-
-
-        <LinearLayout
-            android:id="@+id/lin_RemoveItem"
-            android:layout_marginEnd="@dimen/dp_6"
-            android:layout_gravity="end"
-            android:layout_marginBottom="@dimen/dp_12"
-            android:background="@drawable/wallerxia"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
-
-
-            <TextView
-
-                android:layout_marginTop="@dimen/dp_2"
-                android:layout_marginBottom="@dimen/dp_2"
-                android:layout_marginEnd="@dimen/dp_12"
-                android:layout_marginStart="@dimen/dp_12"
-                android:textColor="@color/black33"
-                android:textSize="@dimen/sp_14"
-                android:text="删除套餐"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
-
-
-        </LinearLayout>
-
-
-
-
-
-
-
-        <LinearLayout
-            android:id="@+id/lin_addItem"
-            android:layout_marginStart="@dimen/dp_6"
-            android:layout_marginEnd="@dimen/dp_6"
-            android:layout_gravity="end"
-            android:layout_marginBottom="@dimen/dp_12"
-            android:background="@drawable/wallerxia"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
-
-
-            <TextView
-
-                android:layout_marginTop="@dimen/dp_2"
-                android:layout_marginBottom="@dimen/dp_2"
-                android:layout_marginEnd="@dimen/dp_12"
-                android:layout_marginStart="@dimen/dp_12"
-                android:textColor="@color/black33"
-                android:textSize="@dimen/sp_14"
-                android:text="添加套餐"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
-
-
-        </LinearLayout>
-
-
-    </LinearLayout>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+        android:layout_height="@dimen/dp_18"/>
 
 </LinearLayout>
