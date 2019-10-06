@@ -1,23 +1,363 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    android:orientation="vertical"
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/all_background"
+    android:orientation="vertical"
     tools:context=".ui.act.actme.actbusiness.ActRecom">
 
-    <include layout="@layout/toolbar_push_off"/>
+    <include layout="@layout/toolbar_push_off" />
+
+    <android.support.v4.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp_40"
+                android:layout_marginStart="@dimen/dp_12"
+                android:layout_marginEnd="@dimen/dp_12"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="详情描述"
+                    android:textColor="@color/black33"
+                    android:textSize="@dimen/sp_16"
+                    android:textStyle="bold" />
+
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="end"
+                    android:text="查看示例?"
+                    android:textColor="#59BCD2" />
+
+
+            </LinearLayout>
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/recycler_tao"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/Write"
+                android:overScrollMode="never" />
+
+            <LinearLayout
+                android:id="@+id/lin_Posters"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/dp_12"
+                    android:layout_marginEnd="@dimen/dp_12"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="宣传海报"
+                        android:textColor="@color/black33"
+                        android:textSize="@dimen/sp_16"
+                        android:textStyle="bold" />
+
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="end"
+                        android:text="查看示例?"
+                        android:textColor="#59BCD2" />
+
+
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dp_10"
+                    android:background="@color/all_background" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/dp_12"
+                    android:background="@color/all_background">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/dp_12"
+                        android:layout_marginEnd="@dimen/dp_12"
+                        android:text="添加一张活动宣传海报可增加店铺对外宣传和 引流"
+                        android:textSize="@dimen/sp_14" />
+
+
+                </LinearLayout>
+
+
+            </LinearLayout>
+
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/recycler_head"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/Write"
+                android:overScrollMode="never" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp_30"
+                android:layout_marginStart="@dimen/dp_12"
+                android:layout_marginEnd="@dimen/dp_12"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="end"
+                    android:text="查看示例?"
+                    android:textColor="#59BCD2" />
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:id="@+id/lin_merchants"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/Write"
+                android:gravity="center"
+                android:minHeight="@dimen/dp_50"
+                android:orientation="horizontal">
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/dp_12"
+                    android:text="核销商户"
+                    android:textColor="@color/black33"
+                    android:textSize="@dimen/sp_17" />
+
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/dp_10"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/dp_6"
+                        android:layout_marginBottom="@dimen/dp_6"
+                        android:orientation="horizontal">
+
+
+                        <TextView
+                            android:id="@+id/text_yuan"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="请选择分店核销商户"
+                            android:textColor="@color/black99"
+                            android:textSize="@dimen/sp_14" />
+
+
+                    </LinearLayout>
+
+
+                </LinearLayout>
+
+                <ImageView
+                    android:layout_width="@dimen/dp_16"
+                    android:layout_height="@dimen/dp_16"
+                    android:layout_marginEnd="@dimen/dp_14"
+                    android:layout_marginRight="@dimen/dp_14"
+                    android:src="@drawable/youjian" />
+
+            </LinearLayout>
+
+            <View
+                android:background="@color/all_background"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp_1"/>
+
+            <LinearLayout
+
+                android:id="@+id/lin_appointment"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/Write"
+                android:gravity="center"
+                android:minHeight="@dimen/dp_50"
+                android:orientation="horizontal">
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/dp_12"
+                    android:text="预约时间"
+                    android:textColor="@color/black33"
+                    android:textSize="@dimen/sp_17" />
+
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/dp_10"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/dp_6"
+                        android:layout_marginBottom="@dimen/dp_6"
+                        android:orientation="horizontal">
+
+
+                        <TextView
+                            android:id="@+id/text_Time"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="请选择客人提前预约时间"
+                            android:textColor="@color/black99"
+                            android:textSize="@dimen/sp_14" />
+
+
+                    </LinearLayout>
+
+
+                </LinearLayout>
+
+                <ImageView
+                    android:layout_width="@dimen/dp_16"
+                    android:layout_height="@dimen/dp_16"
+                    android:layout_marginEnd="@dimen/dp_14"
+                    android:layout_marginRight="@dimen/dp_14"
+                    android:src="@drawable/youjian" />
+
+            </LinearLayout>
+
+
+            <View
+                android:background="@color/all_background"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp_1"/>
+
+
+            <LinearLayout
+                android:id="@+id/lin_Effective"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/Write"
+                android:gravity="center"
+                android:minHeight="@dimen/dp_50"
+                android:orientation="horizontal">
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/dp_12"
+                    android:text="有效时间"
+                    android:textColor="@color/black33"
+                    android:textSize="@dimen/sp_17" />
+
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/dp_10"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/dp_6"
+                        android:layout_marginBottom="@dimen/dp_6"
+                        android:orientation="horizontal">
+
+
+                        <TextView
+                            android:id="@+id/text_huo"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="请选择客人提前预约时间"
+                            android:textColor="@color/black99"
+                            android:textSize="@dimen/sp_14" />
+
+
+                    </LinearLayout>
+
+
+                </LinearLayout>
+
+                <ImageView
+                    android:layout_width="@dimen/dp_16"
+                    android:layout_height="@dimen/dp_16"
+                    android:layout_marginEnd="@dimen/dp_14"
+                    android:layout_marginRight="@dimen/dp_14"
+                    android:src="@drawable/youjian" />
+
+            </LinearLayout>
+
+
+            <View
+                android:background="@color/all_background"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp_1"/>
+
+
+
+
+            <TextView
+                android:layout_marginBottom="@dimen/dp_42"
+                android:layout_marginTop="@dimen/dp_49"
+                android:textSize="@dimen/sp_16"
+                android:textColor="@color/Write"
+                android:gravity="center"
+                android:text="发布"
+                android:layout_marginEnd="@dimen/dp_12"
+                android:layout_marginStart="@dimen/dp_12"
+                android:background="@drawable/button_img"
+                android:id="@+id/text_Release"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp_40" />
 
 
 
 
 
+        </LinearLayout>
 
 
-
-
+    </android.support.v4.widget.NestedScrollView>
 
 
 </LinearLayout>

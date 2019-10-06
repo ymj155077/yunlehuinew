@@ -124,7 +124,7 @@ public class ActRefunds extends BaseAct {
     @BindView(R.id.recycler_tao)
     RecyclerView recycler_tao;
 
-    //
+
     private MyRecycleViewAdapter myRecycleViewAdapter;
 
 
@@ -265,28 +265,19 @@ public class ActRefunds extends BaseAct {
         inputTextMsgDialog.setmOnTextSendListener(new InputTextMsgDialog.OnTextSendListener() {
             @Override
             public void onTextSend(String msg) {
-
                 //点击发送按钮后，回调此方法，msg为输入的值
-
                 if (modetext == 0) {
-
                     if (msg.length() > 0) {
                         text_shop.setText(msg);
                     }
-
                 } else {
-
                     if (msg.length() > 0) {
                         datassss.get(postionTao).setDetails(msg);
                     }
-
                     myRecycleViewAdapter = new MyRecycleViewAdapter(datassss, ActRefunds.this);
                     recycler_tao.setAdapter(myRecycleViewAdapter);
-
                 }
-
                 inputTextMsgDialog.dismiss(); //隐藏此dialog
-
             }
         });
 
@@ -528,30 +519,9 @@ public class ActRefunds extends BaseAct {
 //                      刷新数据
                         selectListTao = PictureSelector.obtainMultipleResult(data);
                         Log.i("postionTao", adapterTao.getPositions() + "---" + contextsss);
-
-
-//                        if (contextsss!=null&&contextsss.length()>0){
-//                            datassss.get(postionTao).setDetails(contextsss);
-//                        }
-
-
-                        //判断软键盘是否显示，显示就关闭
-//                        if (isSoftShowing()) {
-//                            final View v = getWindow().peekDecorView();
-//                            if (v != null && v.getWindowToken() != null) {
-//                                InputMethodManager imm = (InputMethodManager) getSystemService(INPUT_METHOD_SERVICE);
-//                                imm.hideSoftInputFromWindow(v.getWindowToken(), 0);
-//                            }
-//                        } else {
-//
-//                        }
-
-
                         datassss.get(postionTao).setImgs(selectListTao);
                         myRecycleViewAdapter = new MyRecycleViewAdapter(datassss, this);
                         recycler_tao.setAdapter(myRecycleViewAdapter);
-
-
                     }
                     break;
             }
@@ -713,7 +683,7 @@ public class ActRefunds extends BaseAct {
 
                     postionTao = positionss;
 
-                    View view_ = Tools.setRebuildPop(context, R.layout.item_fabu, R.layout.frag_explosive);
+                    View view_ = Tools.setRebuildPop(context, R.layout.item_fabu, R.layout.activity_act_refunds);
 
 
                     ClearEditText edit_yuan, edit_now, edit_yong, edit_jie, edit_Stock;
@@ -800,52 +770,19 @@ public class ActRefunds extends BaseAct {
                 }
             });
 
-
-//            if (android.os.Build.VERSION.SDK_INT <= 10) {
-//
-//                holder.text_kkk.setInputType(InputType.TYPE_NULL);
-//
-//            } else {
-//
-//                Class<EditText> cls = EditText.class;
-//
-//                Method method;
-//
-//                try {
-//
-//                    method = cls.getMethod("setShowSoftInputOnFocus", boolean.class);
-//
-//                    method.setAccessible(true);
-//
-//                    method.invoke(holder.text_kkk, false);
-//
-//                } catch (Exception e) {
-//
-//                }
-//
-//            }
-
-
             holder.text_kkk.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
 
-
-//判断软键盘是否显示，显示就关闭
-//                    if (isSoftShowing()) {
-//                        final View v = getWindow().peekDecorView();
-//                        if (v != null && v.getWindowToken() != null) {
-//                            InputMethodManager imm = (InputMethodManager) getSystemService(INPUT_METHOD_SERVICE);
-//                            imm.hideSoftInputFromWindow(v.getWindowToken(), 0);
-//                        }
-//                    } else {
-//
-//                    }
-
                     modetext = 1;
 
                     postionTao = positionss;
-                    inputTextMsgDialog.setHint("请输入套餐详情");
+
+                    if (datassss.get(positionss).getDetails()!=null&&datassss.get(positionss).getDetails().length()>0){
+                        inputTextMsgDialog.setHint(datassss.get(postionTao).getDetails());
+                    }else {
+                        inputTextMsgDialog.setHint("请输入套餐详情");
+                    }
                     inputTextMsgDialog.show();
 
                 }
@@ -885,18 +822,7 @@ public class ActRefunds extends BaseAct {
     }
 
 
-    //    判断是否显示方法
-    private boolean isSoftShowing() {
-        //获取当屏幕内容的高度
-        int screenHeight = this.getWindow().getDecorView().getHeight();
-        //获取View可见区域的bottom
-        Rect rect = new Rect();
-        //DecorView即为activity的顶级view
-        this.getWindow().getDecorView().getWindowVisibleDisplayFrame(rect);
-        //考虑到虚拟导航栏的情况（虚拟导航栏情况下：screenHeight = rect.bottom + 虚拟导航栏高度）
-        //选取screenHeight*2/3进行判断
-        return screenHeight * 2 / 3 > rect.bottom;
-    }
+
 
 
 }

@@ -113,6 +113,7 @@ android:minHeight="@dimen/dp_100"
             android:background="@drawable/wallerxia">
 
             <TextView
+                android:id="@+id/text_shan"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/dp_12"
@@ -137,7 +138,7 @@ android:minHeight="@dimen/dp_100"
 
 
             <TextView
-
+                android:id="@+id/text_add"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/dp_12"
@@ -155,6 +156,6 @@ android:minHeight="@dimen/dp_100"
     <View
         android:background="@color/all_background"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/dp_18"/>
+        android:layout_height="@dimen/dp_10"/>
 
 </LinearLayout>
