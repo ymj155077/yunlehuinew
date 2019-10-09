@@ -5,11 +5,29 @@
     android:background="@color/Write"
     android:orientation="vertical">
 
+    <TextView
+        android:visibility="gone"
+        android:textColor="@color/black33"
+        android:gravity="center_vertical"
+        android:id="@+id/text_name"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_50"
+        android:layout_marginStart="@dimen/dp_12"
+        android:layout_marginEnd="@dimen/dp_12"
+        android:lineSpacingExtra="4dp"
+        android:lineSpacingMultiplier="1"
+        android:text="请输入商品名称"
+        android:textSize="@dimen/sp_17" />
+
+
+    <View
+        android:background="@color/all_background"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_4"/>
 
 
     <TextView
-        android:gravity="top"
-android:minHeight="@dimen/dp_100"
+        android:textColor="@color/black33"
         android:id="@+id/text_kkk"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -17,17 +35,19 @@ android:minHeight="@dimen/dp_100"
         android:layout_marginTop="@dimen/dp_12"
         android:layout_marginEnd="@dimen/dp_12"
         android:layout_marginBottom="@dimen/dp_12"
-        android:text="请输入套餐内容"
+        android:gravity="top"
         android:lineSpacingExtra="4dp"
         android:lineSpacingMultiplier="1"
+        android:minHeight="@dimen/dp_100"
+        android:text="请输入套餐简介"
         android:textSize="@dimen/sp_17" />
 
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/xr_refund"
-        android:layout_marginStart="@dimen/dp_12"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/dp_12"
         android:background="@color/Write"
         android:descendantFocusability="blocksDescendants" />
 
@@ -74,7 +94,6 @@ android:minHeight="@dimen/dp_100"
                     android:textSize="@dimen/sp_14" />
 
 
-
             </LinearLayout>
 
 
@@ -95,22 +114,22 @@ android:minHeight="@dimen/dp_100"
         android:background="@color/all_background" />
 
     <LinearLayout
-        android:layout_marginTop="@dimen/dp_12"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dp_12"
         android:layout_marginEnd="@dimen/dp_6"
         android:gravity="end"
         android:orientation="horizontal">
 
         <LinearLayout
-            android:gravity="center"
             android:id="@+id/lin_RemoveItem"
             android:layout_width="wrap_content"
             android:layout_height="@dimen/dp_28"
             android:layout_gravity="end"
             android:layout_marginEnd="@dimen/dp_6"
             android:layout_marginBottom="@dimen/dp_12"
-            android:background="@drawable/wallerxia">
+            android:background="@drawable/wallerxia"
+            android:gravity="center">
 
             <TextView
                 android:id="@+id/text_shan"
@@ -126,7 +145,6 @@ android:minHeight="@dimen/dp_100"
 
 
         <LinearLayout
-            android:gravity="center"
             android:id="@+id/lin_addItem"
             android:layout_width="wrap_content"
             android:layout_height="@dimen/dp_28"
@@ -134,7 +152,8 @@ android:minHeight="@dimen/dp_100"
             android:layout_marginStart="@dimen/dp_6"
             android:layout_marginEnd="@dimen/dp_6"
             android:layout_marginBottom="@dimen/dp_12"
-            android:background="@drawable/wallerxia">
+            android:background="@drawable/wallerxia"
+            android:gravity="center">
 
 
             <TextView
@@ -154,8 +173,8 @@ android:minHeight="@dimen/dp_100"
     </LinearLayout>
 
     <View
-        android:background="@color/all_background"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/dp_10"/>
+        android:layout_height="@dimen/dp_10"
+        android:background="@color/all_background" />
 
 </LinearLayout>

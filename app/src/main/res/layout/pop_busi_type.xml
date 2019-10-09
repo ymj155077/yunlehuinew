@@ -95,12 +95,13 @@ android:id="@+id/lin_pop_type"
 
 
                 <TextView
+                    android:id="@+id/text_one"
                     android:layout_marginEnd="@dimen/dp_12"
                     android:layout_marginStart="@dimen/dp_12"
                     android:textSize="@dimen/sp_13"
                     android:layout_marginBottom="@dimen/dp_23"
                     android:textColor="@color/black99"
-                    android:text="营销达人是营销商户的分销员，可以在平台上售卖营销 商指定的产品，按销售数量赚取提成"
+                    android:text=""
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content" />
 
@@ -130,12 +131,13 @@ android:id="@+id/lin_pop_type"
 
 
                 <TextView
+                    android:id="@+id/text_two"
                     android:layout_marginEnd="@dimen/dp_12"
                     android:layout_marginStart="@dimen/dp_12"
                     android:textSize="@dimen/sp_13"
                     android:layout_marginBottom="@dimen/dp_23"
                     android:textColor="@color/black99"
-                    android:text="核销商户是营销商户的实体分销商，营销商户为用户提 供的线上产品，用户购买后到营销商指定的核销商户门 店核销消费"
+                    android:text=""
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content" />
 
@@ -171,12 +173,13 @@ android:id="@+id/lin_pop_type"
 
 
                 <TextView
+                    android:id="@+id/text_three"
                     android:layout_marginEnd="@dimen/dp_12"
                     android:layout_marginStart="@dimen/dp_12"
                     android:textSize="@dimen/sp_13"
                     android:layout_marginBottom="@dimen/dp_23"
                     android:textColor="@color/black99"
-                    android:text="营销商户是线下实体商户，可以在线上售卖产品，线下 核销产品，可以有多个核销商户分销员"
+                    android:text=""
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content" />
 

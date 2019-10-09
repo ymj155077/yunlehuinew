@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    android:orientation="vertical"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.act.actme.actbusiness.ActExample">
+
+    <include layout="@layout/toolbar_push_off"/>
+
+    <ScrollView
+        android:scrollbars="none"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+<!--套餐-->
+            <ImageView
+                android:visibility="gone"
+                android:id="@+id/img_one"
+                android:scaleType="fitXY"
+                android:src="@drawable/df"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+
+<!--详情-->
+            <ImageView
+                android:visibility="gone"
+                android:id="@+id/img_two"
+                android:scaleType="fitXY"
+                android:src="@drawable/mm"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+<!--海报-->
+
+
+            <ImageView
+                android:visibility="gone"
+                android:id="@+id/img_three"
+                android:scaleType="fitXY"
+                android:src="@drawable/hai"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+
+
+            <ImageView
+                android:visibility="gone"
+                android:id="@+id/img_four"
+                android:scaleType="fitXY"
+                android:src="@drawable/fgh"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+
+
+
+        </LinearLayout>
+
+
+
+
+    </ScrollView>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</LinearLayout>

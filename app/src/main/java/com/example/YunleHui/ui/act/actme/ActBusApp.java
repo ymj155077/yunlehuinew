@@ -4,11 +4,15 @@ import android.Manifest;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
+import android.graphics.Typeface;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.text.SpannableString;
+import android.text.Spanned;
+import android.text.style.StyleSpan;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
@@ -415,6 +419,35 @@ public class ActBusApp extends BaseAct {
                         Tools.mBottomSheetPop.dismiss();
                     }
                 });
+
+//一
+                TextView text_one = (TextView) view_list.findViewById(R.id.text_one);
+                SpannableString spannableString = new SpannableString("营销商户是非实体商户，和营销+核销商户达成协议后，可在线发布该商户的产品。赚取差价");
+                StyleSpan styleSpan_B  = new StyleSpan(Typeface.BOLD);
+                spannableString.setSpan(styleSpan_B, 12, 19, Spanned.SPAN_INCLUSIVE_EXCLUSIVE);
+                text_one.setHighlightColor(Color.parseColor("#333333"));
+                text_one.setText(spannableString);
+//                二
+
+                TextView text_two = (TextView) view_list.findViewById(R.id.text_two);
+                SpannableString spannable = new SpannableString("核销商户是营销+核销商户的分销商户，核销商户经营 销商户添加后，可核销营销商户指定的产品");
+                StyleSpan styleSpa  = new StyleSpan(Typeface.BOLD);
+                spannableString.setSpan(styleSpa, 5, 12, Spanned.SPAN_INCLUSIVE_EXCLUSIVE);
+                text_two.setHighlightColor(Color.parseColor("#333333"));
+                text_two.setText(spannable);
+
+
+
+                TextView text_three = (TextView) view_list.findViewById(R.id.text_three);
+                SpannableString spanna = new SpannableString("营销+核销是线下实体商户，可以在线发布产品，线下核 销产品，可以有多个分销商户");
+                StyleSpan style  = new StyleSpan(Typeface.BOLD);
+                spannableString.setSpan(style, 0, 5, Spanned.SPAN_INCLUSIVE_EXCLUSIVE);
+                text_three.setHighlightColor(Color.parseColor("#333333"));
+                text_three.setText(spanna);
+
+
+
+
                 LinearLayout lin_pop_type = (LinearLayout) view_list.findViewById(R.id.lin_pop_type);
                 lin_pop_type.setOnClickListener(new View.OnClickListener() {
                     @Override
@@ -792,6 +825,9 @@ try {
                         Log.i(TAG, "原图---->" + media.getPath());
                         Log.i(TAG, "裁剪---->" + media.getCutPath());
                     }
+
+
+
                     adapter.setList(selectList);
                     adapter.notifyDataSetChanged();
                     break;

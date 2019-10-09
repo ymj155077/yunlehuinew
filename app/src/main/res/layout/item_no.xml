@@ -8,12 +8,6 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
-
-
-
-
-
-
     <LinearLayout
         android:descendantFocusability="blocksDescendants"
         android:clickable="false"
@@ -78,10 +72,5 @@
             android:layout_height="wrap_content" />
 
     </LinearLayout>
-
-
-
-
-
 
 </LinearLayout>

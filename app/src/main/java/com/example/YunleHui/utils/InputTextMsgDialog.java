@@ -74,6 +74,19 @@ public class InputTextMsgDialog extends AppCompatDialog {
         messageTextView.setHint(text);
     }
 
+
+
+
+    /**
+     * 设置输入提示文字
+     */
+    public void setTextNow(String text) {
+        messageTextView.setText(text);
+    }
+
+
+
+
     /**
      * 设置按钮的文字  默认为：发送
      */

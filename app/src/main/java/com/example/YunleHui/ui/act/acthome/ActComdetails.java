@@ -260,6 +260,7 @@ public class ActComdetails extends BaseAct {
                 params_order
         );
         getdata("frontShop/shop/getComment");
+
         ArrayList<String> datas = new ArrayList<>();
         datas.clear();
         for (int i = 0; i < 6; i++) {

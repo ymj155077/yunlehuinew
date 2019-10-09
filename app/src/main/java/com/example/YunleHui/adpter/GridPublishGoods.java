@@ -63,6 +63,13 @@ public class GridPublishGoods extends
         this.list = list;
     }
 
+
+
+    public List<LocalMedia> getList() {
+        return list;
+    }
+
+
     public class ViewHolder extends RecyclerView.ViewHolder {
 
         ImageView mImg;

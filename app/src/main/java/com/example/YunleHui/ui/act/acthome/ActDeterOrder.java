@@ -186,8 +186,8 @@ public class ActDeterOrder extends BaseAct {
     }
 
 
-    @OnClick({R.id.lin_place, R.id.img_jian, R.id.img_add})
-    public void OnClick(View view) {
+    @OnClick({R.id.lin_place, R.id.img_jian,R.id.img_add})
+    public void OnClick(View view){
         switch (view.getId()){
             case R.id.lin_place:
                 if (type == 0){

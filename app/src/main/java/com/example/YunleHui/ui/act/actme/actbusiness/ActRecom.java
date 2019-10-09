@@ -4,7 +4,8 @@ import android.Manifest;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
+import android.os.Build;
+import android.support.annotation.RequiresApi;
 import android.os.Bundle;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
@@ -17,18 +18,21 @@ import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
-
-import com.baidu.platform.comapi.map.A;
 import com.example.YunleHui.Bean.BeanImgs;
+import com.example.YunleHui.Bean.Bean_details;
+import com.example.YunleHui.Bean.Bean_dhcb;
+import com.example.YunleHui.Bean.Bean_shopUrl;
+import com.example.YunleHui.Bean.Bean_suc;
+import com.example.YunleHui.Bean.Bean_xiao;
 import com.example.YunleHui.MainActivity;
 import com.example.YunleHui.R;
 import com.example.YunleHui.adpter.FullyGridLayoutManager;
 import com.example.YunleHui.adpter.GridPublishGoods;
 import com.example.YunleHui.adpter.GridPublishGoodsTao;
+import com.example.YunleHui.appManager.MyApp;
 import com.example.YunleHui.base.BaseAct;
+import com.example.YunleHui.utils.HttpUtil;
 import com.example.YunleHui.utils.InputTextMsgDialog;
-import com.example.YunleHui.utils.Tools;
-import com.example.YunleHui.view.ClearEditText;
 import com.example.YunleHui.view.datapick.DataPickerDialog;
 import com.example.YunleHui.view.datapick.DatePickerDialog;
 import com.example.YunleHui.view.datapick.DateUtil;
@@ -38,16 +42,39 @@ import com.luck.picture.lib.config.PictureMimeType;
 import com.luck.picture.lib.entity.LocalMedia;
 import com.luck.picture.lib.permissions.RxPermissions;
 import com.luck.picture.lib.tools.PictureFileUtils;
-
+import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
-
+import java.util.Map;
 import butterknife.BindView;
 import butterknife.OnClick;
 import io.reactivex.Observer;
 import io.reactivex.disposables.Disposable;
+import okhttp3.Call;
+import okhttp3.Callback;
+import okhttp3.MediaType;
+import okhttp3.MultipartBody;
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.RequestBody;
+import okhttp3.Response;
 
 public class ActRecom extends BaseAct {
+
+
+    //  Json传递
+    Map<Object, Object> goodsInfor = new HashMap<>();
+
+
+    //商品的头部的数据
+    private ArrayList<LocalMedia> headList = new ArrayList<>();
+
+    //    商品套餐的数据
+    ArrayList<BeanImgs> dataTao = new ArrayList<>();
+
+
     private List<String> list = new ArrayList<>();
 
 
@@ -58,19 +85,17 @@ public class ActRecom extends BaseAct {
     @BindView(R.id.recycler_tao)
     RecyclerView recycler_tao;
 
-
+    //套餐的所有的值
     ArrayList<BeanImgs> datassss = new ArrayList<>();
 
-
     private MyRecycleViewAdapter myRecycleViewAdapter;
-
 
     private int themeId;
     private int chooseMode = PictureMimeType.ofImage();
 
     private InputTextMsgDialog inputTextMsgDialog;
 
-    //    宣传海报
+    //宣传海报
     @BindView(R.id.recycler_head)
     RecyclerView recycler_head;
 
@@ -78,10 +103,24 @@ public class ActRecom extends BaseAct {
     @BindView(R.id.lin_Posters)
     LinearLayout lin_Posters;
 
+    @BindView(R.id.lin_xiang)
+    LinearLayout lin_xiang;
+
+    //    发布
+    @BindView(R.id.text_Release)
+    TextView text_Release;
+
+    @BindView(R.id.lin_xia)
+    LinearLayout lin_xia;
+
+    //店铺名字
+    private String goodNmae;
+    //    店铺介绍
+    private String intro;
 
     @Override
     public void startActivity(Class<?> clz) {
-        startActivity(new Intent(this,clz));
+        startActivity(new Intent(this, clz));
     }
 
     @Override
@@ -91,7 +130,7 @@ public class ActRecom extends BaseAct {
 
     @Override
     protected void findViews() {
-        if (toolbar_all!=null){
+        if (toolbar_all != null) {
             TextView text_center = (TextView) toolbar_all.findViewById(R.id.toolbar_center);
             text_center.setText("发布商品");
         }
@@ -100,13 +139,30 @@ public class ActRecom extends BaseAct {
     @Override
     public void initData() {
 
+        banners.clear();
+
+        headList.clear();
+        dataTao.clear();
+
+
+        goodsInfor.clear();
+
+
+        Intent intent = getIntent();
+
+        headList = intent.getParcelableArrayListExtra("head");
+
+        dataTao = intent.getParcelableArrayListExtra("tao");
+
+        goodNmae = intent.getStringExtra("shopNmae");
+
+        intro = intent.getStringExtra("intro");
+
 
         String[] data = getResources().getStringArray(R.array.list);
         for (String str : data) {
             list.add(str);
         }
-
-
 
         themeId = R.style.picture_default_style;
 
@@ -116,6 +172,9 @@ public class ActRecom extends BaseAct {
         adapter.setList(selectList);
         adapter.setSelectMax(maxSelectNum);
         recycler_head.setAdapter(adapter);
+
+
+
         adapter.setOnItemClickListener(new GridPublishGoods.OnItemClickListener() {
             @Override
             public void onItemClick(int position, View v) {
@@ -143,9 +202,6 @@ public class ActRecom extends BaseAct {
         });
 
 
-
-
-
         // 清空图片缓存，包括裁剪、压缩后的图片 注意:必须要在上传完成后调用 必须要获取权限
         RxPermissions permissions = new RxPermissions(this);
         permissions.request(Manifest.permission.WRITE_EXTERNAL_STORAGE).subscribe(new Observer<Boolean>() {
@@ -153,12 +209,13 @@ public class ActRecom extends BaseAct {
             public void onSubscribe(Disposable d) {
 
             }
+
             @Override
             public void onNext(Boolean aBoolean) {
                 if (aBoolean) {
                     PictureFileUtils.deleteCacheDirFile(ActRecom.this);
                 } else {
-                        Toast.makeText(ActRecom.this,
+                    Toast.makeText(ActRecom.this,
                             getString(R.string.picture_jurisdiction), Toast.LENGTH_SHORT).show();
                 }
             }
@@ -172,7 +229,6 @@ public class ActRecom extends BaseAct {
 
             }
         });
-
 
 
         LinearLayoutManager layoutManager = new LinearLayoutManager(this) {
@@ -189,7 +245,7 @@ public class ActRecom extends BaseAct {
         List<LocalMedia> imgs = new ArrayList<>();
         imgs.clear();
         for (int i = 0; i < 1; i++) {
-            datassss.add(new BeanImgs("", imgs, "", "0.00", "0.00", "0.00", "0.00"));
+            datassss.add(new BeanImgs("", "", imgs, "", "0.00", "0.00", "0.00", "0.00"));
         }
 
         myRecycleViewAdapter = new MyRecycleViewAdapter(datassss, this);
@@ -198,8 +254,6 @@ public class ActRecom extends BaseAct {
 
         //传true 可以滑动 false不可以滑动
         recycler_tao.setNestedScrollingEnabled(false);
-
-
 
 
         inputTextMsgDialog = new InputTextMsgDialog(ActRecom.this, R.style.dialog_center);
@@ -211,12 +265,12 @@ public class ActRecom extends BaseAct {
         inputTextMsgDialog.setmOnTextSendListener(new InputTextMsgDialog.OnTextSendListener() {
             @Override
             public void onTextSend(String msg) {
-                    if (msg.length() > 0) {
-                        datassss.get(postionTao).setDetails(msg);
-                    }
-                    myRecycleViewAdapter = new MyRecycleViewAdapter(datassss, ActRecom.this);
-                    recycler_tao.setAdapter(myRecycleViewAdapter);
-                    inputTextMsgDialog.dismiss(); //隐藏此dialog
+                if (msg.length() > 0) {
+                    datassss.get(postionTao).setDetails(msg);
+                }
+                myRecycleViewAdapter = new MyRecycleViewAdapter(datassss, ActRecom.this);
+                recycler_tao.setAdapter(myRecycleViewAdapter);
+                inputTextMsgDialog.dismiss(); //隐藏此dialog
             }
         });
     }
@@ -241,6 +295,15 @@ public class ActRecom extends BaseAct {
             this.inflater = LayoutInflater.from(context);
         }
 
+
+
+//        获取所有的数据
+        public ArrayList<BeanImgs> getTaoDatas(){
+            return datas;
+        }
+
+
+
         @Override
         public MyRecycleViewAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
             View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_refundbao, parent, false);
@@ -257,6 +320,7 @@ public class ActRecom extends BaseAct {
             holder.text_shan.setText("删除描述");
             holder.text_add.setText("添加描述");
             holder.lin_Price.setVisibility(View.GONE);
+
 
             try {
                 if (datas.get(positionss).getDetails() != null && datas.get(positionss).getDetails().length() > 0) {
@@ -307,14 +371,14 @@ public class ActRecom extends BaseAct {
                 @Override
                 public void onClick(View view) {
 
-                    if (datassss.size()<11){
+                    if (datassss.size() < 11) {
                         List<LocalMedia> selectListTao = new ArrayList<>();
                         selectListTao.clear();
-                        datassss.add(new BeanImgs("", selectListTao, "0.00", "0.00", "0.00", "", "0.00"));
+                        datassss.add(new BeanImgs("", "", selectListTao, "0.00", "0.00", "0.00", "", "0.00"));
                         myRecycleViewAdapter = new MyRecycleViewAdapter(datassss, ActRecom.this);
                         recycler_tao.setAdapter(myRecycleViewAdapter);
-                    }else {
-                        Toast.makeText(ActRecom.this,"最多添加10个描述！",Toast.LENGTH_SHORT).show();
+                    } else {
+                        Toast.makeText(ActRecom.this, "最多添加10个描述！", Toast.LENGTH_SHORT).show();
                     }
 
                 }
@@ -329,21 +393,23 @@ public class ActRecom extends BaseAct {
                 }
             });
 
+
             holder.text_kkk.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
 
                     postionTao = positionss;
 
-                    if (datassss.get(positionss).getDetails()!=null&&datassss.get(positionss).getDetails().length()>0){
-                        inputTextMsgDialog.setHint(datassss.get(postionTao).getDetails());
-                    }else {
+                    if (datassss.get(positionss).getDetails() != null && datassss.get(positionss).getDetails().length() > 0) {
+                        inputTextMsgDialog.setTextNow(datassss.get(postionTao).getDetails());
+                    } else {
                         inputTextMsgDialog.setHint("请输入套餐详情");
                     }
                     inputTextMsgDialog.show();
 
                 }
             });
+
         }
 
         @Override
@@ -356,15 +422,9 @@ public class ActRecom extends BaseAct {
             private LinearLayout lin_addItem;
             private LinearLayout lin_RemoveItem;
             private LinearLayout lin_Price;
-
-
             private TextView text_yuan;
-
             private TextView text_kkk;
-
-
-            private TextView text_shan,text_add;
-
+            private TextView text_name, text_shan, text_add;
 
             public ViewHolder(View itemView) {
                 super(itemView);
@@ -372,15 +432,11 @@ public class ActRecom extends BaseAct {
                 lin_addItem = (LinearLayout) itemView.findViewById(R.id.lin_addItem);
                 lin_RemoveItem = (LinearLayout) itemView.findViewById(R.id.lin_RemoveItem);
                 lin_Price = (LinearLayout) itemView.findViewById(R.id.lin_Price);
-
                 text_yuan = (TextView) itemView.findViewById(R.id.text_yuan);
-
                 text_kkk = (TextView) itemView.findViewById(R.id.text_kkk);
-
                 text_shan = (TextView) itemView.findViewById(R.id.text_shan);
                 text_add = (TextView) itemView.findViewById(R.id.text_add);
-
-
+                text_name = (TextView) itemView.findViewById(R.id.text_name);
             }
         }
     }
@@ -392,15 +448,12 @@ public class ActRecom extends BaseAct {
     private GridPublishGoodsTao adapterTao;
 
 
-
-
-
     //套餐的数据
     GridPublishGoodsTao.onAddPicClickListener onAddPicClickListeners = new GridPublishGoodsTao.onAddPicClickListener() {
         @Override
         public void onAddPicClick(int position, String contexts) {
 
-            Toast.makeText(ActRecom.this, "===222===" + "---" + contexts + position, Toast.LENGTH_SHORT).show();
+//            Toast.makeText(ActRecom.this, "===222===" + "---" + contexts + position, Toast.LENGTH_SHORT).show();
 
             postionTao = position;
 
@@ -494,7 +547,6 @@ public class ActRecom extends BaseAct {
     };
 
 
-
     private List<LocalMedia> selectList = new ArrayList<>();
     private GridPublishGoods adapter;
 
@@ -541,7 +593,25 @@ public class ActRecom extends BaseAct {
                     break;
             }
         }
+//        获取核销店铺传递回来的数据
+        else {
+
+
+            try {
+                datsds.clear();
+
+                Bundle bundle = data.getExtras();
+                datsds = (ArrayList<Bean_xiao>) bundle.getSerializable("gates");
+            } catch (Exception e) {
+
+            }
+
+
+        }
     }
+
+    //选择的核销的商家
+    ArrayList<Bean_xiao> datsds = new ArrayList<Bean_xiao>();
 
 
     private List<LocalMedia> selectListTao = new ArrayList<>();
@@ -549,13 +619,12 @@ public class ActRecom extends BaseAct {
     private final static String TAG = MainActivity.class.getSimpleName();
 
 
-
     //头部的数据
     private GridPublishGoods.onAddPicClickListener onAddPicClickListener = new GridPublishGoods.onAddPicClickListener() {
         @Override
         public void onAddPicClick() {
 
-            Toast.makeText(ActRecom.this, "===111===", Toast.LENGTH_SHORT).show();
+//           Toast.makeText(ActRecom.this, "===111===", Toast.LENGTH_SHORT).show();
 
 
             Moder = 0;
@@ -649,20 +718,24 @@ public class ActRecom extends BaseAct {
     };
 
 
+    @BindView(R.id.lin_appointment)
+    LinearLayout lin_appointment;
 
 
-@BindView(R.id.lin_appointment)
-LinearLayout lin_appointment;
+    @BindView(R.id.lin_four)
+    LinearLayout lin_four;
 
 
-    @OnClick({R.id.lin_Posters,R.id.lin_appointment,R.id.lin_Effective})
-    public void OnClick(View view){
-        switch (view.getId()){
+    @OnClick({R.id.lin_Posters, R.id.lin_appointment, R.id.lin_Effective, R.id.lin_merchants,
+            R.id.lin_xiang, R.id.lin_four, R.id.text_Release, R.id.lin_xia})
+    public void OnClick(View view) {
+        switch (view.getId()) {
             case R.id.lin_Posters:
+                Intent intent3 = new Intent(this, ActExample.class);
 
+                intent3.putExtra("type", 3);
 
-
-
+                startActivity(intent3);
                 break;
 //                预约时间
             case R.id.lin_appointment:
@@ -671,15 +744,94 @@ LinearLayout lin_appointment;
 //                有效时间
             case R.id.lin_Effective:
 
+                timeType = 0;
+
                 showDateDialog(DateUtil.getDateForString("1990-01-01"));
 
+                break;
+//                选择核销类型
+            case R.id.lin_merchants:
+
+
+                Intent intentsd = new Intent(this, ActSelecBus.class);
+
+                startActivityForResult(intentsd, 123);
+
+
+                break;
+            case R.id.lin_xiang:
+
+                Intent intent = new Intent(this, ActExample.class);
+
+                intent.putExtra("type", 2);
+
+                startActivity(intent);
+
+                break;
+
+            case R.id.lin_four:
+                Intent intent4 = new Intent(this, ActExample.class);
+
+                intent4.putExtra("type", 4);
+
+                startActivity(intent4);
+
+                break;
+
+//                商品下架时间
+
+            case R.id.lin_xia:
+
+
+                timeType = 1;
+
+                showDateDialog(DateUtil.getDateForString("1990-01-01"));
+
+                break;
+
+
+//                发布
+            case R.id.text_Release:
+
+
+                //商品的头部的数据
+//                private ArrayList<LocalMedia> headList = new ArrayList<>();
+//
+//                //    商品套餐的数据
+//                ArrayList<BeanImgs> dataTao = new ArrayList<>();
+
+                HttpUtil.addMapparams();
+
+
+//              ArrayList<BeanImgs> datassss = new ArrayList<>();
+
+                for (LocalMedia media : headList) {
+                    path_img = media.getCompressPath();
+                    Log.i(TAG, "压缩---->" + media.getCompressPath());
+                    Log.i(TAG, "原图---->" + media.getPath());
+                    Log.i(TAG, "裁剪---->" + media.getCutPath());
+
+//6张图的展示
+                    uploadImage(path_img, headList.size());
+                }
+
+
+//上传图片
                 break;
         }
     }
 
 
     @BindView(R.id.text_Time)
-TextView text_Time;
+    TextView text_Time;
+
+
+//    选择日期的类型
+
+    private int timeType = 0;
+
+
+    private int hour = 0;
 
 
     private void showChooseDialog(List<String> mlist) {
@@ -688,7 +840,11 @@ TextView text_Time;
                 .setOnDataSelectedListener(new DataPickerDialog.OnDataSelectedListener() {
                     @Override
                     public void onDataSelected(String itemValue, int position) {
-                        text_Time.setText(itemValue);
+
+                        hour = Integer.valueOf(itemValue);
+
+                        text_Time.setText("提前" + itemValue + "小时预约");
+
                     }
 
                     @Override
@@ -696,21 +852,16 @@ TextView text_Time;
 
                     }
                 }).create();
-
         chooseDialog.show();
     }
-
 
 
     private Dialog dateDialog, chooseDialog;
 
 
-//年月日选择
+    //年月日选择
     public void date(View v) {
-
         showDateDialog(DateUtil.getDateForString("1990-01-01"));
-
-
     }
 
     private void showDateDialog(List<Integer> date) {
@@ -718,10 +869,13 @@ TextView text_Time;
         builder.setOnDateSelectedListener(new DatePickerDialog.OnDateSelectedListener() {
             @Override
             public void onDateSelected(int[] dates) {
-
-                text_huo.setText(dates[0] + "-" + (dates[1] > 9 ? dates[1] : ("0" + dates[1])) + "-"
-                        + (dates[2] > 9 ? dates[2] : ("0" + dates[2])));
-
+                if (timeType == 0) {
+                    text_huo.setText(dates[0] + "-" + (dates[1] > 9 ? dates[1] : ("0" + dates[1])) + "-"
+                            + (dates[2] > 9 ? dates[2] : ("0" + dates[2])));
+                } else if (timeType == 1) {
+                    text_Lower.setText(dates[0] + "-" + (dates[1] > 9 ? dates[1] : ("0" + dates[1])) + "-"
+                            + (dates[2] > 9 ? dates[2] : ("0" + dates[2])));
+                }
             }
 
             @Override
@@ -729,11 +883,9 @@ TextView text_Time;
 
             }
         })
-
                 .setSelectYear(date.get(0) - 1)
                 .setSelectMonth(date.get(1) - 1)
                 .setSelectDay(date.get(2) - 1);
-
         builder.setMaxYear(DateUtil.getYear());
         builder.setMaxMonth(DateUtil.getDateForString(DateUtil.getToday()).get(1));
         builder.setMaxDay(DateUtil.getDateForString(DateUtil.getToday()).get(2));
@@ -743,6 +895,523 @@ TextView text_Time;
 
 
     @BindView(R.id.text_huo)
-TextView text_huo;
+    TextView text_huo;
 
+    @BindView(R.id.text_Lower)
+    TextView text_Lower;
+
+    private Bean_shopUrl bean_shopUrl;
+    private boolean success_shopUrl;
+    private int code_shopUrl;
+    private String msg_shopUrl;
+    private Bean_shopUrl.DataBean data_shopUrl;
+
+
+//    //商品的头部的数据
+//    private ArrayList<LocalMedia> headList = new ArrayList<>();
+//
+//    //    商品套餐的数据
+//    ArrayList<BeanImgs> dataTao = new ArrayList<>();
+//    ArrayList<Bean_Tao> dataTao = new ArrayList<>();
+
+
+    private String path_xiang;
+
+
+    private int i = 0;
+
+
+    //上传图片
+    public void uploadImage(String path_img, int imgSize) {
+
+
+        OkHttpClient okHttpClient = new OkHttpClient();
+
+        Log.d("imagePath", path_img);
+
+        File file = new File(path_img);
+        RequestBody image = RequestBody.create(MediaType.parse("image/png"), file);
+        RequestBody requestBody = null;
+        try {
+            requestBody = new MultipartBody.Builder()
+                    .setType(MultipartBody.FORM)
+                    .addFormDataPart("mediaFile", path_img, image)
+                    .addFormDataPart("mediaType", "0")
+                    .addFormDataPart("businessType", "1")
+                    .build();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        Request request = new Request.Builder()
+                .url("http://192.168.110.187:8082/media/uploadMedia")
+                .post(requestBody)
+                .build();
+//        Response response = okHttpClient.newCall(request);
+
+
+        okHttpClient.newCall(request).enqueue(new Callback() {
+            @Override
+            public void onFailure(Call call, IOException e) {
+
+            }
+
+            @Override
+            public void onResponse(Call call, Response response) throws IOException {
+                String img = response.body().string();
+//                {"success":true,"code":200,"msg":"成功","data":{"id":469,"mediaType":0,"businessType":1,"mediaSize":37309,"mediaName":"1166535384595828736","mediaUrl":"http://pwa27iixx.bkt.clouddn.com/1166535384595828736"}}
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        Log.i("response", "----" + img);
+                        bean_shopUrl = MyApp.gson.fromJson(img, Bean_shopUrl.class);
+                        data_shopUrl = bean_shopUrl.getData();
+                        String img_url = data_shopUrl.getMediaUrl();
+                        ++i;
+//添加图片
+                        runOnUiThread(new Runnable() {
+                            @RequiresApi(api = Build.VERSION_CODES.O)
+                            @Override
+                            public void run() {
+//上传图片
+//                                banner图添加
+                                banners.add(img_url);
+                                String bannerimg = String.join(",", banners.toArray(new String[banners.size()]));
+
+                                Log.i("bannerimg", i + "---" + imgSize + bannerimg);
+
+                                if (i == imgSize) {
+
+                                    i = 0;
+
+//                                    --
+//                                    上传套餐图
+                                    goodsInfor.put("goodsName", goodNmae);
+                                    goodsInfor.put("banner", bannerimg);
+                                    goodsInfor.put("intro", intro);
+                                    goodsInfor.put("logoUrl", banners.get(0));
+                                    goodsInfor.put("orderEffeDate", text_huo.getText().toString());
+                                    goodsInfor.put("goodsEffeDate", text_Lower.getText().toString());
+                                    goodsInfor.put("preTime", hour + "");
+
+
+
+
+//详情页的列表 个数，先计算个数，然后图片逐一上传
+                                    for (int i = 0; i < myRecycleViewAdapter.getTaoDatas().size(); i++) {
+
+                                        Log.i("path_xiang", "path_xiang" + datassss.size() + "详情---"+myRecycleViewAdapter.getTaoDatas().size()+"---"+
+                                                myRecycleViewAdapter.getTaoDatas().get(i).getImgs().size());
+
+                                        //详情列表
+//                                        for (LocalMedia media : myRecycleViewAdapter.getTaoDatas().get(i).getImgs()) {
+//                                            path_xiang = media.getCompressPath();
+////                                            Log.i(TAG, "path_xiang" + media.getCompressPath());
+////                                            Log.i(TAG, "原图---->" + media.getPath());
+////                                            Log.i(TAG, "裁剪---->" + media.getCutPath());
+//
+////                                          单张图片，所有的图片的个数，第几个  datassss 换了一下
+//
+//                                            detail(path_xiang, myRecycleViewAdapter.getTaoDatas().get(i).getImgs().size(), i);
+//
+//                                        }
+
+//详情页    图片添加
+
+//                                        除了问题
+
+
+                                        for (int j = 0; j < myRecycleViewAdapter.getTaoDatas().get(i).getImgs().size(); j++) {
+                                            path_xiang = myRecycleViewAdapter.getTaoDatas().get(i).getImgs().get(j).getCompressPath();
+                                            Posdetail(path_xiang,myRecycleViewAdapter.getTaoDatas().get(i).getImgs().size()-1,i);
+                                        }
+
+
+
+
+
+
+
+
+
+                                    }
+                                }
+                            }
+                        });
+                    }
+                });
+            }
+        });
+    }
+
+
+    List<String> banners = new ArrayList<>();
+    List<String> details = new ArrayList<>();
+
+
+    private List<Bean_details> datadetail = new ArrayList<Bean_details>();
+
+
+    int ide = 0;
+
+    //上传详情  单张图片，单行所有的数量,行数
+    public void Posdetail(String path_img, int imgSize,int pai) {
+
+
+        OkHttpClient okHttpClient = new OkHttpClient();
+
+        Log.i("Posdetail", path_img+"----");
+
+        File file = new File(path_img);
+        RequestBody image = RequestBody.create(MediaType.parse("image/png"), file);
+        RequestBody requestBody = null;
+        try {
+            requestBody = new MultipartBody.Builder()
+                    .setType(MultipartBody.FORM)
+                    .addFormDataPart("mediaFile", path_img, image)
+                    .addFormDataPart("mediaType", "0")
+                    .addFormDataPart("businessType", "1")
+                    .build();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        Request request = new Request.Builder()
+                .url("http://192.168.110.187:8082/media/uploadMedia")
+                .post(requestBody)
+                .build();
+//        Response response = okHttpClient.newCall(request);
+
+
+        okHttpClient.newCall(request).enqueue(new Callback() {
+            @Override
+            public void onFailure(Call call, IOException e) {
+
+            }
+
+            @Override
+            public void onResponse(Call call, Response response) throws IOException {
+                String img = response.body().string();
+//                {"success":true,"code":200,"msg":"成功","data":{"id":469,"mediaType":0,"businessType":1,"mediaSize":37309,"mediaName":"1166535384595828736","mediaUrl":"http://pwa27iixx.bkt.clouddn.com/1166535384595828736"}}
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        Log.i("response", "----" + img);
+                        bean_shopUrl = MyApp.gson.fromJson(img, Bean_shopUrl.class);
+                        data_shopUrl = bean_shopUrl.getData();
+                        String img_url = data_shopUrl.getMediaUrl();
+//添加图片
+                        runOnUiThread(new Runnable() {
+                            @RequiresApi(api = Build.VERSION_CODES.O)
+                            @Override
+                            public void run() {
+//上传图片
+//
+                                details.add(img_url);
+
+                                ++ide;
+                                Log.i("detaikkk", imgSize + "------" + ide + "---");
+                                if (ide == imgSize) {
+                                    String bannerimg = String.join(",", details.toArray(new String[details.size()]));
+                                    Log.i("detailsxia", imgSize + "------" + ide + "---" + "----" + bannerimg);
+                                    ide = 0;
+
+                                    datadetail.add(new Bean_details(myRecycleViewAdapter.getTaoDatas().get(pai).getDetails(), bannerimg));
+//---
+                                    details.clear();
+//                                    i是第几排
+                                    Log.i("datassss", myRecycleViewAdapter.getTaoDatas().size() - 1 + "----" + pai + "---" + "----" + bannerimg);
+//                                    详情数据添加完成
+                                    if (pai == myRecycleViewAdapter.getTaoDatas().size() - 1) {
+                                        Log.i("datadetail", MyApp.gson.toJson(datadetail));
+
+                                        goodsInfor.put("detail", MyApp.gson.toJson(datadetail).toString());
+//                                        haiBao(selectList);
+//                                        海报执行多次
+//                                        获取最新的数据 海报图
+                                        haiBao(adapter.getList());
+
+                                    }
+                                }
+                            }
+                        });
+                    }
+                });
+            }
+        });
+    }
+
+
+    //上传宣传海报
+    public void haiBao(List<LocalMedia> selectList) {
+
+        String path_img = selectList.get(0).getCompressPath();
+
+        OkHttpClient okHttpClient = new OkHttpClient();
+
+        Log.d("imagePath", path_img);
+
+        File file = new File(path_img);
+        RequestBody image = RequestBody.create(MediaType.parse("image/png"), file);
+        RequestBody requestBody = null;
+        try {
+            requestBody = new MultipartBody.Builder()
+                    .setType(MultipartBody.FORM)
+                    .addFormDataPart("mediaFile", path_img, image)
+                    .addFormDataPart("mediaType", "0")
+                    .addFormDataPart("businessType", "1")
+                    .build();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        Request request = new Request.Builder()
+                .url("http://192.168.110.187:8082/media/uploadMedia")
+                .post(requestBody)
+                .build();
+//        Response response = okHttpClient.newCall(request);
+
+
+        okHttpClient.newCall(request).enqueue(new Callback() {
+            @Override
+            public void onFailure(Call call, IOException e) {
+
+            }
+
+            @Override
+            public void onResponse(Call call, Response response) throws IOException {
+                String img = response.body().string();
+//                {"success":true,"code":200,"msg":"成功","data":{"id":469,"mediaType":0,"businessType":1,"mediaSize":37309,"mediaName":"1166535384595828736","mediaUrl":"http://pwa27iixx.bkt.clouddn.com/1166535384595828736"}}
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        Log.i("response", "----" + img);
+                        bean_shopUrl = MyApp.gson.fromJson(img, Bean_shopUrl.class);
+                        data_shopUrl = bean_shopUrl.getData();
+                        String img_url = data_shopUrl.getMediaUrl();
+//添加图片
+                        runOnUiThread(new Runnable() {
+                            @RequiresApi(api = Build.VERSION_CODES.O)
+                            @Override
+                            public void run() {
+
+//海报
+                                goodsInfor.put("postersUrl", img_url);
+//                              核销店铺列表
+                                goodsInfor.put("verifyPowerDtoList", MyApp.gson.toJson(datsds).toString());
+
+
+                                Log.i("dataTao", MyApp.gson.toJson(dataTao));
+
+
+//                                上传套餐循环
+
+
+                                for (int i = 0; i < dataTao.size(); i++) {
+                                    Taopost(dataTao.get(i).getImgs().get(0).getCompressPath(), dataTao.size());
+                                }
+
+                            }
+                        });
+                    }
+                });
+            }
+        });
+    }
+
+
+    int sei = 0;
+
+
+
+
+
+    //上传套餐
+    public void Taopost(String Taopath, int Taosize) {
+
+//        for (LocalMedia media : dataTao.get(sei).getImgs()) {
+
+
+
+            OkHttpClient okHttpClient = new OkHttpClient();
+
+            Log.d("imagePath", Taopath);
+
+            File file = new File(Taopath);
+            RequestBody image = RequestBody.create(MediaType.parse("image/png"), file);
+            RequestBody requestBody = null;
+            try {
+                requestBody = new MultipartBody.Builder()
+                        .setType(MultipartBody.FORM)
+                        .addFormDataPart("mediaFile", Taopath, image)
+                        .addFormDataPart("mediaType", "0")
+                        .addFormDataPart("businessType", "1")
+                        .build();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+            Request request = new Request.Builder()
+                    .url("http://192.168.110.187:8082/media/uploadMedia")
+                    .post(requestBody)
+                    .build();
+//      Response response = okHttpClient.newCall(request);
+            okHttpClient.newCall(request).enqueue(new Callback() {
+                @Override
+                public void onFailure(Call call, IOException e) {
+
+                }
+
+                @Override
+                public void onResponse(Call call, Response response) throws IOException {
+                    String img = response.body().string();
+//                {"success":true,"code":200,"msg":"成功","data":{"id":469,"mediaType":0,"businessType":1,"mediaSize":37309,"mediaName":"1166535384595828736","mediaUrl":"http://pwa27iixx.bkt.clouddn.com/1166535384595828736"}}
+                    runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            Log.i("response", "----" + img);
+                            bean_shopUrl = MyApp.gson.fromJson(img, Bean_shopUrl.class);
+                            data_shopUrl = bean_shopUrl.getData();
+                            String img_url = data_shopUrl.getMediaUrl();
+//添加图片
+                            runOnUiThread(new Runnable() {
+                                @RequiresApi(api = Build.VERSION_CODES.O)
+                                @Override
+                                public void run() {
+                                    dats.add(new Bean_dhcb(
+                                            img_url, dataTao.get(sei).getTaoName(),
+                                            dataTao.get(sei).getDetails(),
+                                            Integer.valueOf(dataTao.get(sei).getOriginalprice()) * 1000,
+                                            Integer.valueOf(dataTao.get(sei).getPresentprice()) * 1000,
+                                            dataTao.get(sei).getStock(),
+                                            Integer.valueOf(dataTao.get(sei).getSettlementprice()) * 1000,
+                                            Integer.valueOf(dataTao.get(sei).getCommission()) * 1000));
+                                    ++sei;
+
+                                    Log.i("setMealDtoList",  Taosize+ "---" + sei + "---"+dats.size()+"----" + MyApp.gson.toJson(dats) + "");
+//                                数据传递完成
+                                    if (Taosize == sei) {
+                                        sei = 0;
+                                        goodsInfor.put("setMealDtoList", MyApp.gson.toJson(dats).toString());
+                                        goodsInfor.put("specifications", "件");
+                                        goodsInfor.put("id", "0");
+                                        HttpUtil.PostFaBu("backShop/goods/info", MyApp.gson.toJson(dats).replace("\\\"", "") + "", MyApp.gson.toJson(datsds).replace("\\\"", ""), goodsInfor);
+                                        getdata("backShop/goods/info");
+                                    }
+//                                    else {
+//                                        Taopost(dataTao, dataTao.size());
+//                                    }
+                                }
+                            });
+                        }
+                    });
+                }
+            });
+
+
+//        }
+
+
+//        String path_img = dataTao.get(sei).getImgs().get(0).getCompressPath();
+
+
+//        OkHttpClient okHttpClient = new OkHttpClient();
+//
+//        Log.d("imagePath", path_img1);
+//
+//        File file = new File(path_img1);
+//        RequestBody image = RequestBody.create(MediaType.parse("image/png"), file);
+//        RequestBody requestBody = null;
+//        try {
+//            requestBody = new MultipartBody.Builder()
+//                    .setType(MultipartBody.FORM)
+//                    .addFormDataPart("mediaFile", path_img1, image)
+//                    .addFormDataPart("mediaType", "0")
+//                    .addFormDataPart("businessType", "1")
+//                    .build();
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//        }
+//        Request request = new Request.Builder()
+//                .url("http://192.168.110.187:8082/media/uploadMedia")
+//                .post(requestBody)
+//                .build();
+////      Response response = okHttpClient.newCall(request);
+//        okHttpClient.newCall(request).enqueue(new Callback() {
+//            @Override
+//            public void onFailure(Call call, IOException e) {
+//
+//            }
+//
+//            @Override
+//            public void onResponse(Call call, Response response) throws IOException {
+//                String img = response.body().string();
+////                {"success":true,"code":200,"msg":"成功","data":{"id":469,"mediaType":0,"businessType":1,"mediaSize":37309,"mediaName":"1166535384595828736","mediaUrl":"http://pwa27iixx.bkt.clouddn.com/1166535384595828736"}}
+//                runOnUiThread(new Runnable() {
+//                    @Override
+//                    public void run() {
+//                        Log.i("response", "----" + img);
+//                        bean_shopUrl = MyApp.gson.fromJson(img, Bean_shopUrl.class);
+//                        data_shopUrl = bean_shopUrl.getData();
+//                        String img_url = data_shopUrl.getMediaUrl();
+////添加图片
+//                        runOnUiThread(new Runnable() {
+//                            @RequiresApi(api = Build.VERSION_CODES.O)
+//                            @Override
+//                            public void run() {
+//                                dats.add(new Bean_dhcb(
+//                                        img_url, dataTao.get(sei).getTaoName(),
+//                                        dataTao.get(sei).getDetails(),
+//                                        Integer.valueOf(dataTao.get(sei).getOriginalprice()) * 1000,
+//                                        Integer.valueOf(dataTao.get(sei).getPresentprice()) * 1000,
+//                                        dataTao.get(sei).getStock(),
+//                                        Integer.valueOf(dataTao.get(sei).getSettlementprice()) * 1000,
+//                                        Integer.valueOf(dataTao.get(sei).getCommission()) * 1000));
+//                                ++sei;
+//
+//                                Log.i("setMealDtoList",  size+ "---" + sei+"---"+dats+"");
+////                                数据传递完成
+//                                if (size-1 == sei) {
+//
+//                                    sei = 0;
+//
+//                                    HttpUtil.params.put("setMealDtoList", dats);
+//
+//                                    goodsInfor.put("specifications","件");
+//                                    goodsInfor.put("id","0");
+//                                    HttpUtil.PostFaBu("backShop/goods/info", dats+"",MyApp.gson.toJson(datsds).replace("\\\"",""),goodsInfor);
+//                                    getdata("backShop/goods/info");
+//                                }
+//                            }
+//                        });
+//                    }
+//                });
+//            }
+//        });
+    }
+
+
+    //套餐需要传递的数据
+    List<Bean_dhcb> dats = new ArrayList<>();
+
+
+    private Bean_suc bean_suc;
+    private boolean success;
+    private int code;
+    private String msg;
+    private Object data;
+
+
+    @Override
+    public void StringResulit(String key, String value) {
+        try {
+            if (key.equals("backShop/goods/info")) {
+                bean_suc = MyApp.gson.fromJson(value, Bean_suc.class);
+                code = bean_suc.getCode();
+                if (code == 200) {
+                    Toast.makeText(ActRecom.this, bean_suc.getMsg(), Toast.LENGTH_SHORT).show();
+                } else {
+                    Toast.makeText(ActRecom.this, bean_suc.getMsg(), Toast.LENGTH_SHORT).show();
+                }
+            }
+        } catch (Exception e) {
+
+        }
+    }
 }

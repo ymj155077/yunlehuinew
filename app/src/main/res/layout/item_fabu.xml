@@ -86,12 +86,13 @@
 
 
                 <com.example.YunleHui.view.ClearEditText
+                    android:inputType="number"
                     android:id="@+id/edit_yuan"
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/dp_50"
                     android:layout_marginEnd="@dimen/dp_12"
                     android:background="@null"
-                    android:hint="￥0.00"
+                    android:hint="￥0.00元"
                     android:textSize="@dimen/sp_16" />
 
 
@@ -121,12 +122,13 @@
 
 
                 <com.example.YunleHui.view.ClearEditText
+                    android:inputType="number"
                     android:id="@+id/edit_now"
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/dp_50"
                     android:layout_marginEnd="@dimen/dp_12"
                     android:background="@null"
-                    android:hint="￥0.00"
+                    android:hint="￥0.00元"
                     android:textSize="@dimen/sp_16" />
 
             </LinearLayout>
@@ -156,12 +158,13 @@
 
 
                 <com.example.YunleHui.view.ClearEditText
+                    android:inputType="number"
                     android:id="@+id/edit_yong"
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/dp_50"
                     android:layout_marginEnd="@dimen/dp_12"
                     android:background="@null"
-                    android:hint="￥0.00"
+                    android:hint="￥0.00元"
                     android:textSize="@dimen/sp_16" />
             </LinearLayout>
 
@@ -189,12 +192,13 @@
 
 
                 <com.example.YunleHui.view.ClearEditText
+                    android:inputType="number"
                     android:id="@+id/edit_jie"
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/dp_50"
                     android:layout_marginEnd="@dimen/dp_12"
                     android:background="@null"
-                    android:hint="￥0.00"
+                    android:hint="￥0.00元"
                     android:textSize="@dimen/sp_16" />
 
 
@@ -224,16 +228,16 @@
 
 
                 <com.example.YunleHui.view.ClearEditText
+                    android:inputType="number"
                     android:id="@+id/edit_Stock"
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/dp_50"
                     android:layout_marginEnd="@dimen/dp_12"
                     android:background="@null"
-                    android:hint="￥0.00"
+                    android:hint="￥0.00元"
                     android:textSize="@dimen/sp_16" />
 
             </LinearLayout>
-
 
         </LinearLayout>
 

@@ -50,6 +50,9 @@
     <color name="blue_bg">#45a2ff</color>
     <color name="black99">#999999</color>
     <color name="black33">#333333</color>
+
+    <color name="erback">#FF5DC9E1</color>
+
     <color name="color_title">#FFB333</color>
     <color name="corlor_title">#606368</color>
     <color name="hard_color">#48495f</color>

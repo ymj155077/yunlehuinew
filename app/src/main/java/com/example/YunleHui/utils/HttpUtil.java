@@ -225,6 +225,23 @@ public class HttpUtil {
     }
 
 
+    //第一个键值对，第二个 json字符串
+    public static void PostFaBu(String url,String setMeal,String verify,Map<Object, Object> paramss){
+        Request request;
+        HttpUtil.addMapheads();
+        HttpUtil.paramsheads.put("Authorization", "Bearer " + MyApp.access_token);
+//      request = new Request.Builder().url(PUBLIC_URL + url+"?setMealDtoList="+"\""+setMeal+"\""+"&verifyPowerDtoList="+"\""+verify+"\"").
+        request = new Request.Builder().url(PUBLIC_URL + url).
+        post(RequestBody.create(MediaType.parse("application/json"),gson.toJson(paramss)))
+                .headers(Headers.of(paramsheads)).build();
+//.post(formBody)
+        MyApp.call = Cookiebuilder.build().newCall(request);
+//        Log.i(url, "-------"+MyApp.gson.toJson(paramss));
+//        Log.i(url,PUBLIC_URL + url+"?setMealDtoList="+"\""+setMeal+"\""+"&verifyPowerDtoList="+"\""+verify+"\""+"-------"+gson.toJson(paramss)+"");
+    }
+
+
+
     public static void getAsynHttp(String url) {
 
         Request request;
@@ -450,3 +467,9 @@ public class HttpUtil {
     }
 
 }
+
+
+
+
+
+

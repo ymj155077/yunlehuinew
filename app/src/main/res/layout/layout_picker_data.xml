@@ -45,11 +45,11 @@
             android:paddingTop="5dip">
 
             <TextView
-                android:gravity="end"
+                android:gravity="end|center_vertical"
                 android:layout_weight="1"
                 android:text="提前"
                 android:layout_width="0dp"
-                android:layout_height="wrap_content" />
+                android:layout_height="match_parent" />
 
             <FrameLayout
                 android:layout_width="@dimen/dp_80"
@@ -72,10 +72,11 @@
 
 
             <TextView
+                android:gravity="center_vertical"
                 android:layout_weight="1"
                 android:text="小时预约"
                 android:layout_width="0dp"
-                android:layout_height="wrap_content" />
+                android:layout_height="match_parent" />
 
 
         </LinearLayout>

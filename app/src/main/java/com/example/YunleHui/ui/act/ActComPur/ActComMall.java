@@ -884,7 +884,8 @@ public class ActComMall extends BaseAct {
     @Override
     public void StringResulit(String key, String value) {
 
-        if (key.equals("community/findCommunity")) {
+        try {
+            if (key.equals("community/findCommunity")) {
 
 //            private Bean_mall bean_mall;
 //            private boolean success_mall;
@@ -892,58 +893,63 @@ public class ActComMall extends BaseAct {
 //            private String msg_mall;
 //            private Bean_mall.DataBean data_mall;
 //          社区商城的列表
-            bean_mall = MyApp.gson.fromJson(value, Bean_mall.class);
-            data_mall = bean_mall.getData();
-            goodsInfoCollectionBean = data_mall.getGoodsInfoCollection();
+                bean_mall = MyApp.gson.fromJson(value, Bean_mall.class);
+                data_mall = bean_mall.getData();
+                goodsInfoCollectionBean = data_mall.getGoodsInfoCollection();
 //商城所有的列表的数据
-            entityList = goodsInfoCollectionBean.getEntityList();
-            entityListAll.clear();
-            entityListAll.addAll(entityList);
-            goodsClassInfoCollectionBean = data_mall.getGoodsClassInfoCollection();
+                entityList = goodsInfoCollectionBean.getEntityList();
+                entityListAll.clear();
+                entityListAll.addAll(entityList);
+                goodsClassInfoCollectionBean = data_mall.getGoodsClassInfoCollection();
 //列表的所有的类型
-            entityListBeans = goodsClassInfoCollectionBean.getEntityList();
-            for (int i = 0; i < entityListBeans.size(); i++) {
-                classId = entityListBeans.get(0).getId();
-            }
-            myListAdapter = new MyListAdapter(entityListBeans, this);
-            list_cai.setAdapter(myListAdapter);
-            myListAdapter.setCurrentItem(hffhfh);
-            myListAdapter.setClick(true);
-            myRecycleViewAdapter = new MyRecycleViewAdapter(entityListAll, this, classId);
+                entityListBeans = goodsClassInfoCollectionBean.getEntityList();
+                for (int i = 0; i < entityListBeans.size(); i++) {
+                    classId = entityListBeans.get(0).getId();
+                }
+                myListAdapter = new MyListAdapter(entityListBeans, this);
+                list_cai.setAdapter(myListAdapter);
+                myListAdapter.setCurrentItem(hffhfh);
+                myListAdapter.setClick(true);
+                myRecycleViewAdapter = new MyRecycleViewAdapter(entityListAll, this, classId);
 //图片闪烁才加的
-            myRecycleViewAdapter.setHasStableIds(true);
+                myRecycleViewAdapter.setHasStableIds(true);
 //            myasdas = new Myasdas(entityListAll, this, classId);
-            xre_mall.setAdapter(myRecycleViewAdapter);
+                xre_mall.setAdapter(myRecycleViewAdapter);
 //自营店的店铺ID
-            selfShopBean = bean_mall.getData().getSelfShop();
-            shopId = selfShopBean.getId();
-            urlImg = selfShopBean.getShopLogoUrl();
-            Glide.with(this).load(selfShopBean.getShopLogoUrl()).into(img_she);
-            text_name.setText(selfShopBean.getShopName());
-            text_daili.setText(agent);
-            text_phone.setText("电话  " + selfShopBean.getShopTel());
-            text_address.setText(selfShopBean.getShopAddress());
+                selfShopBean = bean_mall.getData().getSelfShop();
+                shopId = selfShopBean.getId();
+                urlImg = selfShopBean.getShopLogoUrl();
+                Glide.with(this).load(selfShopBean.getShopLogoUrl()).into(img_she);
+                text_name.setText(selfShopBean.getShopName());
+                text_daili.setText(agent);
+                text_phone.setText("电话  " + selfShopBean.getShopTel());
+                text_address.setText(selfShopBean.getShopAddress());
 //            private List<Bean_mall.DataBean.ShopInfoListBean> shopInfoList;
 //            private List<Bean_mall.DataBean.ShopInfoListBean> shopInfoListAll = new ArrayList<>();
-            shopInfoList = data_mall.getShopInfoList();
-            shopInfoListAll.clear();
-            shopInfoListAll.addAll(shopInfoList);
+                shopInfoList = data_mall.getShopInfoList();
+                shopInfoListAll.clear();
+                shopInfoListAll.addAll(shopInfoList);
 
 
-            if (shopInfoListAll != null && !shopInfoListAll.isEmpty()) {
+                if (shopInfoListAll != null && !shopInfoListAll.isEmpty()) {
 //不为空的情况
 
 
-            } else {
+                } else {
 //为空的情况
 
-                text_shop.setText("");
-                text_shop.setClickable(false);
+                    text_shop.setText("");
+                    text_shop.setClickable(false);
+
+                }
+
 
             }
-
+        }catch (Exception e){
 
         }
+
+
 
 //        列表加
 

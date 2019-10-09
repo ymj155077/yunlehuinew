@@ -525,7 +525,13 @@
         <activity android:name=".ui.act.actme.ActMoinfor" />
         <activity android:name=".ui.act.actme.ActReplace" />
         <activity android:name=".ui.act.actme.actbusiness.ActRefunds" />
-        <activity android:name=".ui.act.actme.actbusiness.ActRecom"></activity>
+        <activity android:name=".ui.act.actme.actbusiness.ActRecom" />
+        <activity android:name=".ui.act.actme.actbusiness.ActSelecBus" />
+        <activity android:name=".ui.act.actme.actbusiness.ActWriteCode" />
+        <activity android:name=".ui.act.actme.actbusiness.ActTemplate" />
+        <activity android:name=".ui.act.actme.actbusiness.ActExample" />
+        <activity android:name=".ui.act.actme.actbusiness.ActEvalmanage" />
+        <activity android:name=".ui.act.actme.actbusiness.ActShopCom"></activity>
     </application>
 
 </manifest>

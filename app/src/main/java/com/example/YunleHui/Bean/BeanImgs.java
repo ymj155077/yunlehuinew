@@ -2,21 +2,18 @@ package com.example.YunleHui.Bean;
 
 import android.os.Parcel;
 import android.os.Parcelable;
-
 import com.luck.picture.lib.entity.LocalMedia;
-
-import java.io.Serializable;
-import java.io.StringReader;
-import java.util.ArrayList;
 import java.util.List;
 
 public class BeanImgs implements Parcelable {
+
+    private String TaoName;
 
     private String details;
 
     private List<LocalMedia> imgs;
 
-    private String Originalprice ;
+    private String Originalprice;
 
     private String Presentprice;
 
@@ -26,7 +23,9 @@ public class BeanImgs implements Parcelable {
 
     private String Stock;
 
-    public BeanImgs(String details, List<LocalMedia> imgs, String originalprice, String presentprice, String commission, String settlementprice, String stock) {
+    public BeanImgs(String TaoName,String details, List<LocalMedia> imgs, String originalprice, String presentprice, String commission, String settlementprice, String stock) {
+
+        this.TaoName = TaoName;
         this.details = details;
         this.imgs = imgs;
         this.Originalprice = originalprice;
@@ -34,11 +33,16 @@ public class BeanImgs implements Parcelable {
         this.Commission = commission;
         this.Settlementprice = settlementprice;
         this.Stock = stock;
+
     }
 
+    public String getTaoName() {
+        return TaoName;
+    }
 
-
-
+    public void setTaoName(String taoName) {
+        TaoName = taoName;
+    }
 
     public String getDetails() {
         return details;

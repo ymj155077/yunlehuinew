@@ -16,6 +16,7 @@
         android:layout_marginStart="@dimen/dp_12">
 
         <ImageView
+            android:scaleType="fitXY"
             android:id="@+id/img_head"
             android:layout_marginStart="@dimen/dp_9"
             android:layout_marginTop="@dimen/dp_9"

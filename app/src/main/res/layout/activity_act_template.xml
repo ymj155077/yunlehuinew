@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+
+
+    android:orientation="vertical"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.act.actme.actbusiness.ActTemplate">
+
+
+    <include layout="@layout/toolbar_push_off"/>
+
+
+
+
+    <RadioGroup
+        android:id="@+id/radio"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" >
+
+        <RadioButton
+            android:drawablePadding="@dimen/dp_10"
+            android:drawableLeft="@drawable/lkh"
+            android:background="@android:color/transparent"
+            android:checked="true"
+            android:paddingEnd="@dimen/dp_20"
+            android:paddingStart="@dimen/dp_20"
+            android:textSize="@dimen/sp_17"
+            android:drawableRight="@drawable/radiobutton_background"
+            android:button="@null"
+            android:clickable="true"
+            android:id="@+id/radio0"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_70"
+            android:text="社区购商品录入"
+            />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="#E9E9E9"
+
+
+            />
+        <RadioButton
+            android:drawablePadding="@dimen/dp_10"
+            android:drawableLeft="@drawable/dfg"
+            android:background="@android:color/transparent"
+            android:paddingEnd="@dimen/dp_20"
+            android:paddingStart="@dimen/dp_20"
+            android:textSize="@dimen/sp_17"
+            android:drawableRight="@drawable/radiobutton_background"
+            android:button="@null"
+            android:layout_weight="1"
+            android:id="@+id/radio1"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_70"
+            android:text="爆款商品录入"  />
+    </RadioGroup>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</LinearLayout>

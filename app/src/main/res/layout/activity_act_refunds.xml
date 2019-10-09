@@ -66,14 +66,44 @@
                     android:layout_marginEnd="@dimen/dp_12"
                     android:layout_marginBottom="@dimen/dp_12"
                     android:background="@null"
-                    android:text="标题 例：小于美甲馆"
+                    android:text="商品名称"
                     android:lineSpacingExtra="4dp"
                     android:lineSpacingMultiplier="1"
                     android:textSize="@dimen/sp_17" />
 
             </LinearLayout>
 
+<View
+    android:background="@color/all_background"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/dp_1"/>
+
+            <LinearLayout
+                android:id="@+id/lin_jie"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/Write">
+
+                <TextView
+                    android:id="@+id/text_jie"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/dp_12"
+                    android:layout_marginTop="@dimen/dp_12"
+                    android:layout_marginEnd="@dimen/dp_12"
+                    android:layout_marginBottom="@dimen/dp_12"
+                    android:background="@null"
+                    android:text="商品介绍  "
+                    android:lineSpacingExtra="4dp"
+                    android:lineSpacingMultiplier="1"
+                    android:textSize="@dimen/sp_17" />
+
+            </LinearLayout>
+
+
+
             <TextView
+                android:background="@color/all_background"
                 android:id="@+id/text_Example"
                 android:clickable="true"
                 android:gravity="center|end"
@@ -83,6 +113,7 @@
                 android:layout_height="@dimen/dp_30" />
 
             <android.support.v7.widget.RecyclerView
+                android:background="@color/Write"
                 android:id="@+id/recycler_tao"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"

@@ -282,6 +282,9 @@ public class fragMe extends BaseFrag {
                     intent.putExtra("ShopNature",databus.getShopNature());
                     intent.putExtra("TypeId", databus.getTypeId());
                     intent.putExtra("money",text_money.getText().toString());
+                    intent.putExtra("shopId",databus.getId());
+//设置商家的id
+                    MyApp.shopId = databus.getId();
                     startActivity(intent);
                 }
                 //            去申请

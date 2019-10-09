@@ -6,10 +6,12 @@ import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import com.example.YunleHui.R;
 import com.example.YunleHui.base.BaseAct;
@@ -31,6 +33,10 @@ import butterknife.BindView;
 
 public class ActWriteHistory extends BaseAct {
 
+
+    @BindView(R.id.toolbar_all)
+    Toolbar toolbar_all;
+
     @BindView(R.id.Xre_History)
     MyXrecycleview Xre_History;
 
@@ -49,6 +55,11 @@ public class ActWriteHistory extends BaseAct {
 
     @Override
     protected void findViews() {
+
+        if (toolbar_all!=null){
+            TextView text_center = (TextView) toolbar_all.findViewById(R.id.toolbar_center);
+            text_center.setText("核销历史");
+        }
 
     }
 

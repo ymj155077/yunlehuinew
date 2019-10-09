@@ -25,12 +25,12 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
 
-            android:layout_marginEnd="@dimen/dp_12"
-
             android:layout_marginStart="@dimen/dp_12"
 
-
             android:layout_marginTop="@dimen/dp_12"
+
+
+            android:layout_marginEnd="@dimen/dp_12"
             android:background="@drawable/backimg"
             android:orientation="vertical">
 
@@ -47,8 +47,8 @@
                 <TextView
                     android:layout_width="@dimen/dp_90"
                     android:layout_height="@dimen/dp_60"
-                    android:layout_marginLeft="@dimen/dp_12"
                     android:layout_marginStart="@dimen/dp_12"
+                    android:layout_marginLeft="@dimen/dp_12"
                     android:gravity="center_vertical"
                     android:text="所属行业："
                     android:textColor="@color/black33"
@@ -76,38 +76,36 @@
             </LinearLayout>
 
 
-
-
             <View
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/dp_1"
-                android:layout_marginEnd="@dimen/dp_12"
                 android:layout_marginStart="@dimen/dp_12"
+                android:layout_marginEnd="@dimen/dp_12"
                 android:background="@color/all_background" />
 
-<!--云享优惠商户注册 需要 显示-->
+            <!-- 爆款 云享优惠商户注册 需要 显示-->
             <LinearLayout
-                android:visibility="gone"
                 android:id="@+id/lin_yun_xiang"
-                android:gravity="center_vertical"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@color/Write"
-                android:orientation="horizontal">
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:visibility="gone">
 
 
                 <TextView
                     android:layout_width="@dimen/dp_90"
                     android:layout_height="@dimen/dp_60"
-                    android:layout_marginLeft="@dimen/dp_12"
                     android:layout_marginStart="@dimen/dp_12"
+                    android:layout_marginLeft="@dimen/dp_12"
                     android:gravity="center_vertical"
                     android:text="商户类型："
                     android:textColor="@color/black33"
                     android:textSize="@dimen/sp_16" />
 
                 <TextView
-android:id="@+id/text_leixing"
+                    android:id="@+id/text_leixing"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
@@ -127,16 +125,11 @@ android:id="@+id/text_leixing"
             </LinearLayout>
 
 
-
-
-
-
-
             <View
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/dp_1"
-                android:layout_marginEnd="@dimen/dp_12"
                 android:layout_marginStart="@dimen/dp_12"
+                android:layout_marginEnd="@dimen/dp_12"
                 android:background="@color/all_background" />
 
 
@@ -150,8 +143,8 @@ android:id="@+id/text_leixing"
                 <TextView
                     android:layout_width="@dimen/dp_90"
                     android:layout_height="@dimen/dp_60"
-                    android:layout_marginLeft="@dimen/dp_12"
                     android:layout_marginStart="@dimen/dp_12"
+                    android:layout_marginLeft="@dimen/dp_12"
                     android:gravity="center_vertical"
                     android:text="姓名："
                     android:textColor="@color/black33"
@@ -177,14 +170,11 @@ android:id="@+id/text_leixing"
             </LinearLayout>
 
 
-
-
-
             <View
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/dp_1"
-                android:layout_marginEnd="@dimen/dp_12"
                 android:layout_marginStart="@dimen/dp_12"
+                android:layout_marginEnd="@dimen/dp_12"
                 android:background="@color/all_background" />
 
             <LinearLayout
@@ -197,8 +187,8 @@ android:id="@+id/text_leixing"
                 <TextView
                     android:layout_width="@dimen/dp_90"
                     android:layout_height="@dimen/dp_60"
-                    android:layout_marginLeft="@dimen/dp_12"
                     android:layout_marginStart="@dimen/dp_12"
+                    android:layout_marginLeft="@dimen/dp_12"
                     android:gravity="center_vertical"
                     android:text="身份证号："
                     android:textColor="@color/black33"
@@ -223,14 +213,11 @@ android:id="@+id/text_leixing"
             </LinearLayout>
 
 
-
-
-
             <View
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/dp_1"
-                android:layout_marginEnd="@dimen/dp_12"
                 android:layout_marginStart="@dimen/dp_12"
+                android:layout_marginEnd="@dimen/dp_12"
                 android:background="@color/all_background" />
 
             <LinearLayout
@@ -243,8 +230,8 @@ android:id="@+id/text_leixing"
                 <TextView
                     android:layout_width="@dimen/dp_90"
                     android:layout_height="@dimen/dp_60"
-                    android:layout_marginLeft="@dimen/dp_12"
                     android:layout_marginStart="@dimen/dp_12"
+                    android:layout_marginLeft="@dimen/dp_12"
                     android:gravity="center_vertical"
                     android:text="商铺名称："
                     android:textColor="@color/black33"
@@ -270,8 +257,8 @@ android:id="@+id/text_leixing"
             <View
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/dp_1"
-                android:layout_marginEnd="@dimen/dp_12"
                 android:layout_marginStart="@dimen/dp_12"
+                android:layout_marginEnd="@dimen/dp_12"
                 android:background="@color/all_background" />
 
             <LinearLayout
@@ -287,8 +274,8 @@ android:id="@+id/text_leixing"
                 <TextView
                     android:layout_width="@dimen/dp_90"
                     android:layout_height="@dimen/dp_60"
-                    android:layout_marginLeft="@dimen/dp_12"
                     android:layout_marginStart="@dimen/dp_12"
+                    android:layout_marginLeft="@dimen/dp_12"
                     android:gravity="center_vertical"
                     android:text="地址："
                     android:textColor="@color/black33"
@@ -319,8 +306,8 @@ android:id="@+id/text_leixing"
             <View
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/dp_1"
-                android:layout_marginEnd="@dimen/dp_12"
                 android:layout_marginStart="@dimen/dp_12"
+                android:layout_marginEnd="@dimen/dp_12"
                 android:background="@color/all_background" />
 
 
@@ -334,8 +321,8 @@ android:id="@+id/text_leixing"
                 <TextView
                     android:layout_width="@dimen/dp_90"
                     android:layout_height="@dimen/dp_60"
-                    android:layout_marginLeft="@dimen/dp_12"
                     android:layout_marginStart="@dimen/dp_12"
+                    android:layout_marginLeft="@dimen/dp_12"
                     android:gravity="center_vertical"
                     android:text="详细地址："
                     android:textColor="@color/black33"
@@ -362,8 +349,8 @@ android:id="@+id/text_leixing"
             <View
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/dp_1"
-                android:layout_marginEnd="@dimen/dp_12"
                 android:layout_marginStart="@dimen/dp_12"
+                android:layout_marginEnd="@dimen/dp_12"
                 android:background="@color/all_background" />
 
             <LinearLayout
@@ -376,8 +363,8 @@ android:id="@+id/text_leixing"
                 <TextView
                     android:layout_width="@dimen/dp_90"
                     android:layout_height="@dimen/dp_60"
-                    android:layout_marginLeft="@dimen/dp_12"
                     android:layout_marginStart="@dimen/dp_12"
+                    android:layout_marginLeft="@dimen/dp_12"
                     android:gravity="center_vertical"
                     android:text="电话号码："
                     android:textColor="@color/black33"
@@ -404,8 +391,8 @@ android:id="@+id/text_leixing"
             <View
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/dp_1"
-                android:layout_marginEnd="@dimen/dp_12"
                 android:layout_marginStart="@dimen/dp_12"
+                android:layout_marginEnd="@dimen/dp_12"
                 android:background="@color/all_background" />
             <!--社区购 需要 显示的 界面-->
 
@@ -419,9 +406,9 @@ android:id="@+id/text_leixing"
                     android:id="@+id/text_type"
                     android:layout_width="@dimen/dp_90"
                     android:layout_height="@dimen/dp_50"
-                    android:layout_marginBottom="@dimen/dp_5"
-                    android:layout_marginLeft="@dimen/dp_12"
                     android:layout_marginStart="@dimen/dp_12"
+                    android:layout_marginLeft="@dimen/dp_12"
+                    android:layout_marginBottom="@dimen/dp_5"
                     android:gravity="center_vertical"
                     android:text="营业执照"
                     android:textColor="@color/black33"
@@ -432,8 +419,8 @@ android:id="@+id/text_leixing"
                     android:id="@+id/recycler"
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/dp_160"
-                    android:layout_marginEnd="@dimen/dp_12"
                     android:layout_marginStart="@dimen/dp_12"
+                    android:layout_marginEnd="@dimen/dp_12"
                     android:overScrollMode="never" />
 
 
@@ -447,15 +434,15 @@ android:id="@+id/text_leixing"
 
 
     <TextView
-        android:layout_marginBottom="@dimen/dp_6"
         android:id="@+id/text_Up"
-        android:clickable="true"
         android:layout_width="match_parent"
         android:layout_height="@dimen/dp_40"
-        android:layout_marginEnd="@dimen/dp_32"
         android:layout_marginStart="@dimen/dp_32"
         android:layout_marginTop="@dimen/dp_10"
+        android:layout_marginEnd="@dimen/dp_32"
+        android:layout_marginBottom="@dimen/dp_6"
         android:background="@drawable/button_img"
+        android:clickable="true"
         android:gravity="center"
         android:text="前往申请"
         android:textColor="@color/Write"

@@ -1,6 +1,8 @@
 package com.example.YunleHui.ui.act.actme;
 
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
@@ -16,10 +18,13 @@ import com.example.YunleHui.R;
 import com.example.YunleHui.appManager.MyApp;
 import com.example.YunleHui.base.BaseAct;
 import com.example.YunleHui.ui.act.actme.actbusiness.ActCoManMent;
+import com.example.YunleHui.ui.act.actme.actbusiness.ActEvalmanage;
 import com.example.YunleHui.ui.act.actme.actbusiness.ActOrManaGe;
 import com.example.YunleHui.ui.act.actme.actbusiness.ActPublishGoods;
 import com.example.YunleHui.ui.act.actme.actbusiness.ActReCenter;
 import com.example.YunleHui.ui.act.actme.actbusiness.ActRefunds;
+import com.example.YunleHui.ui.act.actme.actbusiness.ActTemplate;
+import com.example.YunleHui.ui.act.actme.actbusiness.ActWriteCode;
 import com.example.YunleHui.ui.act.actme.actbusiness.ActWriteMerchants;
 import com.example.YunleHui.ui.act.actme.actbusiness.ActWriteOffManage;
 import com.example.YunleHui.utils.HttpUtil;
@@ -38,7 +43,6 @@ public class ActBusCenter extends BaseAct {
 
     @BindView(R.id.toolbar_all)
     Toolbar toolbar_all;
-
 
     @BindView(R.id.img_shop)
     RoundedImageView img_shop;
@@ -77,8 +81,6 @@ public class ActBusCenter extends BaseAct {
     LinearLayout lin_ComAn;
 
 
-
-
     @BindView(R.id.lin_management)
     LinearLayout lin_management;
 
@@ -90,15 +92,12 @@ public class ActBusCenter extends BaseAct {
     private String money;
 
 
-
-
-
-//社区购+营销+核销
+    //社区购+营销+核销
     @BindView(R.id.lin_Marketing)
     LinearLayout lin_Marketing;
 
 
-//核销商户管理
+    //核销商户管理
     @BindView(R.id.lin_Writeoff)
     LinearLayout lin_Writeoff;
     //所有的
@@ -106,6 +105,22 @@ public class ActBusCenter extends BaseAct {
     LinearLayout lin_all;
 
 
+    @BindView(R.id.lin_he)
+    LinearLayout lin_he;
+
+
+    //  核销+营销的商家
+    @BindView(R.id.lin_DoubleShop)
+    LinearLayout lin_DoubleShop;
+
+
+    //    评价管理
+    @BindView(R.id.lin_pingjia)
+    LinearLayout lin_pingjia;
+
+
+    //商家ID
+    private int shopId = 0;
 
 
     @Override
@@ -137,17 +152,17 @@ public class ActBusCenter extends BaseAct {
     @Override
     public void initData() {
 
+
         Intent intent = getIntent();
 
         TypeId = intent.getIntExtra("TypeId", 0);
-
-
-
         shopName = intent.getStringExtra("shopName");
         shopLogoUrl = intent.getStringExtra("shopLogoUrl");
         shopTel = intent.getStringExtra("shopTel");
-        ShopNature = intent.getIntExtra("ShopNature",0);
+        ShopNature = intent.getIntExtra("ShopNature", 0);
         money = intent.getStringExtra("money");
+
+        shopId = intent.getIntExtra("shopId", 0);
 
 
         Glide.with(this).load(shopLogoUrl).into(img_shop);
@@ -157,43 +172,29 @@ public class ActBusCenter extends BaseAct {
         text_jine.setText(money);
 
 
+        Log.i("TypeId", TypeId + "---");
 
 
-
-//营销
-        if (TypeId==1){
-
-
+//            营销
+        if (TypeId == 1) {
             lin_Marketing.setVisibility(View.VISIBLE);
-
-
 //            核销
-        }else if (TypeId==2){
-
-
+        } else if (TypeId == 2) {
             lin_Writeoff.setVisibility(View.VISIBLE);
-
 //            核销加营销
-        }else if (TypeId == 3                                                               ){
-
-
-
+        } else if (TypeId == 3) {
             lin_all.setVisibility(View.VISIBLE);
-
-
         }
 
 
-        Log.i("ShopNature",ShopNature+"----");
-
-
-
-
-
-
+        Log.i("ShopNature", ShopNature + "----");
 
 
     }
+
+
+    @BindView(R.id.lin_heg)
+    LinearLayout lin_heg;
 
 
     @OnClick({R.id.lin_OrderManagement,
@@ -206,7 +207,14 @@ public class ActBusCenter extends BaseAct {
 
             R.id.lin_OrderMent,
 
-            R.id.lin_management
+            R.id.lin_management,
+
+            R.id.lin_he,
+
+            R.id.lin_DoubleShop,
+
+            R.id.lin_pingjia
+
 
     })
     public void OnClick(View view) {
@@ -216,17 +224,14 @@ public class ActBusCenter extends BaseAct {
                 startActivity(ActOrManaGe.class);
 
                 break;
-
 //                发布商品
-
             case R.id.lin_release:
-                if (ShopNature == 0){
+                if (ShopNature == 0) {
 //爆款发布
                     startActivity(ActRefunds.class);
-                }else if (ShopNature == 1){
+                } else if (ShopNature == 1) {
 //社区购
                     startActivity(ActPublishGoods.class);
-
                 }
                 break;
 //                核销商户
@@ -256,6 +261,42 @@ public class ActBusCenter extends BaseAct {
 
                 break;
 
+//                核销码
+            case R.id.lin_he:
+
+                Intent intent = new Intent(this, ActWriteCode.class);
+
+
+                intent.putExtra("shopId", shopId);
+
+
+                startActivity(intent);
+
+                break;
+//               核销管理
+            case R.id.lin_heg:
+
+                startActivity(ActWriteOffManage.class);
+
+                break;
+//                核销+营销
+            case R.id.lin_DoubleShop:
+//爆款    +   社区购
+//          startActivity(ActTemplate.class);
+                if (ShopNature == 0) {
+//爆款发布
+                    startActivity(ActRefunds.class);
+                } else if (ShopNature == 1) {
+//社区购
+                    startActivity(ActPublishGoods.class);
+                }
+                break;
+//                评价管理
+            case R.id.lin_pingjia:
+
+                startActivity(ActEvalmanage.class);
+
+                break;
 
         }
     }

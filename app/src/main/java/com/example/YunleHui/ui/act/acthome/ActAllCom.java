@@ -188,7 +188,6 @@ public class ActAllCom extends BaseAct implements CompoundButton.OnCheckedChange
         @Override
         public void onBindViewHolder(MyRecycleViewAdapter.ViewHolder holder, final int position) {
 
-
             List<Object> urls = new ArrayList<>();
             urls.clear();
             for (int i = 0; i < 6; i++) {
@@ -196,13 +195,11 @@ public class ActAllCom extends BaseAct implements CompoundButton.OnCheckedChange
             }
             holder.ninePlaceGridView.setImageNames(urls);
 
-
         }
 
         @Override
         public int getItemCount() {
-            return
-                    datas.size();
+            return datas.size();
         }
 
         public class ViewHolder extends RecyclerView.ViewHolder {

@@ -22,6 +22,7 @@
 
 
             <LinearLayout
+                android:id="@+id/lin_xiang"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/dp_40"
                 android:layout_marginStart="@dimen/dp_12"
@@ -125,6 +126,7 @@
                 android:overScrollMode="never" />
 
             <LinearLayout
+                android:id="@+id/lin_four"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/dp_30"
                 android:layout_marginStart="@dimen/dp_12"
@@ -201,9 +203,9 @@
             </LinearLayout>
 
             <View
-                android:background="@color/all_background"
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/dp_1"/>
+                android:layout_height="@dimen/dp_1"
+                android:background="@color/all_background" />
 
             <LinearLayout
 
@@ -265,9 +267,9 @@
 
 
             <View
-                android:background="@color/all_background"
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/dp_1"/>
+                android:layout_height="@dimen/dp_1"
+                android:background="@color/all_background" />
 
 
             <LinearLayout
@@ -284,7 +286,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="@dimen/dp_12"
-                    android:text="有效时间"
+                    android:text="订单生效日期"
                     android:textColor="@color/black33"
                     android:textSize="@dimen/sp_17" />
 
@@ -308,7 +310,7 @@
                             android:id="@+id/text_huo"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="请选择客人提前预约时间"
+                            android:text="请选订单有效时间"
                             android:textColor="@color/black99"
                             android:textSize="@dimen/sp_14" />
 
@@ -329,29 +331,84 @@
 
 
             <View
-                android:background="@color/all_background"
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/dp_1"/>
+                android:layout_height="@dimen/dp_1"
+                android:background="@color/all_background" />
+
+
+            <LinearLayout
+                android:id="@+id/lin_xia"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/Write"
+                android:gravity="center"
+                android:minHeight="@dimen/dp_50"
+                android:orientation="horizontal">
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/dp_12"
+                    android:text="商品下架日期"
+                    android:textColor="@color/black33"
+                    android:textSize="@dimen/sp_17" />
+
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/dp_10"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/dp_6"
+                        android:layout_marginBottom="@dimen/dp_6"
+                        android:orientation="horizontal">
+
+
+                        <TextView
+                            android:id="@+id/text_Lower"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="请选择商品下架日期"
+                            android:textColor="@color/black99"
+                            android:textSize="@dimen/sp_14" />
+
+
+                    </LinearLayout>
+
+
+                </LinearLayout>
+
+                <ImageView
+                    android:layout_width="@dimen/dp_16"
+                    android:layout_height="@dimen/dp_16"
+                    android:layout_marginEnd="@dimen/dp_14"
+                    android:layout_marginRight="@dimen/dp_14"
+                    android:src="@drawable/youjian" />
+
+            </LinearLayout>
 
 
 
 
             <TextView
-                android:layout_marginBottom="@dimen/dp_42"
-                android:layout_marginTop="@dimen/dp_49"
-                android:textSize="@dimen/sp_16"
-                android:textColor="@color/Write"
-                android:gravity="center"
-                android:text="发布"
-                android:layout_marginEnd="@dimen/dp_12"
-                android:layout_marginStart="@dimen/dp_12"
-                android:background="@drawable/button_img"
                 android:id="@+id/text_Release"
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/dp_40" />
-
-
-
+                android:layout_height="@dimen/dp_40"
+                android:layout_marginStart="@dimen/dp_12"
+                android:layout_marginTop="@dimen/dp_49"
+                android:layout_marginEnd="@dimen/dp_12"
+                android:layout_marginBottom="@dimen/dp_42"
+                android:background="@drawable/button_img"
+                android:gravity="center"
+                android:text="发布"
+                android:textColor="@color/Write"
+                android:textSize="@dimen/sp_16" />
 
 
         </LinearLayout>

@@ -87,6 +87,11 @@ public class MyApp extends Application {
     public static String nonce = "";
     //    用户号
     public static int user = 0;
+
+//    商家id
+    public static int shopId = 0;
+
+
     public static String nickName;
 
     //    用户电话

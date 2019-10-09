@@ -4,6 +4,8 @@ import android.support.v4.app.Fragment;
 
 import com.example.YunleHui.ui.frag.fragSheQu.fragCommodity;
 import com.example.YunleHui.ui.frag.fragSheQu.fragbusiness;
+import com.example.YunleHui.ui.frag.fragShopEvalu.fragAnswered;
+import com.example.YunleHui.ui.frag.fragShopEvalu.fragReplied;
 import com.example.YunleHui.ui.frag.fragShopMalls.fragbeauty;
 import com.example.YunleHui.ui.frag.fragShopMalls.fragbefood;
 import com.example.YunleHui.ui.frag.fragShopMalls.frageducation;
@@ -87,6 +89,22 @@ public class FragmentFactory {
         return fragment;
     }
 
+
+
+
+    //商户评价管理
+    public static Fragment EvaManage(int position) {
+        Fragment fragment = null;
+        switch (position) {
+            case 0:
+                fragment = new fragAnswered();
+                break;
+            case 1:
+                fragment = new fragReplied();
+                break;
+        }
+        return fragment;
+    }
 
 
 

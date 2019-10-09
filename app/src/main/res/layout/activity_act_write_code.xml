@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/erback"
+    android:orientation="vertical"
+    tools:context=".ui.act.actme.actbusiness.ActWriteCode">
+
+
+    <include layout="@layout/toolbar_push_off" />
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/dp_18"
+        android:layout_marginTop="@dimen/dp_12"
+        android:layout_marginEnd="@dimen/dp_18"
+        android:background="@drawable/backimg"
+        android:orientation="vertical">
+
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dp_46"
+            android:gravity="center_horizontal"
+            android:text="扫描我的核销码，核销商品"
+            android:textColor="@color/black33"
+            android:textSize="@dimen/sp_18"
+            android:textStyle="bold" />
+
+
+        <ImageView
+            android:id="@+id/img_er"
+            android:layout_width="@dimen/dp_212"
+            android:layout_height="@dimen/dp_212"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="@dimen/dp_22"
+            android:scaleType="fitXY"
+            android:src="@drawable/timg" />
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:padding="@dimen/dp_18"
+            android:text="保存核销码"
+            android:textColor="@color/black33"
+            android:textSize="@dimen/sp_18" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_1"
+            android:background="@color/all_background" />
+
+
+        <LinearLayout
+            android:id="@+id/lin_his"
+            android:layout_marginBottom="@dimen/dp_10"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_50"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginStart="@dimen/dp_12"
+                android:src="@drawable/sacv" />
+
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/dp_12"
+                android:layout_weight="1"
+                android:text="核销历史"
+                android:textColor="@color/black33"
+                android:textSize="@dimen/sp_18" />
+
+            <ImageView
+                android:layout_width="@dimen/dp_16"
+                android:layout_height="@dimen/dp_16"
+                android:layout_marginEnd="@dimen/dp_14"
+                android:layout_marginRight="@dimen/dp_14"
+                android:src="@drawable/youjian" />
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+
+</LinearLayout>

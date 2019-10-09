@@ -94,8 +94,6 @@ public class ActLogin extends BaseAct {
                 break;
         }
     }
-
-
     class TimeCount extends CountDownTimer {
 
         public TimeCount(long millisInFuture, long countDownInterval) {

@@ -85,7 +85,6 @@
 
     </LinearLayout>
 
-
     <TextView
         android:layout_marginBottom="@dimen/dp_7"
         android:lineSpacingExtra="@dimen/dp_3"
@@ -98,9 +97,6 @@
         android:layout_marginTop="@dimen/dp_12"
         android:layout_marginEnd="@dimen/dp_12"
         android:text="困了就睡大立科技萨拉肯德基萨拉肯德基撒来得及萨拉肯德基萨拉肯德基" />
-
-
-
 
     <com.example.YunleHui.view.Nine.TNinePlaceGridView
         android:id="@+id/ninePlaceGridView"

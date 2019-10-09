@@ -16,6 +16,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
+
 import com.amap.api.location.AMapLocation;
 import com.amap.api.location.AMapLocationClient;
 import com.amap.api.location.AMapLocationClientOption;
@@ -43,12 +44,15 @@ import com.uuzuche.lib_zxing.activity.CodeUtils;
 import com.zhouwei.mzbanner.MZBannerView;
 import com.zhouwei.mzbanner.holder.MZHolderCreator;
 import com.zhouwei.mzbanner.holder.MZViewHolder;
+
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+
 import butterknife.BindView;
 import butterknife.OnClick;
+
 import static android.app.Activity.RESULT_CANCELED;
 import static com.example.YunleHui.appManager.MyApp.CityName;
 import static com.example.YunleHui.appManager.MyApp.city_Id;
@@ -373,7 +377,7 @@ public class fragExplosive extends BaseFrag implements PagerGridLayoutManager.Pa
     @Override
     public void onPause() {
         super.onPause();
-//        mMZBanner.pause();//暂停轮播
+//      mMZBanner.pause();//暂停轮播
     }
 
 
@@ -464,8 +468,8 @@ public class fragExplosive extends BaseFrag implements PagerGridLayoutManager.Pa
                     mMZBanner.setBannerPageClickListener(new MZBannerView.BannerPageClickListener() {
                         @Override
                         public void onPageClick(View view, int position) {
-                            Toast.makeText(getActivity(),"click page:"+position,Toast.LENGTH_LONG).show();
-                            if (position==0){
+                            Toast.makeText(getActivity(), "click page:" + position, Toast.LENGTH_LONG).show();
+                            if (position == 0) {
 //欢迎加入成为社区团长
                                 startActivity(ActColresi.class);
                             }
@@ -531,10 +535,10 @@ public class fragExplosive extends BaseFrag implements PagerGridLayoutManager.Pa
                     CityName = bundle.getString("CityName");
                     text_choose.setText(CityName);
                     xr_explosive.refresh();
-                }else
-                    /**
-                     * 处理二维码扫描结果
-                     */
+                } else
+                /**
+                 * 处理二维码扫描结果
+                 */
                     if (requestCode == REQUEST_CODE) {
                         //处理扫描结果（在界面上显示）
                         if (null != data) {
@@ -558,8 +562,8 @@ public class fragExplosive extends BaseFrag implements PagerGridLayoutManager.Pa
 
 
     @OnClick({R.id.lin_sao})
-    public void OnClick(View view){
-        switch (view.getId()){
+    public void OnClick(View view) {
+        switch (view.getId()) {
             case R.id.lin_sao:
                 startActivity(ActRepers.class);
 //              RxPermissions.getInstance(getActivity())
@@ -601,11 +605,9 @@ public class fragExplosive extends BaseFrag implements PagerGridLayoutManager.Pa
         private int id;
 
         public MyAdapter(ArrayList<Bean_cai.DataBean> datas, Context context) {
-
             this.data.clear();
             this.data.addAll(datas);
             this.context = context;
-
         }
 
 
@@ -663,7 +665,7 @@ public class fragExplosive extends BaseFrag implements PagerGridLayoutManager.Pa
                     shopClassId = data.get(position).getId();
                     xr_explosive.refresh();
 
-                    Log.i("GCS", "onBindViewHolder = " + data.get(position).getId()+"---"+shopClassId);
+                    Log.i("GCS", "onBindViewHolder = " + data.get(position).getId() + "---" + shopClassId);
 
                 }
             });
@@ -685,37 +687,6 @@ public class fragExplosive extends BaseFrag implements PagerGridLayoutManager.Pa
             }
         }
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 }

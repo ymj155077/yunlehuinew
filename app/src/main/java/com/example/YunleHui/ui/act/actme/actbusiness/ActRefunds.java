@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.Paint;
 import android.graphics.Rect;
+import android.os.Parcelable;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
@@ -101,12 +102,14 @@ public class ActRefunds extends BaseAct {
     private int maxSelectNum = 6;
 
 
-
     private int maxSelectNumTao = 1;
 
 
-
     private List<LocalMedia> selectList = new ArrayList<>();
+
+
+    private ArrayList<LocalMedia> selectListAll = new ArrayList<>();
+
     private GridPublishGoods adapter;
 
 
@@ -245,7 +248,7 @@ public class ActRefunds extends BaseAct {
         List<LocalMedia> imgs = new ArrayList<>();
         imgs.clear();
         for (int i = 0; i < 1; i++) {
-            datassss.add(new BeanImgs("", imgs, "0.00", "0.00", "0.00", "0.00", "0.00"));
+            datassss.add(new BeanImgs("", "", imgs, "0.00", "0.00", "0.00", "0.00", "0.00"));
         }
 
         myRecycleViewAdapter = new MyRecycleViewAdapter(datassss, this);
@@ -270,13 +273,33 @@ public class ActRefunds extends BaseAct {
                     if (msg.length() > 0) {
                         text_shop.setText(msg);
                     }
-                } else {
+                } else if (modetext == 1) {
+//                  请输入商品详情
                     if (msg.length() > 0) {
                         datassss.get(postionTao).setDetails(msg);
                     }
                     myRecycleViewAdapter = new MyRecycleViewAdapter(datassss, ActRefunds.this);
                     recycler_tao.setAdapter(myRecycleViewAdapter);
+                } else if (modetext == 2) {
+//                  请输入商品名称
+                    if (msg.length() > 0) {
+                        datassss.get(postionTao).setTaoName(msg);
+                    }
+                    myRecycleViewAdapter = new MyRecycleViewAdapter(datassss, ActRefunds.this);
+                    recycler_tao.setAdapter(myRecycleViewAdapter);
+                }else if (modetext==4){
+//请输入商品介绍
+                    if (msg.length() > 0) {
+                        text_jie.setText(msg);
+                    }
+
                 }
+
+
+
+
+
+
                 inputTextMsgDialog.dismiss(); //隐藏此dialog
             }
         });
@@ -293,7 +316,7 @@ public class ActRefunds extends BaseAct {
         @Override
         public void onAddPicClick() {
 
-            Toast.makeText(ActRefunds.this, "===111===", Toast.LENGTH_SHORT).show();
+//            Toast.makeText(ActRefunds.this, "===111===", Toast.LENGTH_SHORT).show();
 
 
             Moder = 0;
@@ -392,7 +415,7 @@ public class ActRefunds extends BaseAct {
         @Override
         public void onAddPicClick(int position, String contexts) {
 
-            Toast.makeText(ActRefunds.this, "===222===" + "---" + contexts + position, Toast.LENGTH_SHORT).show();
+//            Toast.makeText(ActRefunds.this, "===222===" + "---" + contexts + position, Toast.LENGTH_SHORT).show();
 
 
             Moder = 1;
@@ -529,7 +552,12 @@ public class ActRefunds extends BaseAct {
     }
 
 
-    @OnClick({R.id.lin_li,R.id.text_Example,R.id.text_next})
+    @BindView(R.id.lin_jie)
+    LinearLayout lin_jie;
+
+
+
+    @OnClick({R.id.lin_li, R.id.text_Example, R.id.text_next,R.id.lin_jie})
     public void OnClick(View view) {
         switch (view.getId()) {
             case R.id.lin_li:
@@ -545,13 +573,61 @@ public class ActRefunds extends BaseAct {
             case R.id.text_Example:
 
 
+                Intent intent = new Intent(this, ActExample.class);
+
+                intent.putExtra("type", 1);
+
+                startActivity(intent);
+
+
                 break;
 //                下一步操作
             case R.id.text_next:
+                selectListAll.clear();
+                selectListAll.addAll(adapter.getList());
 
-                Intent intent = new Intent(this, ActRecom.class);
-                intent.putExtra("Recom", datassss);
-                startActivity(ActRecom.class);
+
+
+                if (selectListAll.size() > 0) {
+
+                } else {
+                    Toast.makeText(ActRefunds.this, "请添加轮播图！", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+                if (datassss.get(0).getDetails().length() > 0 &&
+                        !datassss.get(0).getStock().equals("0.00") &&
+                        !datassss.get(0).getSettlementprice().equals("0.00") &&
+                        !datassss.get(0).getCommission().equals("0.00") &&
+                        !datassss.get(0).getPresentprice().equals("0.00") &&
+                        !datassss.get(0).getOriginalprice().equals("0.00") &&
+                        datassss.get(0).getImgs().size() > 0) {
+                } else {
+                    Toast.makeText(ActRefunds.this, "请检查套餐!", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+                Intent intents = new Intent(this, ActRecom.class);
+                Bundle bundle = new Bundle();
+//                商家头部轮播图
+                bundle.putParcelableArrayList("head", selectListAll);
+//                套餐的
+//                bundle.putParcelableArrayList("tao", datassss);
+
+                bundle.putParcelableArrayList("tao", myRecycleViewAdapter.getMyDatas());
+
+                intents.putExtras(bundle);
+                intents.putExtra("shopNmae", text_shop.getText().toString().trim());
+                intents.putExtra("intro",text_jie.getText().toString().trim());
+                startActivity(intents);
+
+                break;
+
+            case R.id.lin_jie:
+
+                modetext = 4;
+
+                inputTextMsgDialog.setHint("请输入商品介绍"); //设置输入提示文字
+
+                inputTextMsgDialog.show();
 
                 break;
 
@@ -559,6 +635,9 @@ public class ActRefunds extends BaseAct {
         }
     }
 
+
+    @BindView(R.id.text_jie)
+TextView text_jie;
 
     private String path_img;
     //    套餐里面选中的postion；
@@ -583,6 +662,18 @@ public class ActRefunds extends BaseAct {
             this.inflater = LayoutInflater.from(context);
         }
 
+
+
+//        得到数据
+        public ArrayList<BeanImgs> getMyDatas(){
+
+            return datas;
+
+        }
+
+
+
+
         @Override
         public MyRecycleViewAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
             View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_refundbao, parent, false);
@@ -595,6 +686,10 @@ public class ActRefunds extends BaseAct {
 
         @Override
         public void onBindViewHolder(MyRecycleViewAdapter.ViewHolder holder, final int positionss) {
+
+
+            holder.text_name.setVisibility(View.VISIBLE);
+
             try {
                 holder.text_yuan.setText("原价：￥" + datas.get(positionss).getOriginalprice() + " 原价：￥" + datas.get(positionss).getPresentprice() + "" +
                         " 佣金：￥" + datas.get(positionss).getCommission() + "" +
@@ -614,6 +709,22 @@ public class ActRefunds extends BaseAct {
             } catch (Exception e) {
 
             }
+
+
+            try {
+
+
+                if (datas.get(positionss).getTaoName() != null && datas.get(positionss).getTaoName().length() > 0) {
+                    holder.text_name.setText(datas.get(positionss).getTaoName());
+                } else {
+                    holder.text_name.setHint("请输入套餐名称");
+                }
+
+            } catch (Exception e) {
+
+            }
+
+
             managerOne = new FullyGridLayoutManager(ActRefunds.this, 4, GridLayoutManager.VERTICAL, false);
             holder.xr_refund.setLayoutManager(managerOne);
             adapterTao = new GridPublishGoodsTao(ActRefunds.this, onAddPicClickListeners, positionss, holder.text_kkk.getText().toString());
@@ -653,27 +764,39 @@ public class ActRefunds extends BaseAct {
             holder.lin_addItem.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-
-                    if (datassss.size()<11){
-                        List<LocalMedia> selectListTao = new ArrayList<>();
-                        selectListTao.clear();
-                        datassss.add(new BeanImgs("", selectListTao, "0.00", "0.00", "0.00", "", "0.00"));
-                        myRecycleViewAdapter = new MyRecycleViewAdapter(datassss, ActRefunds.this);
-                        recycler_tao.setAdapter(myRecycleViewAdapter);
-                    }else {
-                        Toast.makeText(ActRefunds.this,"最多添加10个套餐！",Toast.LENGTH_SHORT).show();
+                    if (datassss.size() < 11) {
+                        if (!datas.get(positionss).getTaoName().equals("") && datassss.get(0).getDetails().length() > 0 &&
+                                !datassss.get(0).getStock().equals("0.00") &&
+                                !datassss.get(0).getSettlementprice().equals("0.00") &&
+                                !datassss.get(0).getCommission().equals("0.00") &&
+                                !datassss.get(0).getPresentprice().equals("0.00") &&
+                                !datassss.get(0).getOriginalprice().equals("0.00") &&
+                                datassss.get(0).getImgs().size() > 0) {
+                            List<LocalMedia> selectListTao = new ArrayList<>();
+                            selectListTao.clear();
+                            datassss.add(new BeanImgs("", "", selectListTao, "0.00", "0.00", "0.00", "", "0.00"));
+                            myRecycleViewAdapter = new MyRecycleViewAdapter(datassss, ActRefunds.this);
+                            recycler_tao.setAdapter(myRecycleViewAdapter);
+                        } else {
+                            Toast.makeText(ActRefunds.this, "请检查套餐！", Toast.LENGTH_SHORT).show();
+                        }
+                    } else {
+                        Toast.makeText(ActRefunds.this, "最多添加10个套餐！", Toast.LENGTH_SHORT).show();
                     }
-
-
                 }
             });
 
             holder.lin_RemoveItem.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    datassss.remove(positionss);
-                    myRecycleViewAdapter = new MyRecycleViewAdapter(datassss, ActRefunds.this);
-                    recycler_tao.setAdapter(myRecycleViewAdapter);
+
+                    if (datassss.size() > 1) {
+                        datassss.remove(positionss);
+                        myRecycleViewAdapter = new MyRecycleViewAdapter(datassss, ActRefunds.this);
+                        recycler_tao.setAdapter(myRecycleViewAdapter);
+                    }
+
+
                 }
             });
 
@@ -696,11 +819,27 @@ public class ActRefunds extends BaseAct {
 
 
                     try {
-                        edit_yuan.setText(datassss.get(postionTao).getOriginalprice() + "");
-                        edit_now.setText(datassss.get(postionTao).getPresentprice() + "");
-                        edit_yong.setText(datassss.get(postionTao).getCommission() + "");
-                        edit_jie.setText(datassss.get(postionTao).getSettlementprice() + "");
-                        edit_Stock.setText(datassss.get(postionTao).getStock() + "");
+
+                        if (!datassss.get(postionTao).getOriginalprice().equals("0.00")) {
+                            edit_yuan.setText(datassss.get(postionTao).getOriginalprice() + "");
+                        }
+
+                        if (!datassss.get(postionTao).getPresentprice().equals("0.00")) {
+                            edit_now.setText(datassss.get(postionTao).getPresentprice() + "");
+                        }
+
+                        if (!datassss.get(postionTao).getCommission().equals("0.00")) {
+                            edit_yong.setText(datassss.get(postionTao).getCommission() + "");
+                        }
+
+                        if (!datassss.get(postionTao).getSettlementprice().equals("0.00")) {
+                            edit_jie.setText(datassss.get(postionTao).getSettlementprice() + "");
+                        }
+
+                        if (!datassss.get(postionTao).getStock().equals("0.00")) {
+                            edit_Stock.setText(datassss.get(postionTao).getStock() + "");
+                        }
+
                     } catch (Exception e) {
 
                     }
@@ -773,18 +912,37 @@ public class ActRefunds extends BaseAct {
             holder.text_kkk.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-
                     modetext = 1;
-
                     postionTao = positionss;
 
-                    if (datassss.get(positionss).getDetails()!=null&&datassss.get(positionss).getDetails().length()>0){
-                        inputTextMsgDialog.setHint(datassss.get(postionTao).getDetails());
-                    }else {
+                    inputTextMsgDialog.setTextNow("");
+
+                    if (datassss.get(positionss).getDetails() != null && datassss.get(positionss).getDetails().length() > 0) {
+
+                        inputTextMsgDialog.setTextNow(datassss.get(postionTao).getDetails());
+                    } else {
                         inputTextMsgDialog.setHint("请输入套餐详情");
                     }
                     inputTextMsgDialog.show();
 
+                }
+            });
+
+            holder.text_name.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    modetext = 2;
+                    postionTao = positionss;
+
+                    inputTextMsgDialog.setTextNow("");
+
+                    if (datassss.get(positionss).getTaoName() != null && datassss.get(positionss).getTaoName().length() > 0) {
+
+                        inputTextMsgDialog.setTextNow(datassss.get(postionTao).getTaoName());
+                    } else {
+                        inputTextMsgDialog.setHint("请输入套餐名称");
+                    }
+                    inputTextMsgDialog.show();
                 }
             });
         }
@@ -799,12 +957,8 @@ public class ActRefunds extends BaseAct {
             private LinearLayout lin_addItem;
             private LinearLayout lin_RemoveItem;
             private LinearLayout lin_Price;
-
-
-            private TextView text_yuan;
-
+            private TextView text_yuan, text_name;
             private TextView text_kkk;
-
 
             public ViewHolder(View itemView) {
                 super(itemView);
@@ -812,17 +966,12 @@ public class ActRefunds extends BaseAct {
                 lin_addItem = (LinearLayout) itemView.findViewById(R.id.lin_addItem);
                 lin_RemoveItem = (LinearLayout) itemView.findViewById(R.id.lin_RemoveItem);
                 lin_Price = (LinearLayout) itemView.findViewById(R.id.lin_Price);
-
                 text_yuan = (TextView) itemView.findViewById(R.id.text_yuan);
-
                 text_kkk = (TextView) itemView.findViewById(R.id.text_kkk);
-
+                text_name = (TextView) itemView.findViewById(R.id.text_name);
             }
         }
     }
-
-
-
 
 
 }

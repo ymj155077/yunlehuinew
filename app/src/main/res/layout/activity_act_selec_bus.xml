@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/Write"
+    android:orientation="vertical"
+    tools:context=".ui.act.actme.actbusiness.ActSelecBus">
+
+    <include layout="@layout/toolbar_push_off" />
+
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_1"
+        android:background="@color/all_background" />
+
+
+
+
+    <com.example.YunleHui.view.NoScrollListView
+        android:id="@+id/scro_list"
+        android:divider="@null"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+
+
+
+    <View
+        android:layout_weight="1"
+        android:layout_width="@dimen/dp_1"
+        android:layout_height="0dp"/>
+
+
+
+
+    <TextView
+        android:layout_marginBottom="@dimen/dp_20"
+        android:id="@+id/text_complete"
+        android:clickable="true"
+        android:layout_marginEnd="@dimen/dp_12"
+        android:layout_marginStart="@dimen/dp_12"
+        android:textSize="@dimen/sp_16"
+        android:textColor="@color/Write"
+        android:background="@drawable/button_img"
+        android:gravity="center"
+        android:text="完成"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_44" />
+
+
+
+
+
+
+
+
+</LinearLayout>
