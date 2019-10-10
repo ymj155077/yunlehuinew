@@ -263,7 +263,7 @@ public class ActDetailstoused extends BaseAct {
     TextView textSize;
 
     @Override
-    public void StringResulit(final String key, final String Value) {
+    public void stringResulit(final String key, final String Value) {
 
 
         try {

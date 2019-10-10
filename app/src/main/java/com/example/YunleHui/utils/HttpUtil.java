@@ -466,6 +466,112 @@ public class HttpUtil {
 
     }
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    public static void put_Request(String url, Map<Object, Object> params) {
+        Request request;
+        FormBody.Builder builder;
+        if ((Integer) MyApp.getSharedPreference(MyApp.context, "user", 0) == 0) {
+
+            builder = new FormBody.Builder();
+
+            for (Object key : params.keySet()) {
+                //追加表单信息
+                builder.add((String) key, (String) params.get(key));
+                Log.i("key_all", (String) params.get(key));
+            }
+            RequestBody formBody = builder.build();
+            request = new Request.Builder().url(PUBLIC_URL + url).post(formBody).build();
+        } else {
+
+            Log.i("登陆了以后", "登陆了以后" + "Bearer " + MyApp.access_token + "--------" + MyApp.user + "---" + sign + "-----"
+                    +
+                    params
+            );
+            HttpUtil.addMapheads();
+            HttpUtil.paramsheads.put("Authorization", "Bearer " + MyApp.access_token);
+            builder = new FormBody.Builder();
+            try {
+//                多个 的
+                for (Object key : params.keySet()) {
+                    //追加表单信息
+                    builder.add((String) key, params.get(key) + "");
+                    Log.i("key_all_duo", params.get(key) + "");
+                }
+                RequestBody formBody = builder.build();
+                request = new Request.Builder().url(PUBLIC_URL + url).put(formBody).headers(Headers.of(paramsheads)).build();
+            } catch (Exception e) {
+                request = new Request.Builder().url(PUBLIC_URL + url).headers(Headers.of(paramsheads)).build();
+            }
+            MyApp.call = Cookiebuilder.build().newCall(request);
+        }
+    }
+
+
+
+
+    public static void deleteRequest(String url, Map<Object, Object> params) {
+        Request request;
+        FormBody.Builder builder;
+        if ((Integer) MyApp.getSharedPreference(MyApp.context, "user", 0) == 0) {
+
+            builder = new FormBody.Builder();
+
+            for (Object key : params.keySet()) {
+                //追加表单信息
+                builder.add((String) key, (String) params.get(key));
+                Log.i("key_all", (String) params.get(key));
+            }
+            RequestBody formBody = builder.build();
+            request = new Request.Builder().url(PUBLIC_URL + url).post(formBody).build();
+        } else {
+            Log.i("登陆了以后", "登陆了以后" + "Bearer " + MyApp.access_token + "--------" + MyApp.user + "---" + sign + "-----"
+                    +
+                    params
+            );
+            HttpUtil.addMapheads();
+            HttpUtil.paramsheads.put("Authorization", "Bearer " + MyApp.access_token);
+            builder = new FormBody.Builder();
+            try {
+//                多个 的
+                for (Object key : params.keySet()) {
+                    //追加表单信息
+                    builder.add((String) key, params.get(key) + "");
+                    Log.i("key_all_duo", params.get(key) + "");
+                }
+                RequestBody formBody = builder.build();
+                request = new Request.Builder().url(PUBLIC_URL + url).delete(formBody).headers(Headers.of(paramsheads)).build();
+            } catch (Exception e) {
+                request = new Request.Builder().url(PUBLIC_URL + url).headers(Headers.of(paramsheads)).build();
+            }
+            MyApp.call = Cookiebuilder.build().newCall(request);
+        }
+    }
+
+
+
+
+
+
+
 }
 
 

@@ -325,7 +325,7 @@ public class ActSafetyCenter extends BaseAct implements View.OnClickListener, Pa
 
 
     @Override
-    public void StringResulit(String key, String value) {
+    public void stringResulit(String key, String value) {
         try {
             if (key.equals("account/setPassword")) {
 

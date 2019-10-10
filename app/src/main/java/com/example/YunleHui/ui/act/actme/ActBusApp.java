@@ -655,7 +655,7 @@ public class ActBusApp extends BaseAct {
 
 
     @Override
-    public void StringResulit(String key, String value) {
+    public void stringResulit(String key, String value) {
 
         try {
             if (key.equals("shopApply/shopClassList")) {

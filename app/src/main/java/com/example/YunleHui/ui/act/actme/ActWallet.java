@@ -98,7 +98,7 @@ public class ActWallet extends BaseAct {
     }
 
 
-    public void StringResulit(String key, String value) {
+    public void stringResulit(String key, String value) {
 
 
     }

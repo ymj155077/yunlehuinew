@@ -193,7 +193,7 @@ public class ActRefund extends BaseAct {
 
 
     @Override
-    public void StringResulit(final String key, final String Value) {
+    public void stringResulit(final String key, final String Value) {
         try {
 //            爆款
             if (key.equals("orderFull/details")) {

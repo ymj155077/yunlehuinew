@@ -388,7 +388,7 @@ public class fragExplosive extends BaseFrag implements PagerGridLayoutManager.Pa
 
 
     @Override
-    public void StringResulit(String key, String value) {
+    public void stringResulit(String key, String value) {
 
         try {
             if (key.equals("frontShop/recommendGoods")) {

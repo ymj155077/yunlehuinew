@@ -240,7 +240,7 @@ public abstract class BaseAct extends AppCompatActivity {
         ActivityCollector.removeActivity(this);
     }
 
-    public void StringResulit(String key, String value) {
+    public void stringResulit(String key, String value) {
 
     }
 
@@ -265,12 +265,13 @@ public abstract class BaseAct extends AppCompatActivity {
                 try {
                     beanVerification = MyApp.gson.fromJson(resp, BeanVerification.class);
                     code = beanVerification.getCode();
+
 //                    if (code ==200) {
 //                        runOnUiThread(new Runnable() {
 //                            @Override
 //                            public void run() {
 //                                Network_state(1);
-//                                StringResulit(key, resp);
+//                                stringResulit(key, resp);
 //                            }
 //                        });
 //                    } else
@@ -280,7 +281,7 @@ public abstract class BaseAct extends AppCompatActivity {
                         runOnUiThread(new Runnable() {
                             @Override
                             public void run() {
-                                StringResulit(key, resp);
+                                stringResulit(key, resp);
                             }
                         });
 
@@ -330,7 +331,7 @@ public abstract class BaseAct extends AppCompatActivity {
                             @Override
                             public void run() {
 //                                if (key.equals("account/checkPasswordSetting")){
-                                    StringResulit(key, resp);
+                                    stringResulit(key, resp);
 //                                }else {
 //                                    Toast.makeText(BaseAct.this, beanVerification.getMsg(), Toast.LENGTH_SHORT).show();
 //                                }

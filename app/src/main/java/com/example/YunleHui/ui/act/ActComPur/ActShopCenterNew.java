@@ -582,7 +582,7 @@ public class ActShopCenterNew extends BaseAct implements ObservableScrollView.On
     private Bean_mall.DataBean.SelfShopBean selfShop;
 
     @Override
-    public void StringResulit(String key, String value) {
+    public void stringResulit(String key, String value) {
         if (key.equals("shopping/toShop")) {
             bean_mall = MyApp.gson.fromJson(value, Bean_mall.class);
             data_mall = bean_mall.getData();

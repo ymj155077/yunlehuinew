@@ -127,7 +127,7 @@ public class fragnoTused extends BaseFrag {
     }
 
     @Override
-    public void StringResulit(String key, String value){
+    public void stringResulit(String key, String value){
         try {
             if (key.equals("2_list")) {
                 JSONObject json = new JSONObject(value);

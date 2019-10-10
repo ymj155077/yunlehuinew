@@ -103,7 +103,7 @@ public class ActShopCom extends BaseAct {
     EditText edit_context;
 
     @Override
-    public void StringResulit(String key, String value) {
+    public void stringResulit(String key, String value) {
 
 
         if (key.equals("frontShop/addShopReply")) {

@@ -10,9 +10,9 @@
         android:id="@+id/lin_details"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="@dimen/dp_12"
         android:layout_marginStart="@dimen/dp_12"
         android:layout_marginTop="@dimen/dp_12"
+        android:layout_marginEnd="@dimen/dp_12"
         android:background="@drawable/backdetails"
         android:orientation="vertical">
 
@@ -23,9 +23,9 @@
 
             android:layout_height="wrap_content"
 
-            android:layout_marginEnd="@dimen/dp_12"
             android:layout_marginStart="@dimen/dp_12"
             android:layout_marginTop="@dimen/dp_13"
+            android:layout_marginEnd="@dimen/dp_12"
             android:orientation="horizontal">
 
             <ImageView
@@ -46,53 +46,57 @@
                 <TextView
                     android:id="@+id/text_details"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="@dimen/dp_12"
+                    android:layout_height="0dp"
                     android:layout_marginStart="@dimen/dp_12"
+                    android:layout_marginLeft="@dimen/dp_12"
+                    android:layout_weight="1"
                     android:lines="1"
                     android:text="热菜过江椒香鱼"
                     android:textColor="@color/black33"
                     android:textSize="@dimen/sp_16" />
-<LinearLayout
-    android:gravity="bottom"
-    android:layout_weight="1"
-    android:orientation="horizontal"
-    android:layout_width="match_parent"
-    android:layout_height="0dp">
 
-    <TextView
-        android:gravity="bottom"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="@dimen/dp_12"
-        android:layout_marginStart="@dimen/dp_12"
-        android:lines="1"
-        android:text="套餐一"
-        android:textColor="@color/black99"
-        android:textSize="@dimen/sp_14" />
-    <TextView
-        android:layout_marginStart="@dimen/dp_6"
-        android:text="￥0.00"
-        android:textColor="@color/login"
-        android:textSize="@dimen/sp_14"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:gravity="bottom"
+                    android:orientation="horizontal"
+                    android:visibility="gone">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/dp_12"
+                        android:layout_marginLeft="@dimen/dp_12"
+                        android:gravity="bottom"
+                        android:lines="1"
+                        android:text="套餐一"
+                        android:textColor="@color/black99"
+                        android:textSize="@dimen/sp_14" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/dp_6"
+                        android:text="￥0.00"
+                        android:textColor="@color/login"
+                        android:textSize="@dimen/sp_14" />
 
 
-
-</LinearLayout>
+                </LinearLayout>
 
 
                 <LinearLayout
-                    android:layout_marginTop="@dimen/dp_4"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="bottom"
                     android:layout_marginStart="@dimen/dp_12"
+                    android:layout_marginTop="@dimen/dp_4"
                     android:orientation="horizontal">
 
 
                     <TextView
+                        android:id="@+id/text_t"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="套餐二"
@@ -101,46 +105,46 @@
 
 
                     <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
                         android:layout_marginStart="@dimen/dp_6"
                         android:text="￥"
                         android:textColor="@color/login"
-                        android:textSize="@dimen/sp_14"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content" />
+                        android:textSize="@dimen/sp_14" />
 
                     <TextView
+                        android:id="@+id/text_price"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
                         android:text="0.00"
                         android:textColor="@color/login"
-                        android:textSize="@dimen/sp_14"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content" />
+                        android:textSize="@dimen/sp_14" />
 
 
                     <TextView
-                        android:gravity="end"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
                         android:layout_marginStart="@dimen/dp_6"
+                        android:layout_weight="1"
+                        android:gravity="end"
                         android:text="已售"
                         android:textColor="@color/black99"
-                        android:textSize="@dimen/sp_14"
-                        android:layout_width="0dp"
-                        android:layout_weight="1"
-                        android:layout_height="wrap_content" />
+                        android:textSize="@dimen/sp_14" />
 
                     <TextView
+                        android:id="@+id/text_number"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
                         android:layout_marginStart="@dimen/dp_6"
                         android:text="0"
                         android:textColor="@color/black99"
-                        android:textSize="@dimen/sp_14"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content" />
+                        android:textSize="@dimen/sp_14" />
 
 
                 </LinearLayout>
 
 
             </LinearLayout>
-
-
 
 
         </LinearLayout>
@@ -154,40 +158,42 @@
 
 
         <LinearLayout
-            android:layout_gravity="end"
-            android:gravity="end"
             android:layout_width="match_parent"
             android:layout_height="@dimen/dp_50"
+            android:layout_gravity="end"
+            android:gravity="end"
 
             android:orientation="horizontal">
 
             <TextView
-                android:gravity="center"
-                android:layout_marginEnd="@dimen/dp_12"
-                android:layout_marginStart="@dimen/dp_12"
-                android:textColor="@color/black_333333"
-                android:textSize="@dimen/sp_18"
-                android:text="删除"
+                android:id="@+id/text_deltel"
                 android:layout_width="@dimen/dp_60"
                 android:layout_height="match_parent"
-                />
+                android:layout_marginStart="@dimen/dp_12"
+                android:layout_marginEnd="@dimen/dp_12"
+                android:clickable="true"
+                android:gravity="center"
+                android:text="删除"
+                android:textColor="@color/black_333333"
+                android:textSize="@dimen/sp_18" />
 
             <View
-                android:layout_weight="1"
                 android:layout_width="0dp"
-                android:layout_height="@dimen/dp_1"/>
+                android:layout_height="@dimen/dp_1"
+                android:layout_weight="1" />
 
 
             <TextView
-                android:gravity="center"
-                android:layout_marginEnd="@dimen/dp_12"
-                android:layout_marginStart="@dimen/dp_12"
-                android:textColor="@color/black_333333"
-                android:textSize="@dimen/sp_18"
-              android:text="重新上架"
+                android:id="@+id/text_Reinstall"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-              />
+                android:layout_marginStart="@dimen/dp_12"
+                android:layout_marginEnd="@dimen/dp_12"
+                android:clickable="true"
+                android:gravity="center"
+                android:text="重新上架"
+                android:textColor="@color/black_333333"
+                android:textSize="@dimen/sp_18" />
 
 
         </LinearLayout>

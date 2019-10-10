@@ -73,7 +73,7 @@ public class ActWritecode extends BaseAct {
     }
 
 
-    public void StringResulit(final String key, final String Value) {
+    public void stringResulit(final String key, final String Value) {
 
         try {
             if (key.equals("order/detail")) {

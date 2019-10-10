@@ -303,7 +303,7 @@ public class ActPayOrder extends BaseAct implements View.OnClickListener, Passwo
 //    }
 
     @Override
-    public void StringResulit(String key, String value) {
+    public void stringResulit(String key, String value) {
 
 
 //        if (key.equals("order/pay")) {

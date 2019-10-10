@@ -324,7 +324,7 @@ public static ActComPurUsed actComPurUsed;
 
 
     @Override
-    public void StringResulit(String key, String value) {
+    public void stringResulit(String key, String value) {
         if (key.equals("orderFull/details")) {
 
             bean_pur = MyApp.gson.fromJson(value, Bean_pur.class);

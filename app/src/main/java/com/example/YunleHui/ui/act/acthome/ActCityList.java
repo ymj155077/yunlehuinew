@@ -253,7 +253,7 @@ public class ActCityList extends BaseAct {
     }
 
     @Override
-    public void StringResulit(String key, String value) {
+    public void stringResulit(String key, String value) {
 
         try {
             if (key.equals("frontShop/allCity")) {

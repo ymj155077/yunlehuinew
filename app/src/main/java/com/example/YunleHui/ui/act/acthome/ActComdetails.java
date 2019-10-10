@@ -201,6 +201,9 @@ public class ActComdetails extends BaseAct {
         text_peice.getPaint().setFlags(Paint.STRIKE_THRU_TEXT_FLAG);
         Intent intent = getIntent();
         shop_id = intent.getIntExtra("shop_id", 0);
+
+
+
         HttpUtil.getAsynHttp("frontShop/goodsDetail?goodsId=" + shop_id);
         getdata("frontShop/goodsDetail");
         no_list_tao.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -343,7 +346,7 @@ public class ActComdetails extends BaseAct {
     private MyListAdpter myListAdpter;
 
     @Override
-    public void StringResulit(String key, String value) {
+    public void stringResulit(String key, String value) {
         try {
             if (key.equals("frontShop/goodsDetail")) {
 

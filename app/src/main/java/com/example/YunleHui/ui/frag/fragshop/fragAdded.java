@@ -13,6 +13,7 @@ import android.widget.LinearLayout;
 import com.example.YunleHui.R;
 import com.example.YunleHui.base.BaseFrag;
 import com.example.YunleHui.ui.act.actme.actbusiness.ActOrderDetails;
+import com.example.YunleHui.utils.HttpUtil;
 import com.example.YunleHui.utils.Tools;
 import com.example.YunleHui.view.MyXrecycleview;
 import com.jcodecraeer.xrecyclerview.XRecyclerView;
@@ -30,12 +31,14 @@ import butterknife.BindView;
 public class fragAdded extends BaseFrag {
 
 
+    private String goodsName = "";
 
+
+    private int state = 1;
 
 
     @BindView(R.id.xre_added)
     MyXrecycleview xre_added;
-
 
 
     @Override
@@ -54,45 +57,37 @@ public class fragAdded extends BaseFrag {
     }
 
 
-    private MyRecycleViewAdapter  myRecycleViewAdapter;
+    private MyRecycleViewAdapter myRecycleViewAdapter;
 
 
     @Override
     protected void initData() {
 
-        Tools.setManger(xre_added,getActivity());
 
-        ArrayList<String> datas = new ArrayList<>();
-        datas.clear();
-        for (int i = 0; i < 10; i++) {
-            datas.add("");
-        }
+//        HttpUtil.getAsynHttp("backShop/goods/list?" +
+//                "goodsName=" + goodsName +
+//                "&state=" + state
+//        );
+//
+//        getdata("backShop/one");
 
-        myRecycleViewAdapter = new MyRecycleViewAdapter(datas,getActivity());
-
-        xre_added.setAdapter(myRecycleViewAdapter);
+        Tools.setManger(xre_added, getActivity());
 
         xre_added.setLoadingListener(new XRecyclerView.LoadingListener() {
             @Override
             public void onRefresh() {
 //                page = 1;
 //                type = 0;
+
 //                HttpUtil.addMapparams();
-//                params.put("longitude", "");
-//                params.put("latitude", "");
-//                params.put("shopClassId", "");
-//                params.put("shopCityId", "");
-//                params.put("offset", "");
-//                HttpUtil.Post_request("frontShop/recommendGoods", params);
-//                HttpUtil.getAsynHttp("frontShop/recommendGoods?" +
-//                        "longitude=" + "" +
-//                        "&latitude=" + "" +
-//                        "&shopClassId=" + "" +
-//                        "&shopCityId=" + "" +
-//                        "&offset=" + ""
-//                );
-//                getdata("frontShop/recommendGoods");
+//                HttpUtil.params.put("goodsName=",goodsName);
+//
+//                HttpUtil.params.put("state" , state);
+//                HttpUtil.Post_request("backShop/goods/list",HttpUtil.params);
+//
+//                getdata("backShop/one");
                 new Handler().postDelayed(new Runnable() {
+                    @Override
                     public void run() {
                         xre_added.refreshComplete();
                     }
@@ -103,34 +98,28 @@ public class fragAdded extends BaseFrag {
             public void onLoadMore() {
 //                ++page;
 //                type = 2;
-//                HttpUtil.addMapparams();
-//                params.put("longitude", "");
-//                params.put("latitude", "");
-//                params.put("shopClassId", "");
-//                params.put("shopCityId", "");
-//                params.put("offset", "");
-//                HttpUtil.Post_request("frontShop/recommendGoods", params);
 
-//                HttpUtil.getAsynHttp("frontShop/recommendGoods?" +
-//                        "longitude=" + "" +
-//                        "&latitude=" + "" +
-//                        "&shopClassId=" + "" +
-//                        "&shopCityId=" + "" +
-//                        "&offset=" + ""
+
+//                HttpUtil.getAsynHttp("backShop/goods/list" +
+//                        "goodsName=" + goodsName +
+//                        "&state=" + state
 //                );
-//                getdata("frontShop/recommendGoods");
+//                getdata("backShop/one");
 
                 new Handler().postDelayed(new Runnable() {
+                    @Override
                     public void run() {
                         xre_added.loadMoreComplete();
                     }
                 }, 1000);
             }
         });
+
+
+        xre_added.refresh();
+
+
     }
-
-
-
 
 
     public class MyRecycleViewAdapter extends RecyclerView.Adapter<MyRecycleViewAdapter.ViewHolder> {
@@ -205,11 +194,25 @@ public class fragAdded extends BaseFrag {
     }
 
 
+    public void stringResulit(String key, String value) {
+
+
+        if (key.equals("backShop/goods/list")){
+            ArrayList<String> datas = new ArrayList<>();
+            datas.clear();
+            for (int i = 0; i < 10; i++) {
+                datas.add("");
+            }
+            myRecycleViewAdapter = new MyRecycleViewAdapter(datas, getActivity());
+
+            xre_added.setAdapter(myRecycleViewAdapter);
+        }
 
 
 
 
 
+    }
 
 
 }

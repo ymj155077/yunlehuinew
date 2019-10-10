@@ -156,7 +156,7 @@ public abstract class BaseFrag extends Fragment {
         super.onActivityResult(requestCode, resultCode, data);
     }
 
-    public void StringResulit(String key, String value) {
+    public void stringResulit(String key, String value) {
 
     }
 
@@ -186,7 +186,7 @@ public abstract class BaseFrag extends Fragment {
 //                            @Override
 //                            public void run() {
 //                                Network_state(1);
-//                                StringResulit(key, resp);
+//                                stringResulit(key, resp);
 //                            }
 //                        });
 //                    } else
@@ -234,7 +234,7 @@ public abstract class BaseFrag extends Fragment {
                         getActivity().runOnUiThread(new Runnable() {
                             @Override
                             public void run() {
-                                StringResulit(key, resp);
+                                stringResulit(key, resp);
 //                                Toast.makeText(getActivity(), beanVerification.getMsg(), Toast.LENGTH_SHORT).show();
                             }
                         });

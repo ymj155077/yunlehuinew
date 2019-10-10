@@ -515,7 +515,7 @@ public class ActPerinform extends BaseAct {
     private Bean_sd.DataBean data_sd;
 
     @Override
-    public void StringResulit(String key, String value) {
+    public void stringResulit(String key, String value) {
         if (key.equals("user/updateUserInfo")) {
 
             bean_sd = MyApp.gson.fromJson(value, Bean_sd.class);

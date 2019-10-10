@@ -161,7 +161,7 @@ public class ActShopCenter extends BaseAct {
 
 
     @Override
-    public void StringResulit(String key, String value) {
+    public void stringResulit(String key, String value) {
 
 
         if (key.equals("shopping/toShop")) {

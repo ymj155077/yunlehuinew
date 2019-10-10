@@ -145,7 +145,7 @@ public class fragToevaluated extends BaseFrag {
 
 
     @Override
-    public void StringResulit(String key, String value) {
+    public void stringResulit(String key, String value) {
         try {
             if (key.equals("3_listPinJia")) {
                 JSONObject json = new JSONObject(value);

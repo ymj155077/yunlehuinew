@@ -148,7 +148,7 @@ public class ActMyTeam extends BaseAct {
     private MyRecycleViewAdapter myRecycleViewAdapter;
     private ArrayList<Bean_tuan.DataBean.VoListBean> voList_all = new ArrayList<>();
     @Override
-    public void StringResulit(String key, String value) {
+    public void stringResulit(String key, String value) {
         try {
             if (key.equals("sell/searchClientCommissions")) {
                 bean_tuan = MyApp.gson.fromJson(value, Bean_tuan.class);

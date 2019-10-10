@@ -114,7 +114,7 @@ public class ActSelecBus extends BaseAct {
 
 
     @Override
-    public void StringResulit(String key, String value) {
+    public void stringResulit(String key, String value) {
         if (key.equals("backShop/shop/linkShop")) {
             bean_sel = MyApp.gson.fromJson(value, Bean_sel.class);
             data = bean_sel.getData();

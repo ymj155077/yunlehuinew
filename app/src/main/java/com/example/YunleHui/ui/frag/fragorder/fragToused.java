@@ -154,7 +154,7 @@ public class fragToused extends BaseFrag {
 
 
     @Override
-    public void StringResulit(String key, String value) {
+    public void stringResulit(String key, String value) {
 
         try {
 

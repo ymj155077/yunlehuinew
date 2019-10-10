@@ -127,7 +127,7 @@ public class fragAnswered extends BaseFrag {
 
 
     @Override
-    public void StringResulit(String key, String value) {
+    public void stringResulit(String key, String value) {
 
 
         if (key.equals("frontShop/getShopReply")){

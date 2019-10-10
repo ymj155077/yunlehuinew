@@ -44,16 +44,17 @@
 
 
                 <TextView
+                    android:layout_weight="1"
                     android:id="@+id/text_details"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="0dp"
                     android:layout_marginLeft="@dimen/dp_12"
                     android:layout_marginStart="@dimen/dp_12"
-                    android:lines="1"
                     android:text="热菜过江椒香鱼"
                     android:textColor="@color/black33"
                     android:textSize="@dimen/sp_16" />
 <LinearLayout
+    android:visibility="gone"
     android:gravity="bottom"
     android:layout_weight="1"
     android:orientation="horizontal"
@@ -93,6 +94,7 @@
 
 
                     <TextView
+                        android:id="@+id/tao_name"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="套餐二"
@@ -101,14 +103,15 @@
 
 
                     <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
                         android:layout_marginStart="@dimen/dp_6"
                         android:text="￥"
                         android:textColor="@color/login"
-                        android:textSize="@dimen/sp_14"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content" />
+                        android:textSize="@dimen/sp_14" />
 
                     <TextView
+                        android:id="@+id/text_price"
                         android:text="0.00"
                         android:textColor="@color/login"
                         android:textSize="@dimen/sp_14"
@@ -127,6 +130,7 @@
                         android:layout_height="wrap_content" />
 
                     <TextView
+                        android:id="@+id/text_size"
                         android:layout_marginStart="@dimen/dp_6"
                         android:text="0"
                         android:textColor="@color/black99"
@@ -154,13 +158,12 @@
 
 
         <LinearLayout
+            android:id="@+id/lin_xia"
             android:layout_gravity="end"
             android:gravity="end"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-
             android:orientation="horizontal">
-
 
             <TextView
                 android:layout_marginBottom="@dimen/dp_14"

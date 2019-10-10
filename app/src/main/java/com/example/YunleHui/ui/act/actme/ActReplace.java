@@ -110,7 +110,7 @@ public class ActReplace extends BaseAct {
     }
 
     @Override
-    public void StringResulit(String key, String value) {
+    public void stringResulit(String key, String value) {
         try {
             if (key.equals("user/login/smsCode")) {
                 Toast.makeText(this, "发送成功", Toast.LENGTH_SHORT).show();

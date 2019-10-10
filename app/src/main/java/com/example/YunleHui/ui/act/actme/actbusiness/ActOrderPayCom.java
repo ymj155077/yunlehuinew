@@ -434,7 +434,7 @@ public class ActOrderPayCom extends BaseAct implements CompoundButton.OnCheckedC
 
 
     @Override
-    public void StringResulit(String key, String value) {
+    public void stringResulit(String key, String value) {
 
 
 //        选中的商品的列表

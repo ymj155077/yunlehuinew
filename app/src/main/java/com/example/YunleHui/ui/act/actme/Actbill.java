@@ -232,7 +232,7 @@ myViewHolder.text_time.setText(datas.get(position).getTradeTime());
     }
 
     @Override
-    public void StringResulit(String key, String value) {
+    public void stringResulit(String key, String value) {
 try {
     if (key.equals("account/searchAccountLog")) {
 //            private Bean_bill bean_bill;

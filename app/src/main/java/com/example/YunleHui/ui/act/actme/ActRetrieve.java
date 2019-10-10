@@ -5,6 +5,7 @@ import android.os.CountDownTimer;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
@@ -62,6 +63,8 @@ public class ActRetrieve extends BaseAct implements View.OnClickListener, Passwo
 
     public static ActRetrieve actRetrieve;
 
+    @BindView(R.id.text_s)
+TextView text_s;
 
     @Override
     public void startActivity(Class<?> clz) {
@@ -88,12 +91,14 @@ public class ActRetrieve extends BaseAct implements View.OnClickListener, Passwo
         time = new TimeCount(60000, 1000);
         Intent intent = getIntent();
         type_name = intent.getIntExtra("type",0);
+
+        phone = (String) MyApp.getSharedPreference(this, "phone", "");
+
         if (type_name==1){
             text_center.setText("支付密码找回");
             text_binding.setText("下一步");
         }else {
             text_center.setText("绑定手机");
-            phone = (String) MyApp.getSharedPreference(this, "phone", "");
             edit_phone.setText(Tools.getStarPhone(phone));
             edit_phone.setClickable(false);
             edit_phone.setEnabled(false);
@@ -110,7 +115,14 @@ public class ActRetrieve extends BaseAct implements View.OnClickListener, Passwo
                 time.start();
 
                 HttpUtil.addMapparams();
-                HttpUtil.params.put("phone", phone);
+
+                if (type_name == 1){
+                    HttpUtil.params.put("phone", phone);
+                }else {
+                    HttpUtil.params.put("phone", edit_phone.getText().toString().trim());
+                }
+
+
                 HttpUtil.Post_request("user/login/smsCode", HttpUtil.params);
                 getdata("user/login/smsCode");
 
@@ -271,7 +283,7 @@ public class ActRetrieve extends BaseAct implements View.OnClickListener, Passwo
 
 
     @Override
-    public void StringResulit(String key, String value) {
+    public void stringResulit(String key, String value) {
 
         try {
             if (key.equals("user/login/smsCode")) {
@@ -292,8 +304,41 @@ public class ActRetrieve extends BaseAct implements View.OnClickListener, Passwo
             }
         }
         if (key.equals("user/updatePhoneNumber")){
-            Toast.makeText(this,"！！！",Toast.LENGTH_SHORT).show();
+
+            bean_re = MyApp.gson.fromJson(value,Bean_re.class);
+            code = bean_re.getCode();
+
+            if (code == 200){
+
+                Toast.makeText(this,bean_re.getMsg(),Toast.LENGTH_SHORT).show();
+            }else {
+                Toast.makeText(this,bean_re.getMsg(),Toast.LENGTH_SHORT).show();
+            }
+
+
         }
+
+
+
+        if (key.equals("account/setPassword")){
+
+            bean_re = MyApp.gson.fromJson(value,Bean_re.class);
+            code = bean_re.getCode();
+
+            if (code == 200){
+
+                Toast.makeText(this,bean_re.getMsg(),Toast.LENGTH_SHORT).show();
+
+
+                finish();
+
+            }else {
+                Toast.makeText(this,bean_re.getMsg(),Toast.LENGTH_SHORT).show();
+            }
+
+        }
+
+
     }
 
 

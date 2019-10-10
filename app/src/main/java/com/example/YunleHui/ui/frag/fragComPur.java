@@ -304,7 +304,7 @@ public class fragComPur extends BaseFrag implements PagerGridLayoutManager.PageL
 
 
     @Override
-    public void StringResulit(String key, String value) {
+    public void stringResulit(String key, String value) {
 
 
         if (key.equals("community/list")) {

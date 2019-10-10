@@ -16,6 +16,7 @@ import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.text.InputType;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -147,6 +148,9 @@ public class ActRefunds extends BaseAct {
     TextView text_next;
 
 
+    public static ActRefunds actRefunds;
+
+
     @Override
     public void startActivity(Class<?> clz) {
         startActivity(new Intent(this, clz));
@@ -169,6 +173,9 @@ public class ActRefunds extends BaseAct {
 
     @Override
     public void initData() {
+
+        actRefunds = this;
+
         themeId = R.style.picture_default_style;
         FullyGridLayoutManager manager = new FullyGridLayoutManager(ActRefunds.this, 4, GridLayoutManager.VERTICAL, false);
         recycler_head.setLayoutManager(manager);
@@ -287,17 +294,13 @@ public class ActRefunds extends BaseAct {
                     }
                     myRecycleViewAdapter = new MyRecycleViewAdapter(datassss, ActRefunds.this);
                     recycler_tao.setAdapter(myRecycleViewAdapter);
-                }else if (modetext==4){
+                } else if (modetext == 4) {
 //请输入商品介绍
                     if (msg.length() > 0) {
                         text_jie.setText(msg);
                     }
 
                 }
-
-
-
-
 
 
                 inputTextMsgDialog.dismiss(); //隐藏此dialog
@@ -556,8 +559,7 @@ public class ActRefunds extends BaseAct {
     LinearLayout lin_jie;
 
 
-
-    @OnClick({R.id.lin_li, R.id.text_Example, R.id.text_next,R.id.lin_jie})
+    @OnClick({R.id.lin_li, R.id.text_Example, R.id.text_next, R.id.lin_jie})
     public void OnClick(View view) {
         switch (view.getId()) {
             case R.id.lin_li:
@@ -585,7 +587,6 @@ public class ActRefunds extends BaseAct {
             case R.id.text_next:
                 selectListAll.clear();
                 selectListAll.addAll(adapter.getList());
-
 
 
                 if (selectListAll.size() > 0) {
@@ -616,7 +617,7 @@ public class ActRefunds extends BaseAct {
 
                 intents.putExtras(bundle);
                 intents.putExtra("shopNmae", text_shop.getText().toString().trim());
-                intents.putExtra("intro",text_jie.getText().toString().trim());
+                intents.putExtra("intro", text_jie.getText().toString().trim());
                 startActivity(intents);
 
                 break;
@@ -637,7 +638,7 @@ public class ActRefunds extends BaseAct {
 
 
     @BindView(R.id.text_jie)
-TextView text_jie;
+    TextView text_jie;
 
     private String path_img;
     //    套餐里面选中的postion；
@@ -663,15 +664,12 @@ TextView text_jie;
         }
 
 
-
-//        得到数据
-        public ArrayList<BeanImgs> getMyDatas(){
+        //        得到数据
+        public ArrayList<BeanImgs> getMyDatas() {
 
             return datas;
 
         }
-
-
 
 
         @Override
@@ -972,6 +970,33 @@ TextView text_jie;
             }
         }
     }
+
+//    @Override
+//    public boolean onKeyUp(int keyCode, KeyEvent event) {
+//        if (keyCode == KeyEvent.KEYCODE_BACK && event.getAction() == KeyEvent.ACTION_UP) {
+//            View view_ = Tools.setRebuildPop(this, R.layout.item_tishi, R.layout.activity_act_refunds);
+//            TextView text_cancel = (TextView) view_.findViewById(R.id.text_cancel);
+//            TextView text_sure = (TextView) view_.findViewById(R.id.text_sure);
+//            text_cancel.setOnClickListener(new View.OnClickListener() {
+//                @Override
+//                public void onClick(View view) {
+//                    Tools.mBottomSheetPop.dismiss();
+//                    finish();
+//                }
+//            });
+//            text_sure.setOnClickListener(new View.OnClickListener() {
+//                @Override
+//                public void onClick(View view) {
+//                    Tools.mBottomSheetPop.dismiss();
+//                }
+//            });
+////            overridePendingTransition(R.anim.no_animation, R.anim.push_bottom_out);
+//            //不执行父类点击事件
+//            return true;
+//        }
+//        //继续执行父类其他点击事件
+//        return super.onKeyUp(keyCode, event);
+//    }
 
 
 }

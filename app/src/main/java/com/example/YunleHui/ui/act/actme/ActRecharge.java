@@ -491,7 +491,7 @@ public class ActRecharge extends BaseAct implements View.OnClickListener, Passwo
     private TextView text_passWord;
 
     @Override
-    public void StringResulit(String key, String value) {
+    public void stringResulit(String key, String value) {
 
 
         try {

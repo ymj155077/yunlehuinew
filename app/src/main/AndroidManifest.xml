@@ -525,7 +525,15 @@
         <activity android:name=".ui.act.actme.ActMoinfor" />
         <activity android:name=".ui.act.actme.ActReplace" />
         <activity android:name=".ui.act.actme.actbusiness.ActRefunds" />
-        <activity android:name=".ui.act.actme.actbusiness.ActRecom" />
+
+        <!--单独存在-->
+        <activity android:name=".ui.act.actme.actbusiness.ActRecom"
+            android:configChanges="keyboardHidden|screenSize|orientation"
+            android:launchMode="singleInstance"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateHidden|adjustResize"
+
+            />
         <activity android:name=".ui.act.actme.actbusiness.ActSelecBus" />
         <activity android:name=".ui.act.actme.actbusiness.ActWriteCode" />
         <activity android:name=".ui.act.actme.actbusiness.ActTemplate" />

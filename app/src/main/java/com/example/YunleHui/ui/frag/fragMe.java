@@ -255,7 +255,7 @@ public class fragMe extends BaseFrag {
 
 
     @Override
-    public void StringResulit(String key, String value) {
+    public void stringResulit(String key, String value) {
         try {
             if (key.equals("account/getByUser")) {
                 bean_acc = MyApp.gson.fromJson(value, Bean_acc.class);
