@@ -266,6 +266,9 @@ public class HttpUtil {
             request = requestBuilder.headers(Headers.of(paramsheads)).build();
         }
         MyApp.call = Cookiebuilder.build().newCall(request);
+
+        Log.i(url,MyApp.PUBLIC_URL + url);
+
     }
 
 

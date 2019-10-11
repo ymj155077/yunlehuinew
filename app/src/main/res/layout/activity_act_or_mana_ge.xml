@@ -1,40 +1,38 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    android:orientation="vertical"
+<LinearLayout android:orientation="vertical"
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.YunleHui.ui.act.actme.actbusiness.ActOrManaGe">
+    tools:context="com.example.YunleHui.ui.act.actme.actbusiness.ActOrManaGe"
+    xmlns:tl="http://schemas.android.com/apk/res-auto">
 
     <include layout="@layout/toolbar_push_off"/>
 
 
 
-
-
-    <com.example.YunleHui.view.tabpagerindictor.TabPageIndicator
-        android:background="@color/Write"
-        android:id="@+id/indicator"
+    <com.example.YunleHui.view.MTabLayout.SlidingTabLayout
+        android:id="@+id/tl_7"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/dp_40"
-        />
-
-    <!--<View-->
-    <!---->
-    <!--android:background="@color/order_back"-->
-    <!--android:layout_width="match_parent"-->
-    <!--android:layout_height="@dimen/dp_4"/>-->
-    <!--android:background="@color/order_back"-->
-
+        android:layout_height="@dimen/dp_50"
+        android:background="#FFFFFF"
+        tl:tl_indicator_anim_enable="true"
+        tl:tl_indicator_bounce_enable="true"
+        tl:tl_indicator_color="#FF6C4B"
+        tl:tl_indicator_corner_radius="1.5dp"
+        tl:tl_indicator_height="@dimen/dp_2"
+        tl:tl_indicator_width_equal_title="true"
+        tl:tl_tab_space_equal="true"
+        tl:tl_textSelectColor="#FF6C4B"
+        tl:tl_textUnselectColor="#333333"
+        tl:tl_textsize="@dimen/sp_17" />
 
     <android.support.v4.view.ViewPager
-        android:background="#f2f2f2"
-        android:id="@+id/viewPager"
+        android:id="@+id/vp"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        />
+        android:layout_height="0dp"
+        android:layout_weight="1" />
 
 
 

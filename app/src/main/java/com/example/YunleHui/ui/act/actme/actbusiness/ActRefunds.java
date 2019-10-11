@@ -23,10 +23,12 @@ import android.view.ViewGroup;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
 import android.widget.BaseAdapter;
+import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
+import android.widget.RadioButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -77,15 +79,11 @@ import static android.provider.Contacts.SettingsColumns.KEY;
 
 public class ActRefunds extends BaseAct {
 
-
     private int modetext = 0;
-
 
     private InputTextMsgDialog inputTextMsgDialog;
 
-
     ArrayList<BeanImgs> datassss = new ArrayList<>();
-
 
     // 0 头部的数据，1套餐的数据
     private int Moder = 0;
@@ -151,6 +149,8 @@ public class ActRefunds extends BaseAct {
     public static ActRefunds actRefunds;
 
 
+
+
     @Override
     public void startActivity(Class<?> clz) {
         startActivity(new Intent(this, clz));
@@ -171,8 +171,51 @@ public class ActRefunds extends BaseAct {
 
     }
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     @Override
     public void initData() {
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
         actRefunds = this;
 

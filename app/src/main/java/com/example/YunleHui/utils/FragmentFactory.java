@@ -59,18 +59,7 @@ public class FragmentFactory {
         return fragment;
     }
 
-    public static Fragment createShop(int position) {
-        Fragment fragment = null;
-        switch (position) {
-            case 0:
-                fragment = new fragConsumed();
-                break;
-            case 1:
-                fragment = new fragUnorders();
-                break;
-        }
-        return fragment;
-    }
+
 
 
 

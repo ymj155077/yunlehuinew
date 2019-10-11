@@ -65,6 +65,13 @@ public class GridImageAdapter extends
         this.list = list;
     }
 
+
+    public List<LocalMedia> getList(){
+        return list;
+    }
+
+
+
     public class ViewHolder extends RecyclerView.ViewHolder {
 
         ImageView mImg;
@@ -102,7 +109,7 @@ public class GridImageAdapter extends
      */
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup viewGroup, int i) {
-        View view = mInflater.inflate(R.layout.gv_filter_image,
+        View view = mInflater.inflate(R.layout.gv_fabu,
                 viewGroup, false);
         final ViewHolder viewHolder = new ViewHolder(view);
         return viewHolder;

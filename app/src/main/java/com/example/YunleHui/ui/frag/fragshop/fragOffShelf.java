@@ -119,14 +119,24 @@ public class fragOffShelf extends BaseFrag {
 //                params.put("shopClassId", "");
 //                params.put("shopCityId", "");
 //                params.put("offset", "");
-                HttpUtil.addMapparams();
-                HttpUtil.params.put("goodsName", goodsName);
+//                HttpUtil.addMapparams();
+//                HttpUtil.params.put("goodsName", goodsName);
+//
+//                HttpUtil.params.put("state", state);
+//
+//                HttpUtil.Post_request("backShop/goods/list", HttpUtil.params);
+//
+//                getdata("backShop/two");
 
-                HttpUtil.params.put("state", state);
 
-                HttpUtil.Post_request("backShop/goods/list", HttpUtil.params);
+
+                page = 1;
+                typeList = 0;
+
+                HttpUtil.getAsynHttp("backShop/goods/list?"+"goodsName="+goodsName+"&state="+state+"&page="+page+"&size="+size);
 
                 getdata("backShop/two");
+
                 new Handler().postDelayed(new Runnable() {
                     @Override
                     public void run() {
@@ -155,6 +165,14 @@ public class fragOffShelf extends BaseFrag {
 //                );
 //                getdata("frontShop/recommendGoods");
 
+
+
+                ++page;
+                typeList = 2;
+
+                HttpUtil.getAsynHttp("backShop/goods/list?"+"goodsName="+goodsName+"&state="+state+"&page="+page+"&size="+size);
+
+                getdata("backShop/two");
                 new Handler().postDelayed(new Runnable() {
                     @Override
                     public void run() {
@@ -193,7 +211,7 @@ public class fragOffShelf extends BaseFrag {
         }
 
 
-        public void clear_data(ArrayList<Bean_spgl.DataBean> datas) {
+        public void clear_data(List<Bean_spgl.DataBean> datas) {
 
             this.datas.clear();
             this.datas.addAll(datas);
@@ -203,7 +221,7 @@ public class fragOffShelf extends BaseFrag {
         }
 
 
-        public void add_data(ArrayList<Bean_spgl.DataBean> datas) {
+        public void add_data(List<Bean_spgl.DataBean> datas) {
 
             this.datas.addAll(datas);
 
@@ -252,6 +270,11 @@ public class fragOffShelf extends BaseFrag {
                     } else {
                         frag_chu.setVisibility(View.VISIBLE);
                     }
+
+                    goodsId = datas.get(position).getId();
+
+                    goodsNature = datas.get(position).getGoodsNature();
+
                 }
             });
 //上架
@@ -260,6 +283,7 @@ public class fragOffShelf extends BaseFrag {
                 public void onClick(View view) {
                     text_title.setText("是否上架");
                     goodsId = datas.get(position).getId();
+                    goodsNature = datas.get(position).getGoodsNature();
                     type = 1;
                     if (frag_chu.getVisibility() == View.VISIBLE) {
                         frag_chu.setVisibility(View.GONE);
@@ -318,12 +342,24 @@ public class fragOffShelf extends BaseFrag {
 
             bean_spgl = MyApp.gson.fromJson(value, Bean_spgl.class);
             code = bean_spgl.getCode();
-
             if (code == 200) {
+
                 data = bean_spgl.getData();
-                myRecycleViewAdapter = new MyRecycleViewAdapter(data, getActivity());
-                xre_shelf.setAdapter(myRecycleViewAdapter);
+
+            if (typeList == 0){
+
+
+                    myRecycleViewAdapter = new MyRecycleViewAdapter(data, getActivity());
+                    xre_shelf.setAdapter(myRecycleViewAdapter);
+
+            }else {
+
+                myRecycleViewAdapter.add_data(data);
+                myRecycleViewAdapter.notifyDataSetChanged();
+
             }
+            }
+
         }
 
 
@@ -334,9 +370,13 @@ public class fragOffShelf extends BaseFrag {
     }
 
 
+    private int page = 1;
+    private int size = 10;
+    private int typeList = 0;
     private int type = 0;
-
     private int goodsId = 0;
+
+    private int goodsNature = 0;
 
 
     @OnClick({R.id.text_sure, R.id.text_cancel})
@@ -345,22 +385,24 @@ public class fragOffShelf extends BaseFrag {
             case R.id.text_sure:
 //删除
                 if (type == 0) {
-                    Toast.makeText(getActivity(), "确定", Toast.LENGTH_SHORT).show();
+//                    Toast.makeText(getActivity(), "确定", Toast.LENGTH_SHORT).show();
 
                     frag_chu.setVisibility(View.GONE);
 
-//                    HttpUtil.addMapparams();
-//
-//                    HttpUtil.params.put("state", 1);
-//
-//                    HttpUtil.params.put("goodsId", goodsId);
-//
-//                    HttpUtil.deleteRequest("backShop/goods/updateGoodsState", HttpUtil.params);
-//
-//                    getdata("backShop/goods/updateGoodsState");
+                    HttpUtil.addMapparams();
+
+                    HttpUtil.params.put("state", -1);
+
+                    HttpUtil.params.put("goodsId", goodsId);
+
+                    HttpUtil.params.put("goodsNature", goodsNature);
+
+                    HttpUtil.put_Request("backShop/goods/updateGoodsState", HttpUtil.params);
+
+                    getdata("backShop/goods/updateGoodsState");
                 } else {
 //                    更新
-                    Toast.makeText(getActivity(), "确定", Toast.LENGTH_SHORT).show();
+//                    Toast.makeText(getActivity(), "确定", Toast.LENGTH_SHORT).show();
 
                     frag_chu.setVisibility(View.GONE);
 
@@ -369,6 +411,8 @@ public class fragOffShelf extends BaseFrag {
                     HttpUtil.params.put("state", 1);
 
                     HttpUtil.params.put("goodsId", goodsId);
+
+                    HttpUtil.params.put("goodsNature", goodsNature);
 
                     HttpUtil.put_Request("backShop/goods/updateGoodsState", HttpUtil.params);
 
@@ -379,12 +423,11 @@ public class fragOffShelf extends BaseFrag {
                 break;
             case R.id.text_cancel:
 
-                Toast.makeText(getActivity(), "取消", Toast.LENGTH_SHORT).show();
+//                Toast.makeText(getActivity(), "取消", Toast.LENGTH_SHORT).show();
 
                 frag_chu.setVisibility(View.GONE);
 
                 break;
         }
     }
-
 }

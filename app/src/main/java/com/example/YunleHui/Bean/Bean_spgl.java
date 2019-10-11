@@ -96,6 +96,27 @@ public class Bean_spgl {
         private int isAllowId;
         private List<SetMealListBean> setMealList;
 
+
+        private int goodsNature;
+
+        private String remark;
+
+        public int getGoodsNature() {
+            return goodsNature;
+        }
+
+        public void setGoodsNature(int goodsNature) {
+            this.goodsNature = goodsNature;
+        }
+
+        public String getRemark() {
+            return remark;
+        }
+
+        public void setRemark(String remark) {
+            this.remark = remark;
+        }
+
         public int getId() {
             return id;
         }

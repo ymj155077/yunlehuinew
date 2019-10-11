@@ -16,7 +16,9 @@ import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.CompoundButton;
 import android.widget.LinearLayout;
+import android.widget.RadioButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -36,6 +38,7 @@ import com.example.YunleHui.appManager.MyApp;
 import com.example.YunleHui.base.BaseAct;
 import com.example.YunleHui.utils.HttpUtil;
 import com.example.YunleHui.utils.InputTextMsgDialog;
+import com.example.YunleHui.utils.Tools;
 import com.example.YunleHui.view.datapick.DataPickerDialog;
 import com.example.YunleHui.view.datapick.DatePickerDialog;
 import com.example.YunleHui.view.datapick.DateUtil;
@@ -54,7 +57,6 @@ import java.util.Comparator;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
 import butterknife.BindView;
 import butterknife.OnClick;
 import io.reactivex.Observer;
@@ -71,6 +73,9 @@ import okhttp3.Response;
 import static com.example.YunleHui.ui.act.actme.actbusiness.ActRefunds.actRefunds;
 
 public class ActRecom extends BaseAct {
+
+
+    private int as = -1;
 
 
     //  Json传递
@@ -132,6 +137,9 @@ public class ActRecom extends BaseAct {
 
     private List<Integer> paisize = new ArrayList<>();
 
+
+
+
     @Override
     public void startActivity(Class<?> clz) {
         startActivity(new Intent(this, clz));
@@ -149,6 +157,21 @@ public class ActRecom extends BaseAct {
             text_center.setText("发布商品");
         }
     }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     @Override
     public void initData() {
@@ -805,6 +828,8 @@ public class ActRecom extends BaseAct {
             case R.id.text_Release:
 
 
+                showLoadingDialog();
+
                 //商品的头部的数据
 //                private ArrayList<LocalMedia> headList = new ArrayList<>();
 //
@@ -930,7 +955,7 @@ public class ActRecom extends BaseAct {
 
 
     private int i = 0;
-
+    int number = 0;
 
     //上传图片
     public void uploadImage(String path_img, int imgSize) {
@@ -1005,10 +1030,10 @@ public class ActRecom extends BaseAct {
                                     goodsInfor.put("preTime", hour + "");
 //详情页的列表 个数，先计算个数，然后图片逐一上传
                                     for (int i = 0; i < myRecycleViewAdapter.getTaoDatas().size(); i++) {
-
-                                        Log.i("path_xiang", "path_xiang" + datassss.size() + "详情---" + myRecycleViewAdapter.getTaoDatas().size() + "---" +
+                                        all += myRecycleViewAdapter.getTaoDatas().get(i).getImgs().size();
+                                        Log.i("path_xiang", "path_xiang" + datassss.size() +"---"+all+"---"+ "详情---" + myRecycleViewAdapter.getTaoDatas().size() + "---" +
                                                 myRecycleViewAdapter.getTaoDatas().get(i).getImgs().size());
-
+                                        Log.i("danzhang", all+"++++++all+++++++");
                                         //详情列表
 //                                        for (LocalMedia media : myRecycleViewAdapter.getTaoDatas().get(i).getImgs()) {
 //                                            path_xiang = media.getCompressPath();
@@ -1021,8 +1046,8 @@ public class ActRecom extends BaseAct {
 //详情页    图片添加
 //                                        除了问题
 //为了排序弄得下标
-                                        int number = 0;
-                                        all += myRecycleViewAdapter.getTaoDatas().get(i).getImgs().size();
+
+
 
 //每一排的数据添加进去
                                         paisize.add(myRecycleViewAdapter.getTaoDatas().get(i).getImgs().size());
@@ -1032,9 +1057,7 @@ public class ActRecom extends BaseAct {
 
                                             path_xiang = myRecycleViewAdapter.getTaoDatas().get(i).getImgs().get(j).getCompressPath();
 
-                                            ++number;
-
-                                            Posdetail(path_xiang, number, i);
+                                            Posdetail(path_xiang,  ++number, i);
                                         }
 
 
@@ -1073,6 +1096,11 @@ public class ActRecom extends BaseAct {
 
     List<String> banners = new ArrayList<>();
     List<Bean_imgde> details = new ArrayList<>();
+
+
+//    图片的集合
+List<String> detai = new ArrayList<>();
+
 
 
     private List<Bean_details> datadetail = new ArrayList<Bean_details>();
@@ -1120,7 +1148,7 @@ public class ActRecom extends BaseAct {
                 runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
-                        Log.i("response", "----" + img);
+                        Log.i("responsePosdetail", "----" + img);
                         bean_shopUrl = MyApp.gson.fromJson(img, Bean_shopUrl.class);
                         data_shopUrl = bean_shopUrl.getData();
                         String img_url = data_shopUrl.getMediaUrl();
@@ -1130,16 +1158,11 @@ public class ActRecom extends BaseAct {
                             @Override
                             public void run() {
 //上传图片
-
-
-                                Log.i("danzhang", "++++++li+++++++" + pai);
-
                                 details.add(new Bean_imgde(img_url, number, pai));
 
+                                Log.i("danzhang", img_url +"--"+all+"++++++li+++++++" + pai+"--"+"---"+number +"---"+details.size());
 
-                                if (all == number) {
-
-
+                                if (all == details.size()) {
                                     Collections.sort(details, new Comparator<Bean_imgde>() {
                                         /*
                                          * int compare(Person p1, Person p2) 返回一个基本类型的整型，
@@ -1161,23 +1184,61 @@ public class ActRecom extends BaseAct {
                                     });
                                     Log.i("排序后的结果：", details + "");
 
-                                    if (details.size() == myRecycleViewAdapter.getTaoDatas().get(pai).getImgs().size()) {
-                                        detailImgs = String.join(",", details.toArray(new String[details.size()]));
-                                        datadetail.add(new Bean_details(myRecycleViewAdapter.getTaoDatas().get(pai).getDetails(), detailImgs));
-                                        details.clear();
+                                    for (int i = 0; i < details.size(); i++) {
+                                        Log.i("detailsdetails",details.get(i).getImg()+"--"+details.get(i).getNumber()+"---"+details.get(i).getPai());
 
-                                        Log.i("datadetail", "----" + MyApp.gson.toJson(datadetail));
+                                        try {
 
-                                        if (pai == datadetail.size()) {
-                                            Log.i("datadetail", "--执行了几次--" + MyApp.gson.toJson(datadetail));
+
+
+                                            if (details.get(i).getPai() == details.get(i+1).getPai()){
+                                                detai.add(details.get(i).getImg());
+                                            }else {
+                                                Log.i("detailsdetails","-----------------");
+                                                detai.add(details.get(i).getImg());
+                                                detailImgs = String.join(",", detai.toArray(new String[detai.size()]));
+                                                datadetail.add(new Bean_details(myRecycleViewAdapter.getTaoDatas().get(++as).getDetails(), detailImgs));
+                                                detai.clear();
+                                            }
+                                        }catch (Exception e){
+
+                                            detai.add(details.get(i).getImg());
+                                            detailImgs = String.join(",", detai.toArray(new String[detai.size()]));
+
+//                                           int a =  ++as;
+
+                                           Log.i("spppppppsa",as+"-----");
+
+                                            datadetail.add(new Bean_details(myRecycleViewAdapter.getTaoDatas().get(as++).getDetails(), detailImgs));
+                                            detai.clear();
+
 
                                             goodsInfor.put("detail", MyApp.gson.toJson(datadetail).toString());
+                                            Tools.i("MyAppdatadetail",MyApp.gson.toJson(datadetail).toString());
 //                                        haiBao(selectList);
 //                                        海报执行多次
 //                                        获取最新的数据 海报图
                                             haiBao(adapter.getList());
                                         }
                                     }
+
+//                                    if (details.size() == myRecycleViewAdapter.getTaoDatas().get(pai).getImgs().size()) {
+//                                        detailImgs = String.join(",", details.toArray(new String[details.size()]));
+//                                        datadetail.add(new Bean_details(myRecycleViewAdapter.getTaoDatas().get(pai).getDetails(), detailImgs));
+//                                        details.clear();
+//
+//                                        Log.i("datadetail", "----" + MyApp.gson.toJson(datadetail));
+//
+//                                        if (pai == datadetail.size()) {
+//                                            Log.i("datadetail", "--执行了几次--" + MyApp.gson.toJson(datadetail));
+//
+//                                            goodsInfor.put("detail", MyApp.gson.toJson(datadetail).toString());
+////                                        haiBao(selectList);
+////                                        海报执行多次
+////                                        获取最新的数据 海报图
+//                                            haiBao(adapter.getList());
+//                                        }
+//                                    }
                                 }
 ////                                ++ide;
 //                                Log.i("detaikkk", imgSize + "------" + ide + "---");
@@ -1354,8 +1415,7 @@ public class ActRecom extends BaseAct {
                                         Integer.valueOf(dataTao.get(sei).getSettlementprice()) * 1000,
                                         Integer.valueOf(dataTao.get(sei).getCommission()) * 1000));
                                 ++sei;
-
-                                Log.i("setMealDtoList", Taosize + "---" + sei + "---" + dats.size() + "----" + MyApp.gson.toJson(dats) + "");
+                                Tools.i("setMealDtoList", Taosize + "---" + sei + "---" + dats.size() + "----" + MyApp.gson.toJson(dats) + "");
 //                                数据传递完成
                                 if (Taosize == sei) {
                                     sei = 0;
@@ -1374,18 +1434,10 @@ public class ActRecom extends BaseAct {
                 });
             }
         });
-
-
 //        }
-
-
 //        String path_img = dataTao.get(sei).getImgs().get(0).getCompressPath();
-
-
 //        OkHttpClient okHttpClient = new OkHttpClient();
-//
 //        Log.d("imagePath", path_img1);
-//
 //        File file = new File(path_img1);
 //        RequestBody image = RequestBody.create(MediaType.parse("image/png"), file);
 //        RequestBody requestBody = null;
@@ -1407,9 +1459,7 @@ public class ActRecom extends BaseAct {
 //        okHttpClient.newCall(request).enqueue(new Callback() {
 //            @Override
 //            public void onFailure(Call call, IOException e) {
-//
 //            }
-//
 //            @Override
 //            public void onResponse(Call call, Response response) throws IOException {
 //                String img = response.body().string();
@@ -1473,6 +1523,9 @@ public class ActRecom extends BaseAct {
     public void stringResulit(String key, String value) {
         try {
             if (key.equals("backShop/goods/info")) {
+
+                dismissLoadingDialog();
+
                 bean_suc = MyApp.gson.fromJson(value, Bean_suc.class);
                 code = bean_suc.getCode();
                 if (code == 200) {
@@ -1483,6 +1536,8 @@ public class ActRecom extends BaseAct {
                 } else {
                     Toast.makeText(ActRecom.this, bean_suc.getMsg(), Toast.LENGTH_SHORT).show();
                 }
+
+
             }
         } catch (Exception e) {
 

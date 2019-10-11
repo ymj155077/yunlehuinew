@@ -123,6 +123,11 @@ public class ActBusCenter extends BaseAct {
     private int shopId = 0;
 
 
+
+    @BindView(R.id.lin_shopguan)
+    LinearLayout lin_shopguan;
+
+
     @Override
     public void startActivity(Class<?> clz) {
         startActivity(new Intent(this, clz));
@@ -161,20 +166,11 @@ public class ActBusCenter extends BaseAct {
         shopTel = intent.getStringExtra("shopTel");
         ShopNature = intent.getIntExtra("ShopNature", 0);
         money = intent.getStringExtra("money");
-
         shopId = intent.getIntExtra("shopId", 0);
-
-
         Glide.with(this).load(shopLogoUrl).into(img_shop);
-
         text_shopName.setText(shopName);
-
         text_jine.setText(money);
-
-
         Log.i("TypeId", TypeId + "---");
-
-
 //            营销
         if (TypeId == 1) {
             lin_Marketing.setVisibility(View.VISIBLE);
@@ -213,8 +209,9 @@ public class ActBusCenter extends BaseAct {
 
             R.id.lin_DoubleShop,
 
-            R.id.lin_pingjia
+            R.id.lin_pingjia,
 
+            R.id.lin_shopguan
 
     })
     public void OnClick(View view) {
@@ -240,17 +237,31 @@ public class ActBusCenter extends BaseAct {
                 startActivity(ActWriteMerchants.class);
 
                 break;
-//                管理商品
+//          营销商户      管理商品
             case R.id.lin_ComAn:
 
                 startActivity(ActCoManMent.class);
 
                 break;
+
+//          营销商户 + 核销商户      管理商品
+            case R.id.lin_shopguan:
+
+                startActivity(ActCoManMent.class);
+
+                break;
+
+
+
 //                订单管理
             case R.id.lin_OrderMent:
-
-                startActivity(ActOrManaGe.class);
-
+//                    三个标签  爆款
+//                if (ShopNature==0){
+////                    五个标签
+//                }else if (ShopNature == 1){
+                    //爆款商户和社区商户功能都开通的时候
+                    startActivity(ActOrManaGe.class);
+//                }
                 break;
 
 //                核销管理
@@ -265,7 +276,6 @@ public class ActBusCenter extends BaseAct {
             case R.id.lin_he:
 
                 Intent intent = new Intent(this, ActWriteCode.class);
-
 
                 intent.putExtra("shopId", shopId);
 

@@ -38,13 +38,8 @@ import butterknife.BindView;
 
 public class ActMyOrder extends BaseAct {
 
-//    private TabPageIndicator indicator;
-//    private ViewPager viewPager;
     @BindView(R.id.toolbar_all)
     Toolbar toolbar_all;
-
-
-
 
     private MyPagerAdapter mAdapter;
 

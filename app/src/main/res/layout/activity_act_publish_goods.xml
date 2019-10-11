@@ -12,114 +12,335 @@
     <include layout="@layout/toolbar_push_off" />
 
 
-    <LinearLayout
-        android:layout_marginBottom="@dimen/dp_9"
-        android:layout_marginTop="@dimen/dp_9"
-        android:orientation="vertical"
+    <android.support.v4.widget.NestedScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/Write">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/dp_12"
-            android:layout_marginTop="@dimen/dp_12"
-            android:layout_marginEnd="@dimen/dp_12"
-            android:layout_marginBottom="@dimen/dp_12"
-            android:lineSpacingExtra="3dp"
-            android:text="添加6张店铺图或自己店的产品图可提高店铺 收入，还有机会成为平台热门推荐产品"
-            android:textColor="@color/black99"
-            android:textSize="@dimen/sp_17" />
-
-        <android.support.v7.widget.RecyclerView
-            android:id="@+id/recycler"
-            android:layout_marginLeft="5dp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:overScrollMode="never" />
-
-    </LinearLayout>
+        android:layout_height="0dp"
+        android:layout_weight="1">
 
 
-
-
-<LinearLayout
-    android:background="@color/Write"
-    android:orientation="vertical"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content">
-
-
-    <LinearLayout
-        android:orientation="horizontal"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
-        <TextView
-            android:layout_marginBottom="@dimen/dp_12"
-            android:layout_marginTop="@dimen/dp_12"
-            android:layout_marginStart="@dimen/dp_12"
-            android:textColor="@color/black33"
-            android:textSize="@dimen/sp_17"
-            android:text="套餐标题："
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
-
-
-        <com.example.YunleHui.view.ClearEditText
-            android:lines="1"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@null"
-            android:gravity="center_vertical"
-            android:hint="请输入套餐标题"
-            android:textColor="@color/black33"
-            android:textColorHighlight="@color/black33"
-            android:textColorHint="@color/corlor_text"
-            android:textColorLink="@color/black33"
-            android:textSize="@dimen/sp_16" />
-    </LinearLayout>
+            android:orientation="vertical">
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dp_9"
+                android:layout_marginBottom="@dimen/dp_9"
+                android:background="@color/Write"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_marginEnd="@dimen/dp_4"
+                    android:layout_marginStart="@dimen/dp_4"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <android.support.v7.widget.RecyclerView
+                        android:id="@+id/recycler"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="5dp"
+                        android:overScrollMode="never" />
 
 
 
 
-
-    <com.example.YunleHui.view.ClearEditText
-        android:layout_marginStart="@dimen/dp_12"
-        android:layout_marginTop="@dimen/dp_12"
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/dp_110"
-        android:background="@null"
-        android:gravity="top"
-        android:hint="请输入套餐标题"
-        android:textColor="@color/black33"
-        android:textColorHighlight="@color/black33"
-        android:textColorHint="@color/corlor_text"
-        android:textColorLink="@color/black33"
-        android:textSize="@dimen/sp_16" />
+                </LinearLayout>
 
 
 
+                <View
+                    android:background="@color/all_background"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dp_1"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/dp_12"
+                    android:layout_marginTop="@dimen/dp_12"
+                    android:layout_marginBottom="@dimen/dp_12"
+                    android:text="添加商品图"
+                    android:textColor="@color/black99"
+                    android:textSize="@dimen/sp_14" />
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/Write"
+                android:orientation="vertical">
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/dp_12"
+                        android:layout_marginTop="@dimen/dp_12"
+                        android:layout_marginBottom="@dimen/dp_12"
+                        android:text="尚品名称："
+                        android:textColor="@color/black33"
+                        android:textSize="@dimen/sp_17" />
+
+
+                    <com.example.YunleHui.view.ClearEditText
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@null"
+                        android:gravity="center_vertical"
+                        android:hint="例  东北小米"
+                        android:lines="1"
+                        android:textColor="@color/black33"
+                        android:textColorHighlight="@color/black33"
+                        android:textColorHint="@color/corlor_text"
+                        android:textColorLink="@color/black33"
+                        android:textSize="@dimen/sp_16" />
+                </LinearLayout>
+
+
+                <View
+                    android:background="@color/all_background"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dp_1"/>
+
+
+                <com.example.YunleHui.view.ClearEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dp_110"
+                    android:layout_marginStart="@dimen/dp_12"
+                    android:layout_marginTop="@dimen/dp_6"
+                    android:layout_marginEnd="@dimen/dp_12"
+                    android:background="@null"
+                    android:gravity="top"
+                    android:hint="一年一季,鲜稻加工,经多道加工程序制成,口感优良"
+                    android:textColor="@color/black33"
+                    android:textColorHighlight="@color/black33"
+                    android:textColorHint="@color/corlor_text"
+                    android:textColorLink="@color/black33"
+                    android:textSize="@dimen/sp_16" />
+
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dp_10"
+                android:background="@color/Write"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/dp_12"
+                    android:layout_marginTop="@dimen/dp_12"
+                    android:layout_marginBottom="@dimen/dp_12"
+                    android:text="划线价："
+                    android:textColor="@color/black33"
+                    android:textSize="@dimen/sp_17" />
+
+
+                <com.example.YunleHui.view.ClearEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@null"
+                    android:gravity="center_vertical"
+                    android:hint="￥ 0.00"
+                    android:lines="1"
+                    android:textColor="@color/black33"
+                    android:textColorHighlight="@color/black33"
+                    android:textColorHint="@color/corlor_text"
+                    android:textColorLink="@color/black33"
+                    android:textSize="@dimen/sp_16" />
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp_1"
+                android:background="@color/all_background" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/Write"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/dp_12"
+                    android:layout_marginTop="@dimen/dp_12"
+                    android:layout_marginBottom="@dimen/dp_12"
+                    android:text="现价："
+                    android:textColor="@color/black33"
+                    android:textSize="@dimen/sp_17" />
+
+
+                <com.example.YunleHui.view.ClearEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@null"
+                    android:gravity="center_vertical"
+                    android:hint="￥ 0.00"
+                    android:lines="1"
+                    android:textColor="@color/black33"
+                    android:textColorHighlight="@color/black33"
+                    android:textColorHint="@color/corlor_text"
+                    android:textColorLink="@color/black33"
+                    android:textSize="@dimen/sp_16" />
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp_1"
+                android:background="@color/all_background" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/Write"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/dp_12"
+                    android:layout_marginTop="@dimen/dp_12"
+                    android:layout_marginBottom="@dimen/dp_12"
+                    android:text="结算价："
+                    android:textColor="@color/black33"
+                    android:textSize="@dimen/sp_17" />
+
+
+                <com.example.YunleHui.view.ClearEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@null"
+                    android:gravity="center_vertical"
+                    android:hint="￥ 0.00"
+                    android:lines="1"
+                    android:textColor="@color/black33"
+                    android:textColorHighlight="@color/black33"
+                    android:textColorHint="@color/corlor_text"
+                    android:textColorLink="@color/black33"
+                    android:textSize="@dimen/sp_16" />
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp_1"
+                android:background="@color/all_background" />
+
+            <LinearLayout
+
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/Write"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/dp_12"
+                    android:layout_marginTop="@dimen/dp_12"
+                    android:layout_marginBottom="@dimen/dp_12"
+                    android:text="配送方式："
+                    android:textColor="@color/black33"
+                    android:textSize="@dimen/sp_17" />
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="end"
+                    android:layout_marginEnd="@dimen/dp_20"
+                    android:orientation="horizontal">
+
+                    <View
+                        android:layout_width="0dp"
+                        android:layout_height="@dimen/dp_1"
+                        android:layout_weight="1" />
+
+
+                    <RadioButton
+                        android:id="@+id/radio00"
+                        android:layout_width="@dimen/dp_110"
+                        android:layout_height="@dimen/dp_50"
+                        android:button="@null"
+                        android:checked="true"
+                        android:drawableLeft="@drawable/radiobutton_background"
+                        android:drawablePadding="@dimen/dp_10"
+                        android:gravity="center_vertical"
+                        android:paddingStart="@dimen/dp_12"
+                        android:paddingEnd="@dimen/dp_12"
+                        android:text="配送"
+                        android:textSize="@dimen/sp_17" />
+
+                    <RadioButton
+                        android:id="@+id/radio01"
+                        android:layout_width="wrap_content"
+                        android:layout_height="@dimen/dp_50"
+                        android:background="@android:color/transparent"
+                        android:button="@null"
+                        android:clickable="true"
+                        android:drawableLeft="@drawable/radiobutton_background"
+                        android:drawablePadding="@dimen/dp_10"
+                        android:paddingStart="@dimen/dp_12"
+                        android:paddingEnd="@dimen/dp_12"
+                        android:text="不支持配送"
+                        android:textSize="@dimen/sp_17" />
+
+                </LinearLayout>
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/dp_12"
+                    android:layout_marginTop="@dimen/dp_12"
+                    android:layout_marginBottom="@dimen/dp_12"
+                    android:text="发布时 提示发布成功后，返回至我的商户界面"
+                    android:textColor="#FD4E4E"
+                    android:textSize="@dimen/sp_14" />
+
+
+
+                <TextView
+                    android:id="@+id/text_Release"
+                    android:clickable="true"
+                    android:layout_marginBottom="@dimen/dp_20"
+                    android:layout_marginEnd="@dimen/dp_12"
+                    android:layout_marginStart="@dimen/dp_12"
+                    android:textSize="@dimen/sp_18"
+                    android:textColor="@color/Write"
+                    android:gravity="center"
+                    android:text="发布"
+                    android:layout_marginTop="@dimen/dp_20"
+                    android:background="@drawable/button_img"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dp_44" />
 
 
 
 
+            </LinearLayout>
 
 
-</LinearLayout>
+        </LinearLayout>
 
 
-
-
-
-
-
-
-
-
-
-
+    </android.support.v4.widget.NestedScrollView>
 
 
 </LinearLayout>

@@ -79,7 +79,7 @@ public class fragOnSale extends BaseFrag {
             case R.id.text_sure:
 
 
-                Toast.makeText(getActivity(), "确定", Toast.LENGTH_SHORT).show();
+//                Toast.makeText(getActivity(), "确定", Toast.LENGTH_SHORT).show();
 
                 frag_fa.setVisibility(View.GONE);
 
@@ -88,7 +88,7 @@ public class fragOnSale extends BaseFrag {
                 HttpUtil.params.put("state", 2);
 
                 HttpUtil.params.put("goodsId", goodsId);
-
+                HttpUtil.params.put("goodsNature", goodsNature);
                 HttpUtil.put_Request("backShop/goods/updateGoodsState", HttpUtil.params);
 
                 getdata("backShop/goods/updateGoodsState");
@@ -96,7 +96,7 @@ public class fragOnSale extends BaseFrag {
                 break;
             case R.id.text_cancel:
 
-                Toast.makeText(getActivity(), "取消", Toast.LENGTH_SHORT).show();
+//                Toast.makeText(getActivity(), "取消", Toast.LENGTH_SHORT).show();
 
                 frag_fa.setVisibility(View.GONE);
 
@@ -105,6 +105,7 @@ public class fragOnSale extends BaseFrag {
         }
     }
 
+    private int goodsNature = 0;
 
     @Override
     public void startActivity(Class<?> clz) {
@@ -122,6 +123,11 @@ public class fragOnSale extends BaseFrag {
     protected void initView(View view, Bundle savedInstanceState) {
 
     }
+
+
+    private int page = 1;
+    private int size = 10;
+    private int type = 0;
 
 
     @BindView(R.id.edit_earch)
@@ -149,29 +155,22 @@ public class fragOnSale extends BaseFrag {
             }
         });
 
-
-
-
-
-
-
-
-
-
-
         Tools.setManger(xre_added, getActivity());
 
         xre_added.setLoadingListener(new XRecyclerView.LoadingListener() {
             @Override
             public void onRefresh() {
-//                page = 1;
-//                type = 0;
-                HttpUtil.addMapparams();
-                HttpUtil.params.put("goodsName", goodsName);
+                page = 1;
+                type = 0;
+//                HttpUtil.addMapparams();
+//                HttpUtil.params.put("goodsName", goodsName);
+//
+//                HttpUtil.params.put("state", state);
+//                HttpUtil.params.put("page", page);
+//                HttpUtil.params.put("size", size);
 
-                HttpUtil.params.put("state", state);
-                HttpUtil.Post_request("backShop/goods/list", HttpUtil.params);
-
+//                HttpUtil.Post_request("backShop/goods/list", HttpUtil.params);
+                HttpUtil.getAsynHttp("backShop/goods/list?"+"goodsName="+goodsName+"&state="+state+"&page="+page+"&size="+size);
                 getdata("backShop/one");
                 new Handler().postDelayed(new Runnable() {
                     @Override
@@ -201,6 +200,11 @@ public class fragOnSale extends BaseFrag {
 //                );
 //                getdata("frontShop/recommendGoods");
 
+                ++page;
+                type = 2;
+
+                HttpUtil.getAsynHttp("backShop/goods/list?"+"goodsName="+goodsName+"&state="+state+"&page="+page+"&size="+size);
+                getdata("backShop/one");
                 new Handler().postDelayed(new Runnable() {
                     @Override
                     public void run() {
@@ -249,7 +253,7 @@ public class fragOnSale extends BaseFrag {
         }
 
 
-        public void add_data(ArrayList<Bean_spgl.DataBean> datas) {
+        public void add_data(List<Bean_spgl.DataBean> datas) {
 
             this.datas.addAll(datas);
 
@@ -272,7 +276,15 @@ public class fragOnSale extends BaseFrag {
             } catch (Exception e) {
 
             }
-            holder.text_price.setText(Tools.chenfa(datas.get(position).getSetMealList().get(0).getPrice()) + "");
+
+            try {
+                holder.text_price.setText(Tools.chenfa(datas.get(position).getSetMealList().get(0).getPrice()) + "");
+            }catch (Exception e){
+
+            }
+
+
+
             holder.text_size.setText(datas.get(position).getSaleNum() + "");
 
 
@@ -288,12 +300,12 @@ public class fragOnSale extends BaseFrag {
 
                         frag_fa.setVisibility(View.VISIBLE);
                     }
+                    goodsNature = datas.get(position).getGoodsNature();
+
 
 
                 }
             });
-
-
         }
 
         @Override
@@ -350,8 +362,18 @@ public class fragOnSale extends BaseFrag {
 
             if (code == 200) {
                 data = bean_spgl.getData();
-                myRecycleViewAdapter = new MyRecycleViewAdapter(data, getActivity());
-                xre_added.setAdapter(myRecycleViewAdapter);
+                if (type == 0){
+
+                    myRecycleViewAdapter = new MyRecycleViewAdapter(data, getActivity());
+                    xre_added.setAdapter(myRecycleViewAdapter);
+                }else {
+
+                    myRecycleViewAdapter.add_data(data);
+                    myRecycleViewAdapter.notifyDataSetChanged();
+
+                }
+
+
             }
         }
 

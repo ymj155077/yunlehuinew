@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    android:orientation="vertical"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="@dimen/dp_12"
+        android:layout_marginStart="@dimen/dp_12"
+        android:layout_marginTop="@dimen/dp_13"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:id="@+id/img_shop"
+            android:layout_width="@dimen/dp_82"
+            android:layout_height="@dimen/dp_82"
+            android:scaleType="fitXY"
+            android:src="@drawable/timg" />
+
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+
+            <TextView
+                android:id="@+id/text_details"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/dp_12"
+                android:layout_marginStart="@dimen/dp_12"
+                android:lines="1"
+                android:text="热菜过江椒香鱼"
+                android:textColor="@color/black33"
+                android:textSize="@dimen/sp_16" />
+
+            <TextView
+
+                android:id="@+id/text_context"
+                android:gravity="center_vertical"
+                android:layout_weight="1"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_marginLeft="@dimen/dp_12"
+                android:layout_marginStart="@dimen/dp_12"
+                android:lines="2"
+                android:text="套餐过江椒香鱼、秘制 私家甲满汉菠萝"
+                android:textColor="@color/black99"
+                android:textSize="@dimen/sp_14" />
+
+
+
+
+        </LinearLayout>
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="￥"
+            android:textColor="@color/black33"
+            android:textSize="@dimen/sp_12" />
+
+        <TextView
+            android:id="@+id/text_price"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="0.00"
+            android:textColor="@color/black33"
+            android:textSize="@dimen/sp_16" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/dp_9"
+            android:layout_marginStart="@dimen/dp_9"
+            android:text="X"
+            android:textColor="@color/corlor_text"
+            android:textSize="@dimen/sp_12" />
+
+        <TextView
+            android:id="@+id/text_size"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="1"
+            android:textColor="@color/corlor_text"
+            android:textSize="@dimen/sp_16" />
+
+    </LinearLayout>
+
+</LinearLayout>
